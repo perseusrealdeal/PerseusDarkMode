@@ -3,9 +3,9 @@
 import PackageDescription
 
 let package = Package(
-    name        : "DarkMode",
+    name        : "Dark Mode",
     platforms   : [.iOS(.v9)],
-    products    : [.library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"]),],
+    products    : [.library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"]),],
     dependencies: [],
     targets     :
         [
