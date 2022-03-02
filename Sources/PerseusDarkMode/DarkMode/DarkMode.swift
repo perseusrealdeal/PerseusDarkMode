@@ -1,3 +1,9 @@
+//
+// DarkMode.swift
+// PerseusDarkMode
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+
 import UIKit
 
 public class DarkMode

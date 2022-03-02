@@ -1,3 +1,9 @@
+//
+// DarkModeDecision.swift
+// PerseusDarkMode
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+
 import UIKit
 
 // MARK: - Calculations

@@ -1,3 +1,9 @@
+//
+// SetupByDefault.swift
+// PerseusDarkMode
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+
 import UIKit
 
 public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }

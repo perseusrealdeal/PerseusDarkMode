@@ -1,4 +1,8 @@
 // swift-tools-version:5.3
+//
+// Package.swift
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
 import PackageDescription
 
