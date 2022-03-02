@@ -1,3 +1,9 @@
+//
+// SystemColorsAdopted.swift
+// AdoptedSystemUI
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+
 import UIKit
 import PerseusDarkMode
 

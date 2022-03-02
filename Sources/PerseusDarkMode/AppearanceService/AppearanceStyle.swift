@@ -1,3 +1,9 @@
+//
+// AppearanceStyle.swift
+// PerseusDarkMode
+//
+// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+
 import Foundation
 
 public enum AppearanceStyle: Int, CustomStringConvertible
