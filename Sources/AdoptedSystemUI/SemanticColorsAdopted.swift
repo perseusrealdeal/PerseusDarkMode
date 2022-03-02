@@ -3,7 +3,7 @@ import PerseusDarkMode
 
 // MARK: Semantic colors
 
-protocol UISemanticColorsAdopted
+public protocol UISemanticColorsAdopted
 {
     // MARK: - Foreground colors
     ///
@@ -17,7 +17,7 @@ extension UIColor: UISemanticColorsAdopted
 {
     // MARK: - Foreground colors
     
-    static var label_Adopted           : UIColor
+    public static var label_Adopted           : UIColor
     {
         AppearanceService.shared.Style == .light ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
     }
