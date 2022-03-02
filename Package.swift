@@ -3,13 +3,20 @@
 import PackageDescription
 
 let package = Package(
-    name        : "DarkMode",
+    name        : "Dark Mode",
     platforms   : [.iOS(.v9)],
-    products    : [.library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"]),],
+    products    :
+        [
+            .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"]),
+            .library(name: "Adopted System UI", targets: ["AdoptedSystemUI"]),
+        ],
     dependencies: [],
     targets     :
         [
             .target(name: "PerseusDarkMode", dependencies: []),
-            .testTarget(name: "DarkModeTests", dependencies: ["PerseusDarkMode"]),
+            .target(name: "AdoptedSystemUI", dependencies: ["PerseusDarkMode"]),
+            
+            .testTarget(name        : "DarkModeTests",
+                        dependencies: ["PerseusDarkMode", "AdoptedSystemUI"]),
         ]
 )
