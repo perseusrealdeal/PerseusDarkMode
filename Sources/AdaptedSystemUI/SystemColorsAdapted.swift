@@ -1,6 +1,6 @@
 //
-// SystemColorsAdopted.swift
-// AdoptedSystemUI
+// SystemColorsAdapted.swift
+// AdaptedSystemUI
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 

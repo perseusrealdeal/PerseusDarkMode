@@ -12,15 +12,15 @@ let package = Package(
     products    :
         [
             .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"]),
-            .library(name: "Adopted System UI", targets: ["AdoptedSystemUI"]),
+            .library(name: "Adapted System UI", targets: ["AdaptedSystemUI"]),
         ],
     dependencies: [],
     targets     :
         [
             .target(name: "PerseusDarkMode", dependencies: []),
-            .target(name: "AdoptedSystemUI", dependencies: ["PerseusDarkMode"]),
+            .target(name: "AdaptedSystemUI", dependencies: ["PerseusDarkMode"]),
             
             .testTarget(name        : "DarkModeTests",
-                        dependencies: ["PerseusDarkMode", "AdoptedSystemUI"]),
+                        dependencies: ["PerseusDarkMode", "AdaptedSystemUI"]),
         ]
 )

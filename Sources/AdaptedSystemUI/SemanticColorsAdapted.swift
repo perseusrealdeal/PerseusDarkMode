@@ -1,6 +1,6 @@
 // 
-// SemanticColorsAdopted.swift
-// AdoptedSystemUI
+// SemanticColorsAdapted.swift
+// AdaptedSystemUI
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
