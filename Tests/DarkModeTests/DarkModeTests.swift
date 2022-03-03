@@ -6,7 +6,7 @@
 
 import XCTest
 @testable import PerseusDarkMode
-@testable import AdoptedSystemUI
+@testable import AdaptedSystemUI
 
 final class DarkModeTests: XCTestCase
 {
