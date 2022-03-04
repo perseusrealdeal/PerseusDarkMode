@@ -9,7 +9,7 @@ import UIKit
 public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }
 public extension UIView { var DarkMode: DarkMode { AppearanceService.shared } }
 
-public class UIWindowAdoptable: UIWindow
+public class UIWindowAdaptable: UIWindow
 {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
     {
@@ -19,7 +19,7 @@ public class UIWindowAdoptable: UIWindow
             previousSystemStyle.rawValue != DarkModeDecision.calculateSystemStyle().rawValue
         else { return }
         
-        AppearanceService.adoptToDarkMode()
+        AppearanceService.adaptToDarkMode()
     }
 }
 
@@ -32,4 +32,3 @@ extension UserDefaults
         return object(forKey: key) != nil
     }
 }
-

@@ -69,50 +69,58 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var label_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .label }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(255, 255, 255) : rgba255(0, 0, 0)
             
-            UIColor(red: 52/255, green: 199/255, blue: 89/255, alpha: 1.0) :
-            UIColor(red: 48/255, green: 209/255, blue: 88/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .label
     }
     
     public static var secondaryLabel_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .secondaryLabel }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(235, 235, 245, 0.6) : rgba255(60, 60, 67, 0.6)
             
-            UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.6) :
-            UIColor(red: 60/255,  green: 60/255,  blue: 67/255,  alpha: 0.6)
+            return color
+        }
         
-        return color
+        return .secondaryLabel
     }
     
     public static var tertiaryLabel_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .tertiaryLabel }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(235, 235, 245, 0.3) : rgba255(60, 60, 67, 0.3)
             
-            UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.3) :
-            UIColor(red: 60/255,  green: 60/255,  blue: 67/255,  alpha: 0.3)
+            return color
+        }
         
-        return color
+        return .tertiaryLabel
     }
     
     public static var quaternaryLabel_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .quaternaryLabel }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(235, 235, 245, 0.18) : rgba255(60, 60, 67, 0.18)
             
-            UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.18) :
-            UIColor(red: 60/255,  green: 60/255,  blue: 67/255,  alpha: 0.18)
+            return color
+        }
         
-        return color
+        return .quaternaryLabel
     }
     
     ///
@@ -120,14 +128,16 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var placeholderText_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .placeholderText }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(235, 235, 245, 0.3) : rgba255(60, 60, 67, 0.3)
             
-            UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.3) :
-            UIColor(red: 60/255,  green: 60/255,  blue: 67/255,  alpha: 0.3)
+            return color
+        }
         
-        return color
+        return .placeholderText
     }
     
     ///
@@ -135,26 +145,30 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var separator_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .separator }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(84, 84, 88, 0.6) : rgba255(60, 60, 67, 0.29)
             
-            UIColor(red: 84/255, green: 84/255, blue: 88/255, alpha: 0.6) :
-            UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.29)
+            return color
+        }
         
-        return color
+        return .separator
     }
     
     public static var opaqueSeparator_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .opaqueSeparator }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(56, 56, 58) : rgba255(198, 198, 200)
             
-            UIColor(red: 56/255,  green: 56/255,  blue: 58/255,  alpha: 1.0) :
-            UIColor(red: 198/255, green: 198/255, blue: 200/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .opaqueSeparator
     }
     
     ///
@@ -162,14 +176,16 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var link_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .link }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(9, 132, 255) : rgba255(0, 122, 255)
             
-            UIColor(red: 9/255, green: 132/255, blue: 1.0, alpha: 1.0) :
-            UIColor(red: 0.0,   green: 122/255, blue: 1.0, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .link
     }
     
     ///
@@ -177,50 +193,58 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemFill_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemFill }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(120, 120, 128, 0.36) : rgba255(120, 120, 128, 0.2)
             
-            UIColor(red: 120/255, green: 120/255, blue: 128/255, alpha: 0.36) :
-            UIColor(red: 120/255, green: 120/255, blue: 128/255, alpha: 0.2)
+            return color
+        }
         
-        return color
+        return .systemFill
     }
     
     public static var secondarySystemFill_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .secondarySystemFill }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(120, 120, 128, 0.32) : rgba255(120, 120, 128, 0.16)
             
-            UIColor(red: 120/255, green: 120/255, blue: 128/255, alpha: 0.32) :
-            UIColor(red: 120/255, green: 120/255, blue: 128/255, alpha: 0.16)
+            return color
+        }
         
-        return color
+        return .secondarySystemFill
     }
     
     public static var tertiarySystemFilll_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .tertiarySystemFill }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(118, 118, 128, 0.24) : rgba255(118, 118, 128, 0.12)
             
-            UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.24) :
-            UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.12)
+            return color
+        }
         
-        return color
+        return .tertiarySystemFill
     }
     
     public static var quaternarySystemFill_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .quaternarySystemFill }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(118, 118, 128, 0.18) : rgba255(116, 116, 128, 0.08)
             
-            UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.18) :
-            UIColor(red: 116/255, green: 116/255, blue: 128/255, alpha: 0.08)
+            return color
+        }
         
-        return color
+        return .quaternarySystemFill
     }
     
     // MARK: - Background
@@ -230,38 +254,44 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(0, 0, 0) : rgba255(255, 255, 255)
             
-            UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0) :
-            UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemBackground
     }
     
     public static var secondarySystemBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .secondarySystemBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(28, 28, 30) : rgba255(242, 242, 247)
             
-            UIColor(red: 28/255,  green: 28/255,  blue: 30/255,  alpha: 1.0) :
-            UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .secondarySystemBackground
     }
     
     public static var tertiarySystemBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .tertiarySystemBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(44, 44, 46) : rgba255(255, 255, 255)
             
-            UIColor(red: 44/255, green: 44/255, blue: 46/255, alpha: 1.0) :
-            UIColor(red: 1.0,    green: 1.0,    blue: 1.0,    alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .tertiarySystemBackground
     }
     
     ///
@@ -269,37 +299,43 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemGroupedBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemGroupedBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(0, 0, 0) : rgba255(242, 242, 247)
             
-            UIColor(red: 0.0,     green: 0.0,     blue: 0.0,     alpha: 1.0) :
-            UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGroupedBackground
     }
     
     public static var secondarySystemGroupedBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .secondarySystemGroupedBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(28, 28, 30) : rgba255(255, 255, 255)
             
-            UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0) :
-            UIColor(red: 1.0,    green: 1.0,    blue: 1.0,    alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .secondarySystemGroupedBackground
     }
     
     public static var tertiarySystemGroupedBackground_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .tertiarySystemGroupedBackground }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(44, 44, 46) : rgba255(242, 242, 247)
             
-            UIColor(red: 44/255,  green: 44/255,  blue: 46/255,  alpha: 1.0) :
-            UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .tertiarySystemGroupedBackground
     }
 }

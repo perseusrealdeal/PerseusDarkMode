@@ -47,14 +47,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemRed_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemRed }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(255, 59, 48) : rgba255(255, 69, 58)
             
-            UIColor(red: 1.0, green: 59/255, blue: 48/255, alpha: 1.0) :
-            UIColor(red: 1.0, green: 69/255, blue: 58/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemRed
     }
     
     ///
@@ -62,14 +64,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemOrange_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemOrange }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(255, 149, 0) : rgba255(255, 159, 10)
             
-            UIColor(red: 1.0, green: 149/255, blue: 0.0,    alpha: 1.0) :
-            UIColor(red: 1.0, green: 159/255, blue: 10/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemOrange
     }
     
     ///
@@ -77,14 +81,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemYellow_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemYellow }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(255, 204, 0) : rgba255(255, 214, 10)
             
-            UIColor(red: 1.0, green: 204/255, blue: 0.0,    alpha: 1.0) :
-            UIColor(red: 1.0, green: 214/255, blue: 10/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemYellow
     }
     
     ///
@@ -92,14 +98,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGreen_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemGreen }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(52, 199, 89) : rgba255(48, 209, 88)
             
-            UIColor(red: 52/255, green: 199/255, blue: 89/255, alpha: 1.0) :
-            UIColor(red: 48/255, green: 209/255, blue: 88/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGreen
     }
     
     ///
@@ -109,8 +117,7 @@ extension UIColor: UISystemColorsAdapted
     {
         let color = AppearanceService.shared.Style == .light ?
             
-            UIColor(red: 0.0,     green: 199/255, blue: 190/255, alpha: 1.0) :
-            UIColor(red: 102/255, green: 212/255, blue: 207/255, alpha: 1.0)
+            rgba255(0, 199, 190) : rgba255(102, 212, 207)
         
         return color
     }
@@ -120,14 +127,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemTeal_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemTeal }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(48, 176, 199) : rgba255(64, 200, 224)
             
-            UIColor(red: 48/255, green: 176/255, blue: 199/255, alpha: 1.0) :
-            UIColor(red: 64/255, green: 200/255, blue: 224/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemTeal
     }
     
     ///
@@ -137,8 +146,7 @@ extension UIColor: UISystemColorsAdapted
     {
         let color = AppearanceService.shared.Style == .light ?
             
-            UIColor(red: 50/255,  green: 173/255, blue: 230/255, alpha: 1.0) :
-            UIColor(red: 100/255, green: 210/255, blue: 1.0,     alpha: 1.0)
+            rgba255(50, 173, 230) : rgba255(100, 210, 255)
         
         return color
     }
@@ -148,14 +156,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemBlue_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemBlue }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(0, 122, 255) : rgba255(10, 132, 255)
             
-            UIColor(red: 0.0,    green: 122/255, blue: 1.0, alpha: 1.0) :
-            UIColor(red: 10/255, green: 132/255, blue: 1.0, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemBlue
     }
     
     ///
@@ -163,14 +173,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemIndigo_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemIndigo }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(88, 86, 214) : rgba255(94, 92, 230)
             
-            UIColor(red: 88/255, green: 86/255, blue: 214/255, alpha: 1.0) :
-            UIColor(red: 94/255, green: 92/255, blue: 230/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemIndigo
     }
     
     ///
@@ -178,14 +190,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemPurple_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemPurple }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(175, 82, 222) : rgba255(191, 90, 242)
             
-            UIColor(red: 175/255, green: 82/255, blue: 222/255, alpha: 1.0) :
-            UIColor(red: 191/255, green: 90/255, blue: 242/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemPurple
     }
     
     ///
@@ -193,14 +207,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemPink_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return .systemPink }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(255, 45, 85) : rgba255(255, 55, 95)
             
-            UIColor(red: 1.0, green: 45/255, blue: 85/255, alpha: 1.0) :
-            UIColor(red: 1.0, green: 55/255, blue: 95/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemPink
     }
     
     ///
@@ -210,8 +226,7 @@ extension UIColor: UISystemColorsAdapted
     {
         let color = AppearanceService.shared.Style == .light ?
             
-            UIColor(red: 162/255, green: 132/255, blue: 94/255,  alpha: 1.0) :
-            UIColor(red: 172/255, green: 142/255, blue: 104/255, alpha: 1.0)
+            rgba255(162, 132, 94) : rgba255(172, 142, 104)
         
         return color
     }
@@ -221,14 +236,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(142, 142, 147) : rgba255(142, 142, 147)
             
-            UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1.0) :
-            UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray
     }
     
     ///
@@ -236,14 +253,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray2_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray2 }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(174, 174, 178) : rgba255(99, 99, 102)
             
-            UIColor(red: 174/255, green: 174/255, blue: 178/255, alpha: 1.0) :
-            UIColor(red: 99/255,  green: 99/255,  blue: 102/255, alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray2
     }
     
     ///
@@ -251,14 +270,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray3_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray3 }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(199, 199, 204) : rgba255(72, 72, 74)
             
-            UIColor(red: 199/255, green: 199/255, blue: 204/255, alpha: 1.0) :
-            UIColor(red: 72/255,  green: 72/255,  blue: 74/255,  alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray3
     }
     
     ///
@@ -266,14 +287,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray4_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray4 }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(209, 209, 214) : rgba255(58, 58, 60)
             
-            UIColor(red: 209/255, green: 209/255, blue: 214/255, alpha: 1.0) :
-            UIColor(red: 58/255,  green: 58/255,  blue: 60/255,  alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray4
     }
     
     ///
@@ -281,14 +304,16 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray5_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray5 }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(229, 229, 234) : rgba255(44, 44, 46)
             
-            UIColor(red: 229/255, green: 229/255, blue: 234/255, alpha: 1.0) :
-            UIColor(red: 44/255,  green: 44/255,  blue: 46/255,  alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray5
     }
     
     ///
@@ -296,13 +321,15 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray6_Adapted: UIColor
     {
-        if #available(iOS 13.0, *) { return systemGray6 }
-        
-        let color = AppearanceService.shared.Style == .light ?
+        guard #available(iOS 13.0, *) else
+        {
+            let color = AppearanceService.shared.Style == .light ?
+                
+                rgba255(199, 199, 204) : rgba255(28, 28, 30)
             
-            UIColor(red: 199/255, green: 199/255, blue: 204/255, alpha: 1.0) :
-            UIColor(red: 28/255,  green: 28/255,  blue: 30/255,  alpha: 1.0)
+            return color
+        }
         
-        return color
+        return .systemGray6
     }
 }

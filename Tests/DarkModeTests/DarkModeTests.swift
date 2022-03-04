@@ -10,9 +10,9 @@ import XCTest
 
 final class DarkModeTests: XCTestCase
 {
-    func testInit()
+    func test_Init()
     {
         XCTAssertFalse(AppearanceService.shared.isEnabled)
-        
     }
 }
+
