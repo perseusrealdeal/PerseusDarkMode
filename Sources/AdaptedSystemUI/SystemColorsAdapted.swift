@@ -325,7 +325,7 @@ extension UIColor: UISystemColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(199, 199, 204) : rgba255(28, 28, 30)
+                rgba255(242, 242, 247) : rgba255(28, 28, 30)
             
             return color
         }
