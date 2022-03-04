@@ -31,6 +31,26 @@ enum ColorRequirement
     case secondarySystemGroupedBackground
     case tertiarySystemGroupedBackground
     
+    case systemRed
+    case systemOrange
+    case systemYellow
+    case systemGreen
+    case systemMint
+    case systemTeal
+    case systemCyan
+    case systemBlue
+    case systemIndigo
+    case systemPurple
+    case systemPink
+    case systemBrown
+    
+    case systemGray
+    case systemGray2
+    case systemGray3
+    case systemGray4
+    case systemGray5
+    case systemGray6
+    
     var color: UIColor
     {
         switch self
@@ -74,6 +94,44 @@ enum ColorRequirement
             return .secondarySystemGroupedBackground_Adapted
         case .tertiarySystemGroupedBackground:
             return .tertiarySystemGroupedBackground_Adapted
+            
+        case .systemRed:
+            return .systemRed_Adapted
+        case .systemOrange:
+            return .systemOrange_Adapted
+        case .systemYellow:
+            return .systemYellow_Adapted
+        case .systemGreen:
+            return .systemGreen_Adapted
+        case .systemMint:
+            return .systemMint_Adapted
+        case .systemTeal:
+            return .systemTeal_Adapted
+        case .systemCyan:
+            return .systemCyan_Adapted
+        case .systemBlue:
+            return .systemBlue_Adapted
+        case .systemIndigo:
+            return .systemIndigo_Adapted
+        case .systemPurple:
+            return .systemPurple_Adapted
+        case .systemPink:
+            return .systemPink_Adapted
+        case .systemBrown:
+            return .systemBrown_Adapted
+        
+        case .systemGray:
+            return .systemGray_Adapted
+        case .systemGray2:
+            return .systemGray2_Adapted
+        case .systemGray3:
+            return .systemGray3_Adapted
+        case .systemGray4:
+            return .systemGray4_Adapted
+        case .systemGray5:
+            return .systemGray5_Adapted
+        case .systemGray6:
+            return .systemGray6_Adapted
         }
     }
 }

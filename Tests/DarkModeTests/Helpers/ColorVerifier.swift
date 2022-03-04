@@ -18,7 +18,7 @@ final class ColorVerifier
                       file            : StaticString = #file,
                       line            : UInt = #line)
     {
-        if #available(iOS 13.0, *)
+        if #available(iOS 13.0, *), iOS13 != nil
         {
             XCTAssertEqual(requirement.color, iOS13)
         }
