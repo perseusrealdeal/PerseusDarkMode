@@ -8,7 +8,7 @@ import UIKit
 
 public protocol AppearanceAdaptableElement
 {
-    func adoptAppearance()
+    func adaptAppearance()
 }
 
 public class AppearanceService
@@ -30,7 +30,7 @@ public class AppearanceService
     
     // MARK: - Subscribers
     
-    private static var adoptableElements = Set<UIResponder>()
+    private static var adaptableElements = Set<UIResponder>()
     
     // MARK: - Public API: register subscriber
     
@@ -38,7 +38,7 @@ public class AppearanceService
     {
         guard let element = screenElement as? UIResponder else { return }
         
-        adoptableElements.insert(element)
+        adaptableElements.insert(element)
     }
     
     // MARK: - Public API: unregister subscriber
@@ -47,16 +47,16 @@ public class AppearanceService
     {
         guard let element = screenElement as? UIResponder else { return }
         
-        adoptableElements.remove(element)
+        adaptableElements.remove(element)
     }
     
-    // MARK: - Public API: call each subscriber to adopt appearance
+    // MARK: - Public API: call each subscriber to adapt appearance
     
-    public static func adoptToDarkMode()
+    public static func adaptToDarkMode()
     {
         shared.isEnabled = true
         
-        guard adoptableElements.isEmpty != true else { return }
+        guard adaptableElements.isEmpty != true else { return }
         
         // Adopt system controls in according with Dark Mode
         
@@ -76,12 +76,12 @@ public class AppearanceService
         
         // Adopt sibscriber's UI elements in according with Dark Mode
         
-        adoptableElements.forEach(
+        adaptableElements.forEach(
             { item in
                 
                 if let element = item as? AppearanceAdaptableElement
                 {
-                    element.adoptAppearance()
+                    element.adaptAppearance()
                 }
             })
     }
