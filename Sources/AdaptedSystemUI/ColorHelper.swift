@@ -4,7 +4,9 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
 
 public func rgba255(_ red  : CGFloat,
                     _ green: CGFloat,

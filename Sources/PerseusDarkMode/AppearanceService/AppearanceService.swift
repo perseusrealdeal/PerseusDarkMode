@@ -4,7 +4,9 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
 
 public protocol AppearanceAdaptableElement
 {
@@ -58,7 +60,7 @@ public class AppearanceService
         
         guard adaptableElements.isEmpty != true else { return }
         
-        // Adopt system controls in according with Dark Mode
+        // Adapt system controls in according with Dark Mode
         
         if #available(iOS 13.0, *),
            let keyWindow = UIApplication.shared.keyWindow
@@ -74,7 +76,7 @@ public class AppearanceService
             }
         }
         
-        // Adopt sibscriber's UI elements in according with Dark Mode
+        // Adapt sibscriber's UI elements in according with Dark Mode
         
         adaptableElements.forEach(
             { item in

@@ -4,7 +4,10 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
+
 import PerseusDarkMode
 
 // MARK: System colors

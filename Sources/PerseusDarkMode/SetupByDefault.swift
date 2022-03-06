@@ -4,7 +4,9 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
 
 public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }
 public extension UIView { var DarkMode: DarkMode { AppearanceService.shared } }
