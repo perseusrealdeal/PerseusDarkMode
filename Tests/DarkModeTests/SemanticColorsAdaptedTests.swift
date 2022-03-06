@@ -10,11 +10,6 @@ import XCTest
 
 final class SemanticColorsAdaptedTests: XCTestCase
 {
-    func test_Init()
-    {
-        XCTAssertFalse(AppearanceService.shared.isEnabled)
-    }
-    
     // MARK: - Tests for Foreground
     
     func test_label_Adapted()

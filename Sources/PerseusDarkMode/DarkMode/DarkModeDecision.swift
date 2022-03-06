@@ -4,7 +4,9 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
 
 // MARK: - Calculations
 
@@ -26,13 +28,9 @@ public class DarkModeDecision
     /// System style  .dark                         dark              dark              light
     /// — — — — — — — — — — — — — — — — — — — — — — — — —
     ///
-    public class func calculateActualStyle(_ userChoice: DarkModeOption) -> AppearanceStyle
+    public class func calculateActualStyle(_ userChoice : DarkModeOption,
+                                           _ systemStyle: SystemStyle) -> AppearanceStyle
     {
-        // Inputs
-        
-        let userChoice = userChoice
-        let systemStyle = calculateSystemStyle()
-        
         // Calculate outputs
         
         if (systemStyle == .unspecified) && (userChoice == .auto)
