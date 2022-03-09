@@ -32,7 +32,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -48,7 +48,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -64,7 +64,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -80,7 +80,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -96,7 +96,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -112,7 +112,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -128,7 +128,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -144,7 +144,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         
@@ -160,7 +160,7 @@ final class DarkModeDecisionTests: XCTestCase
         
         // act
         
-        let result = DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        let result = DarkModeDecision.calculate(userChoice, systemStyle)
         
         // assert
         

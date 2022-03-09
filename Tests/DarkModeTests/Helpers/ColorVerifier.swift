@@ -27,12 +27,12 @@ final class ColorVerifier
         }
         else
         {
-            AppearanceService.shared.DarkModeUserChoice = .off
+            AppearanceService.DarkModeUserChoice = .off
             AppearanceService.makeUp()
             
             XCTAssertEqual(requirement.color, requiredLight)
             
-            AppearanceService.shared.DarkModeUserChoice = .on
+            AppearanceService.DarkModeUserChoice = .on
             AppearanceService.makeUp()
             
             XCTAssertEqual(requirement.color, requiredDark)

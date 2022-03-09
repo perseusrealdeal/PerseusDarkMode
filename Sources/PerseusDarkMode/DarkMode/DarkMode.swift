@@ -8,45 +8,48 @@
 import UIKit
 #endif
 
-public class DarkMode
+public class DarkMode: NSObject
 {
-    // MARK: - Dark Mode Style
+    // MARK: - App's Dark Mode Style
     
-    public var Style             : AppearanceStyle
+    internal var _style = DARK_MODE_STYLE_DEFAULT
     {
-        let userChoice = DarkModeUserChoice
-        let systemStyle = DarkModeDecision.calculateSystemStyle()
-        
-        return DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
+        didSet
+        {
+            StyleObservable = Style.rawValue
+        }
     }
     
-    // MARK: - Dark Mode Style saved in UserDafaults
+    public var Style: AppearanceStyle { _style }
     
-    public var userDefaults      : UserDefaults?
+    // MARK: - Observable Dark Mode Value (Using Key-Value Observing)
     
-    public var DarkModeUserChoice: DarkModeOption
+    @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
+    
+    // MARK: - System's Dark Mode Style
+    
+    public var SystemStyle: SystemStyle
     {
-        get
+        if #available(iOS 13.0, *)
         {
-            guard let ud = userDefaults else { return DARK_MODE_USER_CHOICE_DEFAULT }
+            guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
             
-            // load enum int value
-            
-            let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
-                ud.integer(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) :
-                DARK_MODE_USER_CHOICE_DEFAULT.rawValue
-            
-            // try to cast int value to enum
-            
-            if let result = DarkModeOption.init(rawValue: rawValue) { return result }
-            
-            return DARK_MODE_USER_CHOICE_DEFAULT
+            switch keyWindow.traitCollection.userInterfaceStyle
+            {
+            case .unspecified:
+                return .unspecified
+            case .light:
+                return .light
+            case .dark:
+                return .dark
+                
+            @unknown default:
+                return .unspecified
+            }
         }
-        set
+        else
         {
-            guard let ud = userDefaults else { return }
-            
-            ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
+            return .unspecified
         }
     }
 }

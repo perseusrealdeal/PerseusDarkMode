@@ -8,8 +8,15 @@
 import UIKit
 #endif
 
-public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }
-public extension UIView { var DarkMode: DarkMode { AppearanceService.shared } }
+public extension UIViewController
+{
+    @objc dynamic var DarkMode: DarkMode { AppearanceService.shared }
+}
+
+public extension UIView
+{
+    @objc dynamic var DarkMode: DarkMode { AppearanceService.shared }
+}
 
 public class UIWindowAdaptable: UIWindow
 {
@@ -18,8 +25,13 @@ public class UIWindowAdaptable: UIWindow
         guard
             #available(iOS 13.0, *),
             let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-            previousSystemStyle.rawValue != DarkModeDecision.calculateSystemStyle().rawValue
+            previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
+        
+        let userChoice = AppearanceService.DarkModeUserChoice
+        let systemStyle = AppearanceService.shared.SystemStyle
+        
+        AppearanceService.shared._style = DarkModeDecision.calculate(userChoice, systemStyle)
         
         AppearanceService.makeUp()
     }

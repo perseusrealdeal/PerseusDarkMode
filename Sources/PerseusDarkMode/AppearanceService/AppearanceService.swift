@@ -27,19 +27,11 @@ public class AppearanceService
     private(set) static var nCenter = NotificationCenter.default
     #endif
     
+    public static var ud: UserDefaults = UserDefaults.standard
+    
     // MARK: - Singleton
     
-    public static var shared: DarkMode =
-        {
-            let instance = DarkMode()
-            
-            // Additional setup after initialisation.
-            
-            instance.userDefaults = UserDefaults.standard
-            
-            return instance
-        }()
-    
+    public static var shared: DarkMode = { DarkMode() } ()
     private init() { }
     
     // MARK: - Public API: register subscriber
@@ -67,7 +59,7 @@ public class AppearanceService
         if #available(iOS 13.0, *),
            let keyWindow = UIApplication.shared.keyWindow
         {
-            switch AppearanceService.shared.DarkModeUserChoice
+            switch DarkModeUserChoice
             {
             case .auto:
                 keyWindow.overrideUserInterfaceStyle = .unspecified
@@ -81,6 +73,35 @@ public class AppearanceService
         // Tell the others to make appearance up
         
         nCenter.post(name: .makeAppearanceUpStatement, object: nil)
+    }
+    
+    // MARK: - Dark Mode Style saved in UserDafaults
+    
+    public static var DarkModeUserChoice: DarkModeOption
+    {
+        get
+        {
+            // load enum int value
+            
+            let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
+                ud.integer(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) :
+                DARK_MODE_USER_CHOICE_DEFAULT.rawValue
+            
+            // try to cast int value to enum
+            
+            if let result = DarkModeOption.init(rawValue: rawValue) { return result }
+            
+            return DARK_MODE_USER_CHOICE_DEFAULT
+        }
+        set
+        {
+            ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
+            
+            let userChoice = DarkModeUserChoice
+            let systemStyle = shared.SystemStyle
+            
+            shared._style = DarkModeDecision.calculate(userChoice, systemStyle)
+        }
     }
 }
 
