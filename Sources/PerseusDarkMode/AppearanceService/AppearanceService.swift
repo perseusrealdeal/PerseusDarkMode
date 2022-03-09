@@ -44,7 +44,7 @@ public class AppearanceService
     
     // MARK: - Public API: register subscriber
     
-    static func register(observer: Any, selector: Selector)
+    public static func register(observer: Any, selector: Selector)
     {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
@@ -58,7 +58,7 @@ public class AppearanceService
     
     // MARK: - Public API: call each subscriber to adapt appearance
     
-    public static func makeAppearanceUp()
+    public static func makeUp()
     {
         _isEnabled = true
         

@@ -53,7 +53,7 @@ final class AppearanceServiceTests: XCTestCase
         
         // act
         
-        AppearanceService.makeAppearanceUp()
+        AppearanceService.makeUp()
         
         // assert
         

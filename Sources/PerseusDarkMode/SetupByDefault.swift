@@ -21,7 +21,7 @@ public class UIWindowAdaptable: UIWindow
             previousSystemStyle.rawValue != DarkModeDecision.calculateSystemStyle().rawValue
         else { return }
         
-        AppearanceService.makeAppearanceUp()
+        AppearanceService.makeUp()
     }
 }
 
