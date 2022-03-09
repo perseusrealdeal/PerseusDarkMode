@@ -10,17 +10,13 @@ import UIKit
 
 import XCTest
 @testable import PerseusDarkMode
-@testable import AdaptedSystemUI
 
 final class DarkModeTests: XCTestCase
 {
-    func test_Init()
+    func test_init()
     {
-        XCTAssertFalse(AppearanceService.shared.isEnabled)
+        let sut = DarkMode()
         
-        XCTAssertIdentical(UIView().DarkMode, AppearanceService.shared)
-        XCTAssertIdentical(UIViewController().DarkMode, AppearanceService.shared)
-        
-        XCTAssertIdentical(AppearanceService.shared.userDefaults, UserDefaults.standard)
+        XCTAssertNil(sut.userDefaults)
     }
 }

@@ -8,13 +8,25 @@
 import UIKit
 #endif
 
-public protocol AppearanceAdaptableElement
+public extension Notification.Name
 {
-    func adaptAppearance()
+    static let makeAppearanceUpStatement = Notification.Name("makeAppearanceUpStatement")
 }
 
 public class AppearanceService
 {
+    // MARK: - Properties
+    
+    public static var isEnabled       : Bool { _isEnabled }
+    
+    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
+    
+    #if DEBUG // Isolated for unit testing
+    static var nCenter: NotificationCenterProtocol = NotificationCenter.default
+    #else
+    private(set) static var nCenter = NotificationCenter.default
+    #endif
+    
     // MARK: - Singleton
     
     public static var shared: DarkMode =
@@ -30,35 +42,25 @@ public class AppearanceService
     
     private init() { }
     
-    // MARK: - Subscribers
-    
-    private static var adaptableElements = Set<UIResponder>()
-    
     // MARK: - Public API: register subscriber
     
-    public static func register(_ screenElement: AppearanceAdaptableElement)
+    public static func register(observer: Any, selector: Selector)
     {
-        guard let element = screenElement as? UIResponder else { return }
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
         
-        adaptableElements.insert(element)
-    }
-    
-    // MARK: - Public API: unregister subscriber
-    
-    public static func unregister(_ screenElement: AppearanceAdaptableElement)
-    {
-        guard let element = screenElement as? UIResponder else { return }
-        
-        adaptableElements.remove(element)
+        nCenter.addObserver(observer,
+                            selector: selector,
+                            name    : .makeAppearanceUpStatement,
+                            object  : nil)
     }
     
     // MARK: - Public API: call each subscriber to adapt appearance
     
-    public static func adaptToDarkMode()
+    public static func makeUp()
     {
-        shared.isEnabled = true
-        
-        guard adaptableElements.isEmpty != true else { return }
+        _isEnabled = true
         
         // Adapt system controls in according with Dark Mode
         
@@ -76,15 +78,22 @@ public class AppearanceService
             }
         }
         
-        // Adapt sibscriber's UI elements in according with Dark Mode
+        // Tell the others to make appearance up
         
-        adaptableElements.forEach(
-            { item in
-                
-                if let element = item as? AppearanceAdaptableElement
-                {
-                    element.adaptAppearance()
-                }
-            })
+        nCenter.post(name: .makeAppearanceUpStatement, object: nil)
     }
 }
+
+// MARK: Protocols used for unit testing
+
+protocol NotificationCenterProtocol
+{
+    func addObserver(_ observer        : Any,
+                     selector aSelector: Selector,
+                     name aName        : NSNotification.Name?,
+                     object anObject   : Any?)
+    
+    func post(name aName: NSNotification.Name, object anObject: Any?)
+}
+
+extension NotificationCenter: NotificationCenterProtocol { }
