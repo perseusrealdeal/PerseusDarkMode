@@ -37,16 +37,16 @@ public class DarkModeDecision
         {
             return DARK_MODE_STYLE_DEFAULT
         }
-        if (systemStyle == .unspecified) && (userChoice == .on) { return .dark}
-        if (systemStyle == .unspecified) && (userChoice == .off) { return .light}
+        if (systemStyle == .unspecified) && (userChoice == .on) { return .dark }
+        if (systemStyle == .unspecified) && (userChoice == .off) { return .light }
         
         if (systemStyle == .light) && (userChoice == .auto) { return .light }
-        if (systemStyle == .light) && (userChoice == .on) { return .dark}
-        if (systemStyle == .light) && (userChoice == .off) { return .light}
+        if (systemStyle == .light) && (userChoice == .on) { return .dark }
+        if (systemStyle == .light) && (userChoice == .off) { return .light }
         
         if (systemStyle == .dark) && (userChoice == .auto) { return .dark }
-        if (systemStyle == .dark) && (userChoice == .on) { return .dark}
-        if (systemStyle == .dark) && (userChoice == .off) { return .light}
+        if (systemStyle == .dark) && (userChoice == .on) { return .dark }
+        if (systemStyle == .dark) && (userChoice == .off) { return .light }
         
         // Output default value if somethings goes out of the decision table
         

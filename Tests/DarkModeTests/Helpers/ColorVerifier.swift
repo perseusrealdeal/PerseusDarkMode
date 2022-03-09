@@ -14,12 +14,12 @@ import XCTest
 
 final class ColorVerifier
 {
-    class func verify(requirement     : ColorRequirement,
-                      _ requiredLight : UIColor?,
-                      _ requiredDark  : UIColor?,
-                      _ iOS13         : UIColor?,
-                      file            : StaticString = #file,
-                      line            : UInt = #line)
+    class func verify(requirement    : ColorRequirement,
+                      _ requiredLight: UIColor?,
+                      _ requiredDark : UIColor?,
+                      _ iOS13        : UIColor?,
+                      file           : StaticString = #file,
+                      line           : UInt = #line)
     {
         if #available(iOS 13.0, *), iOS13 != nil
         {
@@ -28,12 +28,12 @@ final class ColorVerifier
         else
         {
             AppearanceService.shared.DarkModeUserChoice = .off
-            AppearanceService.adaptToDarkMode()
+            AppearanceService.makeAppearanceUp()
             
             XCTAssertEqual(requirement.color, requiredLight)
             
             AppearanceService.shared.DarkModeUserChoice = .on
-            AppearanceService.adaptToDarkMode()
+            AppearanceService.makeAppearanceUp()
             
             XCTAssertEqual(requirement.color, requiredDark)
         }

@@ -20,8 +20,6 @@ public class DarkMode
         return DarkModeDecision.calculateActualStyle(userChoice, systemStyle)
     }
     
-    public var isEnabled         : Bool = false { willSet { if newValue == false { return } } }
-    
     // MARK: - Dark Mode Style saved in UserDafaults
     
     public var userDefaults      : UserDefaults?
