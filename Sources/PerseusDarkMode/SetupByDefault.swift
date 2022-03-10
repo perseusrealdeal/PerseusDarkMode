@@ -8,15 +8,8 @@
 import UIKit
 #endif
 
-public extension UIViewController
-{
-    @objc dynamic var DarkMode: DarkMode { AppearanceService.shared }
-}
-
-public extension UIView
-{
-    @objc dynamic var DarkMode: DarkMode { AppearanceService.shared }
-}
+public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }
+public extension UIView { var DarkMode: DarkMode { AppearanceService.shared } }
 
 public class UIWindowAdaptable: UIWindow
 {
@@ -28,12 +21,7 @@ public class UIWindowAdaptable: UIWindow
             previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
         
-        let userChoice = AppearanceService.DarkModeUserChoice
-        let systemStyle = AppearanceService.shared.SystemStyle
-        
-        AppearanceService.shared._style = DarkModeDecision.calculate(userChoice, systemStyle)
-        
-        AppearanceService.makeUp()
+        AppearanceService.updateStyle()
     }
 }
 
@@ -41,7 +29,7 @@ public class UIWindowAdaptable: UIWindow
 
 extension UserDefaults
 {
-    func valueExists(forKey key: String) -> Bool
+    public func valueExists(forKey key: String) -> Bool
     {
         return object(forKey: key) != nil
     }

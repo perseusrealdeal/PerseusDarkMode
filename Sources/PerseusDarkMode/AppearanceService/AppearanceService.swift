@@ -22,12 +22,12 @@ public class AppearanceService
     private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
     
     #if DEBUG // Isolated for unit testing
-    static var nCenter: NotificationCenterProtocol = NotificationCenter.default
+    public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
+    public static var ud: UserDefaultsProtocol = UserDefaults.standard
     #else
-    private(set) static var nCenter = NotificationCenter.default
+    public static var nCenter = NotificationCenter.default
+    public static var ud = UserDefaults.standard
     #endif
-    
-    public static var ud: UserDefaults = UserDefaults.standard
     
     // MARK: - Singleton
     
@@ -39,7 +39,7 @@ public class AppearanceService
     public static func register(observer: Any, selector: Selector)
     {
         #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
+        // print(">> [\(type(of: self))]." + #function)
         #endif
         
         nCenter.addObserver(observer,
@@ -97,17 +97,29 @@ public class AppearanceService
         {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
             
-            let userChoice = DarkModeUserChoice
-            let systemStyle = shared.SystemStyle
+            updateStyle()
+        }
+    }
+    
+    internal static func updateStyle()
+    {
+        let userChoice = DarkModeUserChoice
+        let systemStyle = shared.SystemStyle
+        
+        let actualStyle = DarkModeDecision.calculate(userChoice, systemStyle)
+        
+        if shared._style != actualStyle
+        {
+            shared._style = actualStyle
             
-            shared._style = DarkModeDecision.calculate(userChoice, systemStyle)
+            AppearanceService.makeUp()
         }
     }
 }
 
 // MARK: Protocols used for unit testing
 
-protocol NotificationCenterProtocol
+public protocol NotificationCenterProtocol
 {
     func addObserver(_ observer        : Any,
                      selector aSelector: Selector,
@@ -117,4 +129,13 @@ protocol NotificationCenterProtocol
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
 
+public protocol UserDefaultsProtocol
+{
+    func valueExists(forKey key: String) -> Bool
+    
+    func integer(forKey defaultName: String) -> Int
+    func setValue(_ value: Any?, forKey key: String)
+}
+
+extension UserDefaults      : UserDefaultsProtocol { }
 extension NotificationCenter: NotificationCenterProtocol { }

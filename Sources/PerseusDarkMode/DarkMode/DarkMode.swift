@@ -12,23 +12,22 @@ public class DarkMode: NSObject
 {
     // MARK: - App's Dark Mode Style
     
-    internal var _style = DARK_MODE_STYLE_DEFAULT
+    internal var _style                     :AppearanceStyle = DARK_MODE_STYLE_DEFAULT
     {
-        didSet
-        {
-            StyleObservable = Style.rawValue
-        }
+        didSet { StyleObservable = Style.rawValue }
     }
     
-    public var Style: AppearanceStyle { _style }
+    /// Actual the app's Dark Mode style value, available only for reading
+    public var Style                        : AppearanceStyle { _style }
     
     // MARK: - Observable Dark Mode Value (Using Key-Value Observing)
     
+    /// Triggers if Style is changed, use KVO to be notified immediately
     @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
     
     // MARK: - System's Dark Mode Style
     
-    public var SystemStyle: SystemStyle
+    public var SystemStyle                  : SystemStyle
     {
         if #available(iOS 13.0, *)
         {

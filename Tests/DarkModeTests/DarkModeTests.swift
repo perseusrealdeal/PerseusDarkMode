@@ -65,6 +65,7 @@ final class DarkModeTests: XCTestCase
             }
         
         // act
+        
         observer = nil
         
         AppearanceService.shared._style = AppearanceStyle.dark
@@ -74,5 +75,74 @@ final class DarkModeTests: XCTestCase
         
         XCTAssertEqual(count, 0)
         XCTAssertEqual(collection, [])
+    }
+    
+    func test_get_DarkModeUserChoice_when_valueExists_true()
+    {
+        // arrange
+        
+        let mockUserDefaults = MockUserDefaults()
+        AppearanceService.ud = mockUserDefaults
+        
+        mockUserDefaults.isValueExists = true
+        
+        // act
+        
+        let _ = AppearanceService.DarkModeUserChoice
+        
+        // assert
+        
+        mockUserDefaults.verifyInterger(name: DARK_MODE_USER_CHOICE_OPTION_KEY)
+        
+        // keep it clean for the others
+        
+        AppearanceService.ud = UserDefaults.standard
+    }
+    
+    func test_get_DarkModeUserChoice_when_valueExists_false()
+    {
+        // arrange
+        
+        let mockUserDefaults = MockUserDefaults()
+        AppearanceService.ud = mockUserDefaults
+        
+        mockUserDefaults.isValueExists = false
+        
+        // act
+        
+        let result = AppearanceService.DarkModeUserChoice
+        
+        // assert
+        
+        mockUserDefaults.verifyInterger()
+        
+        XCTAssertEqual(result, DARK_MODE_USER_CHOICE_DEFAULT)
+        
+        // keep it clean for the others
+        
+        AppearanceService.ud = UserDefaults.standard
+    }
+    
+    func test_set_DarkModeUserChoice()
+    {
+        // arrange
+        
+        let mockUserDefaults = MockUserDefaults()
+        AppearanceService.ud = mockUserDefaults
+        
+        let sut = DarkModeOption.off
+        
+        // act
+        
+        AppearanceService.DarkModeUserChoice = sut
+        
+        // assert
+        
+        mockUserDefaults.verifySetValue(value: sut.rawValue,
+                                        key  : DARK_MODE_USER_CHOICE_OPTION_KEY)
+        
+        // keep it clean for the others
+        
+        AppearanceService.ud = UserDefaults.standard
     }
 }
