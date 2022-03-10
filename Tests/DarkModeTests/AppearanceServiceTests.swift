@@ -18,7 +18,7 @@ final class AppearanceServiceTests: XCTestCase
         XCTAssertFalse(AppearanceService.isEnabled)
         XCTAssertFalse(AppearanceService._isEnabled)
         
-        XCTAssertNotNil(AppearanceService.shared.userDefaults)
+        XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)
         
         XCTAssertIdentical(UIView().DarkMode, AppearanceService.shared)

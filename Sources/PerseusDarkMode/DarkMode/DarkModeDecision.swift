@@ -28,8 +28,8 @@ public class DarkModeDecision
     /// System style  .dark                         dark              dark              light
     /// — — — — — — — — — — — — — — — — — — — — — — — — —
     ///
-    public class func calculateActualStyle(_ userChoice : DarkModeOption,
-                                           _ systemStyle: SystemStyle) -> AppearanceStyle
+    public class func calculate(_ userChoice : DarkModeOption,
+                                _ systemStyle: SystemStyle) -> AppearanceStyle
     {
         // Calculate outputs
         
@@ -51,30 +51,5 @@ public class DarkModeDecision
         // Output default value if somethings goes out of the decision table
         
         return DARK_MODE_STYLE_DEFAULT
-    }
-    
-    public class func calculateSystemStyle() -> SystemStyle
-    {
-        if #available(iOS 13.0, *)
-        {
-            guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
-            
-            switch keyWindow.traitCollection.userInterfaceStyle
-            {
-            case .unspecified:
-                return .unspecified
-            case .light:
-                return .light
-            case .dark:
-                return .dark
-                
-            @unknown default:
-                return .unspecified
-            }
-        }
-        else
-        {
-            return .unspecified
-        }
     }
 }

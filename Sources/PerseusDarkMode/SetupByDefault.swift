@@ -18,10 +18,10 @@ public class UIWindowAdaptable: UIWindow
         guard
             #available(iOS 13.0, *),
             let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-            previousSystemStyle.rawValue != DarkModeDecision.calculateSystemStyle().rawValue
+            previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
         
-        AppearanceService.makeUp()
+        AppearanceService.updateStyle()
     }
 }
 
@@ -29,7 +29,7 @@ public class UIWindowAdaptable: UIWindow
 
 extension UserDefaults
 {
-    func valueExists(forKey key: String) -> Bool
+    public func valueExists(forKey key: String) -> Bool
     {
         return object(forKey: key) != nil
     }

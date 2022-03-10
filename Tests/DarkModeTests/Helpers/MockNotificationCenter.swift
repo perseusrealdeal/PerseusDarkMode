@@ -1,5 +1,5 @@
 //
-//  MockNotificationCenter.swift
+// MockNotificationCenter.swift
 // DarkModeTests
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
@@ -16,7 +16,7 @@ class MockNotificationCenter: NotificationCenterProtocol
     // MARK: - addObserver
     
     var registerCallCount = 0
-    var registerArgs_observers : [UIResponder] = []
+    var registerArgs_observers: [UIResponder] = []
     var registerArgs_selectors: [Selector] = []
     
     func addObserver(_ observer        : Any,
