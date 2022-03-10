@@ -54,23 +54,9 @@ public class AppearanceService
     {
         _isEnabled = true
         
-        // Adapt system controls in according with Dark Mode
+        recalculateStyleIfNeeded()
         
-        if #available(iOS 13.0, *),
-           let keyWindow = UIApplication.shared.keyWindow
-        {
-            switch DarkModeUserChoice
-            {
-            case .auto:
-                keyWindow.overrideUserInterfaceStyle = .unspecified
-            case .on:
-                keyWindow.overrideUserInterfaceStyle = .dark
-            case .off:
-                keyWindow.overrideUserInterfaceStyle = .light
-            }
-        }
-        
-        // Tell the others to make appearance up
+        if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
         
         nCenter.post(name: .makeAppearanceUpStatement, object: nil)
     }
@@ -97,22 +83,31 @@ public class AppearanceService
         {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
             
-            updateStyle()
+            recalculateStyleIfNeeded()
         }
     }
     
-    internal static func updateStyle()
+    internal static func recalculateStyleIfNeeded()
     {
-        let userChoice = DarkModeUserChoice
-        let systemStyle = shared.SystemStyle
+        let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
         
-        let actualStyle = DarkModeDecision.calculate(userChoice, systemStyle)
-        
-        if shared._style != actualStyle
+        if shared._style != actualStyle { shared._style = actualStyle }
+    }
+    
+    @available(iOS 13.0, *)
+    internal static func overrideUserInterfaceStyleIfNeeded()
+    {
+        if let keyWindow = UIApplication.shared.keyWindow
         {
-            shared._style = actualStyle
-            
-            AppearanceService.makeUp()
+            switch DarkModeUserChoice
+            {
+            case .auto:
+                keyWindow.overrideUserInterfaceStyle = .unspecified
+            case .on:
+                keyWindow.overrideUserInterfaceStyle = .dark
+            case .off:
+                keyWindow.overrideUserInterfaceStyle = .light
+            }
         }
     }
 }
