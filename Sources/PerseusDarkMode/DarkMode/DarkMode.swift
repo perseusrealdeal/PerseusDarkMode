@@ -52,3 +52,13 @@ public class DarkMode: NSObject
         }
     }
 }
+
+public protocol DarkModeProtocol
+{
+    var Style                  : AppearanceStyle { get }
+    var SystemStyle            : SystemStyle { get }
+    
+    dynamic var StyleObservable: Int { get }
+}
+
+extension DarkMode: DarkModeProtocol { }

@@ -21,8 +21,8 @@ final class AppearanceServiceTests: XCTestCase
         XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)
         
-        XCTAssertIdentical(UIView().DarkMode, AppearanceService.shared)
-        XCTAssertIdentical(UIViewController().DarkMode, AppearanceService.shared)
+        XCTAssertIdentical(UIView().DarkMode as AnyObject, AppearanceService.shared)
+        XCTAssertIdentical(UIViewController().DarkMode as AnyObject, AppearanceService.shared)
     }
     
     func test_method_register_called_addObserver()

@@ -8,8 +8,7 @@
 import UIKit
 #endif
 
-public extension UIViewController { var DarkMode: DarkMode { AppearanceService.shared } }
-public extension UIView { var DarkMode: DarkMode { AppearanceService.shared } }
+public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 
 public class UIWindowAdaptable: UIWindow
 {
