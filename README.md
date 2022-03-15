@@ -13,7 +13,7 @@ Perseus Dark Mode is a swift package. With iOS 13 Apple corp. introduced Dark Mo
 
 Solution was designed to support your apps running on such brilliant apple devices like, you know, my favorite one and my the first one is iPod Touch iOS 9.3.5 (5th, 13G36).
 
-Using this solution allow you design the code of your app applying the Apple's Dark Mode for your early Apple devices with no need make any changes then.
+Using this solution allows you design the code of your app applying the Apple's Dark Mode for your early Apple devices with no need make any changes then.
 
 Solution key statements
 -----------------------
@@ -55,7 +55,7 @@ Switching Dark Mode
 
 `Case: Manually`
 
-There is only one way to let it know that you'd like to change Dark Mode inside your app.
+Inside your app there is only one way to let it know that you'd like to change Dark Mode.
 
 Use DarkModeUserChoice hosted as a property in AppearanceService to assign the value of Dark Mode you want.
 
@@ -82,7 +82,7 @@ And do not forget call makeUp() if you want to be notified via NotificationCente
 
 `Case: Via System`
 
-Each time when system calls traitCollectionDidChange method, it happens if user taggled Dark Mode in Settings app, Dark Mode recalculated automatically.
+Each time when system calls traitCollectionDidChange method, it happens if user taggled Dark Mode in Settings app, Dark Mode is recalculated automatically.
 
 ```swift
 public class UIWindowAdaptable: UIWindow
@@ -108,12 +108,42 @@ Catching Dark Mode triggered
 
 `Case: Using KVO`
 
-```swift
+Create an observer somewhere in your code like this
 
+```swift
+ var observer:DarkModeObserver? = DarkModeObserver(AppearanceService.shared)
+```
+
+Then, give it a closure to run your code if Dark Mode changed
+
+```swift
+observer?.action = 
+    { newStyle in 
+        
+        /// Start define your reaction on Dark Mode changed from here
+
+    }
 ```
 
 `Case: Getting informed by NotificationCenter`
 
-```swift
+To get notified by NotificationCenter your object should be registered with AppearanceService
 
+```swift
+class MyView: UIView 
+{ 
+    @objc func makeUp() 
+    { 
+        /// Start define your reaction on Dark Mode changed from here
+    } 
+}
+let view = MyView()
+
+AppearanceService.register(observer: view, selector: #selector(view.makeUp))
+```
+
+Use AppearanceService.makeUp() to call all selected makeUp methods
+
+```swift
+AppearanceService.makeUp()
 ```

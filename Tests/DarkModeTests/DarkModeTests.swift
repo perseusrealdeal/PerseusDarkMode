@@ -24,11 +24,8 @@ final class DarkModeTests: XCTestCase
         observer?.action =
             { newStyle in
                 
-                if let style = newStyle
-                {
-                    collection.append(style)
-                    count += 1
-                }
+                collection.append(newStyle)
+                count += 1
             }
         
         // act
@@ -57,11 +54,8 @@ final class DarkModeTests: XCTestCase
         observer?.action =
             { newStyle in
                 
-                if let style = newStyle
-                {
-                    collection.append(style)
-                    count += 1
-                }
+                collection.append(newStyle)
+                count += 1
             }
         
         // act
