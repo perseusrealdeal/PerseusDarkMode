@@ -15,6 +15,8 @@ Solution was designed to support your apps running on such brilliant apple devic
 
 Using this solution allows you design the code of your app applying the Apple's Dark Mode for your early Apple devices with no need make any changes then.
 
+This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
+
 Solution key statements
 -----------------------
 
@@ -176,7 +178,7 @@ extension AppDelegate: UIApplicationDelegate
     {
         window = UIWindowAdaptable(frame: UIScreen.main.bounds)
         
-        window!.rootViewController = MainViewController.storyboardInstance()
+        window!.rootViewController = MainViewController()
         window!.makeKeyAndVisible()
         
         AppearanceService.makeUp()
@@ -215,22 +217,46 @@ class MainViewController: UIViewController
     @objc private func makeUp()
     {
         /// Start define your reaction on Dark Mode changed from here
-        print(#function)
         view.backgroundColor = .systemRed_Adapted
     }
 
     private func configure() { }
+}
+```
 
-    class func storyboardInstance() -> MainViewController
+Sample Use Case Addition
+------------------------
+
+If your view or view controller is declared as lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering.
+
+```swift
+if AppearanceService.isEnabled { makeUp() }
+```
+
+For instance, definition of some exemplar of UITableViewCell
+
+```swift
+import UIKit
+import PerseusDarkMode
+import AdaptedSystemUI
+
+class MemberTableViewCell: UITableViewCell
+{
+    override func awakeFromNib()
     {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        let screen = storyboard.instantiateInitialViewController() as! MainViewController
+        super.awakeFromNib()
         
-        /// Do default setup; don't set any parameter causing loadView up, breaks unit tests
-        
-        screen.modalTransitionStyle = UIModalTransitionStyle.partialCurl
-        
-        return screen
+        AppearanceService.register(observer: self, selector: #selector(makeUp))
+        configure()
+
+        if AppearanceService.isEnabled { makeUp() }
+    }
+
+    private func configure() { }
+
+    @objc private func makeUp()
+    {
+        backgroundColor = .systemGray_Adapted
     }
 }
 ```
