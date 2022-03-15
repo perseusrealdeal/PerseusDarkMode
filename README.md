@@ -1,5 +1,5 @@
-Perseus Dark Mode
-=================
+Perseus Dark Mode && Adapted System UI
+======================================
 
 [![License](http://img.shields.io/:LICENSE-MIT-blue.svg?style=plastic)](http://doge.mit-license.org)
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg?style=plastic)
@@ -148,10 +148,20 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 AppearanceService.makeUp()
 ```
 
-Sample Use Case
-===============
+Using Adapted System UI
+-----------------------
 
-Define UIWindowAdaptable window to get system Dark Mode automatically
+```swift
+import AdaptedSystemUI
+
+let view = UIView()
+view.backgroundColor = .systemBlue_Adapted
+```
+
+Sample Use Case
+---------------
+
+Declare UIWindowAdaptable window to get system Dark Mode automatically
 
 ```swift
 import UIKit
@@ -176,11 +186,12 @@ extension AppDelegate: UIApplicationDelegate
 }
 ```
 
-Then, let AppearanceService know that you want take control of Dark Mode
+Then, let AppearanceService know that you want take a control of Dark Mode
 
 ```swift
 import UIKit
 import PerseusDarkMode
+import AdaptedSystemUI
 
 class MainViewController: UIViewController
 {
@@ -204,7 +215,8 @@ class MainViewController: UIViewController
     @objc private func makeUp()
     {
         /// Start define your reaction on Dark Mode changed from here
-        print("\(DarkMode.Style)")
+        print(#function)
+        view.backgroundColor = .systemRed_Adapted
     }
 
     private func configure() { }
