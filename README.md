@@ -147,3 +147,78 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 ```swift
 AppearanceService.makeUp()
 ```
+
+Sample Use Case
+===============
+
+Define UIWindowAdaptable window to get system Dark Mode automatically
+
+```swift
+import UIKit
+import PerseusDarkMode
+
+class AppDelegate: UIResponder { var window: UIWindow? }
+
+extension AppDelegate: UIApplicationDelegate
+{
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        window = UIWindowAdaptable(frame: UIScreen.main.bounds)
+        
+        window!.rootViewController = MainViewController.storyboardInstance()
+        window!.makeKeyAndVisible()
+        
+        AppearanceService.makeUp()
+        
+        return true
+    }
+}
+```
+
+Then, let AppearanceService know that you want take control of Dark Mode
+
+```swift
+import UIKit
+import PerseusDarkMode
+
+class MainViewController: UIViewController
+{
+    let darkModeObserver = DarkModeObserver(AppearanceService.shared)
+    
+    override func viewDidLoad()
+    {
+       super.viewDidLoad()
+        
+        AppearanceService.register(observer: self, selector: #selector(makeUp))
+        configure()
+
+        darkModeObserver.action =
+            { newStyle in
+
+                /// Start define your reaction on Dark Mode changed from here
+                print("\(newStyle), \(self.DarkMode.Style)")
+            }
+    }
+
+    @objc private func makeUp()
+    {
+        /// Start define your reaction on Dark Mode changed from here
+        print("\(DarkMode.Style)")
+    }
+
+    private func configure() { }
+
+    class func storyboardInstance() -> MainViewController
+    {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let screen = storyboard.instantiateInitialViewController() as! MainViewController
+        
+        /// Do default setup; don't set any parameter causing loadView up, breaks unit tests
+        
+        screen.modalTransitionStyle = UIModalTransitionStyle.partialCurl
+        
+        return screen
+    }
+}
+```
