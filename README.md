@@ -6,19 +6,30 @@ Perseus Dark Mode && Adapted System UI
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg?style=plastic)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg?style=plastic)](https://github.com/apple/swift-package-manager)
 
-Prerequisites
--------------
+# Table of contents
 
-Perseus Dark Mode is a swift package. With iOS 13 Apple corp. introduced Dark Mode on system level and now all apps are sensitive to this user option.
+1. [Prerequisites](#prerequisites)
+2. [Solution key statements](#section1)
+3. [Dark Mode table decision](#section2)
+4. [Switching Dark Mode](#section3)
+5. [Catching Dark Mode triggered](#section4)
+6. [Sample Use Case of Dark Mode](#section5)
+7. [Sample Use Case of Adapted System UI](#section6)
+8. [List of Adapted Colors](#section7)
 
-Solution was designed to support your apps running on such brilliant apple devices like, you know, my favorite one and my the first one is iPod Touch iOS 9.3.5 (5th, 13G36).
+---
+
+## Prerequisites <a name="prerequisites"></a>
+
+Perseus Dark Mode is a swift package. Starting with iOS 13 Apple corp. introduced Dark Mode on system level and now all apps are sensitive to this user option.
+
+Represented solution was designed to support your apps running on such brilliant apple devices like, you know, my favorite one and my the first one is iPod Touch iOS 9.3.5 (5th, 13G36).
 
 Using this solution allows you design the code of your app applying the Apple's Dark Mode for your early Apple devices with no need make any changes then.
 
 This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
 
-Solution key statements
------------------------
+## Solution key statements <a name="section1"></a>
 
 `Dark Mode is a Singleton object`
 
@@ -52,8 +63,41 @@ extension DarkMode: DarkModeProtocol { }
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 ```
 
-Switching Dark Mode
--------------------
+## Dark Mode table decision <a name="section2"></a>
+
+`Dark Mode option values`
+
+```swift
+public enum DarkModeOption: Int, CustomStringConvertible
+{
+    case auto = 0
+    case on = 1
+    case off = 2
+
+    /// ... other code
+}
+```
+
+`Dark Mode System values`
+
+```swift
+public enum SystemStyle: Int
+{
+    case unspecified = 0
+    case light = 1
+    case dark = 2
+}
+```
+
+`Dark Mode decision table`
+
+|                  | auto      | on   | off   |
+| ---------------- | :-------: |:----:| :----:|
+| **.unspecified** | default   | dark | light |
+| **.light**       | light     | dark | light |
+| **.dark**        | dark      | dark | light |
+
+## Switching Dark Mode <a name="section3"></a>
 
 `Case: Manually`
 
@@ -105,8 +149,7 @@ public class UIWindowAdaptable: UIWindow
 
 ```
 
-Catching Dark Mode triggered
-----------------------------
+## Catching Dark Mode triggered <a name="section4"></a>
 
 `Case: Using KVO`
 
@@ -150,18 +193,7 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 AppearanceService.makeUp()
 ```
 
-Using Adapted System UI
------------------------
-
-```swift
-import AdaptedSystemUI
-
-let view = UIView()
-view.backgroundColor = .systemBlue_Adapted
-```
-
-Sample Use Case
----------------
+## Sample Use Case of Dark Mode <a name="section5"></a>
 
 Declare UIWindowAdaptable window to get system Dark Mode automatically
 
@@ -224,8 +256,7 @@ class MainViewController: UIViewController
 }
 ```
 
-Sample Use Case Addition
-------------------------
+`In addition to sample use case`
 
 If your view or view controller is declared as lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering.
 
@@ -233,7 +264,7 @@ If your view or view controller is declared as lazy one or a sub view like UITab
 if AppearanceService.isEnabled { makeUp() }
 ```
 
-For instance, definition of some exemplar of UITableViewCell
+For instance, here is a definition of some exemplar of UITableViewCell
 
 ```swift
 import UIKit
@@ -260,3 +291,15 @@ class MemberTableViewCell: UITableViewCell
     }
 }
 ```
+
+## Sample Use Case of Adapted System UI <a name="section6"></a>
+
+```swift
+import AdaptedSystemUI
+
+let view = UIView()
+view.backgroundColor = .systemBlue_Adapted
+```
+
+## List of Adapted Colors <a name="section7"></a>
+
