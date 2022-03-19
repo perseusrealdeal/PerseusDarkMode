@@ -16,7 +16,8 @@ Perseus Dark Mode && Adapted System UI
 6. [Sample Use Case of Dark Mode](#section5)
 7. [Sample Use Case of Adapted System UI](#section6)
 8. [List of Adapted Colors](#section7)
-
+    1. [Adapted system colors](#subSection1)
+    2. [Adapted semantic colors](#subSection2)
 ---
 
 ## Prerequisites <a name="prerequisites"></a>
@@ -303,3 +304,66 @@ view.backgroundColor = .systemBlue_Adapted
 
 ## List of Adapted Colors <a name="section7"></a>
 
+---
+
+### Adapted system colors <a name="subSection1"></a>
+
+---
+
+| RGBA Light          | RGBA Dark          | `Name`             | UIKit API Adapted     |
+| :------------------ | :----------------- |:------------------ | :-------------------- |
+| `System`                                                                              |
+| 255, 59, 48, 1      | 255, 69, 58, 1     | `System red`       | .systemRed_Adapted    |
+| 255, 149, 0, 1      | 255, 159, 10, 1    | `System orange`    | .systemOrange_Adapted |
+| 255, 204, 0, 1      | 255, 214, 10, 1    | `System yellow`    | .systemYellow_Adapted |
+| 52, 199, 89, 1      | 48, 209, 88, 1     | `System green`     | .systemGreen_Adapted  |
+| 0, 199, 190, 1      | 102, 212, 207, 1   | `System mint`      | .systemMint_Adapted   |
+| 48, 176, 199, 1     | 64, 200, 224, 1    | `System teal`      | .systemTeal_Adapted   |
+| 50, 173, 230, 1     | 100, 210, 255, 1   | `System cyan`      | .systemCyan_Adapted   |
+| 0, 122, 255, 1      | 10, 132, 255, 1    | `System blue`      | .systemBlue_Adapted   |
+| 88, 86, 214, 1      | 94, 92, 230, 1     | `System indigo`    | .systemIndigo_Adapted |
+| 175, 82, 222, 1     | 191, 90, 242, 1    | `System purple`    | .systemPurple_Adapted |
+| 255, 45, 85, 1      | 255, 55, 95, 1     | `System pink`      | .systemPink_Adapted   |
+| 162, 132, 94, 1     | 172, 142, 104, 1   | `System brown`     | .systemBrown_Adapted  |
+| 142, 142, 147, 1    | 42, 142, 147, 1    | `System gray`      | .systemGray_Adapted   |
+| 174, 174, 178, 1    | 99, 99, 102, 1     | `System gray 2`    | .systemGray2_Adapted  |
+| 199, 199, 204, 1    | 72, 72, 74, 1      | `System gray 3`    | .systemGray3_Adapted  |
+| 209, 209, 214, 1    | 58, 58, 60, 1      | `System gray 4`    | .systemGray4_Adapted  |
+| 229, 229, 234, 1    | 44, 44, 46, 1      | `System gray 5`    | .systemGray5_Adapted  |
+| 242, 242, 247, 1    | 28, 28, 30, 1      | `System gray 6`    | .systemGray6_Adapted  |
+
+---
+
+### Adapted semantic colors <a name="subSection2"></a>
+
+---
+
+| RGBA Light          | RGBA Dark          | `Name`             | UIKit API Adapted |
+| :------------------ | :----------------- |:------------------ | :---------------  |
+| **Foreground**                                                            |
+| `Label`                                                                           |
+| 255, 255, 255, 1    | 0, 0, 0, 1         | `Label`            | .label_Adapted    |
+| 235, 235, 245, 0.6  | 60, 60, 67, 0.6    | `Secondary label`  | .secondaryLabel_Adapted  |
+| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | `Tertiary label`   | .tertiaryLabel_Adapted   |
+| 235, 235, 245, 0.18 | 60, 60, 67, 0.18   | `Quaternary label` | .quaternaryLabel_Adapted |
+| `Text`                                                                                   |
+| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | `Placeholder Text` | .placeholderText_Adapted |
+| `Separator`                                                                              |
+| 84, 84, 88, 0.6     | 60, 60, 67, 0.29   | `Separator`        | .separator_Adapted       |
+| 56, 56, 58, 1       | 198, 198, 200, 1   | `Opaque separator` | .opaqueSeparator_Adapted |
+| `Link`                                                                                   |
+| 9, 132, 255, 1      | 0, 122, 255, 1     | `Link`             | .link_Adapted            |
+| `Fill`                                                                                               |
+| 120, 120, 128, 0.36 | 120, 120, 128, 0.2  | `System fill`            | .systemFill_Adapted           |
+| 120, 120, 128, 0.32 | 120, 120, 128, 0.16 | `Secondary system fill`  | .secondarySystemFill_Adapted  |
+| 118, 118, 128, 0.24 | 118, 118, 128, 0.12 | `Tertiary system fill`   | .tertiarySystemFill_Adapted   |
+| 118, 118, 128, 0.18 | 116, 116, 128, 0.08 | `Quaternary system fill` | .quaternarySystemFill_Adapted |
+| **Background**                                                                                               |
+| `Standard`                                                                                                           |
+| 0, 0, 0, 1    | 255, 255, 255, 1 | `System background`           | .systemBackground_Adapted                         |
+| 28, 28, 30, 1 | 242, 242, 247, 1 | `Secondary system background` | .secondarySystemBackground_Adapted                |
+| 44, 44, 46, 1 | 255, 255, 255, 1 | `Tertiary system background`  | .tertiarySystemBackground_Adapted                 |
+| `Grouped`                                                                                                            |
+| 0, 0, 0, 1    | 242, 242, 247, 1 | `System grouped background`           | .systemGroupedBackground_Adapted          |
+| 28, 28, 30, 1 | 255, 255, 255, 1 | `Secondary system grouped background` | .secondarySystemGroupedBackground_Adapted |
+| 44, 44, 46, 1 | 242, 242, 247, 1 | `Tertiary system grouped background`  | .tertiarySystemGroupedBackground_Adapted  |

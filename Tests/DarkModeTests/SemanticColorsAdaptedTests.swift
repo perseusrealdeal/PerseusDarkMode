@@ -122,15 +122,15 @@ final class SemanticColorsAdaptedTests: XCTestCase
         { ColorVerifier.verify(requirement: .secondarySystemFill, light, dark, nil) }
     }
     
-    func test_tertiarySystemFilll_Adapted()
+    func test_tertiarySystemFill_Adapted()
     {
         let light = rgba255(118, 118, 128, 0.24)
         let dark = rgba255(118, 118, 128, 0.12)
         
         if #available(iOS 13.0, *)
-        { ColorVerifier.verify(requirement: .tertiarySystemFilll, nil, nil, .tertiarySystemFill) }
+        { ColorVerifier.verify(requirement: .tertiarySystemFill, nil, nil, .tertiarySystemFill) }
         else
-        { ColorVerifier.verify(requirement: .tertiarySystemFilll, light, dark, nil) }
+        { ColorVerifier.verify(requirement: .tertiarySystemFill, light, dark, nil) }
     }
     
     func test_quaternarySystemFill_Adapted()

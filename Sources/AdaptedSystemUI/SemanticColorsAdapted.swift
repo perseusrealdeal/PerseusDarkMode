@@ -44,7 +44,7 @@ public protocol UISemanticColorsAdapted
     ///
     static var systemFill_Adapted          : UIColor { get }
     static var secondarySystemFill_Adapted : UIColor { get }
-    static var tertiarySystemFilll_Adapted : UIColor { get }
+    static var tertiarySystemFill_Adapted : UIColor { get }
     static var quaternarySystemFill_Adapted: UIColor { get }
     
     // MARK: - For background content
@@ -222,7 +222,7 @@ extension UIColor: UISemanticColorsAdapted
         return .secondarySystemFill
     }
     
-    public static var tertiarySystemFilll_Adapted: UIColor
+    public static var tertiarySystemFill_Adapted: UIColor
     {
         guard #available(iOS 13.0, *) else
         {

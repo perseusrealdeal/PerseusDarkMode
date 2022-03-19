@@ -23,7 +23,7 @@ enum ColorRequirement
     
     case systemFill
     case secondarySystemFill
-    case tertiarySystemFilll
+    case tertiarySystemFill
     case quaternarySystemFill
     
     case systemBackground
@@ -79,8 +79,8 @@ enum ColorRequirement
             return .systemFill_Adapted
         case .secondarySystemFill:
             return .secondarySystemFill_Adapted
-        case .tertiarySystemFilll:
-            return .tertiarySystemFilll_Adapted
+        case .tertiarySystemFill:
+            return .tertiarySystemFill_Adapted
         case .quaternarySystemFill:
             return .quaternarySystemFill_Adapted
             
