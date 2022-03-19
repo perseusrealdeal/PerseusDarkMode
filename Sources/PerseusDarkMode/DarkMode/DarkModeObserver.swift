@@ -10,7 +10,7 @@ import UIKit
 
 public class DarkModeObserver: NSObject
 {
-    public var action         : ((_ newStyle: AppearanceStyle?)->Void)?
+    public var action         : ((_ newStyle: AppearanceStyle)->Void)?
     public let objectToObserve: DarkMode
     
     public init(_ value: DarkMode)
@@ -29,11 +29,14 @@ public class DarkModeObserver: NSObject
                                       change            : [NSKeyValueChangeKey : Any]?,
                                       context           : UnsafeMutableRawPointer?)
     {
-        if keyPath == "StyleObservable",
-           let style = change?[.newKey]
-        {
-            action?(AppearanceStyle.init(rawValue: style as! Int))
-        }
+        guard
+            keyPath == "StyleObservable",
+            let style = change?[.newKey],
+            let styleRawValue = style as? Int,
+            let newStyle = AppearanceStyle.init(rawValue: styleRawValue)
+        else { return }
+        
+        action?(newStyle)
     }
     
     deinit
