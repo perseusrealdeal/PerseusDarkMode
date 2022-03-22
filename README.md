@@ -4,6 +4,7 @@ Perseus Dark Mode && Adapted System UI
 [![License](http://img.shields.io/:LICENSE-MIT-blue.svg?style=plastic)](http://doge.mit-license.org)
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg?style=plastic)
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg?style=plastic)
+![SDK](https://img.shields.io/badge/SDK-UIKit%20-green.svg?style=plastic)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg?style=plastic)](https://github.com/apple/swift-package-manager)
 
 # Table of contents
