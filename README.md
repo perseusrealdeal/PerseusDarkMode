@@ -310,27 +310,26 @@ view.backgroundColor = .systemBlue_Adapted
 
 ---
 
-| RGBA Light          | RGBA Dark          | `Name`             | UIKit API Adapted     |
-| :------------------ | :----------------- |:------------------ | :-------------------- |
-| `System`                                                                              |
-| 255, 59, 48, 1      | 255, 69, 58, 1     | `System red`       | .systemRed_Adapted    |
-| 255, 149, 0, 1      | 255, 159, 10, 1    | `System orange`    | .systemOrange_Adapted |
-| 255, 204, 0, 1      | 255, 214, 10, 1    | `System yellow`    | .systemYellow_Adapted |
-| 52, 199, 89, 1      | 48, 209, 88, 1     | `System green`     | .systemGreen_Adapted  |
-| 0, 199, 190, 1      | 102, 212, 207, 1   | `System mint`      | .systemMint_Adapted   |
-| 48, 176, 199, 1     | 64, 200, 224, 1    | `System teal`      | .systemTeal_Adapted   |
-| 50, 173, 230, 1     | 100, 210, 255, 1   | `System cyan`      | .systemCyan_Adapted   |
-| 0, 122, 255, 1      | 10, 132, 255, 1    | `System blue`      | .systemBlue_Adapted   |
-| 88, 86, 214, 1      | 94, 92, 230, 1     | `System indigo`    | .systemIndigo_Adapted |
-| 175, 82, 222, 1     | 191, 90, 242, 1    | `System purple`    | .systemPurple_Adapted |
-| 255, 45, 85, 1      | 255, 55, 95, 1     | `System pink`      | .systemPink_Adapted   |
-| 162, 132, 94, 1     | 172, 142, 104, 1   | `System brown`     | .systemBrown_Adapted  |
-| 142, 142, 147, 1    | 42, 142, 147, 1    | `System gray`      | .systemGray_Adapted   |
-| 174, 174, 178, 1    | 99, 99, 102, 1     | `System gray 2`    | .systemGray2_Adapted  |
-| 199, 199, 204, 1    | 72, 72, 74, 1      | `System gray 3`    | .systemGray3_Adapted  |
-| 209, 209, 214, 1    | 58, 58, 60, 1      | `System gray 4`    | .systemGray4_Adapted  |
-| 229, 229, 234, 1    | 44, 44, 46, 1      | `System gray 5`    | .systemGray5_Adapted  |
-| 242, 242, 247, 1    | 28, 28, 30, 1      | `System gray 6`    | .systemGray6_Adapted  |
+| RGBA Light       | RGBA Dark        | UIKit API Adapted     | Light             | Dark              |
+| :----------------| :--------------- | :-------------------- | :---------------: | :---------------: |
+| 255, 59, 48, 1   | 255, 69, 58, 1   | .systemRed_Adapted    | ![#FF3B30FF](https://via.placeholder.com/50/FF3B30FF/000000?text=+) | ![#FF453AFF](https://via.placeholder.com/50/FF453AFF/000000?text=+) |
+| 255, 149, 0, 1   | 255, 159, 10, 1  | .systemOrange_Adapted | ![#FF9500FF](https://via.placeholder.com/50/FF9500FF/000000?text=+) | ![#FF9F0AFF](https://via.placeholder.com/50/FF9F0AFF/000000?text=+) |
+| 255, 204, 0, 1   | 255, 214, 10, 1  | .systemYellow_Adapted | ![#FFCC00FF](https://via.placeholder.com/50/FFCC00FF/000000?text=+) | ![#FFD60AFF](https://via.placeholder.com/50/FFD60AFF/000000?text=+) |
+| 52, 199, 89, 1   | 48, 209, 88, 1   | .systemGreen_Adapted  | ![#34C759FF](https://via.placeholder.com/50/34C759FF/000000?text=+) | ![#30D158FF](https://via.placeholder.com/50/30D158FF/000000?text=+) |
+| 0, 199, 190, 1   | 102, 212, 207, 1 | .systemMint_Adapted   | ![#00C7BEFF](https://via.placeholder.com/50/00C7BEFF/000000?text=+) | ![#66D4CFFF](https://via.placeholder.com/50/66D4CFFF/000000?text=+) |
+| 48, 176, 199, 1  | 64, 200, 224, 1  | .systemTeal_Adapted   | ![#30B0C7FF](https://via.placeholder.com/50/30B0C7FF/000000?text=+) | ![#40C8E0FF](https://via.placeholder.com/50/40C8E0FF/000000?text=+) |
+| 50, 173, 230, 1  | 100, 210, 255, 1 | .systemCyan_Adapted   | ![#32ADE6FF](https://via.placeholder.com/50/32ADE6FF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
+| 0, 122, 255, 1   | 10, 132, 255, 1  | .systemBlue_Adapted   | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0A84FFFF](https://via.placeholder.com/50/0A84FFFF/000000?text=+) |
+| 88, 86, 214, 1   | 94, 92, 230, 1   | .systemIndigo_Adapted | ![#5856D6FF](https://via.placeholder.com/50/5856D6FF/000000?text=+) | ![#5E5CE6FF](https://via.placeholder.com/50/5E5CE6FF/000000?text=+) |
+| 175, 82, 222, 1  | 191, 90, 242, 1  | .systemPurple_Adapted | ![#AF52DEFF](https://via.placeholder.com/50/AF52DEFF/000000?text=+) | ![#BF5AF2FF](https://via.placeholder.com/50/BF5AF2FF/000000?text=+) |
+| 255, 45, 85, 1   | 255, 55, 95, 1   | .systemPink_Adapted   | ![#FF2D55FF](https://via.placeholder.com/50/FF2D55FF/000000?text=+) | ![#FF375FFF](https://via.placeholder.com/50/FF375FFF/000000?text=+) |
+| 162, 132, 94, 1  | 172, 142, 104, 1 | .systemBrown_Adapted  | ![#A2845EFF](https://via.placeholder.com/50/A2845EFF/000000?text=+) | ![#AC8E68FF](https://via.placeholder.com/50/AC8E68FF/000000?text=+) |
+| 142, 142, 147, 1 | 142, 142, 147, 1 | .systemGray_Adapted   | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) |
+| 174, 174, 178, 1 | 99, 99, 102, 1   | .systemGray2_Adapted  | ![#AEAEB2FF](https://via.placeholder.com/50/AEAEB2FF/000000?text=+) | ![#636366FF](https://via.placeholder.com/50/636366FF/000000?text=+) |
+| 199, 199, 204, 1 | 72, 72, 74, 1    | .systemGray3_Adapted  | ![#C7C7CCFF](https://via.placeholder.com/50/C7C7CCFF/000000?text=+) | ![#48484AFF](https://via.placeholder.com/50/48484AFF/000000?text=+) |
+| 209, 209, 214, 1 | 58, 58, 60, 1    | .systemGray4_Adapted  | ![#D1D1D6FF](https://via.placeholder.com/50/D1D1D6FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
+| 229, 229, 234, 1 | 44, 44, 46, 1    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
+| 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 
 ---
 
@@ -338,32 +337,33 @@ view.backgroundColor = .systemBlue_Adapted
 
 ---
 
-| RGBA Light          | RGBA Dark          | `Name`             | UIKit API Adapted |
-| :------------------ | :----------------- |:------------------ | :---------------  |
-| **Foreground**                                                            |
-| `Label`                                                                           |
-| 255, 255, 255, 1    | 0, 0, 0, 1         | `Label`            | .label_Adapted    |
-| 235, 235, 245, 0.6  | 60, 60, 67, 0.6    | `Secondary label`  | .secondaryLabel_Adapted  |
-| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | `Tertiary label`   | .tertiaryLabel_Adapted   |
-| 235, 235, 245, 0.18 | 60, 60, 67, 0.18   | `Quaternary label` | .quaternaryLabel_Adapted |
-| `Text`                                                                                   |
-| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | `Placeholder Text` | .placeholderText_Adapted |
-| `Separator`                                                                              |
-| 84, 84, 88, 0.6     | 60, 60, 67, 0.29   | `Separator`        | .separator_Adapted       |
-| 56, 56, 58, 1       | 198, 198, 200, 1   | `Opaque separator` | .opaqueSeparator_Adapted |
-| `Link`                                                                                   |
-| 9, 132, 255, 1      | 0, 122, 255, 1     | `Link`             | .link_Adapted            |
-| `Fill`                                                                                               |
-| 120, 120, 128, 0.36 | 120, 120, 128, 0.2  | `System fill`            | .systemFill_Adapted           |
-| 120, 120, 128, 0.32 | 120, 120, 128, 0.16 | `Secondary system fill`  | .secondarySystemFill_Adapted  |
-| 118, 118, 128, 0.24 | 118, 118, 128, 0.12 | `Tertiary system fill`   | .tertiarySystemFill_Adapted   |
-| 118, 118, 128, 0.18 | 116, 116, 128, 0.08 | `Quaternary system fill` | .quaternarySystemFill_Adapted |
-| **Background**                                                                                               |
-| `Standard`                                                                                                           |
-| 0, 0, 0, 1    | 255, 255, 255, 1 | `System background`           | .systemBackground_Adapted                         |
-| 28, 28, 30, 1 | 242, 242, 247, 1 | `Secondary system background` | .secondarySystemBackground_Adapted                |
-| 44, 44, 46, 1 | 255, 255, 255, 1 | `Tertiary system background`  | .tertiarySystemBackground_Adapted                 |
-| `Grouped`                                                                                                            |
-| 0, 0, 0, 1    | 242, 242, 247, 1 | `System grouped background`           | .systemGroupedBackground_Adapted          |
-| 28, 28, 30, 1 | 255, 255, 255, 1 | `Secondary system grouped background` | .secondarySystemGroupedBackground_Adapted |
-| 44, 44, 46, 1 | 242, 242, 247, 1 | `Tertiary system grouped background`  | .tertiarySystemGroupedBackground_Adapted  |
+| RGBA Light          | RGBA Dark          | UIKit API Adapted | Light             | Dark              |
+| :------------------ | :----------------- | :---------------  | :---------------: | :---------------: |
+| **Foreground**                                               |
+| `Label`                                                      |
+| 255, 255, 255, 1    | 0, 0, 0, 1         | .label_Adapted    | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#000000FF](https://via.placeholder.com/50/000000FF/000000?text=+) |
+| 235, 235, 245, 0.6  | 60, 60, 67, 0.6    | .secondaryLabel_Adapted  | ![#EBEBF599](https://via.placeholder.com/50/EBEBF599/000000?text=+) | ![#3C3C4399](https://via.placeholder.com/50/3C3C4399/000000?text=+) |
+| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | .tertiaryLabel_Adapted   | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) |
+| 235, 235, 245, 0.18 | 60, 60, 67, 0.18   | .quaternaryLabel_Adapted | ![#EBEBF52E](https://via.placeholder.com/50/EBEBF52E/000000?text=+) | ![#3C3C432E](https://via.placeholder.com/50/3C3C432E/000000?text=+) |
+| `Text`                                                              |
+| 235, 235, 245, 0.3  | 60, 60, 67, 0.3    | .placeholderText_Adapted | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) |
+| `Separator`                                                         |
+| 84, 84, 88, 0.6     | 60, 60, 67, 0.29   | .separator_Adapted       | ![#54545899](https://via.placeholder.com/50/54545899/000000?text=+) | ![#3C3C434A](https://via.placeholder.com/50/3C3C434A/000000?text=+) |
+| 56, 56, 58, 1       | 198, 198, 200, 1   | .opaqueSeparator_Adapted | ![#38383AFF](https://via.placeholder.com/50/38383AFF/000000?text=+) | ![#C6C6C8FF](https://via.placeholder.com/50/C6C6C8FF/000000?text=+) |
+| `Link`                                                              |
+| 9, 132, 255, 1      | 0, 122, 255, 1     | .link_Adapted            | ![#0984FFFF](https://via.placeholder.com/50/0984FFFF/000000?text=+) | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) |
+| `Fill`                                                                    |
+| 120, 120, 128, 0.36 | 120, 120, 128, 0.2  | .systemFill_Adapted           | ![#7878805C](https://via.placeholder.com/50/7878805C/000000?text=+) | ![#78788033](https://via.placeholder.com/50/78788033/000000?text=+) |
+| 120, 120, 128, 0.32 | 120, 120, 128, 0.16 | .secondarySystemFill_Adapted  | ![#78788052](https://via.placeholder.com/50/78788052/000000?text=+) | ![#78788029](https://via.placeholder.com/50/78788029/000000?text=+) |
+| 118, 118, 128, 0.24 | 118, 118, 128, 0.12 | .tertiarySystemFill_Adapted   | ![#7676803D](https://via.placeholder.com/50/7676803D/000000?text=+) | ![#7676801F](https://via.placeholder.com/50/7676801F/000000?text=+) |
+| 118, 118, 128, 0.18 | 116, 116, 128, 0.08 | .quaternarySystemFill_Adapted | ![#7676802E](https://via.placeholder.com/50/7676802E/000000?text=+) | ![#74748014](https://via.placeholder.com/50/74748014/000000?text=+) |
+| **Background**                                                               |
+| `Standard`                                                                   |
+| 0, 0, 0, 1    | 255, 255, 255, 1 | .systemBackground_Adapted                 | ![#000000FF](https://via.placeholder.com/50/000000FF/000000?text=+) | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) |
+| 28, 28, 30, 1 | 242, 242, 247, 1 | .secondarySystemBackground_Adapted        | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) |
+| 44, 44, 46, 1 | 255, 255, 255, 1 | .tertiarySystemBackground_Adapted         | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) |
+| `Grouped`                                                                    |
+| 0, 0, 0, 1    | 242, 242, 247, 1 | .systemGroupedBackground_Adapted          | ![#000000FF](https://via.placeholder.com/50/000000FF/000000?text=+) | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) |
+| 28, 28, 30, 1 | 255, 255, 255, 1 | .secondarySystemGroupedBackground_Adapted | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) |
+| 44, 44, 46, 1 | 242, 242, 247, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) |
+
