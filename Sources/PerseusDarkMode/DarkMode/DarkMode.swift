@@ -12,7 +12,7 @@ public class DarkMode: NSObject
 {
     // MARK: - App's Dark Mode Style
     
-    internal var _style                     :AppearanceStyle = DARK_MODE_STYLE_DEFAULT
+    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT
     {
         didSet { StyleObservable = Style.rawValue }
     }
