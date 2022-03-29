@@ -94,6 +94,12 @@ public enum SystemStyle: Int
 
 `Dark Mode decision table`
 
+Dark Mode default value is light.
+
+```swift
+public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
+```
+
 |                  | auto      | on   | off   |
 | ---------------- | :-------: |:----:| :----:|
 | **.unspecified** | default   | dark | light |
@@ -306,11 +312,11 @@ view.backgroundColor = .systemBlue_Adapted
 
 ## List of Adapted Colors <a name="section7"></a>
 
----
-
 ### Adapted system colors <a name="subSection1"></a>
 
 ---
+
+Origin system colors like MINT, CYAN, and BROWN are not released in SDK but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)
 
 | RGBA Light       | RGBA Dark        | UIKit API Adapted     | Light             | Dark              |
 | :----------------| :--------------- | :-------------------- | :---------------: | :---------------: |
