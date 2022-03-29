@@ -1,6 +1,7 @@
 Perseus Dark Mode && Adapted System UI
 ======================================
 
+[![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
 [![License](http://img.shields.io/:LICENSE-MIT-blue.svg?style=plastic)](http://doge.mit-license.org)
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg?style=plastic)
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg?style=plastic)
@@ -92,6 +93,12 @@ public enum SystemStyle: Int
 ```
 
 `Dark Mode decision table`
+
+Dark Mode default value is light.
+
+```swift
+public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
+```
 
 |                  | auto      | on   | off   |
 | ---------------- | :-------: |:----:| :----:|
@@ -305,11 +312,11 @@ view.backgroundColor = .systemBlue_Adapted
 
 ## List of Adapted Colors <a name="section7"></a>
 
----
-
 ### Adapted system colors <a name="subSection1"></a>
 
 ---
+
+Origin system colors like MINT, CYAN, and BROWN are not released in SDK but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)
 
 | RGBA Light       | RGBA Dark        | UIKit API Adapted     | Light             | Dark              |
 | :----------------| :--------------- | :-------------------- | :---------------: | :---------------: |

@@ -30,3 +30,14 @@ public extension UIColor
         return (red*255, green*255, blue*255, alpha)
     }
 }
+
+extension UIColor
+{
+    ///
+    /// Used only for unit testing to take control of selecting between color sets.
+    ///
+    /// If it is true and #available(iOS 13.0, *) is also true, the branch with the color scheme for iOS 13 and higher will be selected,
+    /// otherwise if it is false the color scheme for iOS 12 and lower will be selected at any way.
+    ///
+    internal static var _iOS13InUseAndHigherOnly: Bool = true
+}

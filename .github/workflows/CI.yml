@@ -1,0 +1,29 @@
+name: 'Platforms: iOS'
+
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  unit-testing: 
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: iOS
+        scheme: 'Dark Mode-Package'
+        action: test
+        code-coverage: true
+        verbosity: xcpretty
+        upload-logs: always
+        

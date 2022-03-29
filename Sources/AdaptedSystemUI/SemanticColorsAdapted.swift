@@ -61,6 +61,7 @@ public protocol UISemanticColorsAdapted
     static var systemGroupedBackground_Adapted         : UIColor { get }
     static var secondarySystemGroupedBackground_Adapted: UIColor { get }
     static var tertiarySystemGroupedBackground_Adapted : UIColor { get }
+    
 }
 
 extension UIColor: UISemanticColorsAdapted
@@ -72,7 +73,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var label_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -86,7 +87,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var secondaryLabel_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -100,7 +101,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var tertiaryLabel_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -114,7 +115,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var quaternaryLabel_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -131,7 +132,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var placeholderText_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -148,7 +149,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var separator_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -162,7 +163,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var opaqueSeparator_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -179,7 +180,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var link_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -196,7 +197,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemFill_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -210,7 +211,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var secondarySystemFill_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -224,7 +225,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var tertiarySystemFill_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -238,7 +239,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var quaternarySystemFill_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -257,7 +258,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -271,7 +272,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var secondarySystemBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -285,7 +286,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var tertiarySystemBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -302,7 +303,7 @@ extension UIColor: UISemanticColorsAdapted
     ///
     public static var systemGroupedBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -316,7 +317,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var secondarySystemGroupedBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -330,7 +331,7 @@ extension UIColor: UISemanticColorsAdapted
     
     public static var tertiarySystemGroupedBackground_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 

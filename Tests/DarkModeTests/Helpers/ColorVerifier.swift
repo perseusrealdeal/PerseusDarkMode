@@ -17,13 +17,13 @@ final class ColorVerifier
     class func verify(requirement    : ColorRequirement,
                       _ requiredLight: UIColor?,
                       _ requiredDark : UIColor?,
-                      _ iOS13        : UIColor?,
+                      _ iOS13color   : UIColor?,
                       file           : StaticString = #file,
                       line           : UInt = #line)
     {
-        if #available(iOS 13.0, *), iOS13 != nil
+        if #available(iOS 13.0, *), iOS13color != nil
         {
-            XCTAssertEqual(requirement.color, iOS13)
+            XCTAssertEqual(requirement.color, iOS13color)
         }
         else
         {
