@@ -50,7 +50,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemRed_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -67,7 +67,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemOrange_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -84,7 +84,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemYellow_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -101,7 +101,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGreen_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -130,7 +130,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemTeal_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -159,7 +159,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemBlue_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -176,7 +176,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemIndigo_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -193,7 +193,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemPurple_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -210,7 +210,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemPink_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -239,7 +239,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -256,7 +256,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray2_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -273,7 +273,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray3_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -290,7 +290,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray4_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -307,7 +307,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray5_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
@@ -324,7 +324,7 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemGray6_Adapted: UIColor
     {
-        guard #available(iOS 13.0, *) else
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
