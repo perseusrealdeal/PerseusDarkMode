@@ -77,7 +77,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(255, 255, 255) : rgba255(0, 0, 0)
+                rgba255(0, 0, 0) : rgba255(255, 255, 255)
             
             return color
         }
@@ -91,7 +91,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(235, 235, 245, 0.6) : rgba255(60, 60, 67, 0.6)
+                rgba255(60, 60, 67, 0.6) : rgba255(235, 235, 245, 0.6)
             
             return color
         }
@@ -105,7 +105,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(235, 235, 245, 0.3) : rgba255(60, 60, 67, 0.3)
+                rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
             
             return color
         }
@@ -119,7 +119,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(235, 235, 245, 0.18) : rgba255(60, 60, 67, 0.18)
+                rgba255(60, 60, 67, 0.18) : rgba255(235, 235, 245, 0.18)
             
             return color
         }
@@ -136,7 +136,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(235, 235, 245, 0.3) : rgba255(60, 60, 67, 0.3)
+                rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
             
             return color
         }
@@ -153,7 +153,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(84, 84, 88, 0.6) : rgba255(60, 60, 67, 0.29)
+                rgba255(60, 60, 67, 0.29) : rgba255(84, 84, 88, 0.6)
             
             return color
         }
@@ -167,7 +167,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(56, 56, 58) : rgba255(198, 198, 200)
+                rgba255(198, 198, 200) : rgba255(56, 56, 58)
             
             return color
         }
@@ -184,7 +184,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(9, 132, 255) : rgba255(0, 122, 255)
+                rgba255(0, 122, 255) : rgba255(9, 132, 255)
             
             return color
         }
@@ -201,7 +201,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(120, 120, 128, 0.36) : rgba255(120, 120, 128, 0.2)
+                rgba255(120, 120, 128, 0.2) : rgba255(120, 120, 128, 0.36)
             
             return color
         }
@@ -215,7 +215,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(120, 120, 128, 0.32) : rgba255(120, 120, 128, 0.16)
+                rgba255(120, 120, 128, 0.16) : rgba255(120, 120, 128, 0.32)
             
             return color
         }
@@ -229,7 +229,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(118, 118, 128, 0.24) : rgba255(118, 118, 128, 0.12)
+                rgba255(118, 118, 128, 0.12) : rgba255(118, 118, 128, 0.24)
             
             return color
         }
@@ -243,7 +243,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(118, 118, 128, 0.18) : rgba255(116, 116, 128, 0.08)
+                rgba255(116, 116, 128, 0.08) : rgba255(118, 118, 128, 0.18)
             
             return color
         }
@@ -262,7 +262,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(0, 0, 0) : rgba255(255, 255, 255)
+                rgba255(255, 255, 255) : rgba255(0, 0, 0)
             
             return color
         }
@@ -276,7 +276,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(28, 28, 30) : rgba255(242, 242, 247)
+                rgba255(242, 242, 247) : rgba255(28, 28, 30)
             
             return color
         }
@@ -290,7 +290,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(44, 44, 46) : rgba255(255, 255, 255)
+                rgba255(255, 255, 255) : rgba255(44, 44, 46)
             
             return color
         }
@@ -307,7 +307,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(0, 0, 0) : rgba255(242, 242, 247)
+                rgba255(242, 242, 247) : rgba255(0, 0, 0)
             
             return color
         }
@@ -321,7 +321,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(28, 28, 30) : rgba255(255, 255, 255)
+                rgba255(255, 255, 255) : rgba255(28, 28, 30)
             
             return color
         }
@@ -335,7 +335,7 @@ extension UIColor: UISemanticColorsAdapted
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(44, 44, 46) : rgba255(242, 242, 247)
+                rgba255(242, 242, 247) : rgba255(44, 44, 46)
             
             return color
         }
