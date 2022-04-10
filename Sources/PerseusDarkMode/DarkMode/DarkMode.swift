@@ -53,6 +53,8 @@ public class DarkMode: NSObject
     }
 }
 
+// MARK: Protocols used for unit testing
+
 public protocol DarkModeProtocol
 {
     var Style                  : AppearanceStyle { get }

@@ -4,7 +4,9 @@
 //
 // Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 
+#if !os(macOS)
 import UIKit
+#endif
 
 public class DarkModeImageView: UIImageView
 {

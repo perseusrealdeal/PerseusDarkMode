@@ -17,11 +17,11 @@ public enum DarkModeOption: Int, CustomStringConvertible
         switch self
         {
         case .auto:
-            return "Auto"
+            return ".auto"
         case .on:
-            return "On"
+            return ".on"
         case .off:
-            return "Off"
+            return ".off"
         }
     }
 }
