@@ -31,8 +31,8 @@ final class DarkModeImageViewTests: XCTestCase
         
         // act
         
-        sut.setUp(createImage(color: UIColor.white.cgColor),
-                  createImage(color: UIColor.black.cgColor))
+        sut.setUp(createImage(),
+                  createImage())
         
         // assert
         
@@ -46,8 +46,8 @@ final class DarkModeImageViewTests: XCTestCase
         
         let sut = DarkModeImageView()
         
-        let light = createImage(color: UIColor.white.cgColor)
-        let dark = createImage(color: UIColor.black.cgColor)
+        let light = createImage()
+        let dark = createImage()
         
         // act
         
@@ -66,8 +66,8 @@ final class DarkModeImageViewTests: XCTestCase
         
         let sut = DarkModeImageView()
         
-        let light = createImage(color: UIColor.white.cgColor)
-        let dark = createImage(color: UIColor.black.cgColor)
+        let light = createImage()
+        let dark = createImage()
         
         // act
         
@@ -86,8 +86,8 @@ final class DarkModeImageViewTests: XCTestCase
         
         let sut = DarkModeImageView()
         
-        let light = createImage(color: UIColor.white.cgColor)
-        let dark = createImage(color: UIColor.black.cgColor)
+        let light = createImage()
+        let dark = createImage()
         
         // act
         
@@ -108,8 +108,8 @@ final class DarkModeImageViewTests: XCTestCase
         
         let sut = DarkModeImageView()
         
-        let light = createImage(color: UIColor.white.cgColor)
-        let dark = createImage(color: UIColor.black.cgColor)
+        let light = createImage()
+        let dark = createImage()
         
         // act
         
@@ -122,54 +122,5 @@ final class DarkModeImageViewTests: XCTestCase
         // assert
         
         XCTAssertEqual(sut.image, dark)
-    }
-}
-
-// helpers
-
-func createImage(color: CGColor) -> UIImage
-{
-    let view = UIView()
-    view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 200, height: 200))
-    
-    let path = UIBezierPath()
-    path.move(to: CGPoint(x: 0, y: 0))
-    path.addLine(to: CGPoint(x: 200, y: 0))
-    path.addLine(to: CGPoint(x: 200, y: 200))
-    path.addLine(to: CGPoint(x: 0, y: 200))
-    path.addLine(to: CGPoint(x: 0, y: 0))
-    
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.path = path.cgPath
-    shapeLayer.fillColor = UIColor.green.cgColor
-    
-    view.layer.addSublayer(shapeLayer)
-    
-    return view.asImage()
-}
-
-extension UIView
-{
-    func asImage() -> UIImage
-    {
-        if #available(iOS 10.0, *)
-        {
-            let renderer = UIGraphicsImageRenderer(bounds: bounds)
-            return renderer.image
-            { rendererContext in
-                layer.render(in: rendererContext.cgContext)
-            }
-        }
-        else
-        {
-            UIGraphicsBeginImageContext(self.frame.size)
-            
-            self.layer.render(in:UIGraphicsGetCurrentContext()!)
-            let image = UIGraphicsGetImageFromCurrentImageContext()
-            
-            UIGraphicsEndImageContext()
-            
-            return UIImage(cgImage: image!.cgImage!)
-        }
     }
 }
