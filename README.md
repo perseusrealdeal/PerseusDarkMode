@@ -20,6 +20,7 @@ Perseus Dark Mode && Adapted System UI
 8. [List of Adapted Colors](#section7)
     1. [Adapted system colors](#subSection1)
     2. [Adapted semantic colors](#subSection2)
+9. [License](#license)
 ---
 
 ## Prerequisites <a name="prerequisites"></a>
@@ -105,6 +106,8 @@ public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
 | **.unspecified** | default   | dark | light |
 | **.light**       | light     | dark | light |
 | **.dark**        | dark      | dark | light |
+
+In case if dark mode is auto and system style is .unspecified, default value is applied for iOS 12 and eariler, but for iOS 13 and higher, device system appearance mode is applied.
 
 ## Switching Dark Mode <a name="section3"></a>
 
@@ -375,3 +378,24 @@ Origin system colors like MINT, CYAN, and BROWN are not released in SDK but pres
 | 255, 255, 255, 1 | 28, 28, 30, 1 | .secondarySystemGroupedBackground_Adapted | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 | 242, 242, 247, 1 | 44, 44, 46, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 
+# License <a name="license"></a>
+
+Copyright © 2022 Mikhail Zhigulin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
