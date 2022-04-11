@@ -147,18 +147,18 @@ public class UIWindowAdaptable: UIWindow
 {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
     {
-        guard #available(iOS 13.0, *) else { return }
+        super.traitCollectionDidChange(previousTraitCollection)
         
-        AppearanceService.overrideUserInterfaceStyleIfNeeded()
+        if AppearanceService._changeManually { return }
+        guard #available(iOS 13.0, *) else { return }
         
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
               previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
         
-        AppearanceService.makeUp()
+        AppearanceService.systemCalledMakeUp()
     }
 }
-
 ```
 
 ## Catching Dark Mode triggered <a name="section4"></a>
@@ -311,6 +311,12 @@ import AdaptedSystemUI
 
 let view = UIView()
 view.backgroundColor = .systemBlue_Adapted
+```
+
+In case if you ever need certain color of Dark Mode sensitive color use the line of code below.
+
+```swift
+let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
 ## List of Adapted Colors <a name="section7"></a>
