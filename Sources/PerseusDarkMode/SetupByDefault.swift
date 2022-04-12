@@ -14,15 +14,15 @@ public class UIWindowAdaptable: UIWindow
 {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
     {
+        if AppearanceService._changeManually { return }
+        
         super.traitCollectionDidChange(previousTraitCollection)
         
-        if AppearanceService._changeManually { return }
-        guard #available(iOS 13.0, *) else { return }
-        
-        guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+        guard #available(iOS 13.0, *),
+              let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
               previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
         
-        AppearanceService.systemCalledMakeUp()
+        AppearanceService._systemCalledMakeUp()
     }
 }

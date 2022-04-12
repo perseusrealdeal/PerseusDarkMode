@@ -62,7 +62,7 @@ public class AppearanceService
         _changeManually = false
     }
     
-    internal static func systemCalledMakeUp()
+    internal static func _systemCalledMakeUp()
     {
         //print(#function)
         if _changeManually { return }
