@@ -107,8 +107,8 @@ final class SystemColorsAdaptedTests: XCTestCase
     
     func test_systemTeal_Adapted()
     {
-        let light = rgba255(48, 176, 199)
-        let dark = rgba255(64, 200, 224)
+        let light = rgba255(90, 200, 250)
+        let dark = rgba255(100, 210, 255)
         
         if #available(iOS 13.0, *)
         {
