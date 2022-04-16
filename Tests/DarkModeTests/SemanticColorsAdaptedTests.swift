@@ -269,7 +269,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_systemBackground_Adapted()
     {
         let light = rgba255(255, 255, 255)
-        let dark = rgba255(0, 0, 0)
+        let dark = rgba255(28, 28, 30)
         
         if #available(iOS 13.0, *)
         {
@@ -290,7 +290,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_secondarySystemBackground_Adapted()
     {
         let light = rgba255(242, 242, 247)
-        let dark = rgba255(28, 28, 30)
+        let dark = rgba255(44, 44, 46)
         
         if #available(iOS 13.0, *)
         {
@@ -311,7 +311,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_tertiarySystemBackground_Adapted()
     {
         let light = rgba255(255, 255, 255)
-        let dark = rgba255(44, 44, 46)
+        let dark = rgba255(58, 58, 60)
         
         if #available(iOS 13.0, *)
         {
@@ -332,7 +332,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_systemGroupedBackground_Adapted()
     {
         let light = rgba255(242, 242, 247)
-        let dark = rgba255(0, 0, 0)
+        let dark = rgba255(28, 28, 30)
         
         if #available(iOS 13.0, *)
         {
@@ -353,7 +353,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_secondarySystemGroupedBackground_Adapted()
     {
         let light = rgba255(255, 255, 255)
-        let dark = rgba255(28, 28, 30)
+        let dark = rgba255(44, 44, 46)
         
         if #available(iOS 13.0, *)
         {
@@ -374,7 +374,7 @@ final class SemanticColorsAdaptedTests: XCTestCase
     func test_tertiarySystemGroupedBackground_Adapted()
     {
         let light = rgba255(242, 242, 247)
-        let dark = rgba255(44, 44, 46)
+        let dark = rgba255(58, 58, 60)
         
         if #available(iOS 13.0, *)
         {
