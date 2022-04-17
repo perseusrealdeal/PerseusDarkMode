@@ -20,7 +20,7 @@ Perseus Dark Mode && Adapted System UI
 6. [Sample Use Case of Dark Mode](#section5)
 7. [Sample Use Case of Adapted System UI](#section6)
 8. [List of Adapted Colors](#section7)
-    1. [Introductory remarks](#subsection1)
+    1. [Introductory remarks](#subSection1)
     2. [Table 1. Adapted system colors](#subSection2)
     3. [Table 2. Adapted semantic colors](#subSection3)
 9. [License](#license)
@@ -29,11 +29,7 @@ Perseus Dark Mode && Adapted System UI
 
 ## 1. Prerequisites <a name="prerequisites"></a>
 
----
-
 ### 1.1. Introductory remarks <a name="prerequisitesSubSection1"></a>
-
----
 
 Perseus Dark Mode is a swift package. Starting with iOS 13 Apple corp. introduced Dark Mode on system level and now all apps are sensitive to this user option.
 
@@ -43,11 +39,7 @@ Using this solution allows you design the code of your app applying the Apple's 
 
 This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
 
----
-
 ### 1.2. Build tools <a name="prerequisitesSubSection2"></a>
-
----
 
 Tools used for designing the solution:
 + Xcode 12.5
@@ -58,11 +50,7 @@ Tools used for designing the solution:
 
 Source code for demo app based on Perseus Dark Mode can be accessed online from [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
----
-
 ## 2. Solution key statements <a name="section1"></a>
-
----
 
 `Dark Mode is a Singleton object`
 
@@ -96,13 +84,9 @@ extension DarkMode: DarkModeProtocol { }
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 ```
 
----
-
 ## 3. Dark Mode table decision <a name="section2"></a>
 
----
-
-ark Mode option values`
+`Dark Mode option values`
 
 ```swift
 public enum DarkModeOption: Int
@@ -167,11 +151,7 @@ class MyView: UIView
 }
 ```
 
----
-
 ## 4. Switching Dark Mode <a name="section3"></a>
-
----
 
 `Case: Manually`
 
@@ -223,11 +203,7 @@ public class UIWindowAdaptable: UIWindow
 }
 ```
 
----
-
 ## 5. Catching Dark Mode triggered <a name="section4"></a>
-
----
 
 `Case: Using KVO`
 
@@ -273,11 +249,7 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 AppearanceService.makeUp()
 ```
 
----
-
 ## 6. Sample Use Case of Dark Mode <a name="section5"></a>
-
----
 
 Declare UIWindowAdaptable window to get system Dark Mode automatically
 
@@ -376,11 +348,7 @@ class MemberTableViewCell: UITableViewCell
 }
 ```
 
----
-
 ## 7. Sample Use Case of Adapted System UI <a name="section6"></a>
-
----
 
 ```swift
 import AdaptedSystemUI
@@ -395,15 +363,9 @@ In case if you ever need a certain color of a Dark Mode sensitive color use the 
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
----
-
 # 8. List of Adapted Colors <a name="section7"></a>
 
----
-
 ## 8.1 Introductory remarks <a name="subSection1"></a>
-
----
 
 System colors MINT, CYAN, and BROWN are not released in SDK, but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
 
@@ -415,11 +377,7 @@ SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark.
 
 Adapted System UI library uses SDK version of TEAL color for sure.
 
----
-
 ## 8.2. Table 1. Adapted system colors <a name="subSection2"></a>
-
----
 
 | RGBA Light    | RGBA Dark     | UIKit API Adapted     | Light             | Dark              |
 | :-------------| :------------ | :-------------------- | :---------------: | :---------------: |
@@ -442,11 +400,7 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 
----
-
 ## 8.3 Table 2. Adapted semantic colors <a name="subSection3"></a>
-
----
 
 | RGBA Light        | RGBA Dark           | UIKit API Adapted | Light             | Dark              |
 | :---------------- | :------------------ | :---------------  | :---------------: | :---------------: |
@@ -477,8 +431,6 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGroupedBackground_Adapted          | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 | 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
-
----
 
 # 9. License <a name="license"></a>
 
