@@ -11,7 +11,7 @@ import UIKit
 public enum AppearanceStyle: Int, CustomStringConvertible
 {
     case light = 0
-    case dark = 1
+    case dark  = 1
     
     public var description: String
     {
@@ -28,8 +28,8 @@ public enum AppearanceStyle: Int, CustomStringConvertible
 public enum SystemStyle: Int, CustomStringConvertible
 {
     case unspecified = 0
-    case light = 1
-    case dark = 2
+    case light       = 1
+    case dark        = 2
     
     public var description: String
     {

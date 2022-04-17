@@ -8,9 +8,11 @@ Perseus Dark Mode && Adapted System UI
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-green.svg)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 
-# Table of contents
+## Table of contents
 
 1. [Prerequisites](#prerequisites)
+    1. [Introductory remarks](#prerequisitesSubSection1)
+    2. [Build tools](#prerequisitesSubSection2)
 2. [Solution key statements](#section1)
 3. [Dark Mode table decision](#section2)
 4. [Switching Dark Mode](#section3)
@@ -18,12 +20,20 @@ Perseus Dark Mode && Adapted System UI
 6. [Sample Use Case of Dark Mode](#section5)
 7. [Sample Use Case of Adapted System UI](#section6)
 8. [List of Adapted Colors](#section7)
-    1. [Adapted system colors](#subSection1)
-    2. [Adapted semantic colors](#subSection2)
+    1. [Introductory remarks](#subsection1)
+    2. [Table 1. Adapted system colors](#subSection2)
+    3. [Table 2. Adapted semantic colors](#subSection3)
 9. [License](#license)
+
 ---
 
-## Prerequisites <a name="prerequisites"></a>
+## 1. Prerequisites <a name="prerequisites"></a>
+
+---
+
+### 1.1. Introductory remarks <a name="prerequisitesSubSection1"></a>
+
+---
 
 Perseus Dark Mode is a swift package. Starting with iOS 13 Apple corp. introduced Dark Mode on system level and now all apps are sensitive to this user option.
 
@@ -33,7 +43,26 @@ Using this solution allows you design the code of your app applying the Apple's 
 
 This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
 
-## Solution key statements <a name="section1"></a>
+---
+
+### 1.2. Build tools <a name="prerequisitesSubSection2"></a>
+
+---
+
+Tools used for designing the solution:
++ Xcode 12.5
++ Device iPod Touch iOS 9.3.5 (5th, 13G36) 
++ Simulator iPhone 5s (iOS 11.4, 15F79) 
++ Simulator iPhone 8 (iOS 13.7, 17H22)
++ Simulator iPhone 12 mini (iOS 14.5, 18E182)
+
+Source code for demo app based on Perseus Dark Mode can be accessed online from [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
+
+---
+
+## 2. Solution key statements <a name="section1"></a>
+
+---
 
 `Dark Mode is a Singleton object`
 
@@ -67,18 +96,20 @@ extension DarkMode: DarkModeProtocol { }
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 ```
 
-## Dark Mode table decision <a name="section2"></a>
+---
 
-`Dark Mode option values`
+## 3. Dark Mode table decision <a name="section2"></a>
+
+---
+
+ark Mode option values`
 
 ```swift
-public enum DarkModeOption: Int, CustomStringConvertible
+public enum DarkModeOption: Int
 {
     case auto = 0
-    case on = 1
-    case off = 2
-
-    /// ... other code
+    case on   = 1
+    case off  = 2
 }
 ```
 
@@ -88,8 +119,8 @@ public enum DarkModeOption: Int, CustomStringConvertible
 public enum SystemStyle: Int
 {
     case unspecified = 0
-    case light = 1
-    case dark = 2
+    case light       = 1
+    case dark        = 2
 }
 ```
 
@@ -107,9 +138,40 @@ public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
 | **.light**       | light     | dark | light |
 | **.dark**        | dark      | dark | light |
 
-In case if dark mode is auto and system style is .unspecified, default value is applied for iOS 12 and eariler, but for iOS 13 and higher, device system appearance mode is applied.
+In case if dark mode is auto and system style is .unspecified, default value is applied for iOS 12 and eariler, but, for iOS 13 and higher, device system appearance mode is applied.
 
-## Switching Dark Mode <a name="section3"></a>
+`Appearance style`
+
+Dark Mode decision table makes decision on Appearance style that can be either light or dark.
+
+```swift
+public enum AppearanceStyle: Int
+{
+    case light = 0
+    case dark  = 1
+}
+```
+
+Apps that are based on Perseus Dark Mode rely on AppearanceStyle as a business matter value available for accessing via UIResponder extension.
+
+```swift
+import UIKit
+import PerseusDarkMode
+
+class MyView: UIView 
+{ 
+    func functionName() 
+    { 
+        print("\(self.DarkMode.Style)")
+    } 
+}
+```
+
+---
+
+## 4. Switching Dark Mode <a name="section3"></a>
+
+---
 
 `Case: Manually`
 
@@ -161,7 +223,11 @@ public class UIWindowAdaptable: UIWindow
 }
 ```
 
-## Catching Dark Mode triggered <a name="section4"></a>
+---
+
+## 5. Catching Dark Mode triggered <a name="section4"></a>
+
+---
 
 `Case: Using KVO`
 
@@ -187,6 +253,8 @@ observer?.action =
 To get notified by NotificationCenter your object should be registered with AppearanceService
 
 ```swift
+import UIKit
+
 class MyView: UIView 
 { 
     @objc func makeUp() 
@@ -205,7 +273,11 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 AppearanceService.makeUp()
 ```
 
-## Sample Use Case of Dark Mode <a name="section5"></a>
+---
+
+## 6. Sample Use Case of Dark Mode <a name="section5"></a>
+
+---
 
 Declare UIWindowAdaptable window to get system Dark Mode automatically
 
@@ -304,7 +376,11 @@ class MemberTableViewCell: UITableViewCell
 }
 ```
 
-## Sample Use Case of Adapted System UI <a name="section6"></a>
+---
+
+## 7. Sample Use Case of Adapted System UI <a name="section6"></a>
+
+---
 
 ```swift
 import AdaptedSystemUI
@@ -313,44 +389,62 @@ let view = UIView()
 view.backgroundColor = .systemBlue_Adapted
 ```
 
-In case if you ever need certain color of Dark Mode sensitive color use the line of code below.
+In case if you ever need a certain color of a Dark Mode sensitive color use the line of code below.
 
 ```swift
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
-## List of Adapted Colors <a name="section7"></a>
+---
 
-### Adapted system colors <a name="subSection1"></a>
+# 8. List of Adapted Colors <a name="section7"></a>
 
 ---
 
-Origin system colors like MINT, CYAN, and BROWN are not released in SDK but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)
-
-| RGBA Light       | RGBA Dark        | UIKit API Adapted     | Light             | Dark              |
-| :----------------| :--------------- | :-------------------- | :---------------: | :---------------: |
-| 255, 59, 48, 1   | 255, 69, 58, 1   | .systemRed_Adapted    | ![#FF3B30FF](https://via.placeholder.com/50/FF3B30FF/000000?text=+) | ![#FF453AFF](https://via.placeholder.com/50/FF453AFF/000000?text=+) |
-| 255, 149, 0, 1   | 255, 159, 10, 1  | .systemOrange_Adapted | ![#FF9500FF](https://via.placeholder.com/50/FF9500FF/000000?text=+) | ![#FF9F0AFF](https://via.placeholder.com/50/FF9F0AFF/000000?text=+) |
-| 255, 204, 0, 1   | 255, 214, 10, 1  | .systemYellow_Adapted | ![#FFCC00FF](https://via.placeholder.com/50/FFCC00FF/000000?text=+) | ![#FFD60AFF](https://via.placeholder.com/50/FFD60AFF/000000?text=+) |
-| 52, 199, 89, 1   | 48, 209, 88, 1   | .systemGreen_Adapted  | ![#34C759FF](https://via.placeholder.com/50/34C759FF/000000?text=+) | ![#30D158FF](https://via.placeholder.com/50/30D158FF/000000?text=+) |
-| 0, 199, 190, 1   | 102, 212, 207, 1 | .systemMint_Adapted   | ![#00C7BEFF](https://via.placeholder.com/50/00C7BEFF/000000?text=+) | ![#66D4CFFF](https://via.placeholder.com/50/66D4CFFF/000000?text=+) |
-| 90, 200, 250, 1  | 100, 210, 255, 1  | .systemTeal_Adapted   | ![#5AC8FAFF](https://via.placeholder.com/50/5AC8FAFF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
-| 50, 173, 230, 1  | 100, 210, 255, 1 | .systemCyan_Adapted   | ![#32ADE6FF](https://via.placeholder.com/50/32ADE6FF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
-| 0, 122, 255, 1   | 10, 132, 255, 1  | .systemBlue_Adapted   | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0A84FFFF](https://via.placeholder.com/50/0A84FFFF/000000?text=+) |
-| 88, 86, 214, 1   | 94, 92, 230, 1   | .systemIndigo_Adapted | ![#5856D6FF](https://via.placeholder.com/50/5856D6FF/000000?text=+) | ![#5E5CE6FF](https://via.placeholder.com/50/5E5CE6FF/000000?text=+) |
-| 175, 82, 222, 1  | 191, 90, 242, 1  | .systemPurple_Adapted | ![#AF52DEFF](https://via.placeholder.com/50/AF52DEFF/000000?text=+) | ![#BF5AF2FF](https://via.placeholder.com/50/BF5AF2FF/000000?text=+) |
-| 255, 45, 85, 1   | 255, 55, 95, 1   | .systemPink_Adapted   | ![#FF2D55FF](https://via.placeholder.com/50/FF2D55FF/000000?text=+) | ![#FF375FFF](https://via.placeholder.com/50/FF375FFF/000000?text=+) |
-| 162, 132, 94, 1  | 172, 142, 104, 1 | .systemBrown_Adapted  | ![#A2845EFF](https://via.placeholder.com/50/A2845EFF/000000?text=+) | ![#AC8E68FF](https://via.placeholder.com/50/AC8E68FF/000000?text=+) |
-| 142, 142, 147, 1 | 142, 142, 147, 1 | .systemGray_Adapted   | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) |
-| 174, 174, 178, 1 | 99, 99, 102, 1   | .systemGray2_Adapted  | ![#AEAEB2FF](https://via.placeholder.com/50/AEAEB2FF/000000?text=+) | ![#636366FF](https://via.placeholder.com/50/636366FF/000000?text=+) |
-| 199, 199, 204, 1 | 72, 72, 74, 1    | .systemGray3_Adapted  | ![#C7C7CCFF](https://via.placeholder.com/50/C7C7CCFF/000000?text=+) | ![#48484AFF](https://via.placeholder.com/50/48484AFF/000000?text=+) |
-| 209, 209, 214, 1 | 58, 58, 60, 1    | .systemGray4_Adapted  | ![#D1D1D6FF](https://via.placeholder.com/50/D1D1D6FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
-| 229, 229, 234, 1 | 44, 44, 46, 1    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
-| 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
+## 8.1 Introductory remarks <a name="subSection1"></a>
 
 ---
 
-### Adapted semantic colors <a name="subSection2"></a>
+System colors MINT, CYAN, and BROWN are not released in SDK, but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
+
+SDK (iOS 13.7) system color TEAL has a different value than that presented in the official specification.
+
+Specification TEAL RGBA: 64, 200, 224 in Dark.
+
+SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark.
+
+Adapted System UI library uses SDK version of TEAL color for sure.
+
+---
+
+## 8.2. Table 1. Adapted system colors <a name="subSection2"></a>
+
+---
+
+| RGBA Light    | RGBA Dark     | UIKit API Adapted     | Light             | Dark              |
+| :-------------| :------------ | :-------------------- | :---------------: | :---------------: |
+| 255, 59, 48   | 255, 69, 58   | .systemRed_Adapted    | ![#FF3B30FF](https://via.placeholder.com/50/FF3B30FF/000000?text=+) | ![#FF453AFF](https://via.placeholder.com/50/FF453AFF/000000?text=+) |
+| 255, 149, 0   | 255, 159, 10  | .systemOrange_Adapted | ![#FF9500FF](https://via.placeholder.com/50/FF9500FF/000000?text=+) | ![#FF9F0AFF](https://via.placeholder.com/50/FF9F0AFF/000000?text=+) |
+| 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | ![#FFCC00FF](https://via.placeholder.com/50/FFCC00FF/000000?text=+) | ![#FFD60AFF](https://via.placeholder.com/50/FFD60AFF/000000?text=+) |
+| 52, 199, 89   | 48, 209, 88   | .systemGreen_Adapted  | ![#34C759FF](https://via.placeholder.com/50/34C759FF/000000?text=+) | ![#30D158FF](https://via.placeholder.com/50/30D158FF/000000?text=+) |
+| 0, 199, 190   | 102, 212, 207 | .systemMint_Adapted   | ![#00C7BEFF](https://via.placeholder.com/50/00C7BEFF/000000?text=+) | ![#66D4CFFF](https://via.placeholder.com/50/66D4CFFF/000000?text=+) |
+| 90, 200, 250  | 100, 210, 255 | .systemTeal_Adapted   | ![#5AC8FAFF](https://via.placeholder.com/50/5AC8FAFF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
+| 50, 173, 230  | 100, 210, 255 | .systemCyan_Adapted   | ![#32ADE6FF](https://via.placeholder.com/50/32ADE6FF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
+| 0, 122, 255   | 10, 132, 255  | .systemBlue_Adapted   | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0A84FFFF](https://via.placeholder.com/50/0A84FFFF/000000?text=+) |
+| 88, 86, 214   | 94, 92, 230   | .systemIndigo_Adapted | ![#5856D6FF](https://via.placeholder.com/50/5856D6FF/000000?text=+) | ![#5E5CE6FF](https://via.placeholder.com/50/5E5CE6FF/000000?text=+) |
+| 175, 82, 222  | 191, 90, 242  | .systemPurple_Adapted | ![#AF52DEFF](https://via.placeholder.com/50/AF52DEFF/000000?text=+) | ![#BF5AF2FF](https://via.placeholder.com/50/BF5AF2FF/000000?text=+) |
+| 255, 45, 85   | 255, 55, 95   | .systemPink_Adapted   | ![#FF2D55FF](https://via.placeholder.com/50/FF2D55FF/000000?text=+) | ![#FF375FFF](https://via.placeholder.com/50/FF375FFF/000000?text=+) |
+| 162, 132, 94  | 172, 142, 104 | .systemBrown_Adapted  | ![#A2845EFF](https://via.placeholder.com/50/A2845EFF/000000?text=+) | ![#AC8E68FF](https://via.placeholder.com/50/AC8E68FF/000000?text=+) |
+| 142, 142, 147 | 142, 142, 147 | .systemGray_Adapted   | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) |
+| 174, 174, 178 | 99, 99, 102   | .systemGray2_Adapted  | ![#AEAEB2FF](https://via.placeholder.com/50/AEAEB2FF/000000?text=+) | ![#636366FF](https://via.placeholder.com/50/636366FF/000000?text=+) |
+| 199, 199, 204 | 72, 72, 74    | .systemGray3_Adapted  | ![#C7C7CCFF](https://via.placeholder.com/50/C7C7CCFF/000000?text=+) | ![#48484AFF](https://via.placeholder.com/50/48484AFF/000000?text=+) |
+| 209, 209, 214 | 58, 58, 60    | .systemGray4_Adapted  | ![#D1D1D6FF](https://via.placeholder.com/50/D1D1D6FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
+| 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
+| 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
+
+---
+
+## 8.3 Table 2. Adapted semantic colors <a name="subSection3"></a>
 
 ---
 
@@ -384,7 +478,9 @@ Origin system colors like MINT, CYAN, and BROWN are not released in SDK but pres
 | 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
 
-# License <a name="license"></a>
+---
+
+# 9. License <a name="license"></a>
 
 Copyright © 2022 Mikhail Zhigulin
 
