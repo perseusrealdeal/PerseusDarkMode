@@ -17,13 +17,16 @@ public class AppearanceService
 {
     // MARK: - Properties
     
-    public static var isEnabled       : Bool { _isEnabled }
+    public static var isEnabled        : Bool { _isEnabled }
     
-    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
+    /// Used to make possible applying Black White approach
+    private(set) static var _isEnabled : Bool = false { willSet { if newValue == false { return }}}
+    /// Used to reduce double calling of traitCollectionDidChange
+    internal static var _changeManually: Bool = false
     
     #if DEBUG // Isolated for unit testing
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
-    public static var ud: UserDefaultsProtocol = UserDefaults.standard
+    public static var ud     : UserDefaultsProtocol = UserDefaults.standard
     #else
     public static var nCenter = NotificationCenter.default
     public static var ud = UserDefaults.standard
@@ -38,10 +41,6 @@ public class AppearanceService
     
     public static func register(observer: Any, selector: Selector)
     {
-        #if DEBUG
-        // print(">> [\(type(of: self))]." + #function)
-        #endif
-        
         nCenter.addObserver(observer,
                             selector: selector,
                             name    : .makeAppearanceUpStatement,
@@ -53,11 +52,24 @@ public class AppearanceService
     public static func makeUp()
     {
         _isEnabled = true
-        
-        recalculateStyleIfNeeded()
+        _changeManually = true
         
         if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
         
+        recalculateStyleIfNeeded()
+        
+        nCenter.post(name: .makeAppearanceUpStatement, object: nil)
+        _changeManually = false
+    }
+    
+    internal static func _systemCalledMakeUp()
+    {
+        //print(#function)
+        if _changeManually { return }
+        
+        _isEnabled = true
+        
+        recalculateStyleIfNeeded()
         nCenter.post(name: .makeAppearanceUpStatement, object: nil)
     }
     
@@ -83,6 +95,7 @@ public class AppearanceService
         {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
             
+            // Used for KVO to immediately notify that change has happened
             recalculateStyleIfNeeded()
         }
     }
@@ -97,18 +110,36 @@ public class AppearanceService
     @available(iOS 13.0, *)
     internal static func overrideUserInterfaceStyleIfNeeded()
     {
+        if _changeManually == false { return }
+        
         if let keyWindow = UIApplication.shared.keyWindow
         {
+            var overrideStyle: UIUserInterfaceStyle = .unspecified
+            
             switch DarkModeUserChoice
             {
             case .auto:
-                keyWindow.overrideUserInterfaceStyle = .unspecified
+                overrideStyle = .unspecified
+                
             case .on:
-                keyWindow.overrideUserInterfaceStyle = .dark
+                overrideStyle = .dark
+                
             case .off:
-                keyWindow.overrideUserInterfaceStyle = .light
+                overrideStyle = .light
             }
+            
+            keyWindow.overrideUserInterfaceStyle = overrideStyle
         }
+    }
+}
+
+// Local helpers
+
+extension UserDefaults
+{
+    public func valueExists(forKey key: String) -> Bool
+    {
+        return object(forKey: key) != nil
     }
 }
 

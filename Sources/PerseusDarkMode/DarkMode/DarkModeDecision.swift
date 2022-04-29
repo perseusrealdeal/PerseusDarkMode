@@ -28,6 +28,8 @@ public class DarkModeDecision
     /// System style  .dark                         dark              dark              light
     /// — — — — — — — — — — — — — — — — — — — — — — — — —
     ///
+    /// Cases where system style is .unspecified happen only if iOS ealy then 13
+    ///
     public class func calculate(_ userChoice : DarkModeOption,
                                 _ systemStyle: SystemStyle) -> AppearanceStyle
     {

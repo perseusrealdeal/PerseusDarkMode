@@ -118,6 +118,9 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemMint_Adapted: UIColor
     {
+        //
+        // .systemMint is not available in SDK
+        //
         let color = AppearanceService.shared.Style == .light ?
             
             rgba255(0, 199, 190) : rgba255(102, 212, 207)
@@ -130,16 +133,32 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemTeal_Adapted: UIColor
     {
+        // Gives unexpected color in iOS 13 and higher.
+        //
+        // Tested on iOS 13.7.
+        //
+        // Specification RGBA: 48, 176, 199 in Light.
+        // Specification RGBA: 64, 200, 224 in Dark.
+        //
+        // But it doesn't meet SDK .systemTeal certain color value in iOS 13 and higher.
+        //
+        // LINK to .systemTeal color specification:
+        // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
+        //
+        // So, SDK version is used for sure.
+        // SDK version has been extracted from iOS 13.7.
+        
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(48, 176, 199) : rgba255(64, 200, 224)
+                rgba255(90, 200, 250) : rgba255(100, 210, 255)
             
             return color
         }
         
         return .systemTeal
+        
     }
     
     ///
@@ -147,6 +166,9 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemCyan_Adapted: UIColor
     {
+        //
+        // .systemCyan is not available in SDK
+        //
         let color = AppearanceService.shared.Style == .light ?
             
             rgba255(50, 173, 230) : rgba255(100, 210, 255)
@@ -227,6 +249,9 @@ extension UIColor: UISystemColorsAdapted
     ///
     public static var systemBrown_Adapted: UIColor
     {
+        //
+        // .systemBrown is not available in SDK
+        //
         let color = AppearanceService.shared.Style == .light ?
             
             rgba255(162, 132, 94) : rgba255(172, 142, 104)

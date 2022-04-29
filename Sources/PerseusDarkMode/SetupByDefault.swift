@@ -14,24 +14,15 @@ public class UIWindowAdaptable: UIWindow
 {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
     {
-        guard #available(iOS 13.0, *) else { return }
+        if AppearanceService._changeManually { return }
         
-        AppearanceService.overrideUserInterfaceStyleIfNeeded()
+        super.traitCollectionDidChange(previousTraitCollection)
         
-        guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+        guard #available(iOS 13.0, *),
+              let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
               previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
         else { return }
         
-        AppearanceService.makeUp()
-    }
-}
-
-// Local helpers
-
-extension UserDefaults
-{
-    public func valueExists(forKey key: String) -> Bool
-    {
-        return object(forKey: key) != nil
+        AppearanceService._systemCalledMakeUp()
     }
 }
