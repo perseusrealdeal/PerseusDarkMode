@@ -14,29 +14,28 @@ Have a look of demo app, source code is [here](https://github.com/perseusrealdea
 
 PART I - [Perseus Dark Mode Library](#part_I)
 
-1. [Introductory remarks](#section1)
-2. [Build tools](#section2)
-3. [Solution key statements](#section3)
-4. [Dark Mode table decision](#section4)
-5. [Switching Dark Mode](#section5)
-6. [Catching Dark Mode triggered](#section6)
-7. [Sample Use Case of Dark Mode](#section7)
-8. [Sample Use Case of Adapted System UI](#section8)
+[Introductory remarks](#section1)
+1. [Build tools](#section2)
+2. [Solution key statements](#section3)
+3. [Dark Mode table decision](#section4)
+4. [Switching Dark Mode](#section5)
+5. [Catching Dark Mode triggered](#section6)
+6. [Sample Use Case of Dark Mode](#section7)
+7. [Sample Use Case of Adapted System UI](#section8)
 
 PART II - [Adapted System UI Library](#part_II)
 
-1. [Introductory remarks](#section1_II)
-2. [List of Adapted Colors](#section2_II)
-    + [Table 1. Adapted system colors](#subSection1)
-    + [Table 2. Adapted semantic colors](#subSection2)
+[Introductory remarks](#section1_II)
+1. [Table 1. Adapted system colors](#subSection1)
+2. [Table 2. Adapted semantic colors](#subSection2)
 
 [License](#license)
 
 ---
 
-# Perseus Dark Mode Library <a name="part_I"></a>
+# PART I - Perseus Dark Mode Library <a name="part_I"></a>
 
-## 1. Introductory remarks <a name="section1"></a>
+## Introductory remarks <a name="section1"></a>
 
 Perseus Dark Mode is a swift package. Starting with iOS 13 Apple Inc. introduced Dark Mode on system level and now all apps are sensitive to this user option.
 
@@ -46,7 +45,7 @@ Using this solution allows you design the code of your app applying the Apple's 
 
 This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
 
-## 2. Build tools <a name="section2"></a>
+## 1. Build tools <a name="section2"></a>
 
 Tools used for designing the solution:
 + Xcode 12.5
@@ -55,7 +54,7 @@ Tools used for designing the solution:
 + Simulator iPhone 8 (iOS 13.7, 17H22)
 + Simulator iPhone 12 mini (iOS 14.5, 18E182)
 
-## 3. Solution key statements <a name="section3"></a>
+## 2. Solution key statements <a name="section3"></a>
 
 `Dark Mode is a Singleton object`
 
@@ -89,7 +88,7 @@ extension DarkMode: DarkModeProtocol { }
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 ```
 
-## 4. Dark Mode table decision <a name="section4"></a>
+## 3. Dark Mode table decision <a name="section4"></a>
 
 `Dark Mode option values`
 
@@ -156,7 +155,7 @@ class MyView: UIView
 }
 ```
 
-## 5. Switching Dark Mode <a name="section5"></a>
+## 4. Switching Dark Mode <a name="section5"></a>
 
 `Case: Manually`
 
@@ -208,7 +207,7 @@ public class UIWindowAdaptable: UIWindow
 }
 ```
 
-## 6. Catching Dark Mode triggered <a name="section6"></a>
+## 5. Catching Dark Mode triggered <a name="section6"></a>
 
 `Case: Using KVO`
 
@@ -254,7 +253,7 @@ Use AppearanceService.makeUp() to call all selected makeUp methods
 AppearanceService.makeUp()
 ```
 
-## 7. Sample Use Case of Dark Mode <a name="section7"></a>
+## 6. Sample Use Case of Dark Mode <a name="section7"></a>
 
 Declare UIWindowAdaptable window to get system Dark Mode automatically
 
@@ -353,7 +352,7 @@ class MemberTableViewCell: UITableViewCell
 }
 ```
 
-## 8. Sample Use Case of Adapted System UI <a name="section8"></a>
+## 7. Sample Use Case of Adapted System UI <a name="section8"></a>
 
 ```swift
 import AdaptedSystemUI
@@ -368,9 +367,9 @@ In case if you ever need a certain color of a Dark Mode sensitive color use the 
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
-# Adapted System UI Library <a name="part_II"></a>
+# PART II - Adapted System UI Library <a name="part_II"></a>
 
-## 1. Introductory remarks <a name="section1_II"></a>
+## Introductory remarks <a name="section1_II"></a>
 
 System colors MINT, CYAN, and BROWN are not released in SDK, but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
 
@@ -381,8 +380,6 @@ Specification TEAL RGBA: 64, 200, 224 in Dark.
 SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark.
 
 Adapted System UI library uses SDK version of TEAL color for sure.
-
-# 2. List of Adapted Colors <a name="section2_II"></a>
 
 ## Table 1. Adapted system colors <a name="subSection1"></a>
 
