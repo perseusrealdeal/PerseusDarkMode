@@ -32,12 +32,18 @@
 
 import UIKit
 
-// MARK: - Appearance service
+// MARK: - Constants
 
 public extension Notification.Name
 {
     static let makeAppearanceUpStatement = Notification.Name("makeAppearanceUpStatement")
 }
+
+public let DARK_MODE_USER_CHOICE_OPTION_KEY = "DarkModeUserChoiceOptionKey"
+public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
+public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
+
+// MARK: - Appearance service
 
 public class AppearanceService
 {
@@ -158,6 +164,8 @@ public class AppearanceService
         }
     }
 }
+
+// MARK: - Dark Mode
 
 public class DarkMode: NSObject
 {
@@ -287,41 +295,6 @@ public class DarkModeObserver: NSObject
     }
 }
 
-
-// Local helpers
-
-extension UserDefaults
-{
-    public func valueExists(forKey key: String) -> Bool
-    {
-        return object(forKey: key) != nil
-    }
-}
-
-
-// MARK: - Base installation
-
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
-
-public class UIWindowAdaptable: UIWindow
-{
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-    {
-        if AppearanceService._changeManually { return }
-        
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        guard #available(iOS 13.0, *),
-              let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-              previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
-        else { return }
-        
-        AppearanceService._systemCalledMakeUp()
-    }
-}
-
-// MARK: - Perseus Dark Mode base classes
-
 public enum DarkModeOption: Int, CustomStringConvertible
 {
     case auto = 0
@@ -379,6 +352,29 @@ public enum SystemStyle: Int, CustomStringConvertible
     }
 }
 
+// MARK: - Setting Dark Mode Up by default
+
+public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
+
+public class UIWindowAdaptable: UIWindow
+{
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+    {
+        if AppearanceService._changeManually { return }
+        
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        guard #available(iOS 13.0, *),
+              let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+              previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
+        else { return }
+        
+        AppearanceService._systemCalledMakeUp()
+    }
+}
+
+// MARK: - Dark Mode Image View
+
 public class DarkModeImageView: UIImageView
 {
     private(set) var darkModeObserver = DarkModeObserver(AppearanceService.shared)
@@ -396,51 +392,7 @@ public class DarkModeImageView: UIImageView
     }
 }
 
-
-// MARK: - Constants
-
-public let DARK_MODE_USER_CHOICE_OPTION_KEY = "DarkModeUserChoiceOptionKey"
-public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
-public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
-
-// MARK: - Adapted System UI
-
-public func rgba255(_ red  : CGFloat,
-                    _ green: CGFloat,
-                    _ blue : CGFloat,
-                    _ alpha: CGFloat = 1.0) -> UIColor
-{
-    return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
-}
-
-public extension UIColor
-{
-    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return (red*255, green*255, blue*255, alpha)
-    }
-}
-
-extension UIColor
-{
-    ///
-    /// Used only for unit testing to take control of selecting a color scheme.
-    ///
-    /// If it is true and if #available(iOS 13.0, *) is also true, the branch with the color scheme for iOS 13 and higher will be selected,
-    /// otherwise if it is false the color scheme for iOS 12 and lower will be selected at any way.
-    ///
-    internal static var _iOS13InUseAndHigherOnly: Bool = true
-}
-
-
-// MARK: System colors
+// MARK: Adapted System Colors Requirements
 
 public protocol UISystemColorsAdapted
 {
@@ -472,6 +424,8 @@ public protocol UISystemColorsAdapted
     static var systemGray5_Adapted : UIColor { get }
     static var systemGray6_Adapted : UIColor { get }
 }
+
+// MARK: - Adapted System Colors
 
 extension UIColor: UISystemColorsAdapted
 {
@@ -792,8 +746,7 @@ extension UIColor: UISystemColorsAdapted
     }
 }
 
-
-// MARK: Semantic colors
+// MARK: Adapted Semantic Colors Requirements
 
 public protocol UISemanticColorsAdapted
 {
@@ -846,6 +799,8 @@ public protocol UISemanticColorsAdapted
     static var tertiarySystemGroupedBackground_Adapted : UIColor { get }
     
 }
+
+// MARK: Adapted Semantic Colors
 
 extension UIColor: UISemanticColorsAdapted
 {
@@ -1127,7 +1082,7 @@ extension UIColor: UISemanticColorsAdapted
     }
 }
 
-// MARK: Protocols used for unit testing
+// MARK: - Protocols used for unit testing
 
 public protocol NotificationCenterProtocol
 {
@@ -1147,11 +1102,6 @@ public protocol UserDefaultsProtocol
     func setValue(_ value: Any?, forKey key: String)
 }
 
-extension UserDefaults      : UserDefaultsProtocol { }
-extension NotificationCenter: NotificationCenterProtocol { }
-
-// MARK: Protocols used for unit testing
-
 public protocol DarkModeProtocol
 {
     var Style                  : AppearanceStyle { get }
@@ -1160,4 +1110,50 @@ public protocol DarkModeProtocol
     dynamic var StyleObservable: Int { get }
 }
 
-extension DarkMode: DarkModeProtocol { }
+extension UserDefaults      : UserDefaultsProtocol { }
+extension NotificationCenter: NotificationCenterProtocol { }
+extension DarkMode          : DarkModeProtocol { }
+
+// MARK: - Other helpers
+
+public func rgba255(_ red  : CGFloat,
+                    _ green: CGFloat,
+                    _ blue : CGFloat,
+                    _ alpha: CGFloat = 1.0) -> UIColor
+{
+    return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+}
+
+public extension UIColor
+{
+    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (red*255, green*255, blue*255, alpha)
+    }
+}
+
+extension UIColor
+{
+    ///
+    /// Used only for unit testing to take control of selecting a color scheme.
+    ///
+    /// If it is true and if #available(iOS 13.0, *) is also true, the branch with the color scheme for iOS 13 and higher will be selected,
+    /// otherwise if it is false the color scheme for iOS 12 and lower will be selected at any way.
+    ///
+    internal static var _iOS13InUseAndHigherOnly: Bool = true
+}
+
+extension UserDefaults
+{
+    public func valueExists(forKey key: String) -> Bool
+    {
+        return object(forKey: key) != nil
+    }
+}

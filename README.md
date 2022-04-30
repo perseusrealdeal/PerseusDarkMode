@@ -15,7 +15,7 @@ Have a look of demo app, source code is [here](https://github.com/perseusrealdea
 PART I - [Perseus Dark Mode Library](#part_I)
 
 [Introductory remarks](#section1)
-1. [Build tools](#section2)
+1. [Build tools & Installation](#section2)
 2. [Solution key statements](#section3)
 3. [Dark Mode table decision](#section4)
 4. [Switching Dark Mode](#section5)
@@ -45,7 +45,7 @@ Using this solution allows you design the code of your app applying the Apple's 
 
 This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
 
-## 1. Build tools <a name="section2"></a>
+## 1. Build tools & Installation <a name="section2"></a>
 
 Tools used for designing the solution:
 + Xcode 12.5
@@ -53,6 +53,10 @@ Tools used for designing the solution:
 + Simulator iPhone 5s (iOS 11.4, 15F79) 
 + Simulator iPhone 8 (iOS 13.7, 17H22)
 + Simulator iPhone 12 mini (iOS 14.5, 18E182)
+
+The solution can be used via `swift package manager` and as a `standalone single file`.
+
+`PerseusDarkModeSingle.swift` located in the package root is dedicated for the standalone usage, copy and past it into your project.
 
 ## 2. Solution key statements <a name="section3"></a>
 
