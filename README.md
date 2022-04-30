@@ -6,10 +6,10 @@ Perseus Dark Mode && Adapted System UI
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
-[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-success.svg)](https://github.com/perseusrealdeal/DarkMode/blob/f4d106e98d7fa51a08f44dca7bb4e56d85e70eb5/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-yellowgreen.svg)](https://github.com/perseusrealdeal/DarkMode/blob/f4d106e98d7fa51a08f44dca7bb4e56d85e70eb5/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-green.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
@@ -24,7 +24,8 @@ PART I - [Perseus Dark Mode Library](#part_I)
 4. [Switching Dark Mode](#section5)
 5. [Catching Dark Mode triggered](#section6)
 6. [Sample Use Case of Dark Mode](#section7)
-7. [Sample Use Case of Adapted System UI](#section8)
+7. [Sample Use Case of DarkModeImageView](#section8)
+8. [Sample Use Case of Adapted System UI](#section9)
 
 PART II - [Adapted System UI Library](#part_II)
 
@@ -359,7 +360,20 @@ class MemberTableViewCell: UITableViewCell
 }
 ```
 
-## 7. Sample Use Case of Adapted System UI <a name="section8"></a>
+## 7. Sample Use Case of DarkModeImageView <a name="section8"></a>
+
+DarkModeImageView shows a quite light release of a dynamic image idea that is sensetive to Dark Mode.
+
+```swift
+import UIKit
+import PerseusDarkMode
+
+var image = DarkModeImageView()
+
+image.setUp(UIImage(named: "ImageNameForLight"), UIImage(named: "ImageNameForDark"))
+```
+
+## 8. Sample Use Case of Adapted System UI <a name="section9"></a>
 
 ```swift
 import AdaptedSystemUI
