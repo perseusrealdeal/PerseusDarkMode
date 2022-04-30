@@ -8,6 +8,8 @@ Perseus Dark Mode && Adapted System UI
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![Standalone File](https://img.shields.io/badge/Standalone%20File-available-success.svg)](https://github.com/perseusrealdeal/DarkMode/blob/f4d106e98d7fa51a08f44dca7bb4e56d85e70eb5/PerseusDarkModeSingle.swift)
+[![Demo App](https://img.shields.io/badge/Demo%20App-available-green.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
+
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
