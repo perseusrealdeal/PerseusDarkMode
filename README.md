@@ -7,6 +7,7 @@ Perseus Dark Mode && Adapted System UI
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-success.svg)](https://github.com/perseusrealdeal/DarkMode/blob/f4d106e98d7fa51a08f44dca7bb4e56d85e70eb5/PerseusDarkModeSingle.swift)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
@@ -56,7 +57,7 @@ Tools used for designing the solution:
 
 The solution can be used via `swift package manager` and as a `standalone single file`.
 
-`PerseusDarkModeSingle.swift` located in the package root is dedicated for the standalone usage, copy and past it into your project.
+File `PerseusDarkModeSingle.swift` located in the package root is dedicated for the standalone usage, copy and past it into your project.
 
 ## 2. Solution key statements <a name="section3"></a>
 
