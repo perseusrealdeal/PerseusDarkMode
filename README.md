@@ -52,13 +52,12 @@ This package consists of two libraries. Main is Perseus Dark Mode and satellite 
 ## 1. Build tools & Installation <a name="section2"></a>
 
 Tools used for designing the solution:
-+ Xcode 12.5
++ Xcode 13.3.1
 + Device iPod Touch iOS 9.3.5 (5th, 13G36) 
-+ Simulator iPhone 5s (iOS 11.4, 15F79) 
-+ Simulator iPhone 8 (iOS 13.7, 17H22)
-+ Simulator iPhone 12 mini (iOS 14.5, 18E182)
++ Device iPad Air iOS 12.5.5 (iPad4,2 model, 16H62)
++ Simulator iPhone 12 mini (iOS 15.4, 19E240)
 
-The solution can be used via `swift package manager` and as a `standalone single file`.
+The solution can be used via `swift package manager` and as a `standalone single file` as well.
 
 File `PerseusDarkModeSingle.swift` located in the package root is dedicated for the standalone usage, copy and past it into your project.
 
