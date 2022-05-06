@@ -4,12 +4,12 @@
 //
 //  Created by Mikhail Zhigulin on 30.04.2022.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin. All rights reserved.
+//  Copyright © 2022 Mikhail Zhigulin. All rights reserved.
 //
 //
 //  MIT License
 //
-//  Copyright (c) 2022 Mikhail Zhigulin
+//  Copyright © 2022 Mikhail Zhigulin
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
