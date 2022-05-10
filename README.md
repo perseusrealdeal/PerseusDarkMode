@@ -188,7 +188,7 @@ And do not forget call makeUp() if you want to be notified via NotificationCente
 
 `Case: Via System`
 
-To match the system apperance mode call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow). The sample is below:
+To match the system appearance mode call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow). The sample is below:
 
 ```swift
 import UIKit
@@ -365,7 +365,7 @@ class MainViewController: UIViewController
 
 `In addition to sample use case`
 
-If your view or view controller is declared as lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering:
+If your view or view controller is declared as a lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering:
 
 ```swift
 if AppearanceService.isEnabled { makeUp() }
