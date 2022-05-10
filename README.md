@@ -163,18 +163,9 @@ class MyView: UIView
 
 `Case: Manually`
 
-Inside your app there is only one way to let it know that you'd like to change Dark Mode.
+Inside your app there is only one way to let it know that you'd like to change Dark Mode. Use DarkModeUserChoice hosted as a property in AppearanceService to assign the value of Dark Mode you want.
 
-Use DarkModeUserChoice hosted as a property in AppearanceService to assign the value of Dark Mode you want.
-
-```swift
-public class AppearanceService
-{
-    public static var DarkModeUserChoice: DarkModeOption
-}
-```
-
-So, in your code it should look like this
+So, in your code it should look like this:
 
 ```swift
 let choice = DarkModeOption.auto
@@ -188,7 +179,7 @@ And do not forget call makeUp() if you want to be notified via NotificationCente
 
 `Case: Via System`
 
-To match the system appearance mode call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow). The sample is below:
+To match the system appearance mode call `AppearanceService.processTraitCollectionDidChange(_:)` method once in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow). The sample is below:
 
 ```swift
 import UIKit
@@ -459,7 +450,7 @@ let view = UIView()
 view.backgroundColor = .systemBlue_Adapted
 ```
 
-In case if there will be any need in certain color of a Dark Mode sensitive color use the line of code below.
+In case if there will be any need in certain color of a Dark Mode sensitive color use the line of code below:
 
 ```swift
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
@@ -473,13 +464,15 @@ Colors listed in this section, table 1 and 2, represent colors specified by [the
 
 Not all system colors have been started available from iOS 13.0, color `.systemBrown` available only from iOS 15.0 for example.
 
-Details of semantic colors have been exctructed from iOS 15.4, see table 2.
+RGBA details of semantic colors have been exctracted from iOS 15.4, see table 2.
 
 There is an interesting case with `.systemTeal` color. In iOS 13 the difference between the official specification and what's on the screen takes place.
 
-Specification TEAL RGBA: 64, 200, 224 in Dark.
-
-SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark, but it meets specification in iOS 15.4.
+| .systemTeal   | RGBA Light    | RGBA Dark     |
+| :------------ | :------------ |:------------- |
+| Specification | 48, 176, 199  | 64, 200, 224  |
+| iOS 13.7      | 90, 200, 250  | 100, 210, 255 |
+| iOS 15.4      | 48, 176, 199  | 64, 200, 224  |
 
 Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
 
