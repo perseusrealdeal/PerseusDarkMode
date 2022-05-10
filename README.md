@@ -1,12 +1,12 @@
 Perseus Dark Mode && Adapted System UI
 ======================================
-![Version](https://img.shields.io/badge/Version-1.0.0-success.svg)
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-[![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/049e0430a40f2675618b5a7269c1aace402fbb82/LICENSE)
+![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)
-![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
+![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
+[![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/049e0430a40f2675618b5a7269c1aace402fbb82/LICENSE)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
