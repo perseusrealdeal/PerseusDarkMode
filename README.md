@@ -188,7 +188,7 @@ And do not forget call makeUp() if you want to be notified via NotificationCente
 
 `Case: Via System`
 
-It is possible if to call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow) and the app's appearance will be match the system apperance mood.
+To match the system apperance mode call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow). The sample is below:
 
 ```swift
 import UIKit
