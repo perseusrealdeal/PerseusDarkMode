@@ -1,91 +1,71 @@
 //
-// AppearanceService.swift
-// PerseusDarkMode
+//  AppearanceService.swift
+//  PerseusDarkMode
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
 #endif
 
+/// Make up notification name.
 public extension Notification.Name
 {
-    static let makeAppearanceUpStatement = Notification.Name("makeAppearanceUpStatement")
+    /// Notification name used for notifing the app's components to make appearance up via Notification center.
+    static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
 }
 
+/// The way to provide accessing to Dark Mode from any screen object.
+public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+
+/// Represents service responsible for giving a control of the app's appearance.
+///
+/// - This service is dedicated to handle Dark Mode changing.
+/// - The service is provided as a singleton across the app and used to take a cotrol of Dark Mode.
 public class AppearanceService
 {
-    // MARK: - Properties
-    
-    public static var isEnabled        : Bool { _isEnabled }
-    
-    /// Used to make possible applying Black White approach
-    private(set) static var _isEnabled : Bool = false { willSet { if newValue == false { return }}}
-    /// Used to reduce double calling of traitCollectionDidChange
-    internal static var _changeManually: Bool = false
-    
-    #if DEBUG // Isolated for unit testing
-    public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
-    public static var ud     : UserDefaultsProtocol = UserDefaults.standard
-    #else
-    public static var nCenter = NotificationCenter.default
-    public static var ud = UserDefaults.standard
-    #endif
-    
     // MARK: - Singleton
     
+    /// Shared Dark Mode.
     public static var shared: DarkMode = { DarkMode() } ()
     private init() { }
     
-    // MARK: - Public API: register subscriber
+    /// TRUE if Appearance.makeUp called otherwise FALSE.
+    ///
+    /// Value is false by default and changed only once when Appearance.makeUp called for the first time,
+    /// then always true in run time.
+    public static var isEnabled        : Bool { _isEnabled }
     
-    public static func register(observer: Any, selector: Selector)
-    {
-        nCenter.addObserver(observer,
-                            selector: selector,
-                            name    : .makeAppearanceUpStatement,
-                            object  : nil)
-    }
+#if DEBUG // Isolated for unit testing
+    /// Used for mocking NotificationCenter in unit testing.
+    public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
+    /// Used for mocking UserDefaults in unit testing.
+    public static var ud     : UserDefaultsProtocol = UserDefaults.standard
+#else
+    /// Default NotificationCenter.
+    public static var nCenter = NotificationCenter.default
+    /// Default UserDefaults.
+    public static var ud = UserDefaults.standard
+#endif
     
-    // MARK: - Public API: call each subscriber to adapt appearance
-    
-    public static func makeUp()
-    {
-        _isEnabled = true
-        _changeManually = true
-        
-        if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
-        
-        recalculateStyleIfNeeded()
-        
-        nCenter.post(name: .makeAppearanceUpStatement, object: nil)
-        _changeManually = false
-    }
-    
-    internal static func _systemCalledMakeUp()
-    {
-        //print(#function)
-        if _changeManually { return }
-        
-        _isEnabled = true
-        
-        recalculateStyleIfNeeded()
-        nCenter.post(name: .makeAppearanceUpStatement, object: nil)
-    }
-    
-    // MARK: - Dark Mode Style saved in UserDafaults
-    
+    /// User choice for Dark Mode inside the app.
+    ///
+    /// The service keeps the value in UserDefaults. It effects DarkMode.StyleObservable on every change.
     public static var DarkModeUserChoice: DarkModeOption
     {
         get
         {
-            // load enum int value
+            // Load enum Int value
             
             let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
                 ud.integer(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) :
                 DARK_MODE_USER_CHOICE_DEFAULT.rawValue
             
-            // try to cast int value to enum
+            // Try to cast Int value to enum
             
             if let result = DarkModeOption.init(rawValue: rawValue) { return result }
             
@@ -95,11 +75,82 @@ public class AppearanceService
         {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
             
-            // Used for KVO to immediately notify that change has happened
+            // Used for KVO to immediately notify a change has happened
             recalculateStyleIfNeeded()
         }
     }
     
+    // MARK: - Public API: register stakeholder
+    
+    /// Pre-registering stakeholders of a make up notification.
+    /// - Parameters:
+    ///   - stakeholder: Stakeholder of Appearance Style changed.
+    ///   - selector: Point to give a control for appearance changing.
+    public static func register(stakeholder: Any, selector: Selector)
+    {
+        nCenter.addObserver(stakeholder,
+                            selector: selector,
+                            name    : .makeAppearanceUpNotification,
+                            object  : nil)
+    }
+    
+    // MARK: - Public API: make the app's appearance up
+    
+    /// Let stakeholders know it's right time to make the app's appearance up.
+    ///
+    /// Should be called firstly when didFinishLaunching and then every time when DarkModeUserChoice changed.
+    public static func makeUp()
+    {
+        _isEnabled = true
+        _changeManually = true
+        
+        if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
+        
+        recalculateStyleIfNeeded()
+        
+        nCenter.post(name: .makeAppearanceUpNotification, object: nil)
+        _changeManually = false
+    }
+    
+    
+    /// Recalculate appearance style if traitCollectionDidChange.
+    ///
+    /// Should be called when user taggled System Appearance Mode in Settings app.
+    /// Call it in override func traitCollectionDidChange in the main screen.
+    ///
+    /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
+    @available(iOS 13.0, *)
+    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+    {
+        if _changeManually { return }
+        
+        guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+              previousSystemStyle.rawValue != shared.SystemStyle.rawValue
+        else { return }
+        
+        _systemCalledMakeUp()
+    }
+    
+    // MARK: - Implementation helpers, privates and internals
+    
+    /// Used to make possible applying Black White approach in Screen design.
+    private(set) static var _isEnabled : Bool = false { willSet { if newValue == false { return }}}
+    
+    /// Used to reduce double calling of traitCollectionDidChange.
+    internal static var _changeManually: Bool = false
+    
+    /// Make up if TraitCollectionDidChange.
+    internal static func _systemCalledMakeUp()
+    {
+        if _changeManually { return }
+        
+        _isEnabled = true
+        
+        recalculateStyleIfNeeded()
+        nCenter.post(name: .makeAppearanceUpNotification, object: nil)
+    }
+    
+    /// Update the app's appearance style value.
     internal static func recalculateStyleIfNeeded()
     {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
@@ -107,6 +158,9 @@ public class AppearanceService
         if shared._style != actualStyle { shared._style = actualStyle }
     }
     
+    /// Change the app's UserInterfaceStyle.
+    ///
+    /// It's matter to change the look of system user controls.
     @available(iOS 13.0, *)
     internal static func overrideUserInterfaceStyleIfNeeded()
     {
@@ -143,7 +197,7 @@ extension UserDefaults
     }
 }
 
-// MARK: Protocols used for unit testing
+// MARK: - Protocols used for unit testing
 
 public protocol NotificationCenterProtocol
 {

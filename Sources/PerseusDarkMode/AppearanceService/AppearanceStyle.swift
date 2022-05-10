@@ -1,18 +1,24 @@
 //
-// AppearanceStyle.swift
-// PerseusDarkMode
+//  AppearanceStyle.swift
+//  PerseusDarkMode
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
 #endif
 
+/// Represents appearance style.
 public enum AppearanceStyle: Int, CustomStringConvertible
 {
     case light = 0
     case dark  = 1
     
+    /// Textual represantation.
     public var description: String
     {
         switch self
@@ -25,12 +31,16 @@ public enum AppearanceStyle: Int, CustomStringConvertible
     }
 }
 
+/// Represents system appearance style.
+///
+/// Used to bring System Style to early iOS releases.
 public enum SystemStyle: Int, CustomStringConvertible
 {
     case unspecified = 0
     case light       = 1
     case dark        = 2
     
+    /// Textual represantation.
     public var description: String
     {
         switch self

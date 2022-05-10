@@ -1,8 +1,12 @@
 //
-// AppearanceServiceTests.swift
-// DarkModeTests
+//  AppearanceServiceTests.swift
+//  DarkModeTests
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
@@ -37,7 +41,7 @@ final class AppearanceServiceTests: XCTestCase
         
         // act
         
-        AppearanceService.register(observer: view, selector: #selector(view.makeUp))
+        AppearanceService.register(stakeholder: view, selector: #selector(view.makeUp))
         
         // assert
         
@@ -57,7 +61,7 @@ final class AppearanceServiceTests: XCTestCase
         
         // assert
         
-        mock.verifyPost(name: .makeAppearanceUpStatement)
+        mock.verifyPost(name: .makeAppearanceUpNotification)
         XCTAssertTrue(AppearanceService.isEnabled)
     }
 }

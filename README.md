@@ -30,8 +30,8 @@ PART I - [Perseus Dark Mode Library](#part_I)
 PART II - [Adapted System UI Library](#part_II)
 
 [Introductory remarks](#section1_II)
-1. [Table 1. Adapted system colors](#subSection1)
-2. [Table 2. Adapted semantic colors](#subSection2)
+1. [Table 1. Adapted system colors](#section2_II)
+2. [Table 2. Adapted semantic colors](#section3_II)
 
 [License](#license)
 
@@ -59,7 +59,7 @@ Tools used for designing the solution:
 
 The solution can be used via `swift package manager` and as a `standalone single file` as well.
 
-File `PerseusDarkModeSingle.swift` located in the package root is dedicated for the standalone usage, copy and past it into your project.
+File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage, copy and past it into your project tree.
 
 ## 2. Solution key statements <a name="section3"></a>
 
@@ -70,8 +70,6 @@ public class AppearanceService
 {
     public static var shared: DarkMode = { DarkMode() } ()
     private init() { }
-
-    /// ... other code
 }
 ```
 
@@ -89,10 +87,10 @@ public protocol DarkModeProtocol
 extension DarkMode: DarkModeProtocol { }
 ```
 
-`Dark Mode is hosted as a property`
+`Dark Mode is hosted as a property in a screen object`
 
 ```swift
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
+public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
 ```
 
 ## 3. Dark Mode table decision <a name="section4"></a>
@@ -121,7 +119,17 @@ public enum SystemStyle: Int
 
 `Dark Mode decision table`
 
-Dark Mode default value is light.
+Dark Mode decision table makes decision on `Appearance style` that can be either light or dark:
+
+```swift
+public enum AppearanceStyle: Int
+{
+    case light = 0
+    case dark  = 1
+}
+```
+
+Dark Mode default value is light:
 
 ```swift
 public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
@@ -133,24 +141,13 @@ public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
 | **.light**       | light     | dark | light |
 | **.dark**        | dark      | dark | light |
 
-In case if dark mode is auto and system style is .unspecified, default value is applied for iOS 12 and eariler, but, for iOS 13 and higher, device system appearance mode is applied.
+In case if dark mode option is in auto and system style is .unspecified, default value is applied for iOS 12 and eariler, but, for iOS 13 and higher, device system appearance mode is.
 
-`Appearance style`
-
-Dark Mode decision table makes decision on Appearance style that can be either light or dark.
-
-```swift
-public enum AppearanceStyle: Int
-{
-    case light = 0
-    case dark  = 1
-}
-```
-
-Apps that are based on Perseus Dark Mode rely on AppearanceStyle as a business matter value available for accessing via UIResponder extension.
+Apps that are based on Perseus Dark Mode rely on AppearanceStyle as a business matter value available for accessing via UIResponder extension:
 
 ```swift
 import UIKit
+
 import PerseusDarkMode
 
 class MyView: UIView 
@@ -174,8 +171,6 @@ Use DarkModeUserChoice hosted as a property in AppearanceService to assign the v
 public class AppearanceService
 {
     public static var DarkModeUserChoice: DarkModeOption
-
-    /// ... other code
 }
 ```
 
@@ -193,24 +188,39 @@ And do not forget call makeUp() if you want to be notified via NotificationCente
 
 `Case: Via System`
 
-Each time when system calls traitCollectionDidChange method, it happens if user taggled Dark Mode in Settings app, Dark Mode is recalculated automatically.
+It is possible if to call `AppearanceService.processTraitCollectionDidChange(_:)` method in `traitCollectionDidChange(_:)` of the main screen (UIViewController or UIWindow) and the app's appearance will be match the system apperance mood.
 
 ```swift
-public class UIWindowAdaptable: UIWindow
+import UIKit
+
+import PerseusDarkMode
+
+class MainViewController: UIViewController
 {
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+    override func viewDidLoad()
     {
-        if AppearanceService._changeManually { return }
+        super.viewDidLoad()
+        configure()
         
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+    {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        guard #available(iOS 13.0, *),
-              let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-              previousSystemStyle.rawValue != DarkMode.SystemStyle.rawValue
-        else { return }
-        
-        AppearanceService._systemCalledMakeUp()
+        if #available(iOS 13.0, *)
+        {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
     }
+    
+    @objc private func makeUp()
+    {
+        // Point to define a reaction of Dark Mode changed event is here
+    }
+
+    private func configure() { }
 }
 ```
 
@@ -218,26 +228,40 @@ public class UIWindowAdaptable: UIWindow
 
 `Case: Using KVO`
 
-Create an observer somewhere in your code like this
+Create an observer somewhere in your code like this:
 
 ```swift
- var observer:DarkModeObserver? = DarkModeObserver(AppearanceService.shared)
+ var observer: DarkModeObserver?
+ 
+ observer = DarkModeObserver()
 ```
 
-Then, give it a closure to run your code if Dark Mode changed
+Then, give it a closure to run your code each time when Dark Mode is changing:
 
 ```swift
+
 observer?.action = 
     { newStyle in 
         
-        /// Start define your reaction on Dark Mode changed from here
+        // Point to define a reaction of Dark Mode changed event is here
 
+    }
+```
+
+or like this:
+
+```swift
+observer = DarkModeObserver() 
+    { newStyle in
+    
+        // Point to define a reaction of Dark Mode changed event is here
+        
     }
 ```
 
 `Case: Getting informed by NotificationCenter`
 
-To get notified by NotificationCenter your object should be registered with AppearanceService
+To get notified by NotificationCenter your object should be registered with AppearanceService:
 
 ```swift
 import UIKit
@@ -246,26 +270,27 @@ class MyView: UIView
 { 
     @objc func makeUp() 
     { 
-        /// Start define your reaction on Dark Mode changed from here
+        // Point to define a reaction of Dark Mode changed event is here
     } 
 }
 let view = MyView()
 
-AppearanceService.register(observer: view, selector: #selector(view.makeUp))
+AppearanceService.register(stakeholder: view, selector: #selector(view.makeUp))
 ```
 
-Use AppearanceService.makeUp() to call all selected makeUp methods
+`Call AppearanceService.makeUp()`
+
+Use AppearanceService.makeUp() to call all selected makeUp methods:
 
 ```swift
 AppearanceService.makeUp()
 ```
 
-## 6. Sample Use Case of Dark Mode <a name="section7"></a>
-
-Declare UIWindowAdaptable window to get system Dark Mode automatically
+It should be called first time in `didFinishLaunchingWithOptions`:
 
 ```swift
 import UIKit
+
 import PerseusDarkMode
 
 class AppDelegate: UIResponder { var window: UIWindow? }
@@ -275,47 +300,62 @@ extension AppDelegate: UIApplicationDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
                      launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
-        window = UIWindowAdaptable(frame: UIScreen.main.bounds)
+        // Init the app's window
+        window = UIWindow(frame: UIScreen.main.bounds)
         
-        window!.rootViewController = MainViewController()
+        // Give it a root view for the first screen
+        window!.rootViewController = MainViewController.storyboardInstance()
         window!.makeKeyAndVisible()
         
+        // And, finally, apply a new style for all screens
         AppearanceService.makeUp()
         
         return true
     }
 }
+
 ```
 
-Then, let AppearanceService know that you want take a control of Dark Mode
+## 6. Sample Use Case of Dark Mode <a name="section7"></a>
 
 ```swift
 import UIKit
+
 import PerseusDarkMode
 import AdaptedSystemUI
 
 class MainViewController: UIViewController
 {
-    let darkModeObserver = DarkModeObserver(AppearanceService.shared)
+    let darkModeObserver = DarkModeObserver()
     
     override func viewDidLoad()
     {
-       super.viewDidLoad()
-        
-        AppearanceService.register(observer: self, selector: #selector(makeUp))
+        super.viewDidLoad()
         configure()
-
+        
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+        
         darkModeObserver.action =
             { newStyle in
 
-                /// Start define your reaction on Dark Mode changed from here
+                // Point to define a reaction of Dark Mode changed event is here
                 print("\(newStyle), \(self.DarkMode.Style)")
             }
     }
-
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+    {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *)
+        {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
+    }
+    
     @objc private func makeUp()
     {
-        /// Start define your reaction on Dark Mode changed from here
+        // Point to define a reaction of Dark Mode changed event is here
         view.backgroundColor = .systemRed_Adapted
     }
 
@@ -325,16 +365,17 @@ class MainViewController: UIViewController
 
 `In addition to sample use case`
 
-If your view or view controller is declared as lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering.
+If your view or view controller is declared as lazy one or a sub view like UITableViewCell it's not bad to add the following condition after registering:
 
 ```swift
 if AppearanceService.isEnabled { makeUp() }
 ```
 
-For instance, here is a definition of some exemplar of UITableViewCell
+For instance, here is a definition of some exemplar of UITableViewCell:
 
 ```swift
 import UIKit
+
 import PerseusDarkMode
 import AdaptedSystemUI
 
@@ -343,10 +384,9 @@ class MemberTableViewCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        
-        AppearanceService.register(observer: self, selector: #selector(makeUp))
         configure()
-
+        
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
         if AppearanceService.isEnabled { makeUp() }
     }
 
@@ -354,6 +394,7 @@ class MemberTableViewCell: UITableViewCell
 
     @objc private func makeUp()
     {
+        // Point to define a reaction of Dark Mode changed event is here
         backgroundColor = .systemGray_Adapted
     }
 }
@@ -361,27 +402,64 @@ class MemberTableViewCell: UITableViewCell
 
 ## 7. Sample Use Case of DarkModeImageView <a name="section8"></a>
 
-DarkModeImageView shows a quite light release of a dynamic image idea that is sensetive to Dark Mode.
+DarkModeImageView shows a quite light implementation of a dynamic image idea that is sensetive to Dark Mode.
 
 ```swift
 import UIKit
+
 import PerseusDarkMode
 
-var image = DarkModeImageView()
+let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
+var imageView = DarkModeImageView(frame: frame)
 
-image.setUp(UIImage(named: "ImageNameForLight"), UIImage(named: "ImageNameForDark"))
+image.configure(UIImage(named: "ImageNameForLight"), UIImage(named: "ImageNameForDark"))
+```
+
+Also, images for both light and dark styles can be setted up via Interface Builder using Attributes Inspector:
+
+```swift
+public class DarkModeImageView: UIImageView
+{
+    @IBInspectable
+    var imageLight: UIImage?
+    {
+        didSet
+        {
+            light = imageLight
+            image = AppearanceService.shared.Style == .light ? light : dark
+        }
+    }
+    
+    @IBInspectable
+    var imageDark : UIImage?
+    {
+        didSet
+        {
+            dark = imageDark
+            image = AppearanceService.shared.Style == .light ? light : dark
+        }
+    }
+    
+    private(set) var darkModeObserver: DarkModeObserver?
+    
+    private(set) var light: UIImage?
+    private(set) var dark: UIImage?
+    
+}
 ```
 
 ## 8. Sample Use Case of Adapted System UI <a name="section9"></a>
 
 ```swift
+import UIKit
+
 import AdaptedSystemUI
 
 let view = UIView()
 view.backgroundColor = .systemBlue_Adapted
 ```
 
-In case if you ever need a certain color of a Dark Mode sensitive color use the line of code below.
+In case if there will be any need in certain color of a Dark Mode sensitive color use the line of code below.
 
 ```swift
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
@@ -391,17 +469,23 @@ let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 
 ## Introductory remarks <a name="section1_II"></a>
 
-System colors MINT, CYAN, and BROWN are not released in SDK, but presented in the official specification [here](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
+Colors listed in this section, table 1 and 2, represent colors specified by [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
 
-SDK (iOS 13.7) system color TEAL has a different value than that presented in the official specification.
+Not all system colors have been started available from iOS 13.0, color `.systemBrown` available only from iOS 15.0 for example.
+
+Details of semantic colors have been exctructed from iOS 15.4, see table 2.
+
+There is an interesting case with `.systemTeal` color. In iOS 13 the difference between the official specification and what's on the screen takes place.
 
 Specification TEAL RGBA: 64, 200, 224 in Dark.
 
-SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark.
+SDK (iOS 13.7) TEAL RGBA: 100, 210, 255 in Dark, but it meets specification in iOS 15.4.
 
-Adapted System UI library uses SDK version of TEAL color for sure.
+Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
 
-## Table 1. Adapted system colors <a name="subSection1"></a>
+System colors `.systemMint`, `.systemCyan` and `.systemBrown` are not available in Xcode 12.5, only starting from 13.
+
+## Table 1. Adapted system colors <a name="section2_II"></a>
 
 | RGBA Light    | RGBA Dark     | UIKit API Adapted     | Light             | Dark              |
 | :-------------| :------------ | :-------------------- | :---------------: | :---------------: |
@@ -410,7 +494,7 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | ![#FFCC00FF](https://via.placeholder.com/50/FFCC00FF/000000?text=+) | ![#FFD60AFF](https://via.placeholder.com/50/FFD60AFF/000000?text=+) |
 | 52, 199, 89   | 48, 209, 88   | .systemGreen_Adapted  | ![#34C759FF](https://via.placeholder.com/50/34C759FF/000000?text=+) | ![#30D158FF](https://via.placeholder.com/50/30D158FF/000000?text=+) |
 | 0, 199, 190   | 102, 212, 207 | .systemMint_Adapted   | ![#00C7BEFF](https://via.placeholder.com/50/00C7BEFF/000000?text=+) | ![#66D4CFFF](https://via.placeholder.com/50/66D4CFFF/000000?text=+) |
-| 90, 200, 250  | 100, 210, 255 | .systemTeal_Adapted   | ![#5AC8FAFF](https://via.placeholder.com/50/5AC8FAFF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
+| 48, 176, 199  | 64, 200, 224  | .systemTeal_Adapted   | ![#30B0C7FF](https://via.placeholder.com/50/30B0C7FF/000000?text=+) | ![#40C8E0FF](https://via.placeholder.com/50/40C8E0FF/000000?text=+) |
 | 50, 173, 230  | 100, 210, 255 | .systemCyan_Adapted   | ![#32ADE6FF](https://via.placeholder.com/50/32ADE6FF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
 | 0, 122, 255   | 10, 132, 255  | .systemBlue_Adapted   | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0A84FFFF](https://via.placeholder.com/50/0A84FFFF/000000?text=+) |
 | 88, 86, 214   | 94, 92, 230   | .systemIndigo_Adapted | ![#5856D6FF](https://via.placeholder.com/50/5856D6FF/000000?text=+) | ![#5E5CE6FF](https://via.placeholder.com/50/5E5CE6FF/000000?text=+) |
@@ -424,7 +508,7 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 
-## Table 2. Adapted semantic colors <a name="subSection2"></a>
+## Table 2. Adapted semantic colors <a name="section3_II"></a>
 
 | RGBA Light        | RGBA Dark           | UIKit API Adapted | Light             | Dark              |
 | :---------------- | :------------------ | :---------------  | :---------------: | :---------------: |
@@ -433,7 +517,7 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 0, 0, 0, 1        | 255, 255, 255, 1    | .label_Adapted    | ![#000000FF](https://via.placeholder.com/50/000000FF/000000?text=+) | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) |
 | 60, 60, 67, 0.6   | 235, 235, 245, 0.6  | .secondaryLabel_Adapted  | ![#3C3C4399](https://via.placeholder.com/50/3C3C4399/000000?text=+) | ![#EBEBF599](https://via.placeholder.com/50/EBEBF599/000000?text=+) |
 | 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .tertiaryLabel_Adapted   | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) |
-| 60, 60, 67, 0.18  | 235, 235, 245, 0.18 | .quaternaryLabel_Adapted | ![#3C3C432E](https://via.placeholder.com/50/3C3C432E/000000?text=+) | ![#EBEBF52E](https://via.placeholder.com/50/EBEBF52E/000000?text=+) |
+| 60, 60, 67, 0.18  | 235, 235, 245, 0.16 | .quaternaryLabel_Adapted | ![#3C3C432E](https://via.placeholder.com/50/3C3C432E/000000?text=+) | ![#EBEBF529](https://via.placeholder.com/50/EBEBF529/000000?text=+) |
 | `Text`                                                             |
 | 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .placeholderText_Adapted | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) |
 | `Separator`                                                        |
@@ -448,17 +532,19 @@ Adapted System UI library uses SDK version of TEAL color for sure.
 | 116, 116, 128, 0.08 | 118, 118, 128, 0.18 | .quaternarySystemFill_Adapted | ![#74748014](https://via.placeholder.com/50/74748014/000000?text=+) | ![#7676802E](https://via.placeholder.com/50/7676802E/000000?text=+) |
 | **Background**                                                               |
 | `Standard`                                                                   |
-| 255, 255, 255, 1 | 28, 28, 30, 1    | .systemBackground_Adapted                 | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
+| 255, 255, 255, 1 | 28, 28, 30, 1    | .systemBackground_Adapted              | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 | 242, 242, 247, 1 | 44, 44, 46, 1 | .secondarySystemBackground_Adapted        | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 255, 255, 255, 1 | 58, 58, 60, 1 | .tertiarySystemBackground_Adapted         | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
 | `Grouped`                                                                    |
-| 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGroupedBackground_Adapted          | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
+| 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGroupedBackground_Adapted       | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
 | 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
 | 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
 
 # License <a name="license"></a>
 
-Copyright © 2022 Mikhail Zhigulin
+Copyright © 7530 Mikhail Zhigulin of Novosibirsk
+
+Where 7530 is the year from the cretion of the world according to a Slavic calendar.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

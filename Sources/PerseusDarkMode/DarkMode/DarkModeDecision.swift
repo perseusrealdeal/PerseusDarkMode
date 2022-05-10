@@ -1,34 +1,34 @@
 //
-// DarkModeDecision.swift
-// PerseusDarkMode
+//  DarkModeDecision.swift
+//  PerseusDarkMode
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
 #endif
 
-// MARK: - Calculations
-
+/// Makes a calculation of the app's appearance style.
 public class DarkModeDecision
 {
-    // MARK: - Private init
-    
     private init() { }
     
     // MARK: - Calculating Dark Mode decision
     
-    /// Decision table for Actual Style
+    /// Calculates the current appearance style of the app.
     ///
-    /// — — — — — — — — — — — — — — DarkModeOption — — — — —
-    /// — — — — — — — — — — — — auto — — — on — — — — off  — —
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
-    /// System style  .unspecified            default            dark              light
-    /// System style  .light                         light               dark              light
-    /// System style  .dark                         dark              dark              light
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
+    /// Dark Mode decision-making:
     ///
-    /// Cases where system style is .unspecified happen only if iOS ealy then 13
+    ///                    DarkModeOption
+    ///     SystemStyle  | auto    | on   | off
+    ///     -------------+---------+------+------
+    ///     .unspecified | default | dark | light
+    ///     .light       | light   | dark | light
+    ///     .dark        | dark    | dark | light
     ///
     public class func calculate(_ userChoice : DarkModeOption,
                                 _ systemStyle: SystemStyle) -> AppearanceStyle
