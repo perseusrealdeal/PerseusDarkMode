@@ -544,7 +544,7 @@ System colors `.systemMint`, `.systemCyan` and `.systemBrown` are not available 
 
 Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
 
-Where 7530 is the year from the cretion of the world according to a Slavic calendar.
+Where 7530 is the year from the creation of the world according to a Slavic calendar.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
