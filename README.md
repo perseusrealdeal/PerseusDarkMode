@@ -2,16 +2,16 @@ Perseus Dark Mode && Adapted System UI
 ======================================
 
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-[![License](http://img.shields.io/:LICENSE-MIT-blue.svg)](http://doge.mit-license.org)
+[![License](http://img.shields.io/:LICENSE-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/049e0430a40f2675618b5a7269c1aace402fbb82/LICENSE)
 ![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
 ![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-yellowgreen.svg)](https://github.com/perseusrealdeal/DarkMode/blob/f4d106e98d7fa51a08f44dca7bb4e56d85e70eb5/PerseusDarkModeSingle.swift)
-[![Demo App](https://img.shields.io/badge/Demo%20App-available-green.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
-
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
+
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/049e0430a40f2675618b5a7269c1aace402fbb82/PerseusDarkModeSingle.swift)
+[![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 
 # Table of contents
 
