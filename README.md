@@ -242,7 +242,7 @@ observer?.action =
 or like this:
 
 ```swift
-observer = DarkModeObserver() 
+var observer = DarkModeObserver() 
     { newStyle in
     
         // Point to define a reaction of Dark Mode changed event is here
@@ -436,6 +436,7 @@ public class DarkModeImageView: UIImageView
     private(set) var light: UIImage?
     private(set) var dark: UIImage?
     
+    // ...
 }
 ```
 
@@ -450,7 +451,7 @@ let view = UIView()
 view.backgroundColor = .systemBlue_Adapted
 ```
 
-In case if there will be any need in certain color of a Dark Mode sensitive color use the line of code below:
+In case if a certain color of a Dark Mode sensitive color required use the line of code below:
 
 ```swift
 let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
@@ -464,9 +465,9 @@ Colors listed in this section, table 1 and 2, represent colors specified by [the
 
 - Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
 
-- System colors `.systemMint`, `.systemCyan` and `.systemBrown` are not available in Xcode 12.5, only starting from 13.
+- System colors `.systemMint`, `.systemCyan`, and `.systemBrown` are not available in Xcode 12.5, only starting from 13.
 
-There is an interesting case with `.systemTeal` color. The difference between the official specification and what's on the screen takes place in iOS 13, have a look of the extraction below:
+There is an interesting case with `.systemTeal` color. The difference between [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/) and what's on the screen takes place in iOS 13, have a look of the extraction below:
 
 | .systemTeal   | RGBA Light    | RGBA Dark     |
 | :------------ | :------------ |:------------- |
