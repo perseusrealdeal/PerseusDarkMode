@@ -460,13 +460,13 @@ let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 
 ## Introductory remarks <a name="section1_II"></a>
 
-Colors listed in this section, table 1 and 2, represent colors specified by [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/).
+Colors listed in this section, table 1 and 2, represent colors specified by [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/). But, not all system colors have been started available from iOS 13.0, color `.systemBrown` available only from iOS 15.0 for example. RGBA details of semantic colors have been exctracted from iOS 15.4, see table 2.
 
-Not all system colors have been started available from iOS 13.0, color `.systemBrown` available only from iOS 15.0 for example.
+- Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
 
-RGBA details of semantic colors have been exctracted from iOS 15.4, see table 2.
+- System colors `.systemMint`, `.systemCyan` and `.systemBrown` are not available in Xcode 12.5, only starting from 13.
 
-There is an interesting case with `.systemTeal` color. In iOS 13 the difference between the official specification and what's on the screen takes place.
+There is an interesting case with `.systemTeal` color. The difference between the official specification and what's on the screen takes place in iOS 13, have a look of the extraction below:
 
 | .systemTeal   | RGBA Light    | RGBA Dark     |
 | :------------ | :------------ |:------------- |
@@ -474,9 +474,7 @@ There is an interesting case with `.systemTeal` color. In iOS 13 the difference 
 | iOS 13.7      | 90, 200, 250  | 100, 210, 255 |
 | iOS 15.4      | 48, 176, 199  | 64, 200, 224  |
 
-Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
-
-System colors `.systemMint`, `.systemCyan` and `.systemBrown` are not available in Xcode 12.5, only starting from 13.
+One way to bridge the gap appearing with `.systemTeal` is using the customised color. Technique of customising colors is widely used in [demo app](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
 ## Table 1. Adapted system colors <a name="section2_II"></a>
 
