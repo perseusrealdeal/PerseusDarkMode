@@ -208,7 +208,7 @@ class MainViewController: UIViewController
     
     @objc private func makeUp()
     {
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
     }
 
     private func configure() { }
@@ -234,7 +234,7 @@ Then, give it a closure to run your code each time when Dark Mode is changing:
 observer?.action = 
     { newStyle in 
         
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
 
     }
 ```
@@ -245,7 +245,7 @@ or like this:
 var observer = DarkModeObserver() 
     { newStyle in
     
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
         
     }
 ```
@@ -261,7 +261,7 @@ class MyView: UIView
 { 
     @objc func makeUp() 
     { 
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
     } 
 }
 let view = MyView()
@@ -329,7 +329,7 @@ class MainViewController: UIViewController
         darkModeObserver.action =
             { newStyle in
 
-                // Point to define a reaction of Dark Mode changed event is here
+                // Point to define a reaction to Dark Mode event is here
                 print("\(newStyle), \(self.DarkMode.Style)")
             }
     }
@@ -346,7 +346,7 @@ class MainViewController: UIViewController
     
     @objc private func makeUp()
     {
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
         view.backgroundColor = .systemRed_Adapted
     }
 
@@ -385,7 +385,7 @@ class MemberTableViewCell: UITableViewCell
 
     @objc private func makeUp()
     {
-        // Point to define a reaction of Dark Mode changed event is here
+        // Point to define a reaction to Dark Mode event is here
         backgroundColor = .systemGray_Adapted
     }
 }
@@ -461,7 +461,7 @@ let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 
 ## Introductory remarks <a name="section1_II"></a>
 
-Colors listed in this section, table 1 and 2, represent colors specified by [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/). But, not all system colors have been started available from iOS 13.0, color `.systemBrown` available only from iOS 15.0 for example. RGBA details of semantic colors have been exctracted from iOS 15.4, see table 2.
+Colors listed in this section, table 1 and 2, represent colors specified by [the official specification](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/). But, not all system colors have been started available from iOS 13.0, colors `.systemMint` and `.systemCyan` available only from iOS 15.0. RGBA details of semantic colors have been exctracted from iOS 15.4, see table 2.
 
 - Adapted System UI library uses SDK color for sure starting from iOS 13 and the specification for early iOS releases.
 
