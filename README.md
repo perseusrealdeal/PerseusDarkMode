@@ -479,58 +479,58 @@ One way to bridge the gap appearing with `.systemTeal` is using the customised c
 
 ## Table 1. Adapted system colors <a name="section2_II"></a>
 
-| RGBA Light    | RGBA Dark     | UIKit API Adapted     | Light             | Dark              |
-| :-------------| :------------ | :-------------------- | :---------------: | :---------------: |
-| 255, 59, 48   | 255, 69, 58   | .systemRed_Adapted    | ![#FF3B30FF](https://via.placeholder.com/50/FF3B30FF/000000?text=+) | ![#FF453AFF](https://via.placeholder.com/50/FF453AFF/000000?text=+) |
-| 255, 149, 0   | 255, 159, 10  | .systemOrange_Adapted | ![#FF9500FF](https://via.placeholder.com/50/FF9500FF/000000?text=+) | ![#FF9F0AFF](https://via.placeholder.com/50/FF9F0AFF/000000?text=+) |
-| 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | ![#FFCC00FF](https://via.placeholder.com/50/FFCC00FF/000000?text=+) | ![#FFD60AFF](https://via.placeholder.com/50/FFD60AFF/000000?text=+) |
-| 52, 199, 89   | 48, 209, 88   | .systemGreen_Adapted  | ![#34C759FF](https://via.placeholder.com/50/34C759FF/000000?text=+) | ![#30D158FF](https://via.placeholder.com/50/30D158FF/000000?text=+) |
-| 0, 199, 190   | 102, 212, 207 | .systemMint_Adapted   | ![#00C7BEFF](https://via.placeholder.com/50/00C7BEFF/000000?text=+) | ![#66D4CFFF](https://via.placeholder.com/50/66D4CFFF/000000?text=+) |
-| 48, 176, 199  | 64, 200, 224  | .systemTeal_Adapted   | ![#30B0C7FF](https://via.placeholder.com/50/30B0C7FF/000000?text=+) | ![#40C8E0FF](https://via.placeholder.com/50/40C8E0FF/000000?text=+) |
-| 50, 173, 230  | 100, 210, 255 | .systemCyan_Adapted   | ![#32ADE6FF](https://via.placeholder.com/50/32ADE6FF/000000?text=+) | ![#64D2FFFF](https://via.placeholder.com/50/64D2FFFF/000000?text=+) |
-| 0, 122, 255   | 10, 132, 255  | .systemBlue_Adapted   | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0A84FFFF](https://via.placeholder.com/50/0A84FFFF/000000?text=+) |
-| 88, 86, 214   | 94, 92, 230   | .systemIndigo_Adapted | ![#5856D6FF](https://via.placeholder.com/50/5856D6FF/000000?text=+) | ![#5E5CE6FF](https://via.placeholder.com/50/5E5CE6FF/000000?text=+) |
-| 175, 82, 222  | 191, 90, 242  | .systemPurple_Adapted | ![#AF52DEFF](https://via.placeholder.com/50/AF52DEFF/000000?text=+) | ![#BF5AF2FF](https://via.placeholder.com/50/BF5AF2FF/000000?text=+) |
-| 255, 45, 85   | 255, 55, 95   | .systemPink_Adapted   | ![#FF2D55FF](https://via.placeholder.com/50/FF2D55FF/000000?text=+) | ![#FF375FFF](https://via.placeholder.com/50/FF375FFF/000000?text=+) |
-| 162, 132, 94  | 172, 142, 104 | .systemBrown_Adapted  | ![#A2845EFF](https://via.placeholder.com/50/A2845EFF/000000?text=+) | ![#AC8E68FF](https://via.placeholder.com/50/AC8E68FF/000000?text=+) |
-| 142, 142, 147 | 142, 142, 147 | .systemGray_Adapted   | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) | ![#8E8E93FF](https://via.placeholder.com/50/8E8E93FF/000000?text=+) |
-| 174, 174, 178 | 99, 99, 102   | .systemGray2_Adapted  | ![#AEAEB2FF](https://via.placeholder.com/50/AEAEB2FF/000000?text=+) | ![#636366FF](https://via.placeholder.com/50/636366FF/000000?text=+) |
-| 199, 199, 204 | 72, 72, 74    | .systemGray3_Adapted  | ![#C7C7CCFF](https://via.placeholder.com/50/C7C7CCFF/000000?text=+) | ![#48484AFF](https://via.placeholder.com/50/48484AFF/000000?text=+) |
-| 209, 209, 214 | 58, 58, 60    | .systemGray4_Adapted  | ![#D1D1D6FF](https://via.placeholder.com/50/D1D1D6FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
-| 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | ![#E5E5EAFF](https://via.placeholder.com/50/E5E5EAFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
-| 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
+| RGBA Light    | RGBA Dark     | UIKit API Adapted     | HEX Light | HEX Dark  |
+| :-------------| :------------ | :-------------------- | :-------: | :-------: |
+| 255, 59, 48   | 255, 69, 58   | .systemRed_Adapted    | #FF3B30FF | #FF453AFF |
+| 255, 149, 0   | 255, 159, 10  | .systemOrange_Adapted | #FF9500FF | #FF9F0AFF |
+| 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | #FFCC00FF | #FFD60AFF |
+| 52, 199, 89   | 48, 209, 88   | .systemGreen_Adapted  | #34C759FF | #30D158FF |
+| 0, 199, 190   | 102, 212, 207 | .systemMint_Adapted   | #00C7BEFF | #66D4CFFF |
+| 48, 176, 199  | 64, 200, 224  | .systemTeal_Adapted   | #30B0C7FF | #40C8E0FF |
+| 50, 173, 230  | 100, 210, 255 | .systemCyan_Adapted   | #32ADE6FF | #64D2FFFF |
+| 0, 122, 255   | 10, 132, 255  | .systemBlue_Adapted   | #007AFFFF | #0A84FFFF |
+| 88, 86, 214   | 94, 92, 230   | .systemIndigo_Adapted | #5856D6FF | #5E5CE6FF |
+| 175, 82, 222  | 191, 90, 242  | .systemPurple_Adapted | #AF52DEFF | #BF5AF2FF |
+| 255, 45, 85   | 255, 55, 95   | .systemPink_Adapted   | #FF2D55FF | #FF375FFF |
+| 162, 132, 94  | 172, 142, 104 | .systemBrown_Adapted  | #A2845EFF | #AC8E68FF |
+| 142, 142, 147 | 142, 142, 147 | .systemGray_Adapted   | #8E8E93FF | #8E8E93FF |
+| 174, 174, 178 | 99, 99, 102   | .systemGray2_Adapted  | #AEAEB2FF | #636366FF |
+| 199, 199, 204 | 72, 72, 74    | .systemGray3_Adapted  | #C7C7CCFF | #48484AFF |
+| 209, 209, 214 | 58, 58, 60    | .systemGray4_Adapted  | #D1D1D6FF | #3A3A3CFF |
+| 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | #E5E5EAFF | #2C2C2EFF |
+| 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | #F2F2F7FF | #1C1C1EFF |
 
 ## Table 2. Adapted semantic colors <a name="section3_II"></a>
 
-| RGBA Light        | RGBA Dark           | UIKit API Adapted | Light             | Dark              |
-| :---------------- | :------------------ | :---------------  | :---------------: | :---------------: |
-| **Foreground**                                              |
-| `Label`                                                     |
-| 0, 0, 0, 1        | 255, 255, 255, 1    | .label_Adapted    | ![#000000FF](https://via.placeholder.com/50/000000FF/000000?text=+) | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) |
-| 60, 60, 67, 0.6   | 235, 235, 245, 0.6  | .secondaryLabel_Adapted  | ![#3C3C4399](https://via.placeholder.com/50/3C3C4399/000000?text=+) | ![#EBEBF599](https://via.placeholder.com/50/EBEBF599/000000?text=+) |
-| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .tertiaryLabel_Adapted   | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) |
-| 60, 60, 67, 0.18  | 235, 235, 245, 0.16 | .quaternaryLabel_Adapted | ![#3C3C432E](https://via.placeholder.com/50/3C3C432E/000000?text=+) | ![#EBEBF529](https://via.placeholder.com/50/EBEBF529/000000?text=+) |
+| RGBA Light        | RGBA Dark           | UIKit API Adapted        | HEX Light | HEX Dark  |
+| :---------------- | :------------------ | :----------------------- | :-------: | :-------: |
+| **Foreground**                                                     |
+| `Label`                                                            |
+| 0, 0, 0, 1        | 255, 255, 255, 1    | .label_Adapted           | #000000FF | #FFFFFFFF |
+| 60, 60, 67, 0.6   | 235, 235, 245, 0.6  | .secondaryLabel_Adapted  | #3C3C4399 | #EBEBF599 |
+| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .tertiaryLabel_Adapted   | #3C3C434D | #EBEBF54D |
+| 60, 60, 67, 0.18  | 235, 235, 245, 0.16 | .quaternaryLabel_Adapted | #3C3C432E | #EBEBF529 |
 | `Text`                                                             |
-| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .placeholderText_Adapted | ![#3C3C434D](https://via.placeholder.com/50/3C3C434D/000000?text=+) | ![#EBEBF54D](https://via.placeholder.com/50/EBEBF54D/000000?text=+) |
+| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .placeholderText_Adapted | #3C3C434D | #EBEBF54D |
 | `Separator`                                                        |
-| 60, 60, 67, 0.29  | 84, 84, 88, 0.6     | .separator_Adapted       | ![#3C3C434A](https://via.placeholder.com/50/3C3C434A/000000?text=+) | ![#54545899](https://via.placeholder.com/50/54545899/000000?text=+) |
-| 198, 198, 200, 1  | 56, 56, 58, 1       | .opaqueSeparator_Adapted | ![#C6C6C8FF](https://via.placeholder.com/50/C6C6C8FF/000000?text=+) | ![#38383AFF](https://via.placeholder.com/50/38383AFF/000000?text=+) |
+| 60, 60, 67, 0.29  | 84, 84, 88, 0.6     | .separator_Adapted       | #3C3C434A | #54545899 |
+| 198, 198, 200, 1  | 56, 56, 58, 1       | .opaqueSeparator_Adapted | #C6C6C8FF | #38383AFF |
 | `Link`                                                             |
-| 0, 122, 255, 1    | 9, 132, 255, 1      | .link_Adapted            | ![#007AFFFF](https://via.placeholder.com/50/007AFFFF/000000?text=+) | ![#0984FFFF](https://via.placeholder.com/50/0984FFFF/000000?text=+) |
+| 0, 122, 255, 1    | 9, 132, 255, 1      | .link_Adapted            | #007AFFFF | #0984FFFF |
 | `Fill`                                                                    |
-| 120, 120, 128, 0.2  | 120, 120, 128, 0.36 | .systemFill_Adapted           | ![#78788033](https://via.placeholder.com/50/78788033/000000?text=+) | ![#7878805C](https://via.placeholder.com/50/7878805C/000000?text=+) |
-| 120, 120, 128, 0.16 | 120, 120, 128, 0.32 | .secondarySystemFill_Adapted  | ![#78788029](https://via.placeholder.com/50/78788029/000000?text=+) | ![#78788052](https://via.placeholder.com/50/78788052/000000?text=+) |
-| 118, 118, 128, 0.12 | 118, 118, 128, 0.24 | .tertiarySystemFill_Adapted   | ![#7676801F](https://via.placeholder.com/50/7676801F/000000?text=+) | ![#7676803D](https://via.placeholder.com/50/7676803D/000000?text=+) |
-| 116, 116, 128, 0.08 | 118, 118, 128, 0.18 | .quaternarySystemFill_Adapted | ![#74748014](https://via.placeholder.com/50/74748014/000000?text=+) | ![#7676802E](https://via.placeholder.com/50/7676802E/000000?text=+) |
+| 120, 120, 128, 0.2  | 120, 120, 128, 0.36 | .systemFill_Adapted           | #78788033 | #7878805C |
+| 120, 120, 128, 0.16 | 120, 120, 128, 0.32 | .secondarySystemFill_Adapted  | #78788029 | #78788052 |
+| 118, 118, 128, 0.12 | 118, 118, 128, 0.24 | .tertiarySystemFill_Adapted   | #7676801F | #7676803D |
+| 116, 116, 128, 0.08 | 118, 118, 128, 0.18 | .quaternarySystemFill_Adapted | #74748014 | #7676802E |
 | **Background**                                                               |
 | `Standard`                                                                   |
-| 255, 255, 255, 1 | 28, 28, 30, 1    | .systemBackground_Adapted              | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
-| 242, 242, 247, 1 | 44, 44, 46, 1 | .secondarySystemBackground_Adapted        | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
-| 255, 255, 255, 1 | 58, 58, 60, 1 | .tertiarySystemBackground_Adapted         | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
+| 255, 255, 255, 1 | 28, 28, 30, 1 | .systemBackground_Adapted                 | #FFFFFFFF | #1C1C1EFF |
+| 242, 242, 247, 1 | 44, 44, 46, 1 | .secondarySystemBackground_Adapted        | #F2F2F7FF | #2C2C2EFF |
+| 255, 255, 255, 1 | 58, 58, 60, 1 | .tertiarySystemBackground_Adapted         | #FFFFFFFF | #3A3A3CFF |
 | `Grouped`                                                                    |
-| 242, 242, 247, 1 | 28, 28, 30, 1    | .systemGroupedBackground_Adapted       | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#1C1C1EFF](https://via.placeholder.com/50/1C1C1EFF/000000?text=+) |
-| 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | ![#FFFFFFFF](https://via.placeholder.com/50/FFFFFFFF/000000?text=+) | ![#2C2C2EFF](https://via.placeholder.com/50/2C2C2EFF/000000?text=+) |
-| 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | ![#F2F2F7FF](https://via.placeholder.com/50/F2F2F7FF/000000?text=+) | ![#3A3A3CFF](https://via.placeholder.com/50/3A3A3CFF/000000?text=+) |
+| 242, 242, 247, 1 | 28, 28, 30, 1 | .systemGroupedBackground_Adapted          | #F2F2F7FF | #1C1C1EFF |
+| 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | #FFFFFFFF | #2C2C2EFF |
+| 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | #F2F2F7FF | #3A3A3CFF |
 
 # License <a name="license"></a>
 
