@@ -477,10 +477,12 @@ There is an interesting case with `.systemTeal` color. The difference between [t
 
 One way to bridge the gap appearing with `.systemTeal` is using the customised color. Technique of customising colors is widely used in [demo app](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
+In fact the actual color values provided below in table 1 and 2 may fluctuate from System release to release but for early System releases the colors adapted follow the specification as is.
+
 ## Table 1. Adapted system colors <a name="section2_II"></a>
 
 | RGBA Light    | RGBA Dark     | UIKit API Adapted     | HEX Light | HEX Dark  |
-| :-------------| :------------ | :-------------------- | :-------: | :-------: |
+| --------------| ------------- | :-------------------- | :-------: | :-------: |
 | 255, 59, 48   | 255, 69, 58   | .systemRed_Adapted    | #FF3B30FF | #FF453AFF |
 | 255, 149, 0   | 255, 159, 10  | .systemOrange_Adapted | #FF9500FF | #FF9F0AFF |
 | 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | #FFCC00FF | #FFD60AFF |
@@ -503,7 +505,7 @@ One way to bridge the gap appearing with `.systemTeal` is using the customised c
 ## Table 2. Adapted semantic colors <a name="section3_II"></a>
 
 | RGBA Light        | RGBA Dark           | UIKit API Adapted        | HEX Light | HEX Dark  |
-| :---------------- | :------------------ | :----------------------- | :-------: | :-------: |
+| ----------------- | ------------------- | :----------------------- | :-------: | :-------: |
 | **Foreground**                                                     |
 | `Label`                                                            |
 | 0, 0, 0, 1        | 255, 255, 255, 1    | .label_Adapted           | #000000FF | #FFFFFFFF |
