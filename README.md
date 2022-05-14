@@ -2,9 +2,9 @@ Perseus Dark Mode && Adapted System UI
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
 ![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)
-![Platform](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)
-![SDK](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)
-![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)
+[![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
+[![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
+[![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
@@ -59,7 +59,7 @@ Tools used for designing the solution:
 
 The solution can be used via `swift package manager` and as a `standalone single file` as well.
 
-File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage, copy and past it into your project tree.
+File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage—can be copied and pasted into a host project tree under the same [license](#license).
 
 ## 2. Solution key statements <a name="section3"></a>
 
@@ -481,58 +481,58 @@ In fact the actual color values provided below in table 1 and 2 may fluctuate fr
 
 ## Table 1. Adapted system colors <a name="section2_II"></a>
 
-| RGBA Light    | RGBA Dark     | UIKit API Adapted     | HEX Light | HEX Dark  |
-| --------------| ------------- | :-------------------- | :-------: | :-------: |
-| 255, 59, 48   | 255, 69, 58   | .systemRed_Adapted    | #FF3B30FF | #FF453AFF |
-| 255, 149, 0   | 255, 159, 10  | .systemOrange_Adapted | #FF9500FF | #FF9F0AFF |
-| 255, 204, 0   | 255, 214, 10  | .systemYellow_Adapted | #FFCC00FF | #FFD60AFF |
-| 52, 199, 89   | 48, 209, 88   | .systemGreen_Adapted  | #34C759FF | #30D158FF |
-| 0, 199, 190   | 102, 212, 207 | .systemMint_Adapted   | #00C7BEFF | #66D4CFFF |
-| 48, 176, 199  | 64, 200, 224  | .systemTeal_Adapted   | #30B0C7FF | #40C8E0FF |
-| 50, 173, 230  | 100, 210, 255 | .systemCyan_Adapted   | #32ADE6FF | #64D2FFFF |
-| 0, 122, 255   | 10, 132, 255  | .systemBlue_Adapted   | #007AFFFF | #0A84FFFF |
-| 88, 86, 214   | 94, 92, 230   | .systemIndigo_Adapted | #5856D6FF | #5E5CE6FF |
-| 175, 82, 222  | 191, 90, 242  | .systemPurple_Adapted | #AF52DEFF | #BF5AF2FF |
-| 255, 45, 85   | 255, 55, 95   | .systemPink_Adapted   | #FF2D55FF | #FF375FFF |
-| 162, 132, 94  | 172, 142, 104 | .systemBrown_Adapted  | #A2845EFF | #AC8E68FF |
-| 142, 142, 147 | 142, 142, 147 | .systemGray_Adapted   | #8E8E93FF | #8E8E93FF |
-| 174, 174, 178 | 99, 99, 102   | .systemGray2_Adapted  | #AEAEB2FF | #636366FF |
-| 199, 199, 204 | 72, 72, 74    | .systemGray3_Adapted  | #C7C7CCFF | #48484AFF |
-| 209, 209, 214 | 58, 58, 60    | .systemGray4_Adapted  | #D1D1D6FF | #3A3A3CFF |
-| 229, 229, 234 | 44, 44, 46    | .systemGray5_Adapted  | #E5E5EAFF | #2C2C2EFF |
-| 242, 242, 247 | 28, 28, 30    | .systemGray6_Adapted  | #F2F2F7FF | #1C1C1EFF |
+| RGBA Light                 | RGBA Dark                  | UIKit API Adapted     |
+| :------------------------- | :------------------------- | :-------------------- |
+| 255, 59, 48<br>#FF3B30FF   | 255, 69, 58<br>#FF453AFF   | .systemRed_Adapted    |
+| 255, 149, 0<br>#FF9500FF   | 255, 159, 10<br>#FF9F0AFF  | .systemOrange_Adapted |
+| 255, 204, 0<br>#FFCC00FF   | 255, 214, 10<br>#FFD60AFF  | .systemYellow_Adapted |
+| 52, 199, 89<br>#34C759FF   | 48, 209, 88<br>#30D158FF   | .systemGreen_Adapted  |
+| 0, 199, 190<br>#00C7BEFF   | 102, 212, 207<br>#66D4CFFF | .systemMint_Adapted   |
+| 48, 176, 199<br>#30B0C7FF  | 64, 200, 224<br>#40C8E0FF  | .systemTeal_Adapted   |
+| 50, 173, 230<br>#32ADE6FF  | 100, 210, 255<br>#64D2FFFF | .systemCyan_Adapted   |
+| 0, 122, 255<br>#007AFFFF   | 10, 132, 255<br>#0A84FFFF  | .systemBlue_Adapted   |
+| 88, 86, 214<br>#5856D6FF   | 94, 92, 230<br>#5E5CE6FF   | .systemIndigo_Adapted |
+| 175, 82, 222<br>#AF52DEFF  | 191, 90, 242<br>#BF5AF2FF  | .systemPurple_Adapted |
+| 255, 45, 85<br>#FF2D55FF   | 255, 55, 95<br>#FF375FFF   | .systemPink_Adapted   |
+| 162, 132, 94<br>#A2845EFF  | 172, 142, 104<br>#AC8E68FF | .systemBrown_Adapted  |
+| 142, 142, 147<br>#8E8E93FF | 142, 142, 147<br>#8E8E93FF | .systemGray_Adapted   |
+| 174, 174, 178<br>#AEAEB2FF | 99, 99, 102<br>#636366FF   | .systemGray2_Adapted  |
+| 199, 199, 204<br>#C7C7CCFF | 72, 72, 74<br>#48484AFF    | .systemGray3_Adapted  |
+| 209, 209, 214<br>#D1D1D6FF | 58, 58, 60<br>#3A3A3CFF    | .systemGray4_Adapted  |
+| 229, 229, 234<br>#E5E5EAFF | 44, 44, 46<br>#2C2C2EFF    | .systemGray5_Adapted  |
+| 242, 242, 247<br>#F2F2F7FF | 28, 28, 30<br>#1C1C1EFF    | .systemGray6_Adapted  |
 
 ## Table 2. Adapted semantic colors <a name="section3_II"></a>
 
-| RGBA Light        | RGBA Dark           | UIKit API Adapted        | HEX Light | HEX Dark  |
-| ----------------- | ------------------- | :----------------------- | :-------: | :-------: |
-| **Foreground**                                                     |
-| `Label`                                                            |
-| 0, 0, 0, 1        | 255, 255, 255, 1    | .label_Adapted           | #000000FF | #FFFFFFFF |
-| 60, 60, 67, 0.6   | 235, 235, 245, 0.6  | .secondaryLabel_Adapted  | #3C3C4399 | #EBEBF599 |
-| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .tertiaryLabel_Adapted   | #3C3C434D | #EBEBF54D |
-| 60, 60, 67, 0.18  | 235, 235, 245, 0.16 | .quaternaryLabel_Adapted | #3C3C432E | #EBEBF529 |
-| `Text`                                                             |
-| 60, 60, 67, 0.3   | 235, 235, 245, 0.3  | .placeholderText_Adapted | #3C3C434D | #EBEBF54D |
-| `Separator`                                                        |
-| 60, 60, 67, 0.29  | 84, 84, 88, 0.6     | .separator_Adapted       | #3C3C434A | #54545899 |
-| 198, 198, 200, 1  | 56, 56, 58, 1       | .opaqueSeparator_Adapted | #C6C6C8FF | #38383AFF |
-| `Link`                                                             |
-| 0, 122, 255, 1    | 9, 132, 255, 1      | .link_Adapted            | #007AFFFF | #0984FFFF |
-| `Fill`                                                                    |
-| 120, 120, 128, 0.2  | 120, 120, 128, 0.36 | .systemFill_Adapted           | #78788033 | #7878805C |
-| 120, 120, 128, 0.16 | 120, 120, 128, 0.32 | .secondarySystemFill_Adapted  | #78788029 | #78788052 |
-| 118, 118, 128, 0.12 | 118, 118, 128, 0.24 | .tertiarySystemFill_Adapted   | #7676801F | #7676803D |
-| 116, 116, 128, 0.08 | 118, 118, 128, 0.18 | .quaternarySystemFill_Adapted | #74748014 | #7676802E |
-| **Background**                                                               |
-| `Standard`                                                                   |
-| 255, 255, 255, 1 | 28, 28, 30, 1 | .systemBackground_Adapted                 | #FFFFFFFF | #1C1C1EFF |
-| 242, 242, 247, 1 | 44, 44, 46, 1 | .secondarySystemBackground_Adapted        | #F2F2F7FF | #2C2C2EFF |
-| 255, 255, 255, 1 | 58, 58, 60, 1 | .tertiarySystemBackground_Adapted         | #FFFFFFFF | #3A3A3CFF |
-| `Grouped`                                                                    |
-| 242, 242, 247, 1 | 28, 28, 30, 1 | .systemGroupedBackground_Adapted          | #F2F2F7FF | #1C1C1EFF |
-| 255, 255, 255, 1 | 44, 44, 46, 1 | .secondarySystemGroupedBackground_Adapted | #FFFFFFFF | #2C2C2EFF |
-| 242, 242, 247, 1 | 58, 58, 60, 1 | .tertiarySystemGroupedBackground_Adapted  | #F2F2F7FF | #3A3A3CFF |
+| RGBA Light                     | RGBA Dark                        | UIKit API Adapted        |
+| :----------------------------- | :------------------------------- | :----------------------- |
+| **Foreground**                                                                               |
+| `Label`                                                                                      |
+| 0, 0, 0, 1<br>#000000FF        | 255, 255, 255, 1<br>#FFFFFFFF    | .label_Adapted           |
+| 60, 60, 67, 0.6<br>#3C3C4399   | 235, 235, 245, 0.6<br>#EBEBF599  | .secondaryLabel_Adapted  |
+| 60, 60, 67, 0.3<br>#3C3C434D   | 235, 235, 245, 0.3<br>#EBEBF54D  | .tertiaryLabel_Adapted   |
+| 60, 60, 67, 0.18<br>#3C3C432E  | 235, 235, 245, 0.16<br>#EBEBF529 | .quaternaryLabel_Adapted |
+| `Text`                                                                                       |
+| 60, 60, 67, 0.3<br>#3C3C434D   | 235, 235, 245, 0.3<br>#EBEBF54D  | .placeholderText_Adapted |
+| `Separator`                                                                                  |
+| 60, 60, 67, 0.29<br>#3C3C434A  | 84, 84, 88, 0.6<br>#54545899     | .separator_Adapted       |
+| 198, 198, 200, 1<br>#C6C6C8FF  | 56, 56, 58, 1<br>#38383AFF       | .opaqueSeparator_Adapted |
+| `Link`                                                                                       |
+| 0, 122, 255, 1<br>#007AFFFF    | 9, 132, 255, 1<br>#0984FFFF      | .link_Adapted            |
+| `Fill`                                                                                       |
+| 120, 120, 128, 0.2<br>#78788033  | 120, 120, 128, 0.36<br>#7878805C | .systemFill_Adapted    |
+| 120, 120, 128, 0.16<br>#78788029 | 120, 120, 128, 0.32<br>#78788052 | .secondarySystemFill_Adapted     |
+| 118, 118, 128, 0.12<br>#7676801F | 118, 118, 128, 0.24<br>#7676803D | .tertiarySystemFill_Adapted      |
+| 116, 116, 128, 0.08<br>#74748014 | 118, 118, 128, 0.18<br>#7676802E | .quaternarySystemFill_Adapted    |
+| **Background**                                                                               |
+| `Standard`                                                                                   |
+| 255, 255, 255, 1<br>#FFFFFFFF | 28, 28, 30, 1<br>#1C1C1EFF | .systemBackground_Adapted       |
+| 242, 242, 247, 1<br>#F2F2F7FF | 44, 44, 46, 1<br>#2C2C2EFF | .secondarySystemBackground_Adapted        |
+| 255, 255, 255, 1<br>#FFFFFFFF | 58, 58, 60, 1<br>#3A3A3CFF | .tertiarySystemBackground_Adapted         |
+| `Grouped`                                                                                    |
+| 242, 242, 247, 1<br>#F2F2F7FF | 28, 28, 30, 1<br>#1C1C1EFF | .systemGroupedBackground_Adapted          |
+| 255, 255, 255, 1<br>#FFFFFFFF | 44, 44, 46, 1<br>#2C2C2EFF | .secondarySystemGroupedBackground_Adapted | 
+| 242, 242, 247, 1<br>#F2F2F7FF | 58, 58, 60, 1<br>#3A3A3CFF | .tertiarySystemGroupedBackground_Adapted  |
 
 # License <a name="license"></a>
 
