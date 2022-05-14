@@ -1,32 +1,38 @@
 //
-// DarkMode.swift
-// PerseusDarkMode
+//  DarkMode.swift
+//  PerseusDarkMode
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
 #endif
 
+/// Represents Dark Mode and contains the app's appearance style.
+///
+/// But a user choice of Dark Mode is held by appearance service.
+///
+/// - KVO technique can be used to be notified on the app's appearance style changed event.
+/// - Use StyleObservable varible to create an observer.
 public class DarkMode: NSObject
 {
-    // MARK: - App's Dark Mode Style
+    // MARK: - The App's current Appearance Style
     
-    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT
-    {
-        didSet { StyleObservable = Style.rawValue }
-    }
-    
-    /// Actual the app's Dark Mode style value, available only for reading
+    /// The app's current appearance style.
     public var Style                        : AppearanceStyle { _style }
     
-    // MARK: - Observable Dark Mode Value (Using Key-Value Observing)
+    // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
     
-    /// Triggers if Style is changed, use KVO to be notified immediately
+    /// The app's current appearance observable style.
     @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
     
-    // MARK: - System's Dark Mode Style
+    // MARK: - System's Appearance Style
     
+    /// The app's current system appearance style.
     public var SystemStyle                  : SystemStyle
     {
         if #available(iOS 13.0, *)
@@ -51,9 +57,14 @@ public class DarkMode: NSObject
             return .unspecified
         }
     }
+    
+    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT
+    {
+        didSet { StyleObservable = Style.rawValue }
+    }
 }
 
-// MARK: Protocols used for unit testing
+// MARK: - Protocols used for unit testing
 
 public protocol DarkModeProtocol
 {

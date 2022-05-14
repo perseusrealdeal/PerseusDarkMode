@@ -1,8 +1,12 @@
 //
-// ImageHelper.swift
-// DarkModeTests
+//  ImageHelper.swift
+//  DarkModeTests
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit

@@ -1,8 +1,12 @@
 // 
-// SemanticColorsAdapted.swift
-// AdaptedSystemUI
+//  SemanticColorsAdapted.swift
+//  AdaptedSystemUI
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
@@ -10,67 +14,16 @@ import UIKit
 
 import PerseusDarkMode
 
-// MARK: Semantic colors
-
-public protocol UISemanticColorsAdapted
+/// Implementation of adaptation of semantic colors.
+///
+/// Each adaptation is either native SDK color or self-made.
+///
+/// For those iOS versions where a color is not released self-made adaptation is used.
+extension UIColor: SemanticColorProtocol
 {
-    // MARK: - For foreground content
-    ///
-    /// Label Colors
-    ///
-    static var label_Adapted               : UIColor { get }
-    static var secondaryLabel_Adapted      : UIColor { get }
-    static var tertiaryLabel_Adapted       : UIColor { get }
-    static var quaternaryLabel_Adapted     : UIColor { get }
+    // MARK: - FOREGROUND
     
-    ///
-    /// Text Colors
-    ///
-    static var placeholderText_Adapted     : UIColor { get }
-    
-    ///
-    /// Separator Colors
-    ///
-    static var separator_Adapted           : UIColor { get }
-    static var opaqueSeparator_Adapted     : UIColor { get }
-    
-    ///
-    /// Link Color
-    ///
-    static var link_Adapted                : UIColor { get }
-    
-    ///
-    /// Fill Colors
-    ///
-    static var systemFill_Adapted          : UIColor { get }
-    static var secondarySystemFill_Adapted : UIColor { get }
-    static var tertiarySystemFill_Adapted : UIColor { get }
-    static var quaternarySystemFill_Adapted: UIColor { get }
-    
-    // MARK: - For background content
-    ///
-    /// Standard Content Background Colors
-    ///
-    static var systemBackground_Adapted                : UIColor { get }
-    static var secondarySystemBackground_Adapted       : UIColor { get }
-    static var tertiarySystemBackground_Adapted        : UIColor { get }
-    
-    ///
-    /// Grouped Content Background Colors
-    ///
-    static var systemGroupedBackground_Adapted         : UIColor { get }
-    static var secondarySystemGroupedBackground_Adapted: UIColor { get }
-    static var tertiarySystemGroupedBackground_Adapted : UIColor { get }
-    
-}
-
-extension UIColor: UISemanticColorsAdapted
-{
-    // MARK: - Foreground
-    
-    ///
-    /// Label Colors
-    ///
+    /// Label.
     public static var label_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -85,6 +38,7 @@ extension UIColor: UISemanticColorsAdapted
         return .label
     }
     
+    /// Secondary label.
     public static var secondaryLabel_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -99,6 +53,7 @@ extension UIColor: UISemanticColorsAdapted
         return .secondaryLabel
     }
     
+    /// Tertiary label.
     public static var tertiaryLabel_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -113,13 +68,14 @@ extension UIColor: UISemanticColorsAdapted
         return .tertiaryLabel
     }
     
+    /// Quaternary label.
     public static var quaternaryLabel_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
         {
             let color = AppearanceService.shared.Style == .light ?
                 
-                rgba255(60, 60, 67, 0.18) : rgba255(235, 235, 245, 0.18)
+                rgba255(60, 60, 67, 0.18) : rgba255(235, 235, 245, 0.16)
             
             return color
         }
@@ -127,9 +83,7 @@ extension UIColor: UISemanticColorsAdapted
         return .quaternaryLabel
     }
     
-    ///
-    /// Text Colors
-    ///
+    /// Placeholder text.
     public static var placeholderText_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -144,9 +98,7 @@ extension UIColor: UISemanticColorsAdapted
         return .placeholderText
     }
     
-    ///
-    /// Separator Colors
-    ///
+    /// Separator.
     public static var separator_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -161,6 +113,7 @@ extension UIColor: UISemanticColorsAdapted
         return .separator
     }
     
+    /// Opaque separator.
     public static var opaqueSeparator_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -175,9 +128,7 @@ extension UIColor: UISemanticColorsAdapted
         return .opaqueSeparator
     }
     
-    ///
-    /// Link Color
-    ///
+    /// Link.
     public static var link_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -192,9 +143,7 @@ extension UIColor: UISemanticColorsAdapted
         return .link
     }
     
-    ///
-    /// Fill Colors
-    ///
+    /// System fill.
     public static var systemFill_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -209,6 +158,7 @@ extension UIColor: UISemanticColorsAdapted
         return .systemFill
     }
     
+    /// Secondary system fill.
     public static var secondarySystemFill_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -223,6 +173,7 @@ extension UIColor: UISemanticColorsAdapted
         return .secondarySystemFill
     }
     
+    /// Tertiary system fill.
     public static var tertiarySystemFill_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -237,6 +188,7 @@ extension UIColor: UISemanticColorsAdapted
         return .tertiarySystemFill
     }
     
+    /// Quaternary system fill.
     public static var quaternarySystemFill_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -251,11 +203,9 @@ extension UIColor: UISemanticColorsAdapted
         return .quaternarySystemFill
     }
     
-    // MARK: - Background
+    // MARK: - BACKGROUND
     
-    ///
-    /// Standard Content Background Colors
-    ///
+    /// System background.
     public static var systemBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -270,6 +220,7 @@ extension UIColor: UISemanticColorsAdapted
         return .systemBackground
     }
     
+    /// Secondary system background.
     public static var secondarySystemBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -284,6 +235,7 @@ extension UIColor: UISemanticColorsAdapted
         return .secondarySystemBackground
     }
     
+    /// Tertiary system background.
     public static var tertiarySystemBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -298,9 +250,7 @@ extension UIColor: UISemanticColorsAdapted
         return .tertiarySystemBackground
     }
     
-    ///
-    /// Grouped Content Background Colors
-    ///
+    /// System grouped background.
     public static var systemGroupedBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -315,6 +265,7 @@ extension UIColor: UISemanticColorsAdapted
         return .systemGroupedBackground
     }
     
+    /// Secondary system grouped background.
     public static var secondarySystemGroupedBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
@@ -329,6 +280,7 @@ extension UIColor: UISemanticColorsAdapted
         return .secondarySystemGroupedBackground
     }
     
+    /// Tertiary system grouped background.
     public static var tertiarySystemGroupedBackground_Adapted: UIColor
     {
         guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else

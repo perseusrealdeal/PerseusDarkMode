@@ -1,29 +1,33 @@
 //
-// SemanticColorsAdaptedTests.swift
-// DarkModeTests
+//  SystemColorsAdaptedTests.swift
+//  DarkModeTests
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 import XCTest
 @testable import PerseusDarkMode
 @testable import AdaptedSystemUI
 
-final class SemanticColorsAdaptedTests: XCTestCase
+final class SystemColorsAdaptedTests: XCTestCase
 {
     // MARK: - Tests for Foreground
     
-    func test_label_Adapted()
+    func test_systemRed_Adapted()
     {
-        let light = rgba255(0, 0, 0)
-        let dark = rgba255(255, 255, 255)
+        let light = rgba255(255, 59, 48)
+        let dark = rgba255(255, 69, 58)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .label, nil, nil, .label)
+            ColorVerifier.verify(requirement: .systemRed, nil, nil, .systemRed)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .label, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemRed, light, dark, nil)
         }
         else
         {
@@ -33,18 +37,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_secondaryLabel_Adapted()
+    func test_systemOrange_Adapted()
     {
-        let light = rgba255(60, 60, 67, 0.6)
-        let dark = rgba255(235, 235, 245, 0.6)
+        let light = rgba255(255, 149, 0)
+        let dark = rgba255(255, 159, 10)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .secondaryLabel, nil, nil, .secondaryLabel)
+            ColorVerifier.verify(requirement: .systemOrange, nil, nil, .systemOrange)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .secondaryLabel, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemOrange, light, dark, nil)
         }
         else
         {
@@ -54,18 +58,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_tertiaryLabel_Adapted()
+    func test_systemYellow_Adapted()
     {
-        let light = rgba255(60, 60, 67, 0.3)
-        let dark = rgba255(235, 235, 245, 0.3)
+        let light = rgba255(255, 204, 0)
+        let dark = rgba255(255, 214, 10)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .tertiaryLabel, nil, nil, .tertiaryLabel)
+            ColorVerifier.verify(requirement: .systemYellow, nil, nil, .systemYellow)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .tertiaryLabel, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemYellow, light, dark, nil)
         }
         else
         {
@@ -75,18 +79,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_quaternaryLabel_Adapted()
+    func test_systemGreen_Adapted()
     {
-        let light = rgba255(60, 60, 67, 0.18)
-        let dark = rgba255(235, 235, 245, 0.18)
+        let light = rgba255(52, 199, 89)
+        let dark = rgba255(48, 209, 88)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .quaternaryLabel, nil, nil, .quaternaryLabel)
+            ColorVerifier.verify(requirement: .systemGreen, nil, nil, .systemGreen)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .quaternaryLabel, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemGreen, light, dark, nil)
         }
         else
         {
@@ -96,18 +100,40 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_placeholderText_Adapted()
+    func test_systemMint_Adapted()
     {
-        let light = rgba255(60, 60, 67, 0.3)
-        let dark = rgba255(235, 235, 245, 0.3)
+        let light = rgba255(0, 199, 190)
+        let dark = rgba255(102, 212, 207)
+        
+        if #available(iOS 15.0, *)
+        {
+            UIColor._iOS13InUseAndHigherOnly = true
+            ColorVerifier.verify(requirement: .systemMint, nil, nil, .systemMint)
+            
+            UIColor._iOS13InUseAndHigherOnly = false
+            ColorVerifier.verify(requirement: .systemMint, light, dark, nil)
+        }
+        else
+        {
+            XCTFail("Test suit was designed for runing on iOS 15 and higher only!")
+        }
+        
+        UIColor._iOS13InUseAndHigherOnly = true
+    }
+    
+    
+    func test_systemTeal_Adapted()
+    {
+        let light = rgba255(48, 176, 199)
+        let dark = rgba255(64, 200, 224)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .placeholderText, nil, nil, .placeholderText)
+            ColorVerifier.verify(requirement: .systemTeal, nil, nil, .systemTeal)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .placeholderText, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemTeal, light, dark, nil)
         }
         else
         {
@@ -117,60 +143,39 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_separator_Adapted()
+    func test_systemCyan_Adapted()
     {
-        let light = rgba255(60, 60, 67, 0.29)
-        let dark = rgba255(84, 84, 88, 0.6)
+        let light = rgba255(50, 173, 230)
+        let dark = rgba255(100, 210, 255)
         
-        if #available(iOS 13.0, *)
+        if #available(iOS 15.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .separator, nil, nil, .separator)
+            ColorVerifier.verify(requirement: .systemCyan, nil, nil, .systemCyan)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .separator, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemCyan, light, dark, nil)
         }
         else
         {
-            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
+            XCTFail("Test suit was designed for runing on iOS 15 and higher only!")
         }
         
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_opaqueSeparator_Adapted()
-    {
-        let light = rgba255(198, 198, 200)
-        let dark = rgba255(56, 56, 58)
-        
-        if #available(iOS 13.0, *)
-        {
-            UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .opaqueSeparator, nil, nil, .opaqueSeparator)
-            
-            UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .opaqueSeparator, light, dark, nil)
-        }
-        else
-        {
-            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
-        }
-        
-        UIColor._iOS13InUseAndHigherOnly = true
-    }
-    
-    func test_link_Adapted()
+    func test_systemBlue_Adapted()
     {
         let light = rgba255(0, 122, 255)
-        let dark = rgba255(9, 132, 255)
+        let dark = rgba255(10, 132, 255)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .link, nil, nil, .link)
+            ColorVerifier.verify(requirement: .systemBlue, nil, nil, .systemBlue)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .link, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemBlue, light, dark, nil)
         }
         else
         {
@@ -180,18 +185,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_systemFill_Adapted()
+    func test_systemIndigo_Adapted()
     {
-        let light = rgba255(120, 120, 128, 0.2)
-        let dark = rgba255(120, 120, 128, 0.36)
+        let light = rgba255(88, 86, 214)
+        let dark = rgba255(94, 92, 230)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .systemFill, nil, nil, .systemFill)
+            ColorVerifier.verify(requirement: .systemIndigo, nil, nil, .systemIndigo)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .systemFill, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemIndigo, light, dark, nil)
         }
         else
         {
@@ -201,18 +206,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_secondarySystemFill_Adapted()
+    func test_systemPurple_Adapted()
     {
-        let light = rgba255(120, 120, 128, 0.16)
-        let dark = rgba255(120, 120, 128, 0.32)
+        let light = rgba255(175, 82, 222)
+        let dark = rgba255(191, 90, 242)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .secondarySystemFill, nil, nil, .secondarySystemFill)
+            ColorVerifier.verify(requirement: .systemPurple, nil, nil, .systemPurple)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .secondarySystemFill, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemPurple, light, dark, nil)
         }
         else
         {
@@ -222,18 +227,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_tertiarySystemFill_Adapted()
+    func test_systemPink_Adapted()
     {
-        let light = rgba255(118, 118, 128, 0.12)
-        let dark = rgba255(118, 118, 128, 0.24)
+        let light = rgba255(255, 45, 85)
+        let dark = rgba255(255, 55, 95)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .tertiarySystemFill, nil, nil, .tertiarySystemFill)
+            ColorVerifier.verify(requirement: .systemPink, nil, nil, .systemPink)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .tertiarySystemFill, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemPink, light, dark, nil)
         }
         else
         {
@@ -243,18 +248,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_quaternarySystemFill_Adapted()
+    func test_systemBrown_Adapted()
     {
-        let light = rgba255(116, 116, 128, 0.08)
-        let dark = rgba255(118, 118, 128, 0.18)
+        let light = rgba255(162, 132, 94)
+        let dark = rgba255(172, 142, 104)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .quaternarySystemFill, nil, nil, .quaternarySystemFill)
+            ColorVerifier.verify(requirement: .systemBrown, nil, nil, .systemBrown)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .quaternarySystemFill, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemBrown, light, dark, nil)
         }
         else
         {
@@ -264,20 +269,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    // MARK: - Tests for Background
-    
-    func test_systemBackground_Adapted()
+    func test_systemGray_Adapted()
     {
-        let light = rgba255(255, 255, 255)
-        let dark = rgba255(28, 28, 30)
+        let light = rgba255(142, 142, 147)
+        let dark = rgba255(142, 142, 147)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .systemBackground, nil, nil, .systemBackground)
+            ColorVerifier.verify(requirement: .systemGray, nil, nil, .systemGray)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .systemBackground, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemGray, light, dark, nil)
         }
         else
         {
@@ -287,18 +290,18 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_secondarySystemBackground_Adapted()
+    func test_systemGray2_Adapted()
     {
-        let light = rgba255(242, 242, 247)
-        let dark = rgba255(44, 44, 46)
+        let light = rgba255(174, 174, 178)
+        let dark = rgba255(99, 99, 102)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .secondarySystemBackground, nil, nil, .secondarySystemBackground)
+            ColorVerifier.verify(requirement: .systemGray2, nil, nil, .systemGray2)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .secondarySystemBackground, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemGray2, light, dark, nil)
         }
         else
         {
@@ -308,18 +311,39 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_tertiarySystemBackground_Adapted()
+    func test_systemGray3_Adapted()
     {
-        let light = rgba255(255, 255, 255)
+        let light = rgba255(199, 199, 204)
+        let dark = rgba255(72, 72, 74)
+        
+        if #available(iOS 13.0, *)
+        {
+            UIColor._iOS13InUseAndHigherOnly = true
+            ColorVerifier.verify(requirement: .systemGray3, nil, nil, .systemGray3)
+            
+            UIColor._iOS13InUseAndHigherOnly = false
+            ColorVerifier.verify(requirement: .systemGray3, light, dark, nil)
+        }
+        else
+        {
+            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
+        }
+        
+        UIColor._iOS13InUseAndHigherOnly = true
+    }
+    
+    func test_systemGray4_Adapted()
+    {
+        let light = rgba255(209, 209, 214)
         let dark = rgba255(58, 58, 60)
         
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .tertiarySystemBackground, nil, nil, .tertiarySystemBackground)
+            ColorVerifier.verify(requirement: .systemGray4, nil, nil, .systemGray4)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .tertiarySystemBackground, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemGray4, light, dark, nil)
         }
         else
         {
@@ -329,7 +353,28 @@ final class SemanticColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
     
-    func test_systemGroupedBackground_Adapted()
+    func test_systemGray5_Adapted()
+    {
+        let light = rgba255(229, 229, 234)
+        let dark = rgba255(44, 44, 46)
+        
+        if #available(iOS 13.0, *)
+        {
+            UIColor._iOS13InUseAndHigherOnly = true
+            ColorVerifier.verify(requirement: .systemGray5, nil, nil, .systemGray5)
+            
+            UIColor._iOS13InUseAndHigherOnly = false
+            ColorVerifier.verify(requirement: .systemGray5, light, dark, nil)
+        }
+        else
+        {
+            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
+        }
+        
+        UIColor._iOS13InUseAndHigherOnly = true
+    }
+    
+    func test_systemGray6_Adapted()
     {
         let light = rgba255(242, 242, 247)
         let dark = rgba255(28, 28, 30)
@@ -337,52 +382,10 @@ final class SemanticColorsAdaptedTests: XCTestCase
         if #available(iOS 13.0, *)
         {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .systemGroupedBackground, nil, nil, .systemGroupedBackground)
+            ColorVerifier.verify(requirement: .systemGray6, nil, nil, .systemGray6)
             
             UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .systemGroupedBackground, light, dark, nil)
-        }
-        else
-        {
-            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
-        }
-        
-        UIColor._iOS13InUseAndHigherOnly = true
-    }
-    
-    func test_secondarySystemGroupedBackground_Adapted()
-    {
-        let light = rgba255(255, 255, 255)
-        let dark = rgba255(44, 44, 46)
-        
-        if #available(iOS 13.0, *)
-        {
-            UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .secondarySystemGroupedBackground, nil, nil, .secondarySystemGroupedBackground)
-            
-            UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .secondarySystemGroupedBackground, light, dark, nil)
-        }
-        else
-        {
-            XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
-        }
-        
-        UIColor._iOS13InUseAndHigherOnly = true
-    }
-    
-    func test_tertiarySystemGroupedBackground_Adapted()
-    {
-        let light = rgba255(242, 242, 247)
-        let dark = rgba255(58, 58, 60)
-        
-        if #available(iOS 13.0, *)
-        {
-            UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground, nil, nil, .tertiarySystemGroupedBackground)
-            
-            UIColor._iOS13InUseAndHigherOnly = false
-            ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground, light, dark, nil)
+            ColorVerifier.verify(requirement: .systemGray6, light, dark, nil)
         }
         else
         {

@@ -1,8 +1,12 @@
 //
-// DarkModeTests.swift
-// DarkModeTests
+//  DarkModeTests.swift
+//  DarkModeTests
 //
-// Copyright © 2022 Mikhail Zhigulin. All rights reserved.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  All rights reserved.
+//
 
 #if !os(macOS)
 import UIKit
@@ -20,7 +24,7 @@ final class DarkModeTests: XCTestCase
         var count     : Int = 0
         var collection: [AppearanceStyle] = []
         
-        var observer:DarkModeObserver? = DarkModeObserver(AppearanceService.shared)
+        var observer:DarkModeObserver? = DarkModeObserver()
         observer?.action =
             { newStyle in
                 
@@ -50,7 +54,7 @@ final class DarkModeTests: XCTestCase
         var count     : Int = 0
         var collection: [AppearanceStyle] = []
         
-        var observer:DarkModeObserver? = DarkModeObserver(AppearanceService.shared)
+        var observer:DarkModeObserver? = DarkModeObserver()
         observer?.action =
             { newStyle in
                 
