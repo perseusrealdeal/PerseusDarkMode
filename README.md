@@ -1,7 +1,7 @@
 Perseus Dark Mode && Adapted System UI
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)
+![Version](https://img.shields.io/badge/Version-1.0.1-green.svg)
 [![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -10,7 +10,7 @@ Perseus Dark Mode && Adapted System UI
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/70417e34e71674b49a871a8e13f04e9315ab2972/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/6d9f137b3e97f6987c1102d462d56ba78fc9a6f1/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 
 # Table of contents
@@ -536,9 +536,8 @@ In fact the actual color values provided below in table 1 and 2 may fluctuate fr
 
 # License <a name="license"></a>
 
-Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
-
-Where 7530 is the year from the creation of the world according to a Slavic calendar.
+Copyright © 7530 Mikhail Zhigulin of Novosibirsk, where 7530 is
+the year from the creation of the world according to a Slavic calendar.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

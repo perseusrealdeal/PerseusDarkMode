@@ -12,9 +12,7 @@
 import UIKit
 #endif
 
-/// Used to create instances of UIColor with RGBA color model.
-///
-/// Creates the instance of UIColor using RGBA information of the color.
+/// Creates the instance of UIColor using RGBA color model.
 ///
 /// ```swift
 /// let _ = rgba255(235, 235, 245, 0.6)

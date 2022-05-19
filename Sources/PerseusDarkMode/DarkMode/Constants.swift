@@ -10,7 +10,7 @@
 
 import Foundation
 
-/// User defaults key for AppearanceService.DarkModeUserChoice variable.
+/// UserDefaults Key for AppearanceService.DarkModeUserChoice variable.
 public let DARK_MODE_USER_CHOICE_OPTION_KEY = "DarkModeUserChoiceOptionKey"
 
 /// Default value for AppearanceService.DarkModeUserChoice variable.

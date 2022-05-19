@@ -14,11 +14,10 @@ import UIKit
 
 import PerseusDarkMode
 
-/// Implementation of adaptation of system colors.
+/// Brings system colors to early iOS releases.
 ///
-/// Each adaptation is either native SDK color or self-made.
-///
-/// For those iOS versions where a color is not released self-made adaptation is used.
+/// Each color is either native SDK color or self-made.
+/// It means that for those iOS versions where a color is not released a self-made adaptation in use.
 extension UIColor: SystemColorProtocol
 {
     /// Red.

@@ -12,7 +12,7 @@
 import UIKit
 #endif
 
-/// Represents a quite light release of a dynamic image idea that depends on the app's appearance style.
+/// Represents a quite light implementation of a dynamic image idea that depends on the app's appearance style.
 ///
 /// Use Interface Builder to set images up for both light and dark styles.
 public class DarkModeImageView: UIImageView
@@ -39,29 +39,27 @@ public class DarkModeImageView: UIImageView
         }
     }
     
-    /// Observer to trigger view image if the app's appearance style changed.
+    /// Observer for the app's appearance style changes.
     private(set) var darkModeObserver: DarkModeObserver?
     
-    /// Image used if the app's appearance style is Light.
+    /// When the app's appearance style is Light.
     private(set) var light: UIImage?
-    /// Image used if the app's appearance style is Dark.
+    /// When the app's appearance style is Dark.
     private(set) var dark: UIImage?
     
-    /// Called if not represented with Interface Builder.
     override init(frame: CGRect)
     {
         super.init(frame: frame)
         configure()
     }
     
-    /// Called if represeinted with Interface Builder.
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         configure()
     }
     
-    /// Called in initialization.
+    /// Configures the view.
     private func configure()
     {
         darkModeObserver = DarkModeObserver()
@@ -70,10 +68,10 @@ public class DarkModeImageView: UIImageView
         }
     }
     
-    /// Setting images for changing up.
+    /// Sets images for both light and dark styles.
     /// - Parameters:
-    ///   - light: Image for Light Style.
-    ///   - dark: Image for Dark Style.
+    ///   - light: Image for light style.
+    ///   - dark: Image for dark style.
     public func configure(_ light: UIImage?, _ dark: UIImage?)
     {
         self.light = light
