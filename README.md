@@ -10,7 +10,7 @@ Perseus Dark Mode && Adapted System UI
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/70417e34e71674b49a871a8e13f04e9315ab2972/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/6d9f137b3e97f6987c1102d462d56ba78fc9a6f1/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 
 # Table of contents
