@@ -1,7 +1,7 @@
 Perseus Dark Mode && Adapted System UI
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)
+![Version](https://img.shields.io/badge/Version-1.0.1-green.svg)
 [![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -536,9 +536,8 @@ In fact the actual color values provided below in table 1 and 2 may fluctuate fr
 
 # License <a name="license"></a>
 
-Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
-
-Where 7530 is the year from the creation of the world according to a Slavic calendar.
+Copyright © 7530 Mikhail Zhigulin of Novosibirsk, where 7530 is
+the year from the creation of the world according to a Slavic calendar.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

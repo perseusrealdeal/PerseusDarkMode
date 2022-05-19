@@ -55,7 +55,7 @@ public class DarkModeObserver: NSObject
                                     context   : nil)
     }
     
-    /// Called each time when the abserved varible changed.
+    /// Takes action every time when Style changes happens.
     public override func observeValue(forKeyPath keyPath: String?,
                                       of object         : Any?,
                                       change            : [NSKeyValueChangeKey : Any]?,

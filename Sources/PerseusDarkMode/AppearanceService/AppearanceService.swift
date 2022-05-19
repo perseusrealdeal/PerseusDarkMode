@@ -12,10 +12,9 @@
 import UIKit
 #endif
 
-/// Make up notification name.
+/// Name for make up notification.
 public extension Notification.Name
 {
-    /// Notification name used for notifing the app's components to make appearance up via Notification center.
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
 }
 
@@ -82,10 +81,10 @@ public class AppearanceService
     
     // MARK: - Public API: register stakeholder
     
-    /// Pre-registering stakeholders of a make up notification.
+    /// Registers stakeholders of Dark Mode.
     /// - Parameters:
-    ///   - stakeholder: Stakeholder of Appearance Style changed.
-    ///   - selector: Point to give a control for appearance changing.
+    ///   - stakeholder: Stakeholder of Dark Mode.
+    ///   - selector: Point to pass a control of Dark Mode.
     public static func register(stakeholder: Any, selector: Selector)
     {
         nCenter.addObserver(stakeholder,
@@ -96,9 +95,9 @@ public class AppearanceService
     
     // MARK: - Public API: make the app's appearance up
     
-    /// Let stakeholders know it's right time to make the app's appearance up.
+    /// Calls all registered stakeholders for making up.
     ///
-    /// Should be called firstly when didFinishLaunching and then every time when DarkModeUserChoice changed.
+    /// First time should be called when didFinishLaunching happens and then every time when DarkModeUserChoice changes.
     public static func makeUp()
     {
         _isEnabled = true
@@ -113,9 +112,9 @@ public class AppearanceService
     }
     
     
-    /// Recalculate appearance style if traitCollectionDidChange.
+    /// Puts the app's Dark Mode in line with System Appearance Mode.
     ///
-    /// Should be called when user taggled System Appearance Mode in Settings app.
+    /// Should be called when user taggles System Appearance Mode in Settings app.
     /// Call it in override func traitCollectionDidChange in the main screen.
     ///
     /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
@@ -150,7 +149,7 @@ public class AppearanceService
         nCenter.post(name: .makeAppearanceUpNotification, object: nil)
     }
     
-    /// Update the app's appearance style value.
+    /// Updates the app's appearance style value.
     internal static func recalculateStyleIfNeeded()
     {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
@@ -158,7 +157,7 @@ public class AppearanceService
         if shared._style != actualStyle { shared._style = actualStyle }
     }
     
-    /// Change the app's UserInterfaceStyle.
+    /// Changes the app's UserInterfaceStyle.
     ///
     /// It's matter to change the look of system user controls.
     @available(iOS 13.0, *)
