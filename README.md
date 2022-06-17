@@ -23,9 +23,11 @@ PART I - [Perseus Dark Mode Library](#part_I)
 3. [Dark Mode table decision](#section4)
 4. [Switching Dark Mode](#section5)
 5. [Catching Dark Mode triggered](#section6)
-6. [Sample Use Case of Dark Mode](#section7)
-7. [Sample Use Case of DarkModeImageView](#section8)
-8. [Sample Use Case of Adapted System UI](#section9)
+
+Samples:
+- [Sample Use Case of Dark Mode](#section7)
+- [Sample Use Case of DarkModeImageView](#section8)
+- [Sample Use Case of Adapted System UI](#section9)
 
 PART II - [Adapted System UI Library](#part_II)
 
