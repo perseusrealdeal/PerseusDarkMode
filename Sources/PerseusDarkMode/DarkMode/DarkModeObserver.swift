@@ -21,7 +21,7 @@ import UIKit
 public class DarkModeObserver: NSObject
 {
     /// Closure to perform if the app's appearance style changed.
-    public var action: ((_ newStyle: AppearanceStyle)->Void)?
+    public var action: ((_ newStyle: AppearanceStyle) -> Void)?
 
     /// The reference of the object to be obsevered.
     private(set) var objectToObserve = AppearanceService.shared
@@ -44,7 +44,7 @@ public class DarkModeObserver: NSObject
     /// Initializer with parameters.
     ///
     /// Pass a closure to specify the action to be taken if the app's appearance style changed.
-    public init(_ action: @escaping ((_ newStyle: AppearanceStyle)->Void))
+    public init(_ action: @escaping ((_ newStyle: AppearanceStyle) -> Void))
     {
         super.init()
 

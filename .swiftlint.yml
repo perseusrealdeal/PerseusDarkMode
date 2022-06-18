@@ -7,5 +7,4 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - identifier_name
   - opening_brace
   - colon
-  - return_arrow_whitespace
   - block_based_kvo

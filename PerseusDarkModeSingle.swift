@@ -270,7 +270,7 @@ public class DarkModeDecision
 
 public class DarkModeObserver: NSObject
 {
-    public var action: ((_ newStyle: AppearanceStyle)->Void)?
+    public var action: ((_ newStyle: AppearanceStyle) -> Void)?
     private(set) var objectToObserve = AppearanceService.shared
 
     public override init()
@@ -283,7 +283,7 @@ public class DarkModeObserver: NSObject
                                     context   : nil)
     }
 
-    public init(_ action: @escaping ((_ newStyle: AppearanceStyle)->Void))
+    public init(_ action: @escaping ((_ newStyle: AppearanceStyle) -> Void))
     {
         super.init()
 
