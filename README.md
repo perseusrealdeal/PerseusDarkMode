@@ -454,7 +454,7 @@ view.backgroundColor = .systemBlue_Adapted
 In case if a certain color of a Dark Mode sensitive color required use the line of code below:
 
 ```swift
-let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
+_ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
 # PART II - Adapted System UI Library <a name="part_II"></a>

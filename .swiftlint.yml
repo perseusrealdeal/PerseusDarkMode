@@ -10,4 +10,3 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - return_arrow_whitespace
   - block_based_kvo
   - closure_parameter_position
-  - redundant_discardable_let

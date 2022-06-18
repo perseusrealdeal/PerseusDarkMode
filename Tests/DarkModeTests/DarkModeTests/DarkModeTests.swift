@@ -86,7 +86,7 @@ final class DarkModeTests: XCTestCase
 
         // act
 
-        let _ = AppearanceService.DarkModeUserChoice
+        _ = AppearanceService.DarkModeUserChoice
 
         // assert
 
