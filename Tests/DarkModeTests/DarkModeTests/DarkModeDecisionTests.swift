@@ -15,8 +15,8 @@ import UIKit
 import XCTest
 @testable import PerseusDarkMode
 
-final class DarkModeDecisionTests: XCTestCase
-{
+final class DarkModeDecisionTests: XCTestCase {
+
     /// Decision table for Actual Style
     ///
     /// — — — — — — — — — — — — — — DarkModeOption — — — — —
@@ -27,8 +27,7 @@ final class DarkModeDecisionTests: XCTestCase
     /// System style  .dark                         dark              dark              light
     /// — — — — — — — — — — — — — — — — — — — — — — — — —
     ///
-    func test_calculateActualStyle_with_auto_and_unspecified_should_return_default()
-    {
+    func test_calculateActualStyle_with_auto_and_unspecified_should_return_default() {
         // arrange
 
         let userChoice = DarkModeOption.auto
@@ -43,8 +42,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, DARK_MODE_STYLE_DEFAULT)
     }
 
-    func test_calculateActualStyle_with_on_and_unspecified_should_return_dark()
-    {
+    func test_calculateActualStyle_with_on_and_unspecified_should_return_dark() {
         // arrange
 
         let userChoice = DarkModeOption.on
@@ -59,8 +57,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .dark)
     }
 
-    func test_calculateActualStyle_with_off_and_unspecified_should_return_light()
-    {
+    func test_calculateActualStyle_with_off_and_unspecified_should_return_light() {
         // arrange
 
         let userChoice = DarkModeOption.off
@@ -75,8 +72,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .light)
     }
 
-    func test_calculateActualStyle_with_auto_and_light_should_return_light()
-    {
+    func test_calculateActualStyle_with_auto_and_light_should_return_light() {
         // arrange
 
         let userChoice = DarkModeOption.auto
@@ -91,8 +87,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .light)
     }
 
-    func test_calculateActualStyle_with_on_and_light_should_return_dark()
-    {
+    func test_calculateActualStyle_with_on_and_light_should_return_dark() {
         // arrange
 
         let userChoice = DarkModeOption.on
@@ -107,8 +102,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .dark)
     }
 
-    func test_calculateActualStyle_with_off_and_light_should_return_light()
-    {
+    func test_calculateActualStyle_with_off_and_light_should_return_light() {
         // arrange
 
         let userChoice = DarkModeOption.off
@@ -123,8 +117,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .light)
     }
 
-    func test_calculateActualStyle_with_auto_and_dark_should_return_dark()
-    {
+    func test_calculateActualStyle_with_auto_and_dark_should_return_dark() {
         // arrange
 
         let userChoice = DarkModeOption.auto
@@ -139,8 +132,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .dark)
     }
 
-    func test_calculateActualStyle_with_on_and_dark_should_return_dark()
-    {
+    func test_calculateActualStyle_with_on_and_dark_should_return_dark() {
         // arrange
 
         let userChoice = DarkModeOption.on
@@ -155,8 +147,7 @@ final class DarkModeDecisionTests: XCTestCase
         XCTAssertEqual(result, .dark)
     }
 
-    func test_calculateActualStyle_with_off_and_dark_should_return_light()
-    {
+    func test_calculateActualStyle_with_off_and_dark_should_return_light() {
         // arrange
 
         let userChoice = DarkModeOption.off

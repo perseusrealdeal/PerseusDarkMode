@@ -15,10 +15,9 @@ import UIKit
 import XCTest
 @testable import PerseusDarkMode
 
-final class AppearanceServiceTests: XCTestCase
-{
-    func test_init()
-    {
+final class AppearanceServiceTests: XCTestCase {
+
+    func test_init() {
         XCTAssertFalse(AppearanceService.isEnabled)
         XCTAssertFalse(AppearanceService._isEnabled)
 
@@ -29,8 +28,7 @@ final class AppearanceServiceTests: XCTestCase
         XCTAssertIdentical(UIViewController().DarkMode as AnyObject, AppearanceService.shared)
     }
 
-    func test_method_register_called_addObserver()
-    {
+    func test_method_register_called_addObserver() {
         // arrange
 
         let mock = MockNotificationCenter()
@@ -48,8 +46,7 @@ final class AppearanceServiceTests: XCTestCase
         mock.verifyRegisterObserver(observer: view, selector: #selector(view.makeUp))
     }
 
-    func test_method_makeAppearanceUp_called_post_and_isEnabled_true()
-    {
+    func test_method_makeAppearanceUp_called_post_and_isEnabled_true() {
         // arrange
 
         let mock = MockNotificationCenter()

@@ -13,8 +13,8 @@ import UIKit
 #endif
 
 /// Makes a calculation of the app's appearance style.
-public class DarkModeDecision
-{
+public class DarkModeDecision {
+
     private init() { }
 
     // MARK: - Calculating Dark Mode decision
@@ -31,12 +31,10 @@ public class DarkModeDecision
     ///     .dark        | dark    | dark | light
     ///
     public class func calculate(_ userChoice : DarkModeOption,
-                                _ systemStyle: SystemStyle) -> AppearanceStyle
-    {
+                                _ systemStyle: SystemStyle) -> AppearanceStyle {
         // Calculate outputs
 
-        if (systemStyle == .unspecified) && (userChoice == .auto)
-        {
+        if (systemStyle == .unspecified) && (userChoice == .auto) {
             return DARK_MODE_STYLE_DEFAULT
         }
         if (systemStyle == .unspecified) && (userChoice == .on) { return .dark }

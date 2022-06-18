@@ -32,22 +32,19 @@ import UIKit
 public func rgba255(_ red  : CGFloat,
                     _ green: CGFloat,
                     _ blue : CGFloat,
-                    _ alpha: CGFloat = 1.0) -> UIColor
-{
+                    _ alpha: CGFloat = 1.0) -> UIColor {
     UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
 }
 
 /// Used to exctruct RGBA of the UIColor instance
-public extension UIColor
-{
+public extension UIColor {
     /// Returns red, green, and blue from 0 to 255, and alpha from 0.0 to 1.0.
     ///
     /// ```swift
     /// let rgba = UIColor.red.RGBA255
     /// print("red: \(rgba.red), green: \(rgba.green), blue: \(rgba.blue), alpha: \(rgba.alpha)")
     /// ```
-    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    {
+    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -60,8 +57,7 @@ public extension UIColor
 }
 
 /// Used only for unit testing purpose, no business means.
-extension UIColor
-{
+extension UIColor {
     ///
     /// Used only for unit testing to take control of selecting a color scheme.
     ///

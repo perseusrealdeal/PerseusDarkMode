@@ -18,13 +18,11 @@ import PerseusDarkMode
 ///
 /// Each color is either native SDK color or self-made.
 /// It means that for those iOS versions where a color is not released a self-made adaptation in use.
-extension UIColor: SystemColorProtocol
-{
+extension UIColor: SystemColorProtocol {
+
     /// Red.
-    public static var systemRed_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemRed_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 59, 48) : rgba255(255, 69, 58)
@@ -36,10 +34,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Orange.
-    public static var systemOrange_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemOrange_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 149, 0) : rgba255(255, 159, 10)
@@ -51,10 +47,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Yeallow.
-    public static var systemYellow_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemYellow_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 204, 0) : rgba255(255, 214, 10)
@@ -66,10 +60,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Green.
-    public static var systemGreen_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGreen_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(52, 199, 89) : rgba255(48, 209, 88)
@@ -81,10 +73,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Mint.
-    public static var systemMint_Adapted: UIColor
-    {
-        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemMint_Adapted: UIColor {
+        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(0, 199, 190) : rgba255(102, 212, 207)
@@ -96,8 +86,7 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Teal.
-    public static var systemTeal_Adapted: UIColor
-    {
+    public static var systemTeal_Adapted: UIColor {
         // .systemTeal gives unexpected color
         // in iOS 13, but meets in 15.
         //
@@ -115,8 +104,7 @@ extension UIColor: SystemColorProtocol
         // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
         //
 
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(48, 176, 199) : rgba255(64, 200, 224)
@@ -129,10 +117,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Cyan.
-    public static var systemCyan_Adapted: UIColor
-    {
-        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemCyan_Adapted: UIColor {
+        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(50, 173, 230) : rgba255(100, 210, 255)
@@ -144,10 +130,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Blue.
-    public static var systemBlue_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemBlue_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(0, 122, 255) : rgba255(10, 132, 255)
@@ -159,10 +143,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Indigo.
-    public static var systemIndigo_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemIndigo_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(88, 86, 214) : rgba255(94, 92, 230)
@@ -174,10 +156,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Purple.
-    public static var systemPurple_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemPurple_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(175, 82, 222) : rgba255(191, 90, 242)
@@ -189,10 +169,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Pink.
-    public static var systemPink_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemPink_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 45, 85) : rgba255(255, 55, 95)
@@ -204,10 +182,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Brown.
-    public static var systemBrown_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemBrown_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(162, 132, 94) : rgba255(172, 142, 104)
@@ -219,10 +195,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Gray.
-    public static var systemGray_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(142, 142, 147) : rgba255(142, 142, 147)
@@ -234,10 +208,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 2.
-    public static var systemGray2_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray2_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(174, 174, 178) : rgba255(99, 99, 102)
@@ -249,10 +221,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 3.
-    public static var systemGray3_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray3_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(199, 199, 204) : rgba255(72, 72, 74)
@@ -264,10 +234,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 4.
-    public static var systemGray4_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray4_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(209, 209, 214) : rgba255(58, 58, 60)
@@ -279,10 +247,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 5.
-    public static var systemGray5_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray5_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(229, 229, 234) : rgba255(44, 44, 46)
@@ -294,10 +260,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 6.
-    public static var systemGray6_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray6_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(242, 242, 247) : rgba255(28, 28, 30)

@@ -13,8 +13,7 @@ import UIKit
 #endif
 
 /// Name for make up notification.
-public extension Notification.Name
-{
+public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
 }
 
@@ -25,8 +24,8 @@ public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceServic
 ///
 /// - This service is dedicated to handle Dark Mode changing.
 /// - The service is provided as a singleton across the app and used to take a cotrol of Dark Mode.
-public class AppearanceService
-{
+public class AppearanceService {
+
     // MARK: - Singleton
 
     /// Shared Dark Mode.
@@ -54,10 +53,8 @@ public class AppearanceService
     /// User choice for Dark Mode inside the app.
     ///
     /// The service keeps the value in UserDefaults. It effects DarkMode.StyleObservable on every change.
-    public static var DarkModeUserChoice: DarkModeOption
-    {
-        get
-        {
+    public static var DarkModeUserChoice: DarkModeOption {
+        get {
             // Load enum Int value
 
             let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
@@ -70,8 +67,7 @@ public class AppearanceService
 
             return DARK_MODE_USER_CHOICE_DEFAULT
         }
-        set
-        {
+        set {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
 
             // Used for KVO to immediately notify a change has happened
@@ -85,8 +81,7 @@ public class AppearanceService
     /// - Parameters:
     ///   - stakeholder: Stakeholder of Dark Mode.
     ///   - selector: Point to pass a control of Dark Mode.
-    public static func register(stakeholder: Any, selector: Selector)
-    {
+    public static func register(stakeholder: Any, selector: Selector) {
         nCenter.addObserver(stakeholder,
                             selector: selector,
                             name    : .makeAppearanceUpNotification,
@@ -98,8 +93,7 @@ public class AppearanceService
     /// Calls all registered stakeholders for making up.
     ///
     /// First time should be called when didFinishLaunching happens and then every time when DarkModeUserChoice changes.
-    public static func makeUp()
-    {
+    public static func makeUp() {
         _isEnabled = true
         _changeManually = true
 
@@ -118,8 +112,7 @@ public class AppearanceService
     ///
     /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
     @available(iOS 13.0, *)
-    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-    {
+    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if _changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
@@ -138,8 +131,7 @@ public class AppearanceService
     internal static var _changeManually: Bool = false
 
     /// Make up if TraitCollectionDidChange.
-    internal static func _systemCalledMakeUp()
-    {
+    internal static func _systemCalledMakeUp() {
         if _changeManually { return }
 
         _isEnabled = true
@@ -149,8 +141,7 @@ public class AppearanceService
     }
 
     /// Updates the app's appearance style value.
-    internal static func recalculateStyleIfNeeded()
-    {
+    internal static func recalculateStyleIfNeeded() {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
 
         if shared._style != actualStyle { shared._style = actualStyle }
@@ -160,16 +151,13 @@ public class AppearanceService
     ///
     /// It's matter to change the look of system user controls.
     @available(iOS 13.0, *)
-    internal static func overrideUserInterfaceStyleIfNeeded()
-    {
+    internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
 
-        if let keyWindow = UIApplication.shared.keyWindow
-        {
+        if let keyWindow = UIApplication.shared.keyWindow {
             var overrideStyle: UIUserInterfaceStyle = .unspecified
 
-            switch DarkModeUserChoice
-            {
+            switch DarkModeUserChoice {
             case .auto:
                 overrideStyle = .unspecified
 
@@ -187,18 +175,15 @@ public class AppearanceService
 
 // Local helpers
 
-extension UserDefaults
-{
-    public func valueExists(forKey key: String) -> Bool
-    {
+extension UserDefaults {
+    public func valueExists(forKey key: String) -> Bool {
         return object(forKey: key) != nil
     }
 }
 
 // MARK: - Protocols used for unit testing
 
-public protocol NotificationCenterProtocol
-{
+public protocol NotificationCenterProtocol {
     func addObserver(_ observer        : Any,
                      selector aSelector: Selector,
                      name aName        : NSNotification.Name?,
@@ -207,8 +192,7 @@ public protocol NotificationCenterProtocol
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
 
-public protocol UserDefaultsProtocol
-{
+public protocol UserDefaultsProtocol {
     func valueExists(forKey key: String) -> Bool
 
     func integer(forKey defaultName: String) -> Int

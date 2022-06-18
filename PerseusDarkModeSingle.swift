@@ -36,8 +36,7 @@ import UIKit
 
 // MARK: - Constants
 
-public extension Notification.Name
-{
+public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
 }
 
@@ -50,8 +49,7 @@ public let OBSERVERED_VARIABLE_NAME = "StyleObservable"
 
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
 
-public class AppearanceService
-{
+public class AppearanceService {
     public static var shared: DarkMode = { DarkMode() }()
     private init() { }
 
@@ -65,10 +63,8 @@ public class AppearanceService
     public static var ud = UserDefaults.standard
 #endif
 
-    public static var DarkModeUserChoice: DarkModeOption
-    {
-        get
-        {
+    public static var DarkModeUserChoice: DarkModeOption {
+        get {
             // Load enum Int value
 
             let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
@@ -81,8 +77,7 @@ public class AppearanceService
 
             return DARK_MODE_USER_CHOICE_DEFAULT
         }
-        set
-        {
+        set {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
 
             // Used for KVO to immediately notify a change has happened
@@ -92,8 +87,7 @@ public class AppearanceService
 
     // MARK: - Public API: register stakeholder
 
-    public static func register(stakeholder: Any, selector: Selector)
-    {
+    public static func register(stakeholder: Any, selector: Selector) {
         nCenter.addObserver(stakeholder,
                             selector: selector,
                             name    : .makeAppearanceUpNotification,
@@ -102,8 +96,7 @@ public class AppearanceService
 
     // MARK: - Public API: make the app's appearance up
 
-    public static func makeUp()
-    {
+    public static func makeUp() {
         _isEnabled = true
         _changeManually = true
 
@@ -116,8 +109,7 @@ public class AppearanceService
     }
 
     @available(iOS 13.0, *)
-    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-    {
+    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if _changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
@@ -133,8 +125,7 @@ public class AppearanceService
 
     internal static var _changeManually: Bool = false
 
-    internal static func _systemCalledMakeUp()
-    {
+    internal static func _systemCalledMakeUp() {
         if _changeManually { return }
 
         _isEnabled = true
@@ -143,24 +134,20 @@ public class AppearanceService
         nCenter.post(name: .makeAppearanceUpNotification, object: nil)
     }
 
-    internal static func recalculateStyleIfNeeded()
-    {
+    internal static func recalculateStyleIfNeeded() {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
 
         if shared._style != actualStyle { shared._style = actualStyle }
     }
 
     @available(iOS 13.0, *)
-    internal static func overrideUserInterfaceStyleIfNeeded()
-    {
+    internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
 
-        if let keyWindow = UIApplication.shared.keyWindow
-        {
+        if let keyWindow = UIApplication.shared.keyWindow {
             var overrideStyle: UIUserInterfaceStyle = .unspecified
 
-            switch DarkModeUserChoice
-            {
+            switch DarkModeUserChoice {
             case .auto:
                 overrideStyle = .unspecified
 
@@ -178,8 +165,7 @@ public class AppearanceService
 
 // MARK: - Dark Mode
 
-public class DarkMode: NSObject
-{
+public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
     public var Style                        : AppearanceStyle { _style }
@@ -190,14 +176,11 @@ public class DarkMode: NSObject
 
     // MARK: - System's Appearance Style
 
-    public var SystemStyle                  : SystemStyle
-    {
-        if #available(iOS 13.0, *)
-        {
+    public var SystemStyle                  : SystemStyle {
+        if #available(iOS 13.0, *) {
             guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
 
-            switch keyWindow.traitCollection.userInterfaceStyle
-            {
+            switch keyWindow.traitCollection.userInterfaceStyle {
             case .unspecified:
                 return .unspecified
             case .light:
@@ -209,22 +192,19 @@ public class DarkMode: NSObject
                 return .unspecified
             }
         }
-        else
-        {
+        else {
             return .unspecified
         }
     }
 
-    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT
-    {
+    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
         didSet { StyleObservable = Style.rawValue }
     }
 }
 
 // MARK: - Dark Mode decision-making table
 
-public class DarkModeDecision
-{
+public class DarkModeDecision {
     private init() { }
 
     // MARK: - Calculating Dark Mode decision
@@ -241,12 +221,10 @@ public class DarkModeDecision
     ///     .dark        | dark    | dark | light
     ///
     public class func calculate(_ userChoice : DarkModeOption,
-                                _ systemStyle: SystemStyle) -> AppearanceStyle
-    {
+                                _ systemStyle: SystemStyle) -> AppearanceStyle {
         // Calculate outputs
 
-        if (systemStyle == .unspecified) && (userChoice == .auto)
-        {
+        if (systemStyle == .unspecified) && (userChoice == .auto) {
             return DARK_MODE_STYLE_DEFAULT
         }
         if (systemStyle == .unspecified) && (userChoice == .on) { return .dark }
@@ -268,13 +246,11 @@ public class DarkModeDecision
 
 // MARK: - Appearance Style Observering
 
-public class DarkModeObserver: NSObject
-{
+public class DarkModeObserver: NSObject {
     public var action: ((_ newStyle: AppearanceStyle) -> Void)?
     private(set) var objectToObserve = AppearanceService.shared
 
-    public override init()
-    {
+    public override init() {
         super.init()
 
         objectToObserve.addObserver(self,
@@ -283,8 +259,7 @@ public class DarkModeObserver: NSObject
                                     context   : nil)
     }
 
-    public init(_ action: @escaping ((_ newStyle: AppearanceStyle) -> Void))
-    {
+    public init(_ action: @escaping ((_ newStyle: AppearanceStyle) -> Void)) {
         super.init()
 
         self.action = action
@@ -297,8 +272,7 @@ public class DarkModeObserver: NSObject
     public override func observeValue(forKeyPath keyPath: String?,
                                       of object         : Any?,
                                       change            : [NSKeyValueChangeKey : Any]?,
-                                      context           : UnsafeMutableRawPointer?)
-    {
+                                      context           : UnsafeMutableRawPointer?) {
         guard
             keyPath == OBSERVERED_VARIABLE_NAME,
             let style = change?[.newKey],
@@ -309,24 +283,21 @@ public class DarkModeObserver: NSObject
         action?(newStyle)
     }
 
-    deinit
-    {
+    deinit {
         objectToObserve.removeObserver(self, forKeyPath: OBSERVERED_VARIABLE_NAME)
     }
 }
 
 // MARK: - Dark Mode Option
 
-public enum DarkModeOption: Int, CustomStringConvertible
-{
+public enum DarkModeOption: Int, CustomStringConvertible {
+
     case auto = 0
     case on   = 1
     case off  = 2
 
-    public var description: String
-    {
-        switch self
-        {
+    public var description: String {
+        switch self {
         case .auto:
             return ".auto"
         case .on:
@@ -339,15 +310,13 @@ public enum DarkModeOption: Int, CustomStringConvertible
 
 // MARK: - Appearance Style
 
-public enum AppearanceStyle: Int, CustomStringConvertible
-{
+public enum AppearanceStyle: Int, CustomStringConvertible {
+
     case light = 0
     case dark  = 1
 
-    public var description: String
-    {
-        switch self
-        {
+    public var description: String {
+        switch self {
         case .light:
             return ".light"
         case .dark:
@@ -358,16 +327,14 @@ public enum AppearanceStyle: Int, CustomStringConvertible
 
 // MARK: - System Style
 
-public enum SystemStyle: Int, CustomStringConvertible
-{
+public enum SystemStyle: Int, CustomStringConvertible {
+
     case unspecified = 0
     case light       = 1
     case dark        = 2
 
-    public var description: String
-    {
-        switch self
-        {
+    public var description: String {
+        switch self {
         case .unspecified:
             return ".unspecified"
         case .light:
@@ -380,23 +347,19 @@ public enum SystemStyle: Int, CustomStringConvertible
 
 // MARK: - Dark Mode Image View
 
-public class DarkModeImageView: UIImageView
-{
+public class DarkModeImageView: UIImageView {
+
     @IBInspectable
-    var imageLight: UIImage?
-    {
-        didSet
-        {
+    var imageLight: UIImage? {
+        didSet {
             light = imageLight
             image = AppearanceService.shared.Style == .light ? light : dark
         }
     }
 
     @IBInspectable
-    var imageDark : UIImage?
-    {
-        didSet
-        {
+    var imageDark : UIImage? {
+        didSet {
             dark = imageDark
             image = AppearanceService.shared.Style == .light ? light : dark
         }
@@ -407,33 +370,27 @@ public class DarkModeImageView: UIImageView
     private(set) var light: UIImage?
     private(set) var dark: UIImage?
 
-    override init(frame: CGRect)
-    {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
 
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
     }
 
-    private func configure()
-    {
-        darkModeObserver = DarkModeObserver
-        { style in
+    private func configure() {
+        darkModeObserver = DarkModeObserver { style in
             self.image = style == .light ? self.light : self.dark
         }
     }
 
-    public func configure(_ light: UIImage?, _ dark: UIImage?)
-    {
+    public func configure(_ light: UIImage?, _ dark: UIImage?) {
         self.light = light
         self.dark = dark
 
-        darkModeObserver?.action =
-        { style in
+        darkModeObserver?.action = { style in
             self.image = style == .light ? self.light : self.dark
         }
 
@@ -443,8 +400,7 @@ public class DarkModeImageView: UIImageView
 
 // MARK: Adapted System Colors Requirements
 
-public protocol SystemColorProtocol
-{
+public protocol SystemColorProtocol {
     // System colors
 
     static var systemRed_Adapted   : UIColor { get }
@@ -472,13 +428,10 @@ public protocol SystemColorProtocol
 
 // MARK: - Adapted System Colors
 
-extension UIColor: SystemColorProtocol
-{
+extension UIColor: SystemColorProtocol {
     /// Red.
-    public static var systemRed_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemRed_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 59, 48) : rgba255(255, 69, 58)
@@ -490,10 +443,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Orange.
-    public static var systemOrange_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemOrange_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 149, 0) : rgba255(255, 159, 10)
@@ -505,10 +456,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Yeallow.
-    public static var systemYellow_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemYellow_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 204, 0) : rgba255(255, 214, 10)
@@ -520,10 +469,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Green.
-    public static var systemGreen_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGreen_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(52, 199, 89) : rgba255(48, 209, 88)
@@ -535,10 +482,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Mint.
-    public static var systemMint_Adapted: UIColor
-    {
-        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemMint_Adapted: UIColor {
+        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(0, 199, 190) : rgba255(102, 212, 207)
@@ -550,8 +495,7 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Teal.
-    public static var systemTeal_Adapted: UIColor
-    {
+    public static var systemTeal_Adapted: UIColor {
         // .systemTeal gives unexpected color
         // in iOS 13, but meets in 15.
         //
@@ -569,8 +513,7 @@ extension UIColor: SystemColorProtocol
         // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
         //
 
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(48, 176, 199) : rgba255(64, 200, 224)
@@ -583,10 +526,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Cyan.
-    public static var systemCyan_Adapted: UIColor
-    {
-        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemCyan_Adapted: UIColor {
+        guard #available(iOS 15.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(50, 173, 230) : rgba255(100, 210, 255)
@@ -598,10 +539,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Blue.
-    public static var systemBlue_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemBlue_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(0, 122, 255) : rgba255(10, 132, 255)
@@ -613,10 +552,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Indigo.
-    public static var systemIndigo_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemIndigo_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(88, 86, 214) : rgba255(94, 92, 230)
@@ -628,10 +565,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Purple.
-    public static var systemPurple_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemPurple_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(175, 82, 222) : rgba255(191, 90, 242)
@@ -643,10 +578,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Pink.
-    public static var systemPink_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemPink_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(255, 45, 85) : rgba255(255, 55, 95)
@@ -658,10 +591,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Brown.
-    public static var systemBrown_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemBrown_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(162, 132, 94) : rgba255(172, 142, 104)
@@ -673,10 +604,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// Gray.
-    public static var systemGray_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(142, 142, 147) : rgba255(142, 142, 147)
@@ -688,10 +617,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 2.
-    public static var systemGray2_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray2_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(174, 174, 178) : rgba255(99, 99, 102)
@@ -703,10 +630,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 3.
-    public static var systemGray3_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray3_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(199, 199, 204) : rgba255(72, 72, 74)
@@ -718,10 +643,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 4.
-    public static var systemGray4_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray4_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(209, 209, 214) : rgba255(58, 58, 60)
@@ -733,10 +656,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 5.
-    public static var systemGray5_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray5_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(229, 229, 234) : rgba255(44, 44, 46)
@@ -748,10 +669,8 @@ extension UIColor: SystemColorProtocol
     }
 
     /// System gray 6.
-    public static var systemGray6_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGray6_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
             rgba255(242, 242, 247) : rgba255(28, 28, 30)
@@ -765,8 +684,7 @@ extension UIColor: SystemColorProtocol
 
 // MARK: Adapted Semantic Colors Requirements
 
-public protocol SemanticColorProtocol
-{
+public protocol SemanticColorProtocol {
     // MARK: - For foreground content
 
     // Label Colors
@@ -814,15 +732,12 @@ public protocol SemanticColorProtocol
 
 // MARK: Adapted Semantic Colors
 
-extension UIColor: SemanticColorProtocol
-{
+extension UIColor: SemanticColorProtocol {
     // MARK: - FOREGROUND
 
     /// Label.
-    public static var label_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var label_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(0, 0, 0) : rgba255(255, 255, 255)
@@ -834,10 +749,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Secondary label.
-    public static var secondaryLabel_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var secondaryLabel_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(60, 60, 67, 0.6) : rgba255(235, 235, 245, 0.6)
@@ -849,10 +762,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Tertiary label.
-    public static var tertiaryLabel_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var tertiaryLabel_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
@@ -864,10 +775,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Quaternary label.
-    public static var quaternaryLabel_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var quaternaryLabel_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(60, 60, 67, 0.18) : rgba255(235, 235, 245, 0.16)
@@ -879,10 +788,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Placeholder text.
-    public static var placeholderText_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var placeholderText_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
@@ -894,10 +801,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Separator.
-    public static var separator_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var separator_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(60, 60, 67, 0.29) : rgba255(84, 84, 88, 0.6)
@@ -909,10 +814,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Opaque separator.
-    public static var opaqueSeparator_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var opaqueSeparator_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(198, 198, 200) : rgba255(56, 56, 58)
@@ -924,10 +827,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Link.
-    public static var link_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var link_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(0, 122, 255) : rgba255(9, 132, 255)
@@ -939,10 +840,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// System fill.
-    public static var systemFill_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemFill_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(120, 120, 128, 0.2) : rgba255(120, 120, 128, 0.36)
@@ -954,10 +853,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Secondary system fill.
-    public static var secondarySystemFill_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var secondarySystemFill_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(120, 120, 128, 0.16) : rgba255(120, 120, 128, 0.32)
@@ -969,10 +866,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Tertiary system fill.
-    public static var tertiarySystemFill_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var tertiarySystemFill_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(118, 118, 128, 0.12) : rgba255(118, 118, 128, 0.24)
@@ -984,10 +879,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Quaternary system fill.
-    public static var quaternarySystemFill_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var quaternarySystemFill_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(116, 116, 128, 0.08) : rgba255(118, 118, 128, 0.18)
@@ -1001,10 +894,8 @@ extension UIColor: SemanticColorProtocol
     // MARK: - BACKGROUND
 
     /// System background.
-    public static var systemBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(255, 255, 255) : rgba255(28, 28, 30)
@@ -1016,10 +907,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Secondary system background.
-    public static var secondarySystemBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var secondarySystemBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(242, 242, 247) : rgba255(44, 44, 46)
@@ -1031,10 +920,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Tertiary system background.
-    public static var tertiarySystemBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var tertiarySystemBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(255, 255, 255) : rgba255(58, 58, 60)
@@ -1046,10 +933,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// System grouped background.
-    public static var systemGroupedBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var systemGroupedBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(242, 242, 247) : rgba255(28, 28, 30)
@@ -1061,10 +946,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Secondary system grouped background.
-    public static var secondarySystemGroupedBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var secondarySystemGroupedBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(255, 255, 255) : rgba255(44, 44, 46)
@@ -1076,10 +959,8 @@ extension UIColor: SemanticColorProtocol
     }
 
     /// Tertiary system grouped background.
-    public static var tertiarySystemGroupedBackground_Adapted: UIColor
-    {
-        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else
-        {
+    public static var tertiarySystemGroupedBackground_Adapted: UIColor {
+        guard #available(iOS 13.0, *), _iOS13InUseAndHigherOnly else {
             let color = AppearanceService.shared.Style == .light ?
 
                 rgba255(242, 242, 247) : rgba255(58, 58, 60)
@@ -1096,15 +977,12 @@ extension UIColor: SemanticColorProtocol
 public func rgba255(_ red  : CGFloat,
                     _ green: CGFloat,
                     _ blue : CGFloat,
-                    _ alpha: CGFloat = 1.0) -> UIColor
-{
-    return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+                    _ alpha: CGFloat = 1.0) -> UIColor {
+    UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
 }
 
-public extension UIColor
-{
-    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    {
+public extension UIColor {
+    var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -1116,18 +994,15 @@ public extension UIColor
     }
 }
 
-public extension UserDefaults
-{
-    public func valueExists(forKey key: String) -> Bool
-    {
+public extension UserDefaults {
+    public func valueExists(forKey key: String) -> Bool {
         return object(forKey: key) != nil
     }
 }
 
 // MARK: - Used only for unit testing purpose
 
-public protocol NotificationCenterProtocol
-{
+public protocol NotificationCenterProtocol {
     func addObserver(_ observer        : Any,
                      selector aSelector: Selector,
                      name aName        : NSNotification.Name?,
@@ -1136,16 +1011,14 @@ public protocol NotificationCenterProtocol
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
 
-public protocol UserDefaultsProtocol
-{
+public protocol UserDefaultsProtocol {
     func valueExists(forKey key: String) -> Bool
 
     func integer(forKey defaultName: String) -> Int
     func setValue(_ value: Any?, forKey key: String)
 }
 
-public protocol DarkModeProtocol
-{
+public protocol DarkModeProtocol {
     var Style                  : AppearanceStyle { get }
     var SystemStyle            : SystemStyle { get }
 
@@ -1156,7 +1029,6 @@ extension UserDefaults      : UserDefaultsProtocol { }
 extension NotificationCenter: NotificationCenterProtocol { }
 extension DarkMode          : DarkModeProtocol { }
 
-extension UIColor
-{
+extension UIColor {
     internal static var _iOS13InUseAndHigherOnly: Bool = true
 }

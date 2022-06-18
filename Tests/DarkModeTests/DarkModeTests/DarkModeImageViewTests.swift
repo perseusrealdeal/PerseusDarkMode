@@ -15,10 +15,9 @@ import UIKit
 import XCTest
 @testable import PerseusDarkMode
 
-final class DarkModeImageViewTests: XCTestCase
-{
-    func test_init()
-    {
+final class DarkModeImageViewTests: XCTestCase {
+
+    func test_init() {
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
         let sut = DarkModeImageView(frame: frame)
 
@@ -32,8 +31,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertIdentical(sut.darkModeObserver?.objectToObserve, AppearanceService.shared)
     }
 
-    func test_setUp()
-    {
+    func test_setUp() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -53,8 +51,7 @@ final class DarkModeImageViewTests: XCTestCase
 
     // MARK: - configure
 
-    func test_configure_image_should_be_light_if_style_is_light()
-    {
+    func test_configure_image_should_be_light_if_style_is_light() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -74,8 +71,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.image, light)
     }
 
-    func test_configure_image_should_be_dark_if_style_is_dark()
-    {
+    func test_configure_image_should_be_dark_if_style_is_dark() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -95,8 +91,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.image, dark)
     }
 
-    func test_configure_image_should_be_light_if_style_changed_to_light()
-    {
+    func test_configure_image_should_be_light_if_style_changed_to_light() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -118,8 +113,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.image, light)
     }
 
-    func test_configure_image_should_be_dark_if_style_changed_to_dark()
-    {
+    func test_configure_image_should_be_dark_if_style_changed_to_dark() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -143,8 +137,7 @@ final class DarkModeImageViewTests: XCTestCase
 
     // MARK: - Interface Builder
 
-    func test_interface_builder_image_should_be_light_if_style_is_light()
-    {
+    func test_interface_builder_image_should_be_light_if_style_is_light() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -171,8 +164,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.imageDark, dark)
     }
 
-    func test_interface_builder_image_should_be_dark_if_style_is_dark()
-    {
+    func test_interface_builder_image_should_be_dark_if_style_is_dark() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -199,8 +191,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.imageDark, dark)
     }
 
-    func test_interface_builder_should_be_light_if_style_changed_to_light()
-    {
+    func test_interface_builder_should_be_light_if_style_changed_to_light() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))
@@ -223,8 +214,7 @@ final class DarkModeImageViewTests: XCTestCase
         XCTAssertEqual(sut.image, light)
     }
 
-    func test_interface_builder_image_should_be_dark_if_style_changed_to_dark()
-    {
+    func test_interface_builder_image_should_be_dark_if_style_changed_to_dark() {
         // arrange
 
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1))

@@ -13,8 +13,8 @@ import UIKit
 #endif
 
 /// Represents system colors requirements.
-public protocol SystemColorProtocol
-{
+public protocol SystemColorProtocol {
+
     // MARK: - SYSTEM COLORS
 
     /// Red.

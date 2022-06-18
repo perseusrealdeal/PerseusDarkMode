@@ -15,18 +15,16 @@ import UIKit
 import XCTest
 @testable import PerseusDarkMode
 
-final class DarkModeTests: XCTestCase
-{
-    func test_DarkMode_observable()
-    {
+final class DarkModeTests: XCTestCase {
+
+    func test_DarkMode_observable() {
         // arrange
 
         var count     : Int = 0
         var collection: [AppearanceStyle] = []
 
         var observer:DarkModeObserver? = DarkModeObserver()
-        observer?.action =
-            { newStyle in
+        observer?.action = { newStyle in
 
                 collection.append(newStyle)
                 count += 1
@@ -47,16 +45,14 @@ final class DarkModeTests: XCTestCase
         observer = nil
     }
 
-    func test_DarkMode_not_observable()
-    {
+    func test_DarkMode_not_observable() {
         // arrange
 
         var count     : Int = 0
         var collection: [AppearanceStyle] = []
 
         var observer:DarkModeObserver? = DarkModeObserver()
-        observer?.action =
-            { newStyle in
+        observer?.action = { newStyle in
 
                 collection.append(newStyle)
                 count += 1
@@ -75,8 +71,7 @@ final class DarkModeTests: XCTestCase
         XCTAssertEqual(collection, [])
     }
 
-    func test_get_DarkModeUserChoice_when_valueExists_true()
-    {
+    func test_get_DarkModeUserChoice_when_valueExists_true() {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()
@@ -97,8 +92,7 @@ final class DarkModeTests: XCTestCase
         AppearanceService.ud = UserDefaults.standard
     }
 
-    func test_get_DarkModeUserChoice_when_valueExists_false()
-    {
+    func test_get_DarkModeUserChoice_when_valueExists_false() {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()
@@ -121,8 +115,7 @@ final class DarkModeTests: XCTestCase
         AppearanceService.ud = UserDefaults.standard
     }
 
-    func test_set_DarkModeUserChoice()
-    {
+    func test_set_DarkModeUserChoice() {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()

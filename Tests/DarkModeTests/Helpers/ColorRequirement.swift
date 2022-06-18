@@ -14,8 +14,8 @@ import UIKit
 
 @testable import AdaptedSystemUI
 
-enum ColorRequirement
-{
+enum ColorRequirement {
+
     case label
     case secondaryLabel
     case tertiaryLabel
@@ -58,10 +58,8 @@ enum ColorRequirement
     case systemGray5
     case systemGray6
 
-    var color: UIColor
-    {
-        switch self
-        {
+    var color: UIColor {
+        switch self {
         case .label:
             return .label_Adapted
         case .secondaryLabel:

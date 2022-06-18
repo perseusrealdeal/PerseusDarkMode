@@ -5,6 +5,5 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - large_tuple
   - force_cast
   - identifier_name
-  - opening_brace
   - colon
   - block_based_kvo
