@@ -1,11 +1,11 @@
 // swift-tools-version:5.3
 /* Package.swift
- 
+
  Created by Mikhail Zhigulin in 7530.
- 
+
  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
  All rights reserved.
- 
+
  Abstract:
  Package manifest for Dark Mode.
 */
@@ -25,7 +25,7 @@ let package = Package(
         [
             .target(name: "PerseusDarkMode", dependencies: []),
             .target(name: "AdaptedSystemUI", dependencies: ["PerseusDarkMode"]),
-            
+
             .testTarget(name        : "DarkModeTests",
                         dependencies: ["PerseusDarkMode", "AdaptedSystemUI"]),
         ]

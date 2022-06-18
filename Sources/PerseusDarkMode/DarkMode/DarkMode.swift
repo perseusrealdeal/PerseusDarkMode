@@ -19,26 +19,26 @@ import UIKit
 public class DarkMode: NSObject
 {
     // MARK: - The App's current Appearance Style
-    
+
     /// The app's current appearance style.
     public var Style                        : AppearanceStyle { _style }
-    
+
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
-    
+
     /// Shows the same value of Style but observable.
     ///
     /// Takes place because swift doesn't support observing enums.
     @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
-    
+
     // MARK: - System's Appearance Style
-    
+
     /// The app's current system appearance style.
     public var SystemStyle                  : SystemStyle
     {
         if #available(iOS 13.0, *)
         {
             guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
-            
+
             switch keyWindow.traitCollection.userInterfaceStyle
             {
             case .unspecified:
@@ -47,7 +47,7 @@ public class DarkMode: NSObject
                 return .light
             case .dark:
                 return .dark
-                
+
             @unknown default:
                 return .unspecified
             }
@@ -57,7 +57,7 @@ public class DarkMode: NSObject
             return .unspecified
         }
     }
-    
+
     internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT
     {
         didSet { StyleObservable = Style.rawValue }
@@ -70,7 +70,7 @@ public protocol DarkModeProtocol
 {
     var Style                  : AppearanceStyle { get }
     var SystemStyle            : SystemStyle { get }
-    
+
     dynamic var StyleObservable: Int { get }
 }
 

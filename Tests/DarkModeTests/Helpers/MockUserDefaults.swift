@@ -15,37 +15,37 @@ class MockUserDefaults: UserDefaultsProtocol
 {
     var isValueExists = false
     func valueExists(forKey key: String) -> Bool { isValueExists }
-    
+
     // MARK: - getValue
-    
+
     var intergerCallCount = 0
     var intergerArgs_names : [String] = []
-    
+
     func integer(forKey defaultName: String) -> Int
     {
         intergerCallCount += 1
         intergerArgs_names.append(defaultName)
-        
+
         return 0
     }
-    
+
     func verifyInterger(name: String,
                         file: StaticString = #file,
                         line: UInt = #line)
     {
         guard intergerWasCalledOnce(file: file, line: line) else { return }
-        
+
         XCTAssertTrue(intergerArgs_names.first! == name, "interger", file: file, line: line)
     }
-    
+
     func verifyInterger(file: StaticString = #file,
                         line: UInt = #line)
     {
         guard intergerWasNotCalled(file: file, line: line) else { return }
-        
+
         XCTAssertTrue(intergerArgs_names.isEmpty, "interger", file: file, line: line)
     }
-    
+
     private func intergerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool
     {
         verifyMethodCalledOnce(
@@ -55,7 +55,7 @@ class MockUserDefaults: UserDefaultsProtocol
             file             : file,
             line             : line)
     }
-    
+
     private func intergerWasNotCalled(file: StaticString = #file, line: UInt = #line) -> Bool
     {
         verifyMethodNotCalled(
@@ -65,36 +65,36 @@ class MockUserDefaults: UserDefaultsProtocol
             file             : file,
             line             : line)
     }
-    
+
     // MARK: - setValue
-    
+
     var setValueCallCount = 0
-    
+
     var setValueArgs_values: [Int] = []
     var setValueArgs_keys : [String] = []
-    
+
     func setValue(_ value: Any?, forKey key: String)
     {
         setValueCallCount += 1
-        
+
         setValueArgs_values.append(value as! Int)
         setValueArgs_keys.append(key)
     }
-    
+
     func verifySetValue(value: Int,
                         key  : String,
                         file : StaticString = #file,
                         line : UInt = #line)
     {
         guard setValueWasCalledOnce(file: file, line: line) else { return }
-        
+
         XCTAssertTrue(setValueArgs_values.first! == value,
                       "value", file: file, line: line)
-        
+
         XCTAssertEqual(setValueArgs_keys.first, key,
                        "key", file: file, line: line)
     }
-    
+
     private func setValueWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool
     {
         verifyMethodCalledOnce(
@@ -116,14 +116,14 @@ fileprivate func verifyMethodCalledOnce(methodName       : String, callCount: In
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
     }
-    
+
     if callCount > 1
     {
         XCTFail("Wanted 1 time but was called \(callCount) times. " +
                     "\(methodName) with \(describeArguments())", file: file, line: line)
         return false
     }
-    
+
     return true
 }
 
@@ -137,6 +137,6 @@ fileprivate func verifyMethodNotCalled(methodName       : String, callCount: Int
         XCTFail("Don't wanted but invoked: \(methodName)", file: file, line: line)
         return false
     }
-    
+
     return true
 }

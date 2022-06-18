@@ -21,46 +21,46 @@ final class AppearanceServiceTests: XCTestCase
     {
         XCTAssertFalse(AppearanceService.isEnabled)
         XCTAssertFalse(AppearanceService._isEnabled)
-        
+
         XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)
-        
+
         XCTAssertIdentical(UIView().DarkMode as AnyObject, AppearanceService.shared)
         XCTAssertIdentical(UIViewController().DarkMode as AnyObject, AppearanceService.shared)
     }
-    
+
     func test_method_register_called_addObserver()
     {
         // arrange
-        
+
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
-        
+
         class MyView: UIView { @objc func makeUp() { } }
         let view = MyView()
-        
+
         // act
-        
+
         AppearanceService.register(stakeholder: view, selector: #selector(view.makeUp))
-        
+
         // assert
-        
+
         mock.verifyRegisterObserver(observer: view, selector: #selector(view.makeUp))
     }
-    
+
     func test_method_makeAppearanceUp_called_post_and_isEnabled_true()
     {
         // arrange
-        
+
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
-        
+
         // act
-        
+
         AppearanceService.makeUp()
-        
+
         // assert
-        
+
         mock.verifyPost(name: .makeAppearanceUpNotification)
         XCTAssertTrue(AppearanceService.isEnabled)
     }

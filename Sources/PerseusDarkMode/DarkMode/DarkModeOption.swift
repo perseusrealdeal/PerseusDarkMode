@@ -20,7 +20,7 @@ public enum DarkModeOption: Int, CustomStringConvertible
     case auto = 0
     case on   = 1
     case off  = 2
-    
+
     /// Textual representation of the current value of the option.
     public var description: String
     {

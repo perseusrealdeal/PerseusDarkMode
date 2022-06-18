@@ -24,20 +24,20 @@ enum ColorRequirement
     case separator
     case opaqueSeparator
     case link
-    
+
     case systemFill
     case secondarySystemFill
     case tertiarySystemFill
     case quaternarySystemFill
-    
+
     case systemBackground
     case secondarySystemBackground
     case tertiarySystemBackground
-    
+
     case systemGroupedBackground
     case secondarySystemGroupedBackground
     case tertiarySystemGroupedBackground
-    
+
     case systemRed
     case systemOrange
     case systemYellow
@@ -50,14 +50,14 @@ enum ColorRequirement
     case systemPurple
     case systemPink
     case systemBrown
-    
+
     case systemGray
     case systemGray2
     case systemGray3
     case systemGray4
     case systemGray5
     case systemGray6
-    
+
     var color: UIColor
     {
         switch self
@@ -78,7 +78,7 @@ enum ColorRequirement
             return .opaqueSeparator_Adapted
         case .link:
             return .link_Adapted
-            
+
         case .systemFill:
             return .systemFill_Adapted
         case .secondarySystemFill:
@@ -87,21 +87,21 @@ enum ColorRequirement
             return .tertiarySystemFill_Adapted
         case .quaternarySystemFill:
             return .quaternarySystemFill_Adapted
-            
+
         case .systemBackground:
             return .systemBackground_Adapted
         case .secondarySystemBackground:
             return .secondarySystemBackground_Adapted
         case .tertiarySystemBackground:
             return .tertiarySystemBackground_Adapted
-            
+
         case .systemGroupedBackground:
             return .systemGroupedBackground_Adapted
         case .secondarySystemGroupedBackground:
             return .secondarySystemGroupedBackground_Adapted
         case .tertiarySystemGroupedBackground:
             return .tertiarySystemGroupedBackground_Adapted
-            
+
         case .systemRed:
             return .systemRed_Adapted
         case .systemOrange:
@@ -126,7 +126,7 @@ enum ColorRequirement
             return .systemPink_Adapted
         case .systemBrown:
             return .systemBrown_Adapted
-        
+
         case .systemGray:
             return .systemGray_Adapted
         case .systemGray2:

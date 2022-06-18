@@ -18,7 +18,7 @@ import UIKit
 /// let _ = rgba255(235, 235, 245, 0.6)
 /// ```
 /// or
-/// 
+///
 /// ```swift
 /// let _ = rgba255(255, 255, 255)
 /// ```
@@ -52,9 +52,9 @@ public extension UIColor
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
-        
+
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
+
         return (red*255, green*255, blue*255, alpha)
     }
 }
