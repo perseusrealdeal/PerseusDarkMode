@@ -62,7 +62,7 @@ public class DarkModeImageView: UIImageView
     /// Configures the view.
     private func configure()
     {
-        darkModeObserver = DarkModeObserver()
+        darkModeObserver = DarkModeObserver
         {
             style in  self.image = style == .light ? self.light : self.dark
         }
