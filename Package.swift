@@ -18,7 +18,7 @@ let package = Package(
     products    :
         [
             .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"]),
-            .library(name: "Adapted System UI", targets: ["AdaptedSystemUI"]),
+            .library(name: "Adapted System UI", targets: ["AdaptedSystemUI"])
         ],
     dependencies: [],
     targets     :
@@ -27,6 +27,6 @@ let package = Package(
             .target(name: "AdaptedSystemUI", dependencies: ["PerseusDarkMode"]),
 
             .testTarget(name        : "DarkModeTests",
-                        dependencies: ["PerseusDarkMode", "AdaptedSystemUI"]),
+                        dependencies: ["PerseusDarkMode", "AdaptedSystemUI"])
         ]
 )
