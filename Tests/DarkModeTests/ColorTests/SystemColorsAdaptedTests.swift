@@ -121,7 +121,6 @@ final class SystemColorsAdaptedTests: XCTestCase
         UIColor._iOS13InUseAndHigherOnly = true
     }
 
-
     func test_systemTeal_Adapted()
     {
         let light = rgba255(48, 176, 199)

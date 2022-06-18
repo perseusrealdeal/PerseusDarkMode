@@ -111,7 +111,6 @@ public class AppearanceService
         _changeManually = false
     }
 
-
     /// Puts the app's Dark Mode in line with System Appearance Mode.
     ///
     /// Should be called when user taggles System Appearance Mode in Settings app.
