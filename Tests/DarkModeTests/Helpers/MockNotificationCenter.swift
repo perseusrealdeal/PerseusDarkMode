@@ -89,10 +89,10 @@ class MockNotificationCenter: NotificationCenterProtocol
     }
 }
 
-fileprivate func verifyMethodCalledOnce(methodName       : String, callCount: Int,
-                                        describeArguments: @autoclosure () -> String,
-                                        file             : StaticString = #file,
-                                        line             : UInt = #line) -> Bool
+private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+                                    describeArguments: @autoclosure () -> String,
+                                    file             : StaticString = #file,
+                                    line             : UInt = #line) -> Bool
 {
     if callCount == 0
     {
