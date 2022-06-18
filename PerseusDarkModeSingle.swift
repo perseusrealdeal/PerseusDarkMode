@@ -52,7 +52,7 @@ public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceServic
 
 public class AppearanceService
 {
-    public static var shared: DarkMode = { DarkMode() } ()
+    public static var shared: DarkMode = { DarkMode() }()
     private init() { }
 
     public static var isEnabled        : Bool { _isEnabled }

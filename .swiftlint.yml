@@ -12,5 +12,4 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - block_based_kvo
   - closure_parameter_position
   - empty_parentheses_with_trailing_closure
-  - no_space_in_method_call
   - redundant_discardable_let

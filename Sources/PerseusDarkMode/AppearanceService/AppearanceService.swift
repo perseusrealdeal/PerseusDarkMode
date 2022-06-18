@@ -30,7 +30,7 @@ public class AppearanceService
     // MARK: - Singleton
 
     /// Shared Dark Mode.
-    public static var shared: DarkMode = { DarkMode() } ()
+    public static var shared: DarkMode = { DarkMode() }()
     private init() { }
 
     /// TRUE if Appearance.makeUp called otherwise FALSE.
