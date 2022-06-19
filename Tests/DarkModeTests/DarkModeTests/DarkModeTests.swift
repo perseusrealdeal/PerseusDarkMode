@@ -20,10 +20,10 @@ final class DarkModeTests: XCTestCase {
     func test_DarkMode_observable() {
         // arrange
 
-        var count     : Int = 0
+        var count: Int = 0
         var collection: [AppearanceStyle] = []
 
-        var observer:DarkModeObserver? = DarkModeObserver()
+        var observer: DarkModeObserver? = DarkModeObserver()
         observer?.action = { newStyle in
 
                 collection.append(newStyle)
@@ -48,10 +48,10 @@ final class DarkModeTests: XCTestCase {
     func test_DarkMode_not_observable() {
         // arrange
 
-        var count     : Int = 0
+        var count: Int = 0
         var collection: [AppearanceStyle] = []
 
-        var observer:DarkModeObserver? = DarkModeObserver()
+        var observer: DarkModeObserver? = DarkModeObserver()
         observer?.action = { newStyle in
 
                 collection.append(newStyle)
@@ -130,7 +130,7 @@ final class DarkModeTests: XCTestCase {
         // assert
 
         mockUserDefaults.verifySetValue(value: sut.rawValue,
-                                        key  : DARK_MODE_USER_CHOICE_OPTION_KEY)
+                                        key: DARK_MODE_USER_CHOICE_OPTION_KEY)
 
         // keep it clean for the others
 

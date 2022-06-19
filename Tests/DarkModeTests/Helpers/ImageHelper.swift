@@ -14,7 +14,7 @@ import UIKit
 
 func createImage() -> UIImage {
     UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0),
-                         size  : CGSize(width: 1, height: 1))).asImage()
+                         size: CGSize(width: 1, height: 1))).asImage()
 }
 
 extension UIView {
@@ -28,7 +28,7 @@ extension UIView {
         } else {
             UIGraphicsBeginImageContext(self.frame.size)
 
-            self.layer.render(in:UIGraphicsGetCurrentContext()!)
+            self.layer.render(in: UIGraphicsGetCurrentContext()!)
             let image = UIGraphicsGetImageFromCurrentImageContext()
 
             UIGraphicsEndImageContext()

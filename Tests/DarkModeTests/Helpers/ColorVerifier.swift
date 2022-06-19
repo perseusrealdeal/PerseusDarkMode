@@ -18,12 +18,12 @@ import XCTest
 
 final class ColorVerifier {
 
-    class func verify(requirement    : ColorRequirement,
+    class func verify(requirement: ColorRequirement,
                       _ requiredLight: UIColor?,
-                      _ requiredDark : UIColor?,
-                      _ iOS13color   : UIColor?,
-                      file           : StaticString = #file,
-                      line           : UInt = #line) {
+                      _ requiredDark: UIColor?,
+                      _ iOS13color: UIColor?,
+                      file: StaticString = #file,
+                      line: UInt = #line) {
         if #available(iOS 13.0, *), iOS13color != nil {
             XCTAssertEqual(requirement.color, iOS13color)
         } else {

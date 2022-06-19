@@ -35,8 +35,8 @@ public class DarkModeObserver: NSObject {
 
         objectToObserve.addObserver(self,
                                     forKeyPath: OBSERVERED_VARIABLE_NAME,
-                                    options   : .new,
-                                    context   : nil)
+                                    options: .new,
+                                    context: nil)
     }
 
     /// Initializer with parameters.
@@ -48,15 +48,15 @@ public class DarkModeObserver: NSObject {
         self.action = action
         objectToObserve.addObserver(self,
                                     forKeyPath: OBSERVERED_VARIABLE_NAME,
-                                    options   : .new,
-                                    context   : nil)
+                                    options: .new,
+                                    context: nil)
     }
 
     /// Takes action every time when Style changes happens.
     public override func observeValue(forKeyPath keyPath: String?,
-                                      of object         : Any?,
-                                      change            : [NSKeyValueChangeKey : Any]?,
-                                      context           : UnsafeMutableRawPointer?) {
+                                      of object: Any?,
+                                      change: [NSKeyValueChangeKey: Any]?,
+                                      context: UnsafeMutableRawPointer?) {
         guard
             keyPath == OBSERVERED_VARIABLE_NAME,
             let style = change?[.newKey],

@@ -21,7 +21,7 @@ public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
     /// The app's current appearance style.
-    public var Style                        : AppearanceStyle { _style }
+    public var Style: AppearanceStyle { _style }
 
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
 
@@ -33,7 +33,7 @@ public class DarkMode: NSObject {
     // MARK: - System's Appearance Style
 
     /// The app's current system appearance style.
-    public var SystemStyle                  : SystemStyle {
+    public var SystemStyle: SystemStyle {
         if #available(iOS 13.0, *) {
             guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
 
@@ -53,7 +53,7 @@ public class DarkMode: NSObject {
         }
     }
 
-    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
+    internal var _style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
         didSet { StyleObservable = Style.rawValue }
     }
 }
@@ -61,8 +61,8 @@ public class DarkMode: NSObject {
 // MARK: - Protocols used for unit testing
 
 public protocol DarkModeProtocol {
-    var Style                  : AppearanceStyle { get }
-    var SystemStyle            : SystemStyle { get }
+    var Style: AppearanceStyle { get }
+    var SystemStyle: SystemStyle { get }
 
     dynamic var StyleObservable: Int { get }
 }

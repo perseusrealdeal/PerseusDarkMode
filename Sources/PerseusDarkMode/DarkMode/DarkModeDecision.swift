@@ -30,7 +30,7 @@ public class DarkModeDecision {
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public class func calculate(_ userChoice : DarkModeOption,
+    public class func calculate(_ userChoice: DarkModeOption,
                                 _ systemStyle: SystemStyle) -> AppearanceStyle {
         // Calculate outputs
 

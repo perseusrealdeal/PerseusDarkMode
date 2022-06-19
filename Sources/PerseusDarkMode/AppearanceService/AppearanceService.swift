@@ -36,13 +36,13 @@ public class AppearanceService {
     ///
     /// Value is false by default and changed only once when Appearance.makeUp called for the first time,
     /// then always true in run time.
-    public static var isEnabled        : Bool { _isEnabled }
+    public static var isEnabled: Bool { _isEnabled }
 
 #if DEBUG // Isolated for unit testing
     /// Used for mocking NotificationCenter in unit testing.
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
     /// Used for mocking UserDefaults in unit testing.
-    public static var ud     : UserDefaultsProtocol = UserDefaults.standard
+    public static var ud: UserDefaultsProtocol = UserDefaults.standard
 #else
     /// Default NotificationCenter.
     public static var nCenter = NotificationCenter.default
@@ -84,8 +84,8 @@ public class AppearanceService {
     public static func register(stakeholder: Any, selector: Selector) {
         nCenter.addObserver(stakeholder,
                             selector: selector,
-                            name    : .makeAppearanceUpNotification,
-                            object  : nil)
+                            name: .makeAppearanceUpNotification,
+                            object: nil)
     }
 
     // MARK: - Public API: make the app's appearance up
@@ -125,7 +125,7 @@ public class AppearanceService {
     // MARK: - Implementation helpers, privates and internals
 
     /// Used to make possible applying Black White approach in Screen design.
-    private(set) static var _isEnabled : Bool = false { willSet { if newValue == false { return }}}
+    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
 
     /// Used to reduce double calling of traitCollectionDidChange.
     internal static var _changeManually: Bool = false
@@ -184,10 +184,10 @@ extension UserDefaults {
 // MARK: - Protocols used for unit testing
 
 public protocol NotificationCenterProtocol {
-    func addObserver(_ observer        : Any,
+    func addObserver(_ observer: Any,
                      selector aSelector: Selector,
-                     name aName        : NSNotification.Name?,
-                     object anObject   : Any?)
+                     name aName: NSNotification.Name?,
+                     object anObject: Any?)
 
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
@@ -199,5 +199,5 @@ public protocol UserDefaultsProtocol {
     func setValue(_ value: Any?, forKey key: String)
 }
 
-extension UserDefaults      : UserDefaultsProtocol { }
+extension UserDefaults: UserDefaultsProtocol { }
 extension NotificationCenter: NotificationCenterProtocol { }

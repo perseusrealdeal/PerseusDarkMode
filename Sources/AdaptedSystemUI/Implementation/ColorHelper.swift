@@ -29,9 +29,9 @@ import UIKit
 ///   - blue: From 0 to 255.
 ///   - alpha: From 0 to 1.0.
 /// - Returns: The instance of UIColor type.
-public func rgba255(_ red  : CGFloat,
+public func rgba255(_ red: CGFloat,
                     _ green: CGFloat,
-                    _ blue : CGFloat,
+                    _ blue: CGFloat,
                     _ alpha: CGFloat = 1.0) -> UIColor {
     UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
 }

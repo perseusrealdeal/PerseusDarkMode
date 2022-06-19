@@ -27,7 +27,7 @@ public class DarkModeImageView: UIImageView {
 
     /// The way to set image up for dark style via Interface Builder.
     @IBInspectable
-    var imageDark : UIImage? {
+    var imageDark: UIImage? {
         didSet {
             dark = imageDark
             image = AppearanceService.shared.Style == .light ? light : dark

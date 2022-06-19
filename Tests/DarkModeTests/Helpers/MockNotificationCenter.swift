@@ -23,10 +23,10 @@ class MockNotificationCenter: NotificationCenterProtocol {
     var registerArgs_observers: [UIResponder] = []
     var registerArgs_selectors: [Selector] = []
 
-    func addObserver(_ observer        : Any,
+    func addObserver(_ observer: Any,
                      selector aSelector: Selector,
-                     name aName        : NSNotification.Name?,
-                     object anObject   : Any?) {
+                     name aName: NSNotification.Name?,
+                     object anObject: Any?) {
         guard let observer = observer as? UIResponder else { return }
 
         registerCallCount += 1
@@ -37,8 +37,8 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     func verifyRegisterObserver(observer: UIResponder,
                                 selector: Selector,
-                                file    : StaticString = #file,
-                                line    : UInt = #line) {
+                                file: StaticString = #file,
+                                line: UInt = #line) {
         guard registerWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerArgs_observers.first! === observer,
@@ -50,17 +50,17 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     private func registerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "register",
-            callCount        : registerCallCount,
+            methodName: "register",
+            callCount: registerCallCount,
             describeArguments: "name: \(registerArgs_selectors)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     // MARK: - post
 
     var postCallCount = 0
-    var postrgs_names : [String] = []
+    var postrgs_names: [String] = []
 
     func post(name aName: NSNotification.Name, object anObject: Any?) {
         postCallCount += 1
@@ -77,18 +77,18 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     private func postWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "post",
-            callCount        : postCallCount,
+            methodName: "post",
+            callCount: postCallCount,
             describeArguments: "name: \(postrgs_names)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

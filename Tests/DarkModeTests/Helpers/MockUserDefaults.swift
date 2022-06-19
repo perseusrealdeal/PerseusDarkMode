@@ -20,7 +20,7 @@ class MockUserDefaults: UserDefaultsProtocol {
     // MARK: - getValue
 
     var intergerCallCount = 0
-    var intergerArgs_names : [String] = []
+    var intergerArgs_names: [String] = []
 
     func integer(forKey defaultName: String) -> Int {
         intergerCallCount += 1
@@ -46,20 +46,20 @@ class MockUserDefaults: UserDefaultsProtocol {
 
     private func intergerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "interger",
-            callCount        : intergerCallCount,
+            methodName: "interger",
+            callCount: intergerCallCount,
             describeArguments: "name: \(intergerArgs_names)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     private func intergerWasNotCalled(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodNotCalled(
-            methodName       : "interger",
-            callCount        : intergerCallCount,
+            methodName: "interger",
+            callCount: intergerCallCount,
             describeArguments: "name: \(intergerArgs_names)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     // MARK: - setValue
@@ -67,7 +67,7 @@ class MockUserDefaults: UserDefaultsProtocol {
     var setValueCallCount = 0
 
     var setValueArgs_values: [Int] = []
-    var setValueArgs_keys : [String] = []
+    var setValueArgs_keys: [String] = []
 
     func setValue(_ value: Any?, forKey key: String) {
         guard let value = value as? Int else { return }
@@ -79,9 +79,9 @@ class MockUserDefaults: UserDefaultsProtocol {
     }
 
     func verifySetValue(value: Int,
-                        key  : String,
-                        file : StaticString = #file,
-                        line : UInt = #line) {
+                        key: String,
+                        file: StaticString = #file,
+                        line: UInt = #line) {
         guard setValueWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(setValueArgs_values.first! == value,
@@ -93,18 +93,18 @@ class MockUserDefaults: UserDefaultsProtocol {
 
     private func setValueWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "setValue",
-            callCount        : setValueCallCount,
+            methodName: "setValue",
+            callCount: setValueCallCount,
             describeArguments: "keys: \(setValueArgs_keys)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
@@ -119,10 +119,10 @@ private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
     return true
 }
 
-private func verifyMethodNotCalled(methodName       : String, callCount: Int,
+private func verifyMethodNotCalled(methodName: String, callCount: Int,
                                    describeArguments: @autoclosure () -> String,
-                                   file             : StaticString = #file,
-                                   line             : UInt = #line) -> Bool {
+                                   file: StaticString = #file,
+                                   line: UInt = #line) -> Bool {
     if callCount != 0 {
         XCTFail("Don't wanted but invoked: \(methodName)", file: file, line: line)
         return false

@@ -53,11 +53,11 @@ public class AppearanceService {
     public static var shared: DarkMode = { DarkMode() }()
     private init() { }
 
-    public static var isEnabled        : Bool { _isEnabled }
+    public static var isEnabled: Bool { _isEnabled }
 
 #if DEBUG // Isolated for unit testing
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
-    public static var ud     : UserDefaultsProtocol = UserDefaults.standard
+    public static var ud: UserDefaultsProtocol = UserDefaults.standard
 #else
     public static var nCenter = NotificationCenter.default
     public static var ud = UserDefaults.standard
@@ -90,8 +90,8 @@ public class AppearanceService {
     public static func register(stakeholder: Any, selector: Selector) {
         nCenter.addObserver(stakeholder,
                             selector: selector,
-                            name    : .makeAppearanceUpNotification,
-                            object  : nil)
+                            name: .makeAppearanceUpNotification,
+                            object: nil)
     }
 
     // MARK: - Public API: make the app's appearance up
@@ -121,7 +121,7 @@ public class AppearanceService {
 
     // MARK: - Implementation helpers, privates and internals
 
-    private(set) static var _isEnabled : Bool = false { willSet { if newValue == false { return }}}
+    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
 
     internal static var _changeManually: Bool = false
 
@@ -168,7 +168,7 @@ public class AppearanceService {
 public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
-    public var Style                        : AppearanceStyle { _style }
+    public var Style: AppearanceStyle { _style }
 
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
 
@@ -176,7 +176,7 @@ public class DarkMode: NSObject {
 
     // MARK: - System's Appearance Style
 
-    public var SystemStyle                  : SystemStyle {
+    public var SystemStyle: SystemStyle {
         if #available(iOS 13.0, *) {
             guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
 
@@ -196,7 +196,7 @@ public class DarkMode: NSObject {
         }
     }
 
-    internal var _style                     : AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
+    internal var _style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
         didSet { StyleObservable = Style.rawValue }
     }
 }
@@ -219,7 +219,7 @@ public class DarkModeDecision {
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public class func calculate(_ userChoice : DarkModeOption,
+    public class func calculate(_ userChoice: DarkModeOption,
                                 _ systemStyle: SystemStyle) -> AppearanceStyle {
         // Calculate outputs
 
@@ -254,8 +254,8 @@ public class DarkModeObserver: NSObject {
 
         objectToObserve.addObserver(self,
                                     forKeyPath: OBSERVERED_VARIABLE_NAME,
-                                    options   : .new,
-                                    context   : nil)
+                                    options: .new,
+                                    context: nil)
     }
 
     public init(_ action: @escaping ((_ newStyle: AppearanceStyle) -> Void)) {
@@ -264,14 +264,14 @@ public class DarkModeObserver: NSObject {
         self.action = action
         objectToObserve.addObserver(self,
                                     forKeyPath: OBSERVERED_VARIABLE_NAME,
-                                    options   : .new,
-                                    context   : nil)
+                                    options: .new,
+                                    context: nil)
     }
 
     public override func observeValue(forKeyPath keyPath: String?,
-                                      of object         : Any?,
-                                      change            : [NSKeyValueChangeKey : Any]?,
-                                      context           : UnsafeMutableRawPointer?) {
+                                      of object: Any?,
+                                      change: [NSKeyValueChangeKey: Any]?,
+                                      context: UnsafeMutableRawPointer?) {
         guard
             keyPath == OBSERVERED_VARIABLE_NAME,
             let style = change?[.newKey],
@@ -357,7 +357,7 @@ public class DarkModeImageView: UIImageView {
     }
 
     @IBInspectable
-    var imageDark : UIImage? {
+    var imageDark: UIImage? {
         didSet {
             dark = imageDark
             image = AppearanceService.shared.Style == .light ? light : dark
@@ -402,27 +402,27 @@ public class DarkModeImageView: UIImageView {
 public protocol SystemColorProtocol {
     // System colors
 
-    static var systemRed_Adapted   : UIColor { get }
+    static var systemRed_Adapted: UIColor { get }
     static var systemOrange_Adapted: UIColor { get }
     static var systemYellow_Adapted: UIColor { get }
-    static var systemGreen_Adapted : UIColor { get }
-    static var systemMint_Adapted  : UIColor { get }
-    static var systemTeal_Adapted  : UIColor { get }
-    static var systemCyan_Adapted  : UIColor { get }
-    static var systemBlue_Adapted  : UIColor { get }
+    static var systemGreen_Adapted: UIColor { get }
+    static var systemMint_Adapted: UIColor { get }
+    static var systemTeal_Adapted: UIColor { get }
+    static var systemCyan_Adapted: UIColor { get }
+    static var systemBlue_Adapted: UIColor { get }
     static var systemIndigo_Adapted: UIColor { get }
     static var systemPurple_Adapted: UIColor { get }
-    static var systemPink_Adapted  : UIColor { get }
-    static var systemBrown_Adapted : UIColor { get }
+    static var systemPink_Adapted: UIColor { get }
+    static var systemBrown_Adapted: UIColor { get }
 
     // System gray group
 
-    static var systemGray_Adapted  : UIColor { get }
-    static var systemGray2_Adapted : UIColor { get }
-    static var systemGray3_Adapted : UIColor { get }
-    static var systemGray4_Adapted : UIColor { get }
-    static var systemGray5_Adapted : UIColor { get }
-    static var systemGray6_Adapted : UIColor { get }
+    static var systemGray_Adapted: UIColor { get }
+    static var systemGray2_Adapted: UIColor { get }
+    static var systemGray3_Adapted: UIColor { get }
+    static var systemGray4_Adapted: UIColor { get }
+    static var systemGray5_Adapted: UIColor { get }
+    static var systemGray6_Adapted: UIColor { get }
 }
 
 // MARK: - Adapted System Colors
@@ -688,44 +688,44 @@ public protocol SemanticColorProtocol {
 
     // Label Colors
 
-    static var label_Adapted               : UIColor { get }
-    static var secondaryLabel_Adapted      : UIColor { get }
-    static var tertiaryLabel_Adapted       : UIColor { get }
-    static var quaternaryLabel_Adapted     : UIColor { get }
+    static var label_Adapted: UIColor { get }
+    static var secondaryLabel_Adapted: UIColor { get }
+    static var tertiaryLabel_Adapted: UIColor { get }
+    static var quaternaryLabel_Adapted: UIColor { get }
 
     // Text Colors
 
-    static var placeholderText_Adapted     : UIColor { get }
+    static var placeholderText_Adapted: UIColor { get }
 
     // Separator Colors
 
-    static var separator_Adapted           : UIColor { get }
-    static var opaqueSeparator_Adapted     : UIColor { get }
+    static var separator_Adapted: UIColor { get }
+    static var opaqueSeparator_Adapted: UIColor { get }
 
     // Link Color
 
-    static var link_Adapted                : UIColor { get }
+    static var link_Adapted: UIColor { get }
 
     // Fill Colors
 
-    static var systemFill_Adapted          : UIColor { get }
-    static var secondarySystemFill_Adapted : UIColor { get }
-    static var tertiarySystemFill_Adapted : UIColor { get }
+    static var systemFill_Adapted: UIColor { get }
+    static var secondarySystemFill_Adapted: UIColor { get }
+    static var tertiarySystemFill_Adapted: UIColor { get }
     static var quaternarySystemFill_Adapted: UIColor { get }
 
     // MARK: - For background content
 
     // Standard Content Background Colors
 
-    static var systemBackground_Adapted                : UIColor { get }
-    static var secondarySystemBackground_Adapted       : UIColor { get }
-    static var tertiarySystemBackground_Adapted        : UIColor { get }
+    static var systemBackground_Adapted: UIColor { get }
+    static var secondarySystemBackground_Adapted: UIColor { get }
+    static var tertiarySystemBackground_Adapted: UIColor { get }
 
     // Grouped Content Background Colors
 
-    static var systemGroupedBackground_Adapted         : UIColor { get }
+    static var systemGroupedBackground_Adapted: UIColor { get }
     static var secondarySystemGroupedBackground_Adapted: UIColor { get }
-    static var tertiarySystemGroupedBackground_Adapted : UIColor { get }
+    static var tertiarySystemGroupedBackground_Adapted: UIColor { get }
 
 }
 
@@ -973,9 +973,9 @@ extension UIColor: SemanticColorProtocol {
 
 // MARK: - Helpers
 
-public func rgba255(_ red  : CGFloat,
+public func rgba255(_ red: CGFloat,
                     _ green: CGFloat,
-                    _ blue : CGFloat,
+                    _ blue: CGFloat,
                     _ alpha: CGFloat = 1.0) -> UIColor {
     UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
 }
@@ -1002,10 +1002,10 @@ public extension UserDefaults {
 // MARK: - Used only for unit testing purpose
 
 public protocol NotificationCenterProtocol {
-    func addObserver(_ observer        : Any,
+    func addObserver(_ observer: Any,
                      selector aSelector: Selector,
-                     name aName        : NSNotification.Name?,
-                     object anObject   : Any?)
+                     name aName: NSNotification.Name?,
+                     object anObject: Any?)
 
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
@@ -1018,15 +1018,15 @@ public protocol UserDefaultsProtocol {
 }
 
 public protocol DarkModeProtocol {
-    var Style                  : AppearanceStyle { get }
-    var SystemStyle            : SystemStyle { get }
+    var Style: AppearanceStyle { get }
+    var SystemStyle: SystemStyle { get }
 
     dynamic var StyleObservable: Int { get }
 }
 
-extension UserDefaults      : UserDefaultsProtocol { }
+extension UserDefaults: UserDefaultsProtocol { }
 extension NotificationCenter: NotificationCenterProtocol { }
-extension DarkMode          : DarkModeProtocol { }
+extension DarkMode: DarkModeProtocol { }
 
 extension UIColor {
     internal static var _iOS13InUseAndHigherOnly: Bool = true
