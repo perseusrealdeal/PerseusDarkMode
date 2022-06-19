@@ -26,8 +26,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .label, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -44,8 +43,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .secondaryLabel, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -62,8 +60,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .tertiaryLabel, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -80,8 +77,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .quaternaryLabel, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -98,8 +94,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .placeholderText, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -116,8 +111,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .separator, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -134,8 +128,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .opaqueSeparator, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -152,8 +145,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .link, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -170,8 +162,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemFill, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -188,8 +179,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .secondarySystemFill, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -206,8 +196,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .tertiarySystemFill, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -224,8 +213,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .quaternarySystemFill, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -244,8 +232,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -262,8 +249,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .secondarySystemBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -280,8 +266,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .tertiarySystemBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -298,8 +283,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGroupedBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -316,8 +300,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .secondarySystemGroupedBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -334,8 +317,7 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 

@@ -48,8 +48,7 @@ public class DarkMode: NSObject {
             @unknown default:
                 return .unspecified
             }
-        }
-        else {
+        } else {
             return .unspecified
         }
     }

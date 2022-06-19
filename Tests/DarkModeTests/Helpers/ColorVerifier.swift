@@ -26,8 +26,7 @@ final class ColorVerifier {
                       line           : UInt = #line) {
         if #available(iOS 13.0, *), iOS13color != nil {
             XCTAssertEqual(requirement.color, iOS13color)
-        }
-        else {
+        } else {
             AppearanceService.DarkModeUserChoice = .off
             AppearanceService.makeUp()
 

@@ -25,8 +25,7 @@ extension UIView {
 
                 layer.render(in: rendererContext.cgContext)
             }
-        }
-        else {
+        } else {
             UIGraphicsBeginImageContext(self.frame.size)
 
             self.layer.render(in:UIGraphicsGetCurrentContext()!)

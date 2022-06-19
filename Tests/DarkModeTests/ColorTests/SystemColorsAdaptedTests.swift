@@ -26,8 +26,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemRed, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -44,8 +43,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemOrange, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -62,8 +60,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemYellow, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -80,8 +77,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGreen, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -98,8 +94,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemMint, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 15 and higher only!")
         }
 
@@ -116,8 +111,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemTeal, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -134,8 +128,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemCyan, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 15 and higher only!")
         }
 
@@ -152,8 +145,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemBlue, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -170,8 +162,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemIndigo, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -188,8 +179,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemPurple, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -206,8 +196,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemPink, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -224,8 +213,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemBrown, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -242,8 +230,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -260,8 +247,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray2, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -278,8 +264,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray3, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -296,8 +281,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray4, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -314,8 +298,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray5, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
@@ -332,8 +315,7 @@ final class SystemColorsAdaptedTests: XCTestCase {
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .systemGray6, light, dark, nil)
-        }
-        else {
+        } else {
             XCTFail("Test suit was designed for runing on iOS 13 and higher only!")
         }
 
