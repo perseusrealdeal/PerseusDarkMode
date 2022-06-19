@@ -27,9 +27,11 @@ class MockNotificationCenter: NotificationCenterProtocol {
                      selector aSelector: Selector,
                      name aName        : NSNotification.Name?,
                      object anObject   : Any?) {
+        guard let observer = observer as? UIResponder else { return }
+
         registerCallCount += 1
 
-        registerArgs_observers.append(observer as! UIResponder)
+        registerArgs_observers.append(observer)
         registerArgs_selectors.append(aSelector)
     }
 

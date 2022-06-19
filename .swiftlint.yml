@@ -2,7 +2,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - line_length
   - file_length
   - large_tuple
-  - force_cast
   - identifier_name
   - colon
   - block_based_kvo

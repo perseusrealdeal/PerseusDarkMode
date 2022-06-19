@@ -70,9 +70,11 @@ class MockUserDefaults: UserDefaultsProtocol {
     var setValueArgs_keys : [String] = []
 
     func setValue(_ value: Any?, forKey key: String) {
+        guard let value = value as? Int else { return }
+
         setValueCallCount += 1
 
-        setValueArgs_values.append(value as! Int)
+        setValueArgs_values.append(value)
         setValueArgs_keys.append(key)
     }
 
