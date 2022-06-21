@@ -13,12 +13,12 @@ import UIKit
 #endif
 
 /// Makes a calculation of the app's appearance style.
-public class DarkModeDecision
-{
+public class DarkModeDecision {
+
     private init() { }
-    
+
     // MARK: - Calculating Dark Mode decision
-    
+
     /// Calculates the current appearance style of the app.
     ///
     /// Dark Mode decision-making:
@@ -30,28 +30,26 @@ public class DarkModeDecision
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public class func calculate(_ userChoice : DarkModeOption,
-                                _ systemStyle: SystemStyle) -> AppearanceStyle
-    {
+    public class func calculate(_ userChoice: DarkModeOption,
+                                _ systemStyle: SystemStyle) -> AppearanceStyle {
         // Calculate outputs
-        
-        if (systemStyle == .unspecified) && (userChoice == .auto)
-        {
+
+        if (systemStyle == .unspecified) && (userChoice == .auto) {
             return DARK_MODE_STYLE_DEFAULT
         }
         if (systemStyle == .unspecified) && (userChoice == .on) { return .dark }
         if (systemStyle == .unspecified) && (userChoice == .off) { return .light }
-        
+
         if (systemStyle == .light) && (userChoice == .auto) { return .light }
         if (systemStyle == .light) && (userChoice == .on) { return .dark }
         if (systemStyle == .light) && (userChoice == .off) { return .light }
-        
+
         if (systemStyle == .dark) && (userChoice == .auto) { return .dark }
         if (systemStyle == .dark) && (userChoice == .on) { return .dark }
         if (systemStyle == .dark) && (userChoice == .off) { return .light }
-        
+
         // Output default value if somethings goes out of the decision table
-        
+
         return DARK_MODE_STYLE_DEFAULT
     }
 }

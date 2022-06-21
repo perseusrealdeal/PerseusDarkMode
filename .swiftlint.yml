@@ -1,0 +1,15 @@
+disabled_rules: # rule identifiers turned on by default to exclude from running
+  - block_based_kvo
+
+# <swiftlint:disable file_length> is applied in PerseusDarkModeSingle.swift
+
+identifier_name:
+  allowed_symbols: "_"
+  min_length: 2
+  validates_start_with_lowercase: false
+
+large_tuple:
+  warning: 4
+  error: 5
+
+reporter: "xcode" # reporter type

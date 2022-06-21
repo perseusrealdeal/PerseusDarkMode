@@ -68,22 +68,24 @@ File `PerseusDarkModeSingle.swift` located in the package root and is dedicated 
 `Dark Mode is a Singleton object`
 
 ```swift
-public class AppearanceService
-{
-    public static var shared: DarkMode = { DarkMode() } ()
+public class AppearanceService {
+
+    public static var shared: DarkMode = { DarkMode() }()
     private init() { }
+
 }
 ```
 
 `Dark Mode is a complex object`
 
 ```swift
-public protocol DarkModeProtocol
-{
-    var Style                  : AppearanceStyle { get }
-    var SystemStyle            : SystemStyle { get }
-    
+public protocol DarkModeProtocol {
+
+    var Style: AppearanceStyle { get }
+    var SystemStyle: SystemStyle { get }
+
     dynamic var StyleObservable: Int { get }
+
 }
 
 extension DarkMode: DarkModeProtocol { }
@@ -100,22 +102,24 @@ public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceServic
 `Dark Mode option values`
 
 ```swift
-public enum DarkModeOption: Int
-{
+public enum DarkModeOption: Int {
+
     case auto = 0
     case on   = 1
     case off  = 2
+
 }
 ```
 
 `Dark Mode System values`
 
 ```swift
-public enum SystemStyle: Int
-{
+public enum SystemStyle: Int {
+
     case unspecified = 0
     case light       = 1
     case dark        = 2
+
 }
 ```
 
@@ -124,10 +128,11 @@ public enum SystemStyle: Int
 Dark Mode decision table makes decision on `Appearance style` that can be either light or dark:
 
 ```swift
-public enum AppearanceStyle: Int
-{
+public enum AppearanceStyle: Int {
+
     case light = 0
     case dark  = 1
+
 }
 ```
 
@@ -152,10 +157,8 @@ import UIKit
 
 import PerseusDarkMode
 
-class MyView: UIView 
-{ 
-    func functionName() 
-    { 
+class MyView: UIView  { 
+    func functionName() { 
         print("\(self.DarkMode.Style)")
     } 
 }
@@ -188,28 +191,23 @@ import UIKit
 
 import PerseusDarkMode
 
-class MainViewController: UIViewController
-{
-    override func viewDidLoad()
-    {
+class MainViewController: UIViewController {
+    override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        
+
         AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-    {
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection? {
         super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 13.0, *)
-        {
+
+        if #available(iOS 13.0, *) {
             AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
         }
     }
-    
-    @objc private func makeUp()
-    {
+
+    @objc private func makeUp() {
         // Point to define a reaction to Dark Mode event is here
     }
 
@@ -233,9 +231,8 @@ Then, give it a closure to run your code each time when Dark Mode is changing:
 
 ```swift
 
-observer?.action = 
-    { newStyle in 
-        
+observer?.action = { newStyle in 
+
         // Point to define a reaction to Dark Mode event is here
 
     }
@@ -244,11 +241,10 @@ observer?.action =
 or like this:
 
 ```swift
-var observer = DarkModeObserver() 
-    { newStyle in
-    
+var observer = DarkModeObserver { newStyle in
+
         // Point to define a reaction to Dark Mode event is here
-        
+
     }
 ```
 
@@ -259,13 +255,12 @@ To get notified by NotificationCenter your object should be registered with Appe
 ```swift
 import UIKit
 
-class MyView: UIView 
-{ 
-    @objc func makeUp() 
-    { 
+class MyView: UIView { 
+    @objc func makeUp() { 
         // Point to define a reaction to Dark Mode event is here
     } 
 }
+
 let view = MyView()
 
 AppearanceService.register(stakeholder: view, selector: #selector(view.makeUp))
@@ -288,21 +283,20 @@ import PerseusDarkMode
 
 class AppDelegate: UIResponder { var window: UIWindow? }
 
-extension AppDelegate: UIApplicationDelegate
-{
+extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
-                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
-    {
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
         // Init the app's window
         window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         // Give it a root view for the first screen
         window!.rootViewController = MainViewController.storyboardInstance()
         window!.makeKeyAndVisible()
-        
+
         // And, finally, apply a new style for all screens
         AppearanceService.makeUp()
-        
+
         return true
     }
 }
@@ -317,37 +311,32 @@ import UIKit
 import PerseusDarkMode
 import AdaptedSystemUI
 
-class MainViewController: UIViewController
-{
+class MainViewController: UIViewController {
+
     let darkModeObserver = DarkModeObserver()
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        
+
         AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
-        
-        darkModeObserver.action =
-            { newStyle in
+
+        darkModeObserver.action = { newStyle in
 
                 // Point to define a reaction to Dark Mode event is here
                 print("\(newStyle), \(self.DarkMode.Style)")
             }
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-    {
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        if #available(iOS 13.0, *)
-        {
+        if #available(iOS 13.0, *) {
             AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
         }
     }
-    
-    @objc private func makeUp()
-    {
+
+    @objc private func makeUp() {
         // Point to define a reaction to Dark Mode event is here
         view.backgroundColor = .systemRed_Adapted
     }
@@ -372,21 +361,18 @@ import UIKit
 import PerseusDarkMode
 import AdaptedSystemUI
 
-class MemberTableViewCell: UITableViewCell
-{
-    override func awakeFromNib()
-    {
+class MemberTableViewCell: UITableViewCell {
+    override func awakeFromNib() {
         super.awakeFromNib()
         configure()
-        
+
         AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
         if AppearanceService.isEnabled { makeUp() }
     }
 
     private func configure() { }
 
-    @objc private func makeUp()
-    {
+    @objc private func makeUp() {
         // Point to define a reaction to Dark Mode event is here
         backgroundColor = .systemGray_Adapted
     }
@@ -411,33 +397,28 @@ image.configure(UIImage(named: "ImageNameForLight"), UIImage(named: "ImageNameFo
 Also, images for both light and dark styles can be setted up via Interface Builder using Attributes Inspector:
 
 ```swift
-public class DarkModeImageView: UIImageView
-{
+public class DarkModeImageView: UIImageView {
     @IBInspectable
-    var imageLight: UIImage?
-    {
-        didSet
-        {
+    var imageLight: UIImage? {
+        didSet {
             light = imageLight
             image = AppearanceService.shared.Style == .light ? light : dark
         }
     }
-    
+
     @IBInspectable
-    var imageDark : UIImage?
-    {
-        didSet
-        {
+    var imageDark : UIImage? {
+        didSet {
             dark = imageDark
             image = AppearanceService.shared.Style == .light ? light : dark
         }
     }
-    
+
     private(set) var darkModeObserver: DarkModeObserver?
-    
+
     private(set) var light: UIImage?
     private(set) var dark: UIImage?
-    
+
     // ...
 }
 ```
@@ -456,7 +437,7 @@ view.backgroundColor = .systemBlue_Adapted
 In case if a certain color of a Dark Mode sensitive color required use the line of code below:
 
 ```swift
-let _ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
+_ = UIColor.label_Adapted.resolvedColor(with: self.traitCollection).cgColor
 ```
 
 # PART II - Adapted System UI Library <a name="part_II"></a>
