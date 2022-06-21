@@ -296,7 +296,8 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
         if #available(iOS 13.0, *) {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .secondarySystemGroupedBackground, nil, nil, .secondarySystemGroupedBackground)
+            ColorVerifier.verify(requirement: .secondarySystemGroupedBackground,
+                                 nil, nil, .secondarySystemGroupedBackground)
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .secondarySystemGroupedBackground, light, dark, nil)
@@ -313,7 +314,8 @@ final class SemanticColorsAdaptedTests: XCTestCase {
 
         if #available(iOS 13.0, *) {
             UIColor._iOS13InUseAndHigherOnly = true
-            ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground, nil, nil, .tertiarySystemGroupedBackground)
+            ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground,
+                                 nil, nil, .tertiarySystemGroupedBackground)
 
             UIColor._iOS13InUseAndHigherOnly = false
             ColorVerifier.verify(requirement: .tertiarySystemGroupedBackground, light, dark, nil)

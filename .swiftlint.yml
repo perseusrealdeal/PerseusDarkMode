@@ -1,6 +1,7 @@
 disabled_rules: # rule identifiers turned on by default to exclude from running
-  - line_length
+  - block_based_kvo
   - file_length
   - large_tuple
   - identifier_name
-  - block_based_kvo
+
+reporter: "xcode" # reporter type

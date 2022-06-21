@@ -17,7 +17,8 @@ import UIKit
 /// It connects to shared Dark Mode instance using appearance service.
 /// Also, it takes action every time when the app's appearance style changed.
 ///
-/// The action can be specified with initialization as the passed closue and after initialization by assigning the action property as well.
+/// The action can be specified with initialization as the passed closue and after initialization by assigning
+/// the action property as well.
 public class DarkModeObserver: NSObject {
     /// Closure to perform if the app's appearance style changed.
     public var action: ((_ newStyle: AppearanceStyle) -> Void)?
