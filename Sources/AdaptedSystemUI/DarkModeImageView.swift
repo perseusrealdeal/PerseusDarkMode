@@ -1,6 +1,6 @@
 //
 //  DarkModeImageView.swift
-//  PerseusDarkMode
+//  AdaptedSystemUI
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
@@ -11,6 +11,8 @@
 #if !os(macOS)
 import UIKit
 #endif
+
+import PerseusDarkMode
 
 /// Represents a quite light implementation of a dynamic image idea that depends on the app's appearance style.
 ///

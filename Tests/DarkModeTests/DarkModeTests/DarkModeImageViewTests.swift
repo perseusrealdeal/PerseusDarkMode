@@ -14,6 +14,7 @@ import UIKit
 
 import XCTest
 @testable import PerseusDarkMode
+@testable import AdaptedSystemUI
 
 final class DarkModeImageViewTests: XCTestCase {
 
