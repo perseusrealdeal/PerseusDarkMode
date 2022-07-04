@@ -13,18 +13,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "Dark Mode",
+    name: "Perseus Dark Mode",
     platforms: [.iOS(.v9)],
     products: [
-            .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"]),
-            .library(name: "Adapted System UI", targets: ["AdaptedSystemUI"])
+            .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"])
         ],
     dependencies: [],
     targets: [
-            .target(name: "PerseusDarkMode", dependencies: []),
-            .target(name: "AdaptedSystemUI", dependencies: ["PerseusDarkMode"]),
-
+            .target(name: "PerseusDarkMode"),
             .testTarget(name: "DarkModeTests",
-                        dependencies: ["PerseusDarkMode", "AdaptedSystemUI"])
+                        dependencies: ["PerseusDarkMode"])
         ]
 )
