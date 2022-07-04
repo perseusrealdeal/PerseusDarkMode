@@ -35,13 +35,7 @@ Samples:
 
 ## Introductory remarks <a name="section1"></a>
 
-Perseus Dark Mode is a swift package. Starting with iOS 13 Apple Inc. introduced Dark Mode on system level and now all apps are sensitive to this user option.
-
-Represented solution was designed to support your apps running on such brilliant apple devices like, you know, my favorite one and my the first one is iPod Touch iOS 9.3.5 (5th, 13G36).
-
-Using this solution allows you design the code of your app applying the Apple's Dark Mode for your early Apple devices with no need make any changes then.
-
-This package consists of two libraries. Main is Perseus Dark Mode and satellite one is Adapted System UI.
+Perseus Dark Mode gives a control of Apple's Dark Mode even for early Apple devices starting from iOS 9.0.
 
 ## 1. Build tools & Installation <a name="section2"></a>
 
