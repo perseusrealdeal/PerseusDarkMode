@@ -6,7 +6,7 @@ Perseus Dark Mode
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
-[![CocoaPods manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://cocoapods.org)
+[![CocoaPods manager](https://img.shields.io/badge/CocoaPods%20Manager-compatible-informational.svg)](https://cocoapods.org)
 ![pod](https://img.shields.io/badge/pod-1.0.2-green.svg)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
