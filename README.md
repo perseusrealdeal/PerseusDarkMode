@@ -10,7 +10,7 @@ Perseus Dark Mode
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/DarkMode/blob/6d9f137b3e97f6987c1102d462d56ba78fc9a6f1/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/4c28e63205d074cc0db65af060ee3f3b5788452e/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 
 # Table of contents
