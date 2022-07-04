@@ -4,14 +4,13 @@
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
 //  All rights reserved.
 //
 //
 //  MIT License
 //
-//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk, where 7530 is
-//  the year from the creation of the world according to a Slavic calendar.
+//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

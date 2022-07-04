@@ -366,9 +366,9 @@ class MemberTableViewCell: UITableViewCell {
 ```
 
 # License <a name="license"></a>
+MIT License
 
-Copyright © 7530 Mikhail Zhigulin of Novosibirsk, where 7530 is
-the year from the creation of the world according to a Slavic calendar.
+Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
