@@ -6,6 +6,7 @@ Perseus Dark Mode
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
+![pod](https://img.shields.io/badge/pod-1.11.3-green.svg)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
@@ -45,7 +46,7 @@ Tools used for designing the solution:
 + Device iPad Air iOS 12.5.5 (iPad4,2 model, 16H62)
 + Simulator iPhone 12 mini (iOS 15.4, 19E240)
 
-The solution can be used via `swift package manager` and as a `standalone single file` as well.
+The solution can be used via `swift package manager`, `CocoaPod dependency manager`, and as a `standalone single file` as well.
 
 File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage—can be copied and pasted into a host project tree under the same [license](#license).
 
