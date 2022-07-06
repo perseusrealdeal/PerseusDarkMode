@@ -47,7 +47,7 @@ Tools used for designing the solution:
 + Device iPad Air iOS 12.5.5 (iPad4,2 model, 16H62)
 + Simulator iPhone 12 mini (iOS 15.4, 19E240)
 
-The solution can be used via `swift package manager`, `CocoaPod dependency manager`, and as a `standalone single file` as well.
+The solution can be used via `swift package manager`, `CocoaPods dependency manager`, and as a `standalone single file` as well.
 
 File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage—can be copied and pasted into a host project tree under the same [license](#license).
 
@@ -176,7 +176,6 @@ To match the system appearance mode call `AppearanceService.processTraitCollecti
 
 ```swift
 import UIKit
-
 import PerseusDarkMode
 
 class MainViewController: UIViewController {
@@ -295,9 +294,7 @@ extension AppDelegate: UIApplicationDelegate {
 
 ```swift
 import UIKit
-
 import PerseusDarkMode
-import AdaptedSystemUI
 
 class MainViewController: UIViewController {
 
@@ -326,7 +323,7 @@ class MainViewController: UIViewController {
 
     @objc private func makeUp() {
         // Point to define a reaction to Dark Mode event is here
-        view.backgroundColor = .systemRed_Adapted
+        view.backgroundColor = .systemRed
     }
 
     private func configure() { }
@@ -345,9 +342,7 @@ For instance, here is a definition of some exemplar of UITableViewCell:
 
 ```swift
 import UIKit
-
 import PerseusDarkMode
-import AdaptedSystemUI
 
 class MemberTableViewCell: UITableViewCell {
     override func awakeFromNib() {
@@ -362,7 +357,7 @@ class MemberTableViewCell: UITableViewCell {
 
     @objc private func makeUp() {
         // Point to define a reaction to Dark Mode event is here
-        backgroundColor = .systemGray_Adapted
+        backgroundColor = .systemGray
     }
 }
 ```
