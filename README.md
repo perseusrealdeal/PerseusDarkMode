@@ -48,7 +48,7 @@ Tools used for designing the solution:
 + Device iPad Air iOS 12.5.5 (iPad4,2 model, 16H62)
 + Simulator iPhone 12 mini (iOS 15.4, 19E240)
 
-The solution can be used via `swift package manager`, `CocoaPods dependency manager`, and as a `standalone single file` as well.
+The solution can be used via `swift package manager`, `CocoaPods dependency manager`, `Carthage dependency manager` and as a `standalone single file` as well.
 
 File `PerseusDarkModeSingle.swift` located in the package root and is dedicated for the standalone usage—can be copied and pasted into a host project tree under the same [license](#license).
 
