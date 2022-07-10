@@ -13,10 +13,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "Perseus Dark Mode",
+    name: "PerseusDarkMode",
     platforms: [.iOS(.v9)],
     products: [
-            .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"])
+            .library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"])
         ],
     dependencies: [],
     targets: [
