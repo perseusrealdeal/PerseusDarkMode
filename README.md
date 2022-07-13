@@ -9,6 +9,7 @@ Perseus Dark Mode
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods%20Manager-compatible-informational.svg)](https://cocoapods.org)
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
+[![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
 Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
