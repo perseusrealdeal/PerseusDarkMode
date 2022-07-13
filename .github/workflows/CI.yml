@@ -23,7 +23,7 @@ jobs:
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: iOS
-        scheme: 'Perseus Dark Mode'
+        scheme: 'PerseusDarkMode'
         action: test
         code-coverage: true
         verbosity: xcpretty
