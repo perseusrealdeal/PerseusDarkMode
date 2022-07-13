@@ -1,8 +1,8 @@
 Perseus Dark Mode
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.2-green.svg)
-![Pod](https://img.shields.io/badge/Pod-1.0.2-green.svg)
+![Version](https://img.shields.io/badge/Version-1.0.3-green.svg)
+![Pod](https://img.shields.io/badge/Pod-1.0.3-green.svg)
 [![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -11,14 +11,13 @@ Perseus Dark Mode
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
-Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git).
+Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git). There is the satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/4c28e63205d074cc0db65af060ee3f3b5788452e/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/88a3212ebe475a7e46996a416669581a526c6d98/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
+[![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
 
 # Table of contents
-
-PART I - [Perseus Dark Mode Library](#part_I)
 
 [Introductory remarks](#section1)
 1. [Build tools & Installation](#section2)
@@ -33,8 +32,6 @@ Samples:
 [License](#license)
 
 ---
-
-# PART I - Perseus Dark Mode Library <a name="part_I"></a>
 
 ## Introductory remarks <a name="section1"></a>
 

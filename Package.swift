@@ -4,6 +4,7 @@
  Created by Mikhail Zhigulin in 2022.
 
  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+ Licensed under the MIT license. See LICENSE file.
  All rights reserved.
 
  Abstract:
@@ -13,12 +14,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "Perseus Dark Mode",
+    name: "PerseusDarkMode",
     platforms: [.iOS(.v9)],
     products: [
-            .library(name: "Perseus Dark Mode", targets: ["PerseusDarkMode"])
+            .library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"])
         ],
-    dependencies: [],
     targets: [
             .target(name: "PerseusDarkMode"),
             .testTarget(name: "DarkModeTests",
