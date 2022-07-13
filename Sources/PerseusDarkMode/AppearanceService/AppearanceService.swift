@@ -12,15 +12,15 @@
 import UIKit
 #endif
 
-/// Name for make up notification.
+/// Name of make up notification.
 public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
 }
 
-/// The way to provide accessing to Dark Mode from any screen object.
+/// Dark Mode placed to to be accessed from any screen object.
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
 
-/// Represents service responsible for giving a control of the app's appearance.
+/// Represents service giving a control of the app's appearance.
 ///
 /// - This service is dedicated to handle Dark Mode changing.
 /// - The service is provided as a singleton across the app and used to take a cotrol of Dark Mode.
@@ -30,9 +30,9 @@ public class AppearanceService {
 
     /// Shared Dark Mode.
     public static var shared: DarkMode = { DarkMode() }()
-    private init() { }
+    private init() {}
 
-    /// TRUE if Appearance.makeUp called otherwise FALSE.
+    /// TRUE if Appearance.makeUp once called otherwise FALSE.
     ///
     /// Value is false by default and changed only once when Appearance.makeUp called for the first time,
     /// then always true in run time.

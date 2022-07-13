@@ -18,7 +18,6 @@ let package = Package(
     products: [
             .library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"])
         ],
-    dependencies: [],
     targets: [
             .target(name: "PerseusDarkMode"),
             .testTarget(name: "DarkModeTests",
