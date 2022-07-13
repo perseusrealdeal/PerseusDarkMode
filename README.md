@@ -19,8 +19,6 @@ Have a look of demo app, source code is [here](https://github.com/perseusrealdea
 
 # Table of contents
 
-PART I - [Perseus Dark Mode Library](#part_I)
-
 [Introductory remarks](#section1)
 1. [Build tools & Installation](#section2)
 2. [Solution key statements](#section3)
@@ -34,8 +32,6 @@ Samples:
 [License](#license)
 
 ---
-
-# PART I - Perseus Dark Mode Library <a name="part_I"></a>
 
 ## Introductory remarks <a name="section1"></a>
 
