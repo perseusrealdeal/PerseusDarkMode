@@ -5,6 +5,7 @@
 //  Created by Mikhail Zhigulin in 2022.
 //
 //  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
