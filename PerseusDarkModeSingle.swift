@@ -1,6 +1,6 @@
 //
 //  PerseusDarkModeSingle.swift
-//  Version: 1.0.3
+//  Version: 1.0.4
 //
 //  Created by Mikhail Zhigulin in 2022.
 //
@@ -340,6 +340,14 @@ public enum SystemStyle: Int, CustomStringConvertible {
         case .dark:
             return ".dark"
         }
+    }
+}
+
+// MARK: - Helpers
+
+extension UserDefaults {
+    public func valueExists(forKey key: String) -> Bool {
+        return object(forKey: key) != nil
     }
 }
 

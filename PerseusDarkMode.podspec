@@ -1,7 +1,7 @@
 Pod::Spec.new do |p|
 
 p.name           = "PerseusDarkMode"
-p.version        = "1.0.3"
+p.version        = "1.0.4"
 p.summary        = "It gives a controll of Dark Mode of iOS devices."
 p.description    = "Aimed to use for building Dark Mode sensitive features."
 p.homepage       = "https://github.com/perseusrealdeal/PerseusDarkMode"
