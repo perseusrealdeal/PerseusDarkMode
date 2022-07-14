@@ -11,7 +11,8 @@ Perseus Dark Mode
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
-Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git). There is the satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
+- Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git). 
+- There is a satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
 
 [![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/9ab4d07116089cf8e3ec5f287f64035269585b51/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
