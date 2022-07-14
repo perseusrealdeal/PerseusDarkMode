@@ -1,8 +1,8 @@
 Perseus Dark Mode
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.3-green.svg)
-![Pod](https://img.shields.io/badge/Pod-1.0.3-green.svg)
+![Version](https://img.shields.io/badge/Version-1.0.4-green.svg)
+![Pod](https://img.shields.io/badge/Pod-1.0.4-green.svg)
 [![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
