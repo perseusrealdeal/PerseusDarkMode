@@ -343,6 +343,14 @@ public enum SystemStyle: Int, CustomStringConvertible {
     }
 }
 
+// MARK: - Helpers
+
+extension UserDefaults {
+    public func valueExists(forKey key: String) -> Bool {
+        return object(forKey: key) != nil
+    }
+}
+
 // MARK: - Used only for unit testing purpose
 
 public protocol NotificationCenterProtocol {
