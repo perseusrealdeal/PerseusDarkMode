@@ -143,7 +143,7 @@ public class AppearanceService {
     internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
 
-        if let keyWindow = UIApplication.shared.keyWindow {
+        if let keyWindow = UIWindow.key {
             var overrideStyle: UIUserInterfaceStyle = .unspecified
 
             switch DarkModeUserChoice {
@@ -177,7 +177,7 @@ public class DarkMode: NSObject {
 
     public var SystemStyle: SystemStyle {
         if #available(iOS 13.0, *) {
-            guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
+            guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
             case .unspecified:
@@ -348,6 +348,16 @@ public enum SystemStyle: Int, CustomStringConvertible {
 extension UserDefaults {
     public func valueExists(forKey key: String) -> Bool {
         return object(forKey: key) != nil
+    }
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
+        }
     }
 }
 

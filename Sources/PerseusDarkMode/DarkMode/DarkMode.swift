@@ -36,7 +36,7 @@ public class DarkMode: NSObject {
     /// The app's current system appearance style.
     public var SystemStyle: SystemStyle {
         if #available(iOS 13.0, *) {
-            guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
+            guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
             case .unspecified:
