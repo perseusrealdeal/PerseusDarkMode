@@ -9,8 +9,10 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 /// Represents Dark Mode and contains the app's appearance style.
@@ -35,7 +37,8 @@ public class DarkMode: NSObject {
 
     /// The app's current system appearance style.
     public var SystemStyle: SystemStyle {
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, macOS 10.14, *) {
+#if os(iOS)
             guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
@@ -49,6 +52,14 @@ public class DarkMode: NSObject {
             @unknown default:
                 return .unspecified
             }
+#elseif os(macOS)
+            if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
+                isDark == "Dark" {
+                return .dark
+            } else {
+                return .light
+            }
+#endif
         } else {
             return .unspecified
         }

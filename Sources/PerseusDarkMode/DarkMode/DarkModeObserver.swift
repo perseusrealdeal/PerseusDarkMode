@@ -9,8 +9,10 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 /// Represents an object responsible for making run the code if the app's appearance style changed.

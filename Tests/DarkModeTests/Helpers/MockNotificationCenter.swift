@@ -9,8 +9,10 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 import XCTest
@@ -21,9 +23,16 @@ class MockNotificationCenter: NotificationCenterProtocol {
     // MARK: - addObserver
 
     var registerCallCount = 0
+
+#if os(iOS)
     var registerArgs_observers: [UIResponder] = []
+#elseif os(macOS)
+    var registerArgs_observers: [NSResponder] = []
+#endif
+
     var registerArgs_selectors: [Selector] = []
 
+#if os(iOS)
     func addObserver(_ observer: Any,
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
@@ -48,6 +57,32 @@ class MockNotificationCenter: NotificationCenterProtocol {
         XCTAssertEqual(registerArgs_selectors.first, selector,
                        "selector", file: file, line: line)
     }
+#elseif os(macOS)
+    func addObserver(_ observer: Any,
+                     selector aSelector: Selector,
+                     name aName: NSNotification.Name?,
+                     object anObject: Any?) {
+        guard let observer = observer as? NSResponder else { return }
+
+        registerCallCount += 1
+
+        registerArgs_observers.append(observer)
+        registerArgs_selectors.append(aSelector)
+    }
+
+    func verifyRegisterObserver(observer: NSResponder,
+                                selector: Selector,
+                                file: StaticString = #file,
+                                line: UInt = #line) {
+        guard registerWasCalledOnce(file: file, line: line) else { return }
+
+        XCTAssertTrue(registerArgs_observers.first! === observer,
+                      "observer", file: file, line: line)
+
+        XCTAssertEqual(registerArgs_selectors.first, selector,
+                       "selector", file: file, line: line)
+    }
+#endif
 
     private func registerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(

@@ -1,6 +1,6 @@
 //
 //  PerseusDarkModeSingle.swift
-//  Version: 1.0.4
+//  Version: 1.0.5
 //
 //  Created by Mikhail Zhigulin in 2022.
 //
@@ -31,12 +31,35 @@
 //  SOFTWARE.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
+/* template
+#if canImport(UIKit)
+
+#elseif canImport(Cocoa)
+
+#endif
+*/
+
+/* template
+#if os(iOS)
+
+#elseif os(macOS)
+
+#endif
+*/
 
 // MARK: - Constants
 
 public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
+#if os(macOS)
+    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
+#endif
 }
 
 public let DARK_MODE_USER_CHOICE_OPTION_KEY = "DarkModeUserChoiceOptionKey"
@@ -46,11 +69,38 @@ public let OBSERVERED_VARIABLE_NAME = "StyleObservable"
 
 // MARK: - Appearance service
 
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared } }
+#if os(iOS)
+public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+#elseif os(macOS)
+public extension NSResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+#endif
 
 public class AppearanceService {
+
     public static var shared: DarkMode = { DarkMode() }()
-    private init() { }
+
+    private init() {
+#if os(macOS)
+        DistributedNotificationCenter.default.addObserver(
+            self,
+            selector: #selector(interfaceModeChanged),
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
+#endif
+    }
+
+#if os(macOS)
+    @objc internal func interfaceModeChanged() {
+        if #available(macOS 10.14, *) {
+            AppearanceService.processAppearanceOSDidChange()
+        }
+    }
+
+    @available(macOS 10.14, *)
+    public static var defaultDarkAppearanceOS: NSAppearance.Name = .darkAqua
+    public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
+#endif
 
     public static var isEnabled: Bool { _isEnabled }
 
@@ -99,7 +149,7 @@ public class AppearanceService {
         _isEnabled = true
         _changeManually = true
 
-        if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
+        if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
         recalculateStyleIfNeeded()
 
@@ -107,6 +157,7 @@ public class AppearanceService {
         _changeManually = false
     }
 
+#if os(iOS)
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if _changeManually { return }
@@ -117,6 +168,13 @@ public class AppearanceService {
 
         _systemCalledMakeUp()
     }
+#elseif os(macOS)
+    @available(macOS 10.14, *)
+    internal static func processAppearanceOSDidChange() {
+        if _changeManually { return }
+        _systemCalledMakeUp()
+    }
+#endif
 
     // MARK: - Implementation helpers, privates and internals
 
@@ -139,26 +197,36 @@ public class AppearanceService {
         if shared._style != actualStyle { shared._style = actualStyle }
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
+#if os(iOS)
+        guard let keyWindow = UIWindow.key else { return }
+        var overrideStyle: UIUserInterfaceStyle = .unspecified
 
-        if let keyWindow = UIWindow.key {
-            var overrideStyle: UIUserInterfaceStyle = .unspecified
+        switch DarkModeUserChoice {
+        case .auto:
+            overrideStyle = .unspecified
 
-            switch DarkModeUserChoice {
-            case .auto:
-                overrideStyle = .unspecified
+        case .on:
+            overrideStyle = .dark
 
-            case .on:
-                overrideStyle = .dark
-
-            case .off:
-                overrideStyle = .light
-            }
-
-            keyWindow.overrideUserInterfaceStyle = overrideStyle
+        case .off:
+            overrideStyle = .light
         }
+
+        keyWindow.overrideUserInterfaceStyle = overrideStyle
+
+#elseif os(macOS)
+        switch DarkModeUserChoice {
+        case .auto:
+            NSApplication.shared.appearance = nil
+        case .on:
+            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+        case .off:
+            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+        }
+#endif
     }
 }
 
@@ -176,7 +244,8 @@ public class DarkMode: NSObject {
     // MARK: - System's Appearance Style
 
     public var SystemStyle: SystemStyle {
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, macOS 10.14, *) {
+#if os(iOS)
             guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
@@ -190,6 +259,14 @@ public class DarkMode: NSObject {
             @unknown default:
                 return .unspecified
             }
+#elseif os(macOS)
+            if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
+                isDark == "Dark" {
+                return .dark
+            } else {
+                return .light
+            }
+#endif
         } else {
             return .unspecified
         }
@@ -351,6 +428,7 @@ extension UserDefaults {
     }
 }
 
+#if os(iOS)
 extension UIWindow {
     static var key: UIWindow? {
         if #available(iOS 13, *) {
@@ -360,6 +438,7 @@ extension UIWindow {
         }
     }
 }
+#endif
 
 // MARK: - Used only for unit testing purpose
 

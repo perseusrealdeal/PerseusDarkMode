@@ -9,17 +9,27 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 /// Name of make up notification.
 public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
+#if os(macOS)
+    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
+#endif
 }
 
-/// Dark Mode placed to to be accessed from any screen object.
+#if os(iOS)
+/// Dark Mode placed to to be accessed from any screen object of iOS (Mac Catalyst).
 public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+#elseif os(macOS)
+/// Dark Mode placed to to be accessed from any screen object of macOS.
+public extension NSResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+#endif
 
 /// Represents service giving a control of the app's appearance.
 ///
@@ -31,7 +41,28 @@ public class AppearanceService {
 
     /// Shared Dark Mode.
     public static var shared: DarkMode = { DarkMode() }()
-    private init() {}
+    private init() {
+#if os(macOS)
+        DistributedNotificationCenter.default.addObserver(
+            self,
+            selector: #selector(interfaceModeChanged),
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
+#endif
+    }
+
+#if os(macOS)
+    @objc internal func interfaceModeChanged() {
+        if #available(macOS 10.14, *) {
+            AppearanceService.processAppearanceOSDidChange()
+        }
+    }
+
+    @available(macOS 10.14, *)
+    public static var defaultDarkAppearanceOS: NSAppearance.Name = .darkAqua
+    public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
+#endif
 
     /// TRUE if Appearance.makeUp once called otherwise FALSE.
     ///
@@ -98,7 +129,7 @@ public class AppearanceService {
         _isEnabled = true
         _changeManually = true
 
-        if #available(iOS 13.0, *) { overrideUserInterfaceStyleIfNeeded() }
+        if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
         recalculateStyleIfNeeded()
 
@@ -106,6 +137,7 @@ public class AppearanceService {
         _changeManually = false
     }
 
+#if os(iOS)
     /// Puts the app's Dark Mode in line with System Appearance Mode.
     ///
     /// Should be called when user taggles System Appearance Mode in Settings app.
@@ -122,6 +154,13 @@ public class AppearanceService {
 
         _systemCalledMakeUp()
     }
+#elseif os(macOS)
+    @available(macOS 10.14, *)
+    internal static func processAppearanceOSDidChange() {
+        if _changeManually { return }
+        _systemCalledMakeUp()
+    }
+#endif
 
     // MARK: - Implementation helpers, privates and internals
 
@@ -151,26 +190,36 @@ public class AppearanceService {
     /// Changes the app's UserInterfaceStyle.
     ///
     /// It's matter to change the look of system user controls.
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
+#if os(iOS)
+        guard let keyWindow = UIWindow.key else { return }
+        var overrideStyle: UIUserInterfaceStyle = .unspecified
 
-        if let keyWindow = UIWindow.key {
-            var overrideStyle: UIUserInterfaceStyle = .unspecified
+        switch DarkModeUserChoice {
+        case .auto:
+            overrideStyle = .unspecified
 
-            switch DarkModeUserChoice {
-            case .auto:
-                overrideStyle = .unspecified
+        case .on:
+            overrideStyle = .dark
 
-            case .on:
-                overrideStyle = .dark
-
-            case .off:
-                overrideStyle = .light
-            }
-
-            keyWindow.overrideUserInterfaceStyle = overrideStyle
+        case .off:
+            overrideStyle = .light
         }
+
+        keyWindow.overrideUserInterfaceStyle = overrideStyle
+
+#elseif os(macOS)
+        switch DarkModeUserChoice {
+        case .auto:
+            NSApplication.shared.appearance = nil
+        case .on:
+            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+        case .off:
+            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+        }
+#endif
     }
 }
 
@@ -182,6 +231,7 @@ extension UserDefaults {
     }
 }
 
+#if os(iOS)
 extension UIWindow {
     static var key: UIWindow? {
         if #available(iOS 13, *) {
@@ -191,6 +241,7 @@ extension UIWindow {
         }
     }
 }
+#endif
 
 // MARK: - Protocols used for unit testing
 
