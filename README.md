@@ -1,21 +1,23 @@
 Perseus Dark Mode
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.4-green.svg)
-![Pod](https://img.shields.io/badge/Pod-1.0.4-green.svg)
-[![Platforms iOS 9](https://img.shields.io/badge/Platforms-iOS%209.0-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
-[![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
+![Version](https://img.shields.io/badge/Version-1.0.5-green.svg)
+![Pod](https://img.shields.io/badge/Pod-1.0.5-green.svg)
+[![Platforms iOS 9+](https://img.shields.io/badge/Platform-iOS%209.0+-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
+[![Platforms macOS 10.9+](https://img.shields.io/badge/Platform-macOS%2010.9+-orange.svg)](https://en.wikipedia.org/wiki/MacOS)
+[![SDK UIKit](https://img.shields.io/badge/SDK-UIKit,%20Cocoa%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
 [![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods%20Manager-compatible-informational.svg)](https://cocoapods.org)
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
 
-- Have a look of demo app, source code is [here](https://github.com/perseusrealdeal/ios.darkmode.discovery.git). 
+- Have a look of demo apps, [iOS App](https://github.com/perseusrealdeal/ios.darkmode.discovery.git) and [macOS App](https://github.com/perseusrealdeal/macos.darkmode.discovery.git). 
 - There is a satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/9ab4d07116089cf8e3ec5f287f64035269585b51/PerseusDarkModeSingle.swift)
-[![Demo App](https://img.shields.io/badge/Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/88de223782cad8d70f75b55fd6fb085577ce92d2/PerseusDarkModeSingle.swift)
+[![Demo App](https://img.shields.io/badge/iOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
+[![Demo App](https://img.shields.io/badge/macOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/macos.darkmode.discovery.git)
 [![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
 
 # Table of contents
