@@ -10,7 +10,7 @@ Perseus Dark Mode
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods%20Manager-compatible-informational.svg)](https://cocoapods.org)
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
-[![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/DarkMode/blob/ddf37bd9889914c16c494274f178fa3aab6f3d5b/LICENSE)
+[![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/8ccf695859c8564f2d1c97ad894d80e55382b6c1/LICENSE)
 
 - Have a look of demo apps, [iOS App](https://github.com/perseusrealdeal/ios.darkmode.discovery.git) and [macOS App](https://github.com/perseusrealdeal/macos.darkmode.discovery.git). 
 - There is a satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
@@ -38,7 +38,7 @@ Samples:
 
 ## Introductory remarks <a name="section1"></a>
 
-Perseus Dark Mode gives a control of Apple's Dark Mode even for early Apple devices starting from iOS 9.0.
+Perseus Dark Mode gives a control of Apple's Dark Mode with iOS 9.0+ (also and Mac Catalyst) and macOS 10.9+.
 
 ## 1. Build tools & Installation <a name="section2"></a>
 
@@ -47,6 +47,7 @@ Tools used for designing the solution:
 + Device iPod Touch iOS 9.3.5 (5th, 13G36) 
 + Device iPad Air iOS 12.5.5 (iPad4,2 model, 16H62)
 + Simulator iPhone 12 mini (iOS 15.4, 19E240)
++ MacBookPro14,1 2017
 
 The solution can be used via `swift package manager`, `CocoaPods dependency manager`, `Carthage dependency manager` and as a `standalone single file` as well.
 
@@ -202,6 +203,8 @@ class MainViewController: UIViewController {
     private func configure() { }
 }
 ```
+
+With macOS there is no need to override any method to catch Dark Mode system change, it happens automatically via interanal observer registered in init method of AppearanceService class. 
 
 ## 5. Catching Dark Mode triggered <a name="section6"></a>
 
