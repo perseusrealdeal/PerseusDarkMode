@@ -9,10 +9,6 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
-import UIKit
-#endif
-
 /// Makes a calculation of the app's appearance style.
 public class DarkModeDecision {
 

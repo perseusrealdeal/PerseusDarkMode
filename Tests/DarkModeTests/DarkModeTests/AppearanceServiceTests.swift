@@ -15,13 +15,13 @@ import UIKit
 import Cocoa
 #endif
 
-/* template
 #if os(iOS)
-
+public typealias View = UIView
+public typealias ViewController = UIViewController
 #elseif os(macOS)
-
+public typealias View = NSView
+public typealias ViewController = NSViewController
 #endif
-*/
 
 import XCTest
 @testable import PerseusDarkMode
@@ -35,13 +35,8 @@ final class AppearanceServiceTests: XCTestCase {
         XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)
 
-#if os(iOS)
-        XCTAssertIdentical(UIView().DarkMode as AnyObject, AppearanceService.shared)
-        XCTAssertIdentical(UIViewController().DarkMode as AnyObject, AppearanceService.shared)
-#elseif os(macOS)
-        XCTAssertIdentical(NSView().DarkMode as AnyObject, AppearanceService.shared)
-        XCTAssertIdentical(NSViewController().DarkMode as AnyObject, AppearanceService.shared)
-#endif
+        XCTAssertIdentical(View().DarkMode as AnyObject, AppearanceService.shared)
+        XCTAssertIdentical(ViewController().DarkMode as AnyObject, AppearanceService.shared)
     }
 
     func test_method_register_called_addObserver() {
@@ -50,11 +45,7 @@ final class AppearanceServiceTests: XCTestCase {
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
 
-#if os(iOS)
-        class MyView: UIView { @objc func makeUp() { } }
-#elseif os(macOS)
-        class MyView: NSView { @objc func makeUp() { } }
-#endif
+        class MyView: View { @objc func makeUp() { } }
 
         let view = MyView()
 

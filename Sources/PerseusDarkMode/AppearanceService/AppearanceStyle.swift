@@ -9,10 +9,6 @@
 //  All rights reserved.
 //
 
-#if !os(macOS)
-import UIKit
-#endif
-
 /// Represents appearance style.
 public enum AppearanceStyle: Int, CustomStringConvertible {
 

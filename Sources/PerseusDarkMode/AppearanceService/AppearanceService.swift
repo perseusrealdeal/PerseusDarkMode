@@ -15,6 +15,12 @@ import UIKit
 import Cocoa
 #endif
 
+#if os(iOS)
+public typealias Responder = UIResponder
+#elseif os(macOS)
+public typealias Responder = NSResponder
+#endif
+
 /// Name of make up notification.
 public extension Notification.Name {
     static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
@@ -23,13 +29,8 @@ public extension Notification.Name {
 #endif
 }
 
-#if os(iOS)
 /// Dark Mode placed to to be accessed from any screen object of iOS (Mac Catalyst).
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
-#elseif os(macOS)
-/// Dark Mode placed to to be accessed from any screen object of macOS.
-public extension NSResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
-#endif
+public extension Responder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
 
 /// Represents service giving a control of the app's appearance.
 ///

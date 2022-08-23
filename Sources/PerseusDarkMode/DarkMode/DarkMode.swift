@@ -54,7 +54,7 @@ public class DarkMode: NSObject {
             }
 #elseif os(macOS)
             if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
-                isDark == "Dark" {
+               isDark == "Dark" {
                 return .dark
             } else {
                 return .light

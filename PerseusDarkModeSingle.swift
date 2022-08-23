@@ -37,6 +37,12 @@ import UIKit
 import Cocoa
 #endif
 
+#if os(iOS)
+public typealias Responder = UIResponder
+#elseif os(macOS)
+public typealias Responder = NSResponder
+#endif
+
 /* template
 #if canImport(UIKit)
 
@@ -69,11 +75,7 @@ public let OBSERVERED_VARIABLE_NAME = "StyleObservable"
 
 // MARK: - Appearance service
 
-#if os(iOS)
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
-#elseif os(macOS)
-public extension NSResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
-#endif
+public extension Responder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
 
 public class AppearanceService {
 
@@ -261,7 +263,7 @@ public class DarkMode: NSObject {
             }
 #elseif os(macOS)
             if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
-                isDark == "Dark" {
+               isDark == "Dark" {
                 return .dark
             } else {
                 return .light

@@ -15,6 +15,12 @@ import UIKit
 import Cocoa
 #endif
 
+#if os(iOS)
+public typealias Responder = UIResponder
+#elseif os(macOS)
+public typealias Responder = NSResponder
+#endif
+
 import XCTest
 @testable import PerseusDarkMode
 
@@ -24,20 +30,14 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     var registerCallCount = 0
 
-#if os(iOS)
-    var registerArgs_observers: [UIResponder] = []
-#elseif os(macOS)
-    var registerArgs_observers: [NSResponder] = []
-#endif
-
+    var registerArgs_observers: [Responder] = []
     var registerArgs_selectors: [Selector] = []
 
-#if os(iOS)
     func addObserver(_ observer: Any,
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
                      object anObject: Any?) {
-        guard let observer = observer as? UIResponder else { return }
+        guard let observer = observer as? Responder else { return }
 
         registerCallCount += 1
 
@@ -45,7 +45,7 @@ class MockNotificationCenter: NotificationCenterProtocol {
         registerArgs_selectors.append(aSelector)
     }
 
-    func verifyRegisterObserver(observer: UIResponder,
+    func verifyRegisterObserver(observer: Responder,
                                 selector: Selector,
                                 file: StaticString = #file,
                                 line: UInt = #line) {
@@ -57,32 +57,6 @@ class MockNotificationCenter: NotificationCenterProtocol {
         XCTAssertEqual(registerArgs_selectors.first, selector,
                        "selector", file: file, line: line)
     }
-#elseif os(macOS)
-    func addObserver(_ observer: Any,
-                     selector aSelector: Selector,
-                     name aName: NSNotification.Name?,
-                     object anObject: Any?) {
-        guard let observer = observer as? NSResponder else { return }
-
-        registerCallCount += 1
-
-        registerArgs_observers.append(observer)
-        registerArgs_selectors.append(aSelector)
-    }
-
-    func verifyRegisterObserver(observer: NSResponder,
-                                selector: Selector,
-                                file: StaticString = #file,
-                                line: UInt = #line) {
-        guard registerWasCalledOnce(file: file, line: line) else { return }
-
-        XCTAssertTrue(registerArgs_observers.first! === observer,
-                      "observer", file: file, line: line)
-
-        XCTAssertEqual(registerArgs_selectors.first, selector,
-                       "selector", file: file, line: line)
-    }
-#endif
 
     private func registerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
