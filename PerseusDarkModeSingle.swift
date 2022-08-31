@@ -1,6 +1,6 @@
 //
 //  PerseusDarkModeSingle.swift
-//  Version: 1.0.5
+//  Version: 1.1.0
 //
 //  Created by Mikhail Zhigulin in 2022.
 //

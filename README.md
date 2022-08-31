@@ -1,8 +1,8 @@
 Perseus Dark Mode
 ======================================
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/CI.yml/badge.svg)](https://github.com/perseusrealdeal/DarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.0.5-green.svg)
-![Pod](https://img.shields.io/badge/Pod-1.0.5-green.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-green.svg)
+![Pod](https://img.shields.io/badge/Pod-1.1.0-green.svg)
 [![Platforms iOS 9+](https://img.shields.io/badge/Platform-iOS%209.0+-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![Platforms macOS 10.9+](https://img.shields.io/badge/Platform-macOS%2010.9+-orange.svg)](https://en.wikipedia.org/wiki/MacOS)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit,%20Cocoa%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
@@ -15,7 +15,7 @@ Perseus Dark Mode
 - Have a look of demo apps, [iOS App](https://github.com/perseusrealdeal/ios.darkmode.discovery.git) and [macOS App](https://github.com/perseusrealdeal/macos.darkmode.discovery.git). 
 - There is a satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/88de223782cad8d70f75b55fd6fb085577ce92d2/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7872dc794145e1326573602f8bb71f35ba591d2f/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/iOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 [![Demo App](https://img.shields.io/badge/macOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/macos.darkmode.discovery.git)
 [![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
