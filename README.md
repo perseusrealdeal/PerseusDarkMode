@@ -15,7 +15,7 @@ Perseus Dark Mode
 - Have a look of demo apps, [iOS App](https://github.com/perseusrealdeal/ios.darkmode.discovery.git) and [macOS App](https://github.com/perseusrealdeal/macos.darkmode.discovery.git). 
 - There is a satellite lib [PerseusUISystemKit](https://github.com/perseusrealdeal/PerseusUISystemKit.git).
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7872dc794145e1326573602f8bb71f35ba591d2f/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-red.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/f6e3566c7224d81adfb9a7c72c519e192709c22f/PerseusDarkModeSingle.swift)
 [![Demo App](https://img.shields.io/badge/iOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
 [![Demo App](https://img.shields.io/badge/macOS%20Demo%20App-available-ff6964.svg)](https://github.com/perseusrealdeal/macos.darkmode.discovery.git)
 [![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
