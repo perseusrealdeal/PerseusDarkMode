@@ -31,7 +31,7 @@ final class AppearanceServiceTests: XCTestCase {
 
     func test_init() {
         XCTAssertFalse(AppearanceService.isEnabled)
-        XCTAssertFalse(AppearanceService._isEnabled)
+        XCTAssertFalse(AppearanceService.hidden_isEnabled)
 
         XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)

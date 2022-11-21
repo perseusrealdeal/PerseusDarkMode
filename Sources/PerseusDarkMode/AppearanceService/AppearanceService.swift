@@ -72,7 +72,7 @@ public class AppearanceService {
     ///
     /// Value is false by default and changed only once when Appearance.makeUp called for the first time,
     /// then always true in run time.
-    public static var isEnabled: Bool { return _isEnabled }
+    public static var isEnabled: Bool { return hidden_isEnabled }
 
 #if DEBUG // Isolated for unit testing
     /// Used for mocking NotificationCenter in unit testing.
@@ -130,15 +130,15 @@ public class AppearanceService {
     ///
     /// First time should be called when didFinishLaunching happens and then every time when DarkModeUserChoice changes.
     public static func makeUp() {
-        _isEnabled = true
-        _changeManually = true
+        hidden_isEnabled = true
+        hidden_changeManually = true
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
         recalculateStyleIfNeeded()
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
-        _changeManually = false
+        hidden_changeManually = false
     }
 
 #if os(iOS)
@@ -150,35 +150,35 @@ public class AppearanceService {
     /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if _changeManually { return }
+        if hidden_changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
               previousSystemStyle.rawValue != shared.systemStyle.rawValue
         else { return }
 
-        _systemCalledMakeUp()
+        hidden_systemCalledMakeUp()
     }
 #elseif os(macOS)
     @available(macOS 10.14, *)
     internal static func processAppearanceOSDidChange() {
-        if _changeManually { return }
-        _systemCalledMakeUp()
+        if hidden_changeManually { return }
+        hidden_systemCalledMakeUp()
     }
 #endif
 
     // MARK: - Implementation helpers, privates and internals
 
     /// Used to make possible applying Black White approach in Screen design.
-    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
+    private(set) static var hidden_isEnabled: Bool = false { willSet { if newValue == false { return }}}
 
     /// Used to reduce double calling of traitCollectionDidChange.
-    internal static var _changeManually: Bool = false
+    internal static var hidden_changeManually: Bool = false
 
     /// Make up if TraitCollectionDidChange.
-    internal static func _systemCalledMakeUp() {
-        if _changeManually { return }
+    internal static func hidden_systemCalledMakeUp() {
+        if hidden_changeManually { return }
 
-        _isEnabled = true
+        hidden_isEnabled = true
 
         recalculateStyleIfNeeded()
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
@@ -196,7 +196,7 @@ public class AppearanceService {
     /// It's matter to change the look of system user controls.
     @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
-        if _changeManually == false { return }
+        if hidden_changeManually == false { return }
 #if os(iOS) && compiler(>=5)
         guard let keyWindow = UIWindow.key else { return }
         var overrideStyle: UIUserInterfaceStyle = .unspecified

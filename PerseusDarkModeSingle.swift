@@ -112,7 +112,7 @@ public class AppearanceService {
     public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
 #endif
 
-    public static var isEnabled: Bool { return _isEnabled }
+    public static var isEnabled: Bool { return hidden_isEnabled }
 
 #if DEBUG // Isolated for unit testing
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
@@ -156,22 +156,22 @@ public class AppearanceService {
     // MARK: - Public API: make the app's appearance up
 
     public static func makeUp() {
-        _isEnabled = true
-        _changeManually = true
+        hidden_isEnabled = true
+        hidden_changeManually = true
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
         recalculateStyleIfNeeded()
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
-        _changeManually = false
+        hidden_changeManually = false
     }
 
 #if os(iOS)
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(
         _ previousTraitCollection: UITraitCollection?) {
-        if _changeManually { return }
+        if hidden_changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
               previousSystemStyle.rawValue != shared.systemStyle.rawValue
@@ -182,23 +182,23 @@ public class AppearanceService {
 #elseif os(macOS)
     @available(macOS 10.14, *)
     internal static func processAppearanceOSDidChange() {
-        if _changeManually { return }
-        _systemCalledMakeUp()
+        if hidden_changeManually { return }
+        hidden_systemCalledMakeUp()
     }
 #endif
 
     // MARK: - Implementation helpers, privates and internals
 
-    private(set) static var _isEnabled: Bool = false {
+    private(set) static var hidden_isEnabled: Bool = false {
         willSet { if newValue == false { return }}
     }
 
-    internal static var _changeManually: Bool = false
+    internal static var hidden_changeManually: Bool = false
 
     internal static func hidden_systemCalledMakeUp() {
-        if _changeManually { return }
+        if hidden_changeManually { return }
 
-        _isEnabled = true
+        hidden_isEnabled = true
 
         recalculateStyleIfNeeded()
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
@@ -212,7 +212,7 @@ public class AppearanceService {
 
     @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
-        if _changeManually == false { return }
+        if hidden_changeManually == false { return }
 #if os(iOS) && compiler(>=5)
         guard let keyWindow = UIWindow.key else { return }
         var overrideStyle: UIUserInterfaceStyle = .unspecified
