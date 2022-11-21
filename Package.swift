@@ -1,9 +1,10 @@
 // swift-tools-version:5.3
 /* Package.swift
 
- Created by Mikhail Zhigulin in 2022.
+ Created by Mikhail Zhigulin in 7530.
 
- Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+ Copyright (c) 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+
  Licensed under the MIT license. See LICENSE file.
  All rights reserved.
 

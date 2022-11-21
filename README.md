@@ -6,7 +6,7 @@ Perseus Dark Mode
 [![Platforms iOS 9+](https://img.shields.io/badge/Platform-iOS%209.0+-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![Platforms macOS 10.9+](https://img.shields.io/badge/Platform-macOS%2010.9+-orange.svg)](https://en.wikipedia.org/wiki/MacOS)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit,%20Cocoa%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
-[![Swift 5.3](https://img.shields.io/badge/Swift-5.3-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
+[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-informational.svg)](https://github.com/apple/swift-package-manager)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods%20Manager-compatible-informational.svg)](https://cocoapods.org)
 [![Carthage manager](https://img.shields.io/badge/Carthage%20Manager-compatible-informational.svg)](https://github.com/Carthage/Carthage)
@@ -70,12 +70,9 @@ public class AppearanceService {
 
 ```swift
 public protocol DarkModeProtocol {
-
     var Style: AppearanceStyle { get }
     var SystemStyle: SystemStyle { get }
-
-    dynamic var StyleObservable: Int { get }
-
+    var StyleObservable: Int { get }
 }
 
 extension DarkMode: DarkModeProtocol { }
@@ -84,7 +81,9 @@ extension DarkMode: DarkModeProtocol { }
 `Dark Mode is hosted as a property in a screen object`
 
 ```swift
-public extension UIResponder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+public extension Responder {
+    var DarkMode: DarkModeProtocol { return AppearanceService.shared }
+}
 ```
 
 ## 3. Dark Mode table decision <a name="section4"></a>
@@ -369,7 +368,10 @@ class MemberTableViewCell: UITableViewCell {
 # License <a name="license"></a>
 MIT License
 
-Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
+Copyright (c) 7530 - 7531 Mikhail Zhigulin of Novosibirsk
+
+The year starts from the creation of the world according to a Slavic calendar.
+September, the 1st of Slavic year.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

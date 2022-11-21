@@ -2,9 +2,10 @@
 //  DarkModeTests.swift
 //  DarkModeTests
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright (c) 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
@@ -35,8 +36,8 @@ final class DarkModeTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared._style = AppearanceStyle.dark
-        AppearanceService.shared._style = AppearanceStyle.light
+        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        AppearanceService.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -65,8 +66,8 @@ final class DarkModeTests: XCTestCase {
 
         observer = nil
 
-        AppearanceService.shared._style = AppearanceStyle.dark
-        AppearanceService.shared._style = AppearanceStyle.light
+        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        AppearanceService.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -88,7 +89,7 @@ final class DarkModeTests: XCTestCase {
 
         // assert
 
-        mockUserDefaults.verifyInterger(name: DARK_MODE_USER_CHOICE_OPTION_KEY)
+        mockUserDefaults.verifyInterger(name: DARK_MODE_USER_CHOICE_KEY)
 
         // keep it clean for the others
 
@@ -133,7 +134,7 @@ final class DarkModeTests: XCTestCase {
         // assert
 
         mockUserDefaults.verifySetValue(value: sut.rawValue,
-                                        key: DARK_MODE_USER_CHOICE_OPTION_KEY)
+                                        key: DARK_MODE_USER_CHOICE_KEY)
 
         // keep it clean for the others
 

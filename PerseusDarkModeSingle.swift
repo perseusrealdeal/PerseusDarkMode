@@ -2,15 +2,18 @@
 //  PerseusDarkModeSingle.swift
 //  Version: 1.1.0
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright (c) 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
 //  All rights reserved.
 //
 //
 //  MIT License
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
+//  Copyright (c) 7530 - 7531 Mikhail Zhigulin of Novosibirsk
+//
+//  The year starts from the creation of the world according to a Slavic calendar.
+//  September, the 1st of Slavic year.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +33,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  swiftlint:disable file_length
+// swiftlint:disable file_length block_based_kvo
 
 #if canImport(UIKit)
 import UIKit
@@ -63,20 +66,24 @@ public typealias Responder = NSResponder
 // MARK: - Constants
 
 public extension Notification.Name {
-    static let makeAppearanceUpNotification = Notification.Name("makeAppearanceUpNotification")
+    static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
 #if os(macOS)
-    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
+    static let UIThemeChangedNotification = Notification.Name("UIThemeChangedNotification")
 #endif
 }
 
-public let DARK_MODE_USER_CHOICE_OPTION_KEY = "DarkModeUserChoiceOptionKey"
+public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
 public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
 public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
-public let OBSERVERED_VARIABLE_NAME = "StyleObservable"
+public let OBSERVERED_VARIABLE_NAME = "styleObservable"
 
 // MARK: - Appearance service
 
-public extension Responder { var DarkMode: DarkModeProtocol { AppearanceService.shared }}
+// swiftlint:disable identifier_name
+public extension Responder {
+    var DarkMode: DarkModeProtocol { return AppearanceService.shared }
+}
+// swiftlint:enable identifier_name
 
 public class AppearanceService {
 
@@ -87,7 +94,7 @@ public class AppearanceService {
         DistributedNotificationCenter.default.addObserver(
             self,
             selector: #selector(interfaceModeChanged),
-            name: .AppleInterfaceThemeChangedNotification,
+            name: .UIThemeChangedNotification,
             object: nil
         )
 #endif
@@ -105,7 +112,7 @@ public class AppearanceService {
     public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
 #endif
 
-    public static var isEnabled: Bool { _isEnabled }
+    public static var isEnabled: Bool { return _isEnabled }
 
 #if DEBUG // Isolated for unit testing
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
@@ -119,8 +126,8 @@ public class AppearanceService {
         get {
             // Load enum Int value
 
-            let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) ?
-                ud.integer(forKey: DARK_MODE_USER_CHOICE_OPTION_KEY) :
+            let rawValue = ud.valueExists(forKey: DARK_MODE_USER_CHOICE_KEY) ?
+                ud.integer(forKey: DARK_MODE_USER_CHOICE_KEY) :
                 DARK_MODE_USER_CHOICE_DEFAULT.rawValue
 
             // Try to cast Int value to enum
@@ -130,7 +137,7 @@ public class AppearanceService {
             return DARK_MODE_USER_CHOICE_DEFAULT
         }
         set {
-            ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_OPTION_KEY)
+            ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
 
             // Used for KVO to immediately notify a change has happened
             recalculateStyleIfNeeded()
@@ -142,7 +149,7 @@ public class AppearanceService {
     public static func register(stakeholder: Any, selector: Selector) {
         nCenter.addObserver(stakeholder,
                             selector: selector,
-                            name: .makeAppearanceUpNotification,
+                            name: .MakeAppearanceUpNotification,
                             object: nil)
     }
 
@@ -156,20 +163,21 @@ public class AppearanceService {
 
         recalculateStyleIfNeeded()
 
-        nCenter.post(name: .makeAppearanceUpNotification, object: nil)
+        nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
         _changeManually = false
     }
 
 #if os(iOS)
     @available(iOS 13.0, *)
-    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public static func processTraitCollectionDidChange(
+        _ previousTraitCollection: UITraitCollection?) {
         if _changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-              previousSystemStyle.rawValue != shared.SystemStyle.rawValue
+              previousSystemStyle.rawValue != shared.systemStyle.rawValue
         else { return }
 
-        _systemCalledMakeUp()
+        hidden_systemCalledMakeUp()
     }
 #elseif os(macOS)
     @available(macOS 10.14, *)
@@ -181,29 +189,31 @@ public class AppearanceService {
 
     // MARK: - Implementation helpers, privates and internals
 
-    private(set) static var _isEnabled: Bool = false { willSet { if newValue == false { return }}}
+    private(set) static var _isEnabled: Bool = false {
+        willSet { if newValue == false { return }}
+    }
 
     internal static var _changeManually: Bool = false
 
-    internal static func _systemCalledMakeUp() {
+    internal static func hidden_systemCalledMakeUp() {
         if _changeManually { return }
 
         _isEnabled = true
 
         recalculateStyleIfNeeded()
-        nCenter.post(name: .makeAppearanceUpNotification, object: nil)
+        nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
     }
 
     internal static func recalculateStyleIfNeeded() {
-        let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.SystemStyle)
+        let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.systemStyle)
 
-        if shared._style != actualStyle { shared._style = actualStyle }
+        if shared.hidden_style != actualStyle { shared.hidden_style = actualStyle }
     }
 
     @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
         if _changeManually == false { return }
-#if os(iOS)
+#if os(iOS) && compiler(>=5)
         guard let keyWindow = UIWindow.key else { return }
         var overrideStyle: UIUserInterfaceStyle = .unspecified
 
@@ -225,9 +235,11 @@ public class AppearanceService {
         case .auto:
             NSApplication.shared.appearance = nil
         case .on:
-            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+            NSApplication.shared.appearance =
+            NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
         case .off:
-            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+            NSApplication.shared.appearance =
+            NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
         }
 #endif
     }
@@ -238,15 +250,15 @@ public class AppearanceService {
 public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
-    public var Style: AppearanceStyle { _style }
+    public var style: AppearanceStyle { return hidden_style }
 
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
 
-    @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
+    @objc public dynamic var styleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
 
     // MARK: - System's Appearance Style
 
-    public var SystemStyle: SystemStyle {
+    public var systemStyle: SystemStyle {
         if #available(iOS 13.0, macOS 10.14, *) {
 #if os(iOS)
             guard let keyWindow = UIWindow.key else { return .unspecified }
@@ -275,8 +287,8 @@ public class DarkMode: NSObject {
         }
     }
 
-    internal var _style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
-        didSet { StyleObservable = Style.rawValue }
+    internal var hidden_style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
+        didSet { styleObservable = style.rawValue }
     }
 }
 
@@ -450,22 +462,19 @@ public protocol NotificationCenterProtocol {
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
                      object anObject: Any?)
-
     func post(name aName: NSNotification.Name, object anObject: Any?)
 }
 
 public protocol UserDefaultsProtocol {
     func valueExists(forKey key: String) -> Bool
-
     func integer(forKey defaultName: String) -> Int
     func setValue(_ value: Any?, forKey key: String)
 }
 
 public protocol DarkModeProtocol {
-    var Style: AppearanceStyle { get }
-    var SystemStyle: SystemStyle { get }
-
-    dynamic var StyleObservable: Int { get }
+    var style: AppearanceStyle { get }
+    var systemStyle: SystemStyle { get }
+    var styleObservable: Int { get }
 }
 
 extension UserDefaults: UserDefaultsProtocol { }
