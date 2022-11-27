@@ -2,11 +2,11 @@ name: 'Tests'
 
 on: 
   push:
-    branches: [ master ]
+    branches: [ v1.1.0 ]
   pull_request:
-    branches: [ master ]
-  schedule:
-    - cron: '5 5 * * 5'
+    branches: [ v1.1.0 ]
+#  schedule:
+#    - cron: '5 5 * * 5'
     
 jobs:
   unit-testing-iOS: 
