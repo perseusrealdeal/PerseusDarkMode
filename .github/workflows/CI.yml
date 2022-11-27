@@ -2,9 +2,9 @@ name: 'Tests'
 
 on: 
   push:
-    branches: [ v1.1.0 ]
+    branches: [ master ]
   pull_request:
-    branches: [ v1.1.0 ]
+    branches: [ master ]
 #  schedule:
 #    - cron: '5 5 * * 5'
     
