@@ -44,7 +44,9 @@ public class AppearanceService {
     // MARK: - Singleton
 
     /// Shared Dark Mode.
-    public static var shared: DarkMode = { DarkMode() }()
+    public static var shared: DarkMode = { _ = it; return DarkMode() }()
+
+    private static var it = { AppearanceService() }()
     private init() {
 #if os(macOS)
         DistributedNotificationCenter.default.addObserver(
