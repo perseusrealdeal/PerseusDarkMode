@@ -26,6 +26,10 @@
 - Swift 4.2+
 - iOS: 9.3+, UIKit SDK / macOS: 10.9+, Cocoa SDK
 
+## Third-party software
+
+- [SwiftLint Shell Script Runner](https://github.com/perseusrealdeal/PerseusDarkMode/blob/f55af0020b4548e83ec1caf62a4960db72b72571/SucceedsPostAction.sh)
+
 ## Installation
 
 TODO: Instractions for each integration capability item.
