@@ -24,7 +24,8 @@
 
 - Xcode 10.1+
 - Swift 4.2+
-- iOS: 9.3+, UIKit SDK / macOS: 10.9+, Cocoa SDK
+- iOS: 9.3+, UIKit SDK
+- macOS: 10.9+, Cocoa SDK
 
 ## Third-party software
 
@@ -32,7 +33,21 @@
 
 ## Installation
 
-TODO: Instractions for each integration capability item.
+### Step 1: Add `PerseusDarkMode` to a host project tree
+
+#### Standalone 
+
+#### CocoaPods
+
+#### Carthage
+
+#### Swift Package Manager
+
+### Step 2: Make `DarkMode` ready for using
+
+#### iOS
+
+#### macOS
 
 ## License MIT
 
