@@ -39,13 +39,25 @@
 
 #### CocoaPods
 
+Podfile should contain:
+
+```
+target "ProjectTarget" do
+  use_frameworks!
+  pod 'PerseusDarkMode', '1.1.0'
+end
+```
 #### Carthage
+
+Cartfile should contain:
+
+```
+github "perseusrealdeal/PerseusDarkMode" == 1.1.0
+```
 
 #### Swift Package Manager
 
-Xcode: `Select Project in the Navigator -> Choose Package Dependencies -> Tap Add Package Dependency`.
-
-So, Package.swift should contain the following statements:
+- As a package dependency so Package.swift should contain the following statements:
 
 ```swift
 dependencies: [
@@ -53,6 +65,10 @@ dependencies: [
             .exact("1.1.0"))
     ],
 ```
+
+- As a Xcode project dependency: 
+
+`Select Project in the Navigator -> Choose Package Dependencies -> Tap Add Package Dependency`
 
 It is strongly recommended using "Exect" with the Version field.
 
