@@ -68,9 +68,9 @@ dependencies: [
     ],
 ```
 
-- As a Xcode project dependency: 
+- As an Xcode project dependency: 
 
-`Select Project in the Navigator -> Choose Package Dependencies -> Tap Add Package Dependency`
+`Project in the Navigator > Package Dependencies > Add Package Dependency`
 
 It is strongly recommended using "Exect" with the Version field.
 
