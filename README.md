@@ -130,6 +130,33 @@ extension AppDelegate: UIApplicationDelegate {
 ```
 Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706) into a host project for having fun with manual changing Dark Mode value.
 
+## Usage
+
+Each time if Dark Mode changed the mentioned method called but registing equired:
+```swift
+    // At any view controller where changing is required
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    @objc private func makeUp() {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+
+        print("^_^ \(AppearanceService.DarkModeUserChoice)"
+
+        switch DarkMode.style {
+        case .light:
+            // make drawings for light mode
+        case .dark:
+            // make drawings for dark mode
+        }
+    }
+```
+
 ## License MIT
 
 Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
