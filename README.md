@@ -37,6 +37,8 @@
 
 #### Standalone 
 
+Make a copy of the file [`PerseusDarkModeSingle.swift`](https://github.com/perseusrealdeal/PerseusDarkMode/blob/cd07e0c43efa58b3f699d8ee4d2ba3d19f0ca13f/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
+
 #### CocoaPods
 
 Podfile should contain:
