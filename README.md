@@ -33,7 +33,7 @@
 
 ## Installation
 
-### Step 1: Add `PerseusDarkMode` to a host project tree
+### Step 1: Add PerseusDarkMode to a host project tree
 
 #### Standalone 
 
@@ -74,11 +74,60 @@ dependencies: [
 
 It is strongly recommended using "Exect" with the Version field.
 
-### Step 2: Make `DarkMode` ready for using
+### Step 2: Make DarkMode ready for using
 
 #### iOS
 
-#### macOS
+Override the following method of the first screen to let Perseus know that system's appearance changed:
+
+```swift
+class MainViewController: UIViewController {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
+    }
+}
+```
+
+Also, if Dark Mode is released with Settings bundle put the statements into the app's delegate:
+
+```swift
+extension AppDelegate: UIApplicationDelegate {
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+
+        // Update Dark Mode from Settings
+        if let choice = isDarkModeSettingsChanged() {
+            // Change Dark Mode value in Perseus Dark Mode library
+            AppearanceService.DarkModeUserChoice = choice
+            // Update appearance in accoring with changed Dark Mode Style
+            AppearanceService.makeUp()
+        }
+    }
+}
+```
+
+#### iOS and macOS
+
+Call the method `AppearanceService.makeUp()` with the app's delegate:
+
+```swift
+extension AppDelegate: UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // ... code
+        
+        AppearanceService.makeUp()
+
+        return true
+    }
+}
+```
 
 ## License MIT
 
