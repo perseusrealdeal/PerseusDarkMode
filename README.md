@@ -132,7 +132,7 @@ Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdea
 
 ## Usage
 
-Each time if Dark Mode changed the mentioned method called but registering equired:
+Each time if Dark Mode changed the mentioned method called but registering is equired:
 ```swift
     // At any view controller where changing is required
 
