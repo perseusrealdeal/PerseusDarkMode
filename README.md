@@ -128,6 +128,7 @@ extension AppDelegate: UIApplicationDelegate {
     }
 }
 ```
+Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706) into a host project for having fun with manual changing Dark Mode value.
 
 ## License MIT
 
