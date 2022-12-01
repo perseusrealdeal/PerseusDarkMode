@@ -132,7 +132,7 @@ Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdea
 
 ## Usage
 
-Each time if Dark Mode changed the mentioned method called but registing equired:
+Each time if Dark Mode changed the mentioned method called but registering equired:
 ```swift
     // At any view controller where changing is required
 
@@ -142,10 +142,6 @@ Each time if Dark Mode changed the mentioned method called but registing equired
     }
 
     @objc private func makeUp() {
-        #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
-        #endif
-
         print("^_^ \(AppearanceService.DarkModeUserChoice)"
 
         switch DarkMode.style {
