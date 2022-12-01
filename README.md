@@ -138,6 +138,7 @@ Each time if Dark Mode changed the mentioned method called but registering is eq
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
     }
 
@@ -147,8 +148,10 @@ Each time if Dark Mode changed the mentioned method called but registering is eq
         switch DarkMode.style {
         case .light:
             // make drawings for light mode
+            break
         case .dark:
             // make drawings for dark mode
+            break
         }
     }
 ```
