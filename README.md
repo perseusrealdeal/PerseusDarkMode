@@ -72,7 +72,7 @@ dependencies: [
 
 `Project in the Navigator > Package Dependencies > Add Package Dependency`
 
-It is strongly recommended using "Exect" with the Version field.
+It is strongly recommended using "Exact" with the Version field.
 
 ### Step 2: Make DarkMode ready for using
 
@@ -132,7 +132,7 @@ Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdea
 
 ## Usage
 
-Each time if Dark Mode changed the mentioned method called but registering is equired:
+Each time if Dark Mode changed the mentioned method called, but registering is equired:
 ```swift
     // At any view controller where changing is required
 
