@@ -21,6 +21,10 @@
 [![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
 [![XcodeTemplateProject](http://img.shields.io/:Template-XcodeTemplateProject-blue.svg)](https://github.com/perseusrealdeal/XcodeTemplateProject.git)
 
+## In Brief
+
+This library lets a developer being awared of Dark Mode via a variable. Also, the library gives opportunity to change the value of Dark Mode in runtime. In more detail have a look at wiki.
+
 ## Reqirements
 
 - Xcode 10.1+
@@ -54,7 +58,7 @@ end
 
 Cartfile should contain:
 
-```
+```carthage
 github "perseusrealdeal/PerseusDarkMode" == 1.1.0
 ```
 
@@ -167,6 +171,8 @@ Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
 
 Have a look at [LICENSE](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7c2955094f4fd24d2b9d4c4d87780616e5361be7/LICENSE) for details.
 
-## Author
+## Author and Acknowledgments
 
-`PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin, mzhigulin@gmail.com
+`PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
+
+Mostly I'd like thank my lovely family, my father and mather, for supporting me in all my ways.
