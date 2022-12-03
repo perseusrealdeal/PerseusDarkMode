@@ -175,4 +175,4 @@ Have a look at [LICENSE](https://github.com/perseusrealdeal/PerseusDarkMode/blob
 
 `PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
 
-Mostly I'd like thank my lovely family, my father and mother, for supporting me in all my ways.
+Mostly I'd like thank my lovely parents for supporting me in all my ways.
