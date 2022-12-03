@@ -44,7 +44,7 @@ Make a copy of the file [`PerseusDarkModeSingle.swift`](https://github.com/perse
 
 Podfile should contain:
 
-```
+```ruby
 target "ProjectTarget" do
   use_frameworks!
   pod 'PerseusDarkMode', '1.1.0'
@@ -110,10 +110,11 @@ extension AppDelegate: UIApplicationDelegate {
     }
 }
 ```
+Used functions are distributed via standalone file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706).
 
 #### iOS and macOS
 
-Call the method `AppearanceService.makeUp()` with the app's delegate:
+Call the method `AppearanceService.makeUp()` with the app's delegate if appearance changing is going to take place:
 
 ```swift
 extension AppDelegate: UIApplicationDelegate {
