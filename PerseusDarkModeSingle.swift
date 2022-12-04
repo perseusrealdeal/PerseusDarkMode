@@ -70,7 +70,7 @@ public extension Notification.Name {
     static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
 #if os(macOS)
     static let AppleInterfaceThemeChangedNotification =
-    Notification.Name("AppleInterfaceThemeChangedNotification")
+        Notification.Name("AppleInterfaceThemeChangedNotification")
 #endif
 }
 
@@ -119,8 +119,8 @@ public class AppearanceService {
 
 #if DEBUG && os(macOS)
     /// Used for mocking DistributedNotificationCenter in unit testing.
-    public static var distributedNCenter:
-    NotificationCenterProtocol = DistributedNotificationCenter.default
+    public static var distributedNCenter: NotificationCenterProtocol =
+        DistributedNotificationCenter.default
 #elseif os(macOS)
     /// Default Distributed NotificationCenter.
     public static var distributedNCenter = DistributedNotificationCenter.default

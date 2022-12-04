@@ -84,8 +84,8 @@ public class AppearanceService {
 
 #if DEBUG && os(macOS)
     /// Used for mocking DistributedNotificationCenter in unit testing.
-    public static var distributedNCenter:
-    NotificationCenterProtocol = DistributedNotificationCenter.default
+    public static var distributedNCenter: NotificationCenterProtocol =
+        DistributedNotificationCenter.default
 #elseif os(macOS)
     /// Default Distributed NotificationCenter.
     public static var distributedNCenter = DistributedNotificationCenter.default
