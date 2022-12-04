@@ -31,14 +31,14 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     var registerCallCount = 0
 
-    var registerArgs_observers: [Responder] = []
+    var registerArgs_observers: [Any] = []
     var registerArgs_selectors: [Selector] = []
 
     func addObserver(_ observer: Any,
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
                      object anObject: Any?) {
-        guard let observer = observer as? Responder else { return }
+        // guard let observer = observer as? AnyObject else { return }
 
         registerCallCount += 1
 
@@ -46,13 +46,13 @@ class MockNotificationCenter: NotificationCenterProtocol {
         registerArgs_selectors.append(aSelector)
     }
 
-    func verifyRegisterObserver(observer: Responder,
+    func verifyRegisterObserver(observer: AnyObject,
                                 selector: Selector,
                                 file: StaticString = #file,
                                 line: UInt = #line) {
         guard registerWasCalledOnce(file: file, line: line) else { return }
 
-        XCTAssertTrue(registerArgs_observers.first! === observer,
+        XCTAssertTrue(registerArgs_observers.first! as AnyObject === observer,
                       "observer", file: file, line: line)
 
         XCTAssertEqual(registerArgs_selectors.first, selector,

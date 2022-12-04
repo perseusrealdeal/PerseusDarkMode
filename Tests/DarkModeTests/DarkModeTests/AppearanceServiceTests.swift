@@ -74,4 +74,25 @@ final class AppearanceServiceTests: XCTestCase {
         mock.verifyPost(name: .MakeAppearanceUpNotification)
         XCTAssertTrue(AppearanceService.isEnabled)
     }
+
+    func test_Dark_Mode_called_addObserver_once() {
+        // arrange
+
+        let mock = MockNotificationCenter()
+        AppearanceService.distributedNCenter = mock
+
+        let view = View()
+
+        // act
+
+        // _ = AppearanceService.shared
+        // _ = AppearanceService.shared
+
+        _ = view.DarkMode
+
+        // assert
+
+        mock.verifyRegisterObserver(observer: AppearanceService.it,
+                                    selector: #selector(AppearanceService.modeChanged))
+    }
 }

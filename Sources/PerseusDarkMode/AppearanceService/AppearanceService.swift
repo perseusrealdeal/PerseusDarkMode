@@ -30,7 +30,7 @@ public extension Notification.Name {
 #endif
 }
 
-/// Dark Mode placed to to be accessed from any screen object of iOS (Mac Catalyst).
+/// Dark Mode placed to to be accessed from any screen object of iOS (Mac Catalyst) or macOS (Cocoa).
 public extension Responder {
     var DarkMode: DarkModeProtocol { return AppearanceService.shared }
 }
@@ -46,12 +46,12 @@ public class AppearanceService {
     /// Shared Dark Mode.
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
-    private static var it = { AppearanceService() }()
+    private(set) static var it = { AppearanceService() }()
     private init() {
 #if os(macOS)
-        DistributedNotificationCenter.default.addObserver(
+        AppearanceService.distributedNCenter.addObserver(
             self,
-            selector: #selector(interfaceModeChanged),
+            selector: #selector(modeChanged),
             name: .AppleInterfaceThemeChangedNotification,
             object: nil
         )
@@ -59,7 +59,7 @@ public class AppearanceService {
     }
 
 #if os(macOS)
-    @objc internal func interfaceModeChanged() {
+    @objc internal func modeChanged() {
         if #available(macOS 10.14, *) {
             AppearanceService.processAppearanceOSDidChange()
         }
@@ -81,11 +81,16 @@ public class AppearanceService {
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
     /// Used for mocking UserDefaults in unit testing.
     public static var ud: UserDefaultsProtocol = UserDefaults.standard
+    /// Used for mocking DistributedNotificationCenter in unit testing.
+    public static var distributedNCenter:
+    NotificationCenterProtocol = DistributedNotificationCenter.default
 #else
     /// Default NotificationCenter.
     public static var nCenter = NotificationCenter.default
     /// Default UserDefaults.
     public static var ud = UserDefaults.standard
+    /// Default Distributed NotificationCenter.
+    public static var distributedNCenter = DistributedNotificationCenter.default
 #endif
 
     /// User choice for Dark Mode inside the app.

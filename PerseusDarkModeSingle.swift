@@ -68,10 +68,10 @@ public typealias Responder = NSResponder
 
 public extension Notification.Name {
     static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
-    #if os(macOS)
+#if os(macOS)
     static let AppleInterfaceThemeChangedNotification =
         Notification.Name("AppleInterfaceThemeChangedNotification")
-    #endif
+#endif
 }
 
 public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
@@ -93,17 +93,17 @@ public class AppearanceService {
 
     private static var it = { AppearanceService() }()
     private init() {
-        #if os(macOS)
-        DistributedNotificationCenter.default.addObserver(
+#if os(macOS)
+        AppearanceService.distributedNCenter.addObserver(
             self,
             selector: #selector(interfaceModeChanged),
             name: .AppleInterfaceThemeChangedNotification,
             object: nil
         )
-        #endif
+#endif
     }
 
-    #if os(macOS)
+#if os(macOS)
     @objc internal func interfaceModeChanged() {
         if #available(macOS 10.14, *) {
             AppearanceService.processAppearanceOSDidChange()
@@ -113,17 +113,26 @@ public class AppearanceService {
     @available(macOS 10.14, *)
     public static var defaultDarkAppearanceOS: NSAppearance.Name = .darkAqua
     public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
-    #endif
+#endif
 
     public static var isEnabled: Bool { return hidden_isEnabled }
 
-    #if DEBUG // Isolated for unit testing
+#if DEBUG // Isolated for unit testing
+    /// Used for mocking NotificationCenter in unit testing.
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
+    /// Used for mocking UserDefaults in unit testing.
     public static var ud: UserDefaultsProtocol = UserDefaults.standard
-    #else
+    /// Used for mocking DistributedNotificationCenter in unit testing.
+    public static var distributedNCenter:
+    NotificationCenterProtocol = DistributedNotificationCenter.default
+#else
+    /// Default NotificationCenter.
     public static var nCenter = NotificationCenter.default
+    /// Default UserDefaults.
     public static var ud = UserDefaults.standard
-    #endif
+    /// Default Distributed NotificationCenter.
+    public static var distributedNCenter = DistributedNotificationCenter.default
+#endif
 
     public static var DarkModeUserChoice: DarkModeOption {
         get {
@@ -170,7 +179,7 @@ public class AppearanceService {
         hidden_changeManually = false
     }
 
-    #if os(iOS)
+#if os(iOS)
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(
         _ previousTraitCollection: UITraitCollection?) {
@@ -182,13 +191,13 @@ public class AppearanceService {
 
         hidden_systemCalledMakeUp()
     }
-    #elseif os(macOS)
+#elseif os(macOS)
     @available(macOS 10.14, *)
     internal static func processAppearanceOSDidChange() {
         if hidden_changeManually { return }
         hidden_systemCalledMakeUp()
     }
-    #endif
+#endif
 
     // MARK: - Implementation helpers, privates and internals
 
@@ -216,7 +225,7 @@ public class AppearanceService {
     @available(iOS 13.0, macOS 10.14, *)
     internal static func overrideUserInterfaceStyleIfNeeded() {
         if hidden_changeManually == false { return }
-        #if os(iOS) && compiler(>=5)
+#if os(iOS) && compiler(>=5)
         guard let keyWindow = UIWindow.key else { return }
         var overrideStyle: UIUserInterfaceStyle = .unspecified
 
@@ -233,7 +242,7 @@ public class AppearanceService {
 
         keyWindow.overrideUserInterfaceStyle = overrideStyle
 
-        #elseif os(macOS)
+#elseif os(macOS)
         switch DarkModeUserChoice {
         case .auto:
             NSApplication.shared.appearance = nil
@@ -244,7 +253,7 @@ public class AppearanceService {
             NSApplication.shared.appearance =
                 NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
         }
-        #endif
+#endif
     }
 }
 
@@ -263,7 +272,7 @@ public class DarkMode: NSObject {
 
     public var systemStyle: SystemStyle {
         if #available(iOS 13.0, macOS 10.14, *) {
-            #if os(iOS)
+#if os(iOS)
             guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
@@ -277,14 +286,14 @@ public class DarkMode: NSObject {
             @unknown default:
                 return .unspecified
             }
-            #elseif os(macOS)
+#elseif os(macOS)
             if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
                 isDark == "Dark" {
                 return .dark
             } else {
                 return .light
             }
-            #endif
+#endif
         } else {
             return .unspecified
         }
