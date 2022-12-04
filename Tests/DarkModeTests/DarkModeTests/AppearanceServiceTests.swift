@@ -75,6 +75,7 @@ final class AppearanceServiceTests: XCTestCase {
         XCTAssertTrue(AppearanceService.isEnabled)
     }
 
+#if os(macOS)
     func test_Dark_Mode_called_addObserver_once() {
         // arrange
 
@@ -95,4 +96,5 @@ final class AppearanceServiceTests: XCTestCase {
         mock.verifyRegisterObserver(observer: AppearanceService.it,
                                     selector: #selector(AppearanceService.modeChanged))
     }
+#endif
 }

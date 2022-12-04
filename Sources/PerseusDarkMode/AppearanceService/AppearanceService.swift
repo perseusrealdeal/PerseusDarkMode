@@ -76,21 +76,25 @@ public class AppearanceService {
     /// then always true in run time.
     public static var isEnabled: Bool { return hidden_isEnabled }
 
+#if DEBUG && os(macOS)
+    /// Used for mocking DistributedNotificationCenter in unit testing.
+    public static var distributedNCenter:
+    NotificationCenterProtocol = DistributedNotificationCenter.default
+#elseif os(macOS)
+    /// Default Distributed NotificationCenter.
+    public static var distributedNCenter = DistributedNotificationCenter.default
+#endif
+
 #if DEBUG // Isolated for unit testing
     /// Used for mocking NotificationCenter in unit testing.
     public static var nCenter: NotificationCenterProtocol = NotificationCenter.default
     /// Used for mocking UserDefaults in unit testing.
     public static var ud: UserDefaultsProtocol = UserDefaults.standard
-    /// Used for mocking DistributedNotificationCenter in unit testing.
-    public static var distributedNCenter:
-    NotificationCenterProtocol = DistributedNotificationCenter.default
 #else
     /// Default NotificationCenter.
     public static var nCenter = NotificationCenter.default
     /// Default UserDefaults.
     public static var ud = UserDefaults.standard
-    /// Default Distributed NotificationCenter.
-    public static var distributedNCenter = DistributedNotificationCenter.default
 #endif
 
     /// User choice for Dark Mode inside the app.
