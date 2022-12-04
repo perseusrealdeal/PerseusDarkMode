@@ -46,7 +46,8 @@ class MockUserDefaults: UserDefaultsProtocol {
         XCTAssertTrue(intergerArgs_names.isEmpty, "interger", file: file, line: line)
     }
 
-    private func intergerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func intergerWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "interger",
             callCount: intergerCallCount,
@@ -93,7 +94,8 @@ class MockUserDefaults: UserDefaultsProtocol {
                        "key", file: file, line: line)
     }
 
-    private func setValueWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func setValueWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "setValue",
             callCount: setValueCallCount,

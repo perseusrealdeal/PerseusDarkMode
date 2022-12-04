@@ -1,9 +1,53 @@
-disabled_rules: # rule identifiers turned on by default to exclude from running
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+
+opt_in_rules:
+  - empty_count
+# - missing_docs
+
+disabled_rules:
+# - colon
+# - comma
+# - control_statement
   - block_based_kvo
 
-identifier_name:
+force_cast: warning
+
+force_try:
+  severity: warning
+
+identifier_name: # Variable name
   allowed_symbols: "_"
   min_length: 2
-  validates_start_with_lowercase: false
+  max_length:
+    warning: 40
+    error: 45
 
-reporter: "xcode" # reporter type
+file_length:
+  warning: 200
+  error: 300
+  ignore_comment_only_lines: false
+
+line_length: 95
+
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+# allowed_symbols: ["_"] # these are allowed in type names
+
+type_body_length:
+  - 300 # warning
+  - 400 # error
+
+function_body_length:
+  - 60 # warning
+  - 90 # error
+
+function_parameter_count:
+  - 4 # warning
+  - 5 # error
+
+large_tuple:
+  warning: 4
+  error: 5

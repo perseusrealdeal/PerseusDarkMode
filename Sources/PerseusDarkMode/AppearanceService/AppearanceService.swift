@@ -9,6 +9,8 @@
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 #if canImport(UIKit)
 import UIKit
@@ -26,19 +28,23 @@ public typealias Responder = NSResponder
 public extension Notification.Name {
     static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
 #if os(macOS)
-    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
+    static let AppleInterfaceThemeChangedNotification =
+    Notification.Name("AppleInterfaceThemeChangedNotification")
 #endif
 }
 
-/// Dark Mode placed to to be accessed from any screen object of iOS (Mac Catalyst) or macOS (Cocoa).
+// swiftlint:disable identifier_name
+
+/// Dark Mode placed to to be accessed from any screen object
+/// of iOS (Mac Catalyst) or macOS (Cocoa).
 public extension Responder {
     var DarkMode: DarkModeProtocol { return AppearanceService.shared }
 }
+// swiftlint:enable identifier_name
 
 /// Represents service giving a control of the app's appearance.
 ///
 /// - This service is dedicated to handle Dark Mode changing.
-/// - The service is provided as a singleton across the app and used to take a cotrol of Dark Mode.
 public class AppearanceService {
 
     // MARK: - Singleton
@@ -72,8 +78,8 @@ public class AppearanceService {
 
     /// TRUE if Appearance.makeUp once called otherwise FALSE.
     ///
-    /// Value is false by default and changed only once when Appearance.makeUp called for the first time,
-    /// then always true in run time.
+    /// Value is false by default and changed only once
+    /// when Appearance.makeUp called for the first time, then always true in run time.
     public static var isEnabled: Bool { return hidden_isEnabled }
 
 #if DEBUG && os(macOS)
@@ -99,7 +105,8 @@ public class AppearanceService {
 
     /// User choice for Dark Mode inside the app.
     ///
-    /// The service keeps the value in UserDefaults. It effects DarkMode.StyleObservable on every change.
+    /// The service keeps the value in UserDefaults.
+    /// It effects DarkMode.StyleObservable on every change.
     public static var DarkModeUserChoice: DarkModeOption {
         get {
             // Load enum Int value
@@ -139,7 +146,8 @@ public class AppearanceService {
 
     /// Calls all registered stakeholders for making up.
     ///
-    /// First time should be called when didFinishLaunching happens and then every time when DarkModeUserChoice changes.
+    /// First time should be called when didFinishLaunching happens and then every
+    /// time when DarkModeUserChoice changes.
     public static func makeUp() {
         hidden_isEnabled = true
         hidden_changeManually = true
@@ -160,7 +168,8 @@ public class AppearanceService {
     ///
     /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
     @available(iOS 13.0, *)
-    public static func processTraitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public static func processTraitCollectionDidChange(_ previousTraitCollection:
+                                                       UITraitCollection?) {
         if hidden_changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
@@ -180,7 +189,8 @@ public class AppearanceService {
     // MARK: - Implementation helpers, privates and internals
 
     /// Used to make possible applying Black White approach in Screen design.
-    private(set) static var hidden_isEnabled: Bool = false { willSet { if newValue == false { return }}}
+    private(set) static var hidden_isEnabled: Bool =
+    false { willSet { if newValue == false { return }}}
 
     /// Used to reduce double calling of traitCollectionDidChange.
     internal static var hidden_changeManually: Bool = false
@@ -230,9 +240,11 @@ public class AppearanceService {
         case .auto:
             NSApplication.shared.appearance = nil
         case .on:
-            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+            NSApplication.shared.appearance =
+            NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
         case .off:
-            NSApplication.shared.appearance = NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+            NSApplication.shared.appearance =
+            NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
         }
 #endif
     }

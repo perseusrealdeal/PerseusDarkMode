@@ -23,13 +23,13 @@ final class DarkModeDecisionTests: XCTestCase {
 
     /// Decision table for Actual Style
     ///
-    /// — — — — — — — — — — — — — — DarkModeOption — — — — —
-    /// — — — — — — — — — — — — auto — — — on — — — — off  — —
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
-    /// System style  .unspecified            default            dark              light
-    /// System style  .light                         light               dark              light
-    /// System style  .dark                         dark              dark              light
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
+    /// — — — — — — — — — — — — — DarkModeOption — — — — —
+    /// — — — — — — — — — — — auto — — — on — — — — off  — —
+    /// — — — — — — — — — — — — — — — — — — — — — — — —
+    /// System style  .unspecified       default            dark              light
+    /// System style  .light                    light               dark              light
+    /// System style  .dark                    dark              dark              light
+    /// — — — — — — — — — — — — — — — — — — — — — — — —
     ///
     func test_calculateActualStyle_with_auto_and_unspecified_should_return_default() {
         // arrange

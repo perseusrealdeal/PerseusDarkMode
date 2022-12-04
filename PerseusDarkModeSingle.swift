@@ -70,7 +70,7 @@ public extension Notification.Name {
     static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
 #if os(macOS)
     static let AppleInterfaceThemeChangedNotification =
-        Notification.Name("AppleInterfaceThemeChangedNotification")
+    Notification.Name("AppleInterfaceThemeChangedNotification")
 #endif
 }
 
@@ -91,7 +91,7 @@ public class AppearanceService {
 
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
-    private static var it = { AppearanceService() }()
+    private(set) static var it = { AppearanceService() }()
     private init() {
 #if os(macOS)
         AppearanceService.distributedNCenter.addObserver(

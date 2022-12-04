@@ -59,7 +59,8 @@ class MockNotificationCenter: NotificationCenterProtocol {
                        "selector", file: file, line: line)
     }
 
-    private func registerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func registerWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "register",
             callCount: registerCallCount,

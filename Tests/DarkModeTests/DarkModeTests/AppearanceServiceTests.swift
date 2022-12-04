@@ -82,14 +82,16 @@ final class AppearanceServiceTests: XCTestCase {
         let mock = MockNotificationCenter()
         AppearanceService.distributedNCenter = mock
 
-        let view = View()
+        let view1 = View()
+        let view2 = View()
 
         // act
 
         // _ = AppearanceService.shared
         // _ = AppearanceService.shared
 
-        _ = view.DarkMode
+        _ = view1.DarkMode
+        _ = view2.DarkMode
 
         // assert
 
