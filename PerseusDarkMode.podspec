@@ -10,7 +10,7 @@ p.license        = { :type => "MIT", :file => "LICENSE" }
 p.author         = { "perseusrealdeal" => "mzhigulin@gmail.com" }
 
 p.source         = { :git => "https://github.com/perseusrealdeal/PerseusDarkMode.git", :tag => p.version.to_s }
-p.platform       = :ios, '9.0'
+p.platform       = :ios, '9.3'
 p.swift_version  = "4.2"
 p.requires_arc   = true
 
