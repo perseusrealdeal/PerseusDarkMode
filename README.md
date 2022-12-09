@@ -56,7 +56,7 @@ end
 ```
 #### Carthage
 
-Cartfile should contain:
+Carfile should contain:
 
 ```carthage
 github "perseusrealdeal/PerseusDarkMode" == 1.1.0
