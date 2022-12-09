@@ -62,6 +62,8 @@ Cartfile should contain:
 github "perseusrealdeal/PerseusDarkMode" == 1.1.0
 ```
 
+[HowTo](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2) add swift package to a host project with Carthage.
+
 #### Swift Package Manager
 
 - As a package dependency so Package.swift should contain the following statements:
