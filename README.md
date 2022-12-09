@@ -142,6 +142,8 @@ Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdea
 
 Each time if Dark Mode changed the mentioned method called, but registering is equired:
 ```swift
+class MainViewController: UIViewController {
+
     // At any view controller where changing is required
 
     override func viewDidLoad() {
@@ -162,7 +164,10 @@ Each time if Dark Mode changed the mentioned method called, but registering is e
             break
         }
     }
+}
 ```
+
+There is another way to be notified of Dark Mode changed, KVO. To learn have a look at wiki.
 
 ## License MIT
 
