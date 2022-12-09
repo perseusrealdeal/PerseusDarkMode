@@ -9,6 +9,8 @@
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
+// swiftlint:disable block_based_kvo
+//
 
 #if canImport(UIKit)
 import UIKit
