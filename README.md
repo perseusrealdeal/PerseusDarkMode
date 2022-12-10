@@ -71,7 +71,7 @@ github "perseusrealdeal/PerseusDarkMode" == 1.1.1
 ```swift
 dependencies: [
         .package(url: "https://github.com/perseusrealdeal/PerseusDarkMode.git",
-            .exact("1.1.0"))
+            .exact("1.1.1"))
     ],
 ```
 
