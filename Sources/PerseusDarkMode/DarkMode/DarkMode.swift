@@ -25,7 +25,7 @@ public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
     /// The app's current appearance style.
-    public var style: AppearanceStyle { hidden_style }
+    public var style: AppearanceStyle { return hidden_style }
 
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
 
