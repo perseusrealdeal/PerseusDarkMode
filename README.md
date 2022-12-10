@@ -1,15 +1,15 @@
 # Perseus Dark Mode
 
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.1.1-informational.svg)
-![Pod](https://img.shields.io/badge/Pod-1.1.1-informational.svg)
+![Version](https://img.shields.io/badge/Version-1.1.2-informational.svg)
+![Pod](https://img.shields.io/badge/Pod-1.1.2-informational.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7c2955094f4fd24d2b9d4c4d87780616e5361be7/LICENSE)
 
 ## Integration Capabilities
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/a9cae9befe54dfc33d5815ffdcd39ca9da3323a3/PerseusDarkModeSingle.swift)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/47c85324288962610f3d4bc51239605cf027cfaa/PerseusDarkModeSingle.swift)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](https://github.com/apple/swift-package-manager)
@@ -42,7 +42,7 @@ This library lets a developer being awared of Dark Mode via a variable. Also, th
 
 #### Standalone 
 
-Make a copy of the file [`PerseusDarkModeSingle.swift`](https://github.com/perseusrealdeal/PerseusDarkMode/blob/cd07e0c43efa58b3f699d8ee4d2ba3d19f0ca13f/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
+Make a copy of the file [`PerseusDarkModeSingle.swift`](https://github.com/perseusrealdeal/PerseusDarkMode/blob/47c85324288962610f3d4bc51239605cf027cfaa/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
 
 #### CocoaPods
 
@@ -51,7 +51,7 @@ Podfile should contain:
 ```ruby
 target "ProjectTarget" do
   use_frameworks!
-  pod 'PerseusDarkMode', '1.1.1'
+  pod 'PerseusDarkMode', '1.1.2'
 end
 ```
 #### Carthage
@@ -59,7 +59,7 @@ end
 Carfile should contain:
 
 ```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.1
+github "perseusrealdeal/PerseusDarkMode" == 1.1.2
 ```
 
 [HowTo](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2) add swift package to a host project with Carthage.
@@ -71,7 +71,7 @@ github "perseusrealdeal/PerseusDarkMode" == 1.1.1
 ```swift
 dependencies: [
         .package(url: "https://github.com/perseusrealdeal/PerseusDarkMode.git",
-            .exact("1.1.1"))
+            .exact("1.1.2"))
     ],
 ```
 
