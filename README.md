@@ -30,7 +30,7 @@ This library lets a developer being awared of Dark Mode via a variable. Also, th
 - Xcode 10.1+
 - Swift 4.2+
 - iOS: 9.3+, UIKit SDK
-- macOS: 10.9+, Cocoa SDK
+- macOS: 10.9+, AppKit SDK
 
 ## Third-party software
 
