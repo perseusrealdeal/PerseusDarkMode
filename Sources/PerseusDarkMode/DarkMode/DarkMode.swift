@@ -2,15 +2,18 @@
 //  DarkMode.swift
 //  PerseusDarkMode
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 /// Represents Dark Mode and contains the app's appearance style.
@@ -22,21 +25,22 @@ public class DarkMode: NSObject {
     // MARK: - The App's current Appearance Style
 
     /// The app's current appearance style.
-    public var Style: AppearanceStyle { _style }
+    public var style: AppearanceStyle { hidden_style }
 
     // MARK: - Observable Appearance Style Value (Using Key-Value Observing)
 
     /// Shows the same value of Style but observable.
     ///
     /// Takes place because swift doesn't support observing enums.
-    @objc public dynamic var StyleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
+    @objc public dynamic var styleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
 
     // MARK: - System's Appearance Style
 
     /// The app's current system appearance style.
-    public var SystemStyle: SystemStyle {
-        if #available(iOS 13.0, *) {
-            guard let keyWindow = UIApplication.shared.keyWindow else { return .unspecified }
+    public var systemStyle: SystemStyle {
+        if #available(iOS 13.0, macOS 10.14, *) {
+#if os(iOS)
+            guard let keyWindow = UIWindow.key else { return .unspecified }
 
             switch keyWindow.traitCollection.userInterfaceStyle {
             case .unspecified:
@@ -49,23 +53,30 @@ public class DarkMode: NSObject {
             @unknown default:
                 return .unspecified
             }
+#elseif os(macOS)
+            if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
+               isDark == "Dark" {
+                return .dark
+            } else {
+                return .light
+            }
+#endif
         } else {
             return .unspecified
         }
     }
 
-    internal var _style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
-        didSet { StyleObservable = Style.rawValue }
+    internal var hidden_style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
+        didSet { styleObservable = style.rawValue }
     }
 }
 
 // MARK: - Protocols used for unit testing
 
 public protocol DarkModeProtocol {
-    var Style: AppearanceStyle { get }
-    var SystemStyle: SystemStyle { get }
-
-    dynamic var StyleObservable: Int { get }
+    var style: AppearanceStyle { get }
+    var systemStyle: SystemStyle { get }
+    var styleObservable: Int { get }
 }
 
 extension DarkMode: DarkModeProtocol { }

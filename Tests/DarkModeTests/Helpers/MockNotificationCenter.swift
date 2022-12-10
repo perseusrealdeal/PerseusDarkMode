@@ -2,15 +2,24 @@
 //  MockNotificationCenter.swift
 //  DarkModeTests
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
+#if os(iOS)
+public typealias Responder = UIResponder
+#elseif os(macOS)
+public typealias Responder = NSResponder
 #endif
 
 import XCTest
@@ -21,14 +30,15 @@ class MockNotificationCenter: NotificationCenterProtocol {
     // MARK: - addObserver
 
     var registerCallCount = 0
-    var registerArgs_observers: [UIResponder] = []
+
+    var registerArgs_observers: [Any] = []
     var registerArgs_selectors: [Selector] = []
 
     func addObserver(_ observer: Any,
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
                      object anObject: Any?) {
-        guard let observer = observer as? UIResponder else { return }
+        // guard let observer = observer as? AnyObject else { return }
 
         registerCallCount += 1
 
@@ -36,20 +46,21 @@ class MockNotificationCenter: NotificationCenterProtocol {
         registerArgs_selectors.append(aSelector)
     }
 
-    func verifyRegisterObserver(observer: UIResponder,
+    func verifyRegisterObserver(observer: AnyObject,
                                 selector: Selector,
                                 file: StaticString = #file,
                                 line: UInt = #line) {
         guard registerWasCalledOnce(file: file, line: line) else { return }
 
-        XCTAssertTrue(registerArgs_observers.first! === observer,
+        XCTAssertTrue(registerArgs_observers.first! as AnyObject === observer,
                       "observer", file: file, line: line)
 
         XCTAssertEqual(registerArgs_selectors.first, selector,
                        "selector", file: file, line: line)
     }
 
-    private func registerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func registerWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "register",
             callCount: registerCallCount,

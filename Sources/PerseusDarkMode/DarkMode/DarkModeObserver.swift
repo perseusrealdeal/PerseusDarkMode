@@ -2,24 +2,29 @@
 //  DarkModeObserver.swift
 //  PerseusDarkMode
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
+// swiftlint:disable block_based_kvo
+//
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
-/// Represents an object responsible for making run the code if the app's appearance style changed.
+/// Responsible for making run the code if the app's appearance style changed.
 ///
 /// It connects to shared Dark Mode instance using appearance service.
 /// Also, it takes action every time when the app's appearance style changed.
 ///
-/// The action can be specified with initialization as the passed closue and after initialization by assigning
-/// the action property as well.
+/// The action can be specified with initialization as the passed closue
+/// and after initialization by assigning the action property as well.
 public class DarkModeObserver: NSObject {
     /// Closure to perform if the app's appearance style changed.
     public var action: ((_ newStyle: AppearanceStyle) -> Void)?

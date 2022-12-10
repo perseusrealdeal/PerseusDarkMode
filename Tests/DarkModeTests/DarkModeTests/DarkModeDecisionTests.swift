@@ -2,15 +2,18 @@
 //  DarkModeDecisionTests.swift
 //  DarkModeTests
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 import XCTest
@@ -20,13 +23,13 @@ final class DarkModeDecisionTests: XCTestCase {
 
     /// Decision table for Actual Style
     ///
-    /// — — — — — — — — — — — — — — DarkModeOption — — — — —
-    /// — — — — — — — — — — — — auto — — — on — — — — off  — —
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
-    /// System style  .unspecified            default            dark              light
-    /// System style  .light                         light               dark              light
-    /// System style  .dark                         dark              dark              light
-    /// — — — — — — — — — — — — — — — — — — — — — — — — —
+    /// — — — — — — — — — — — — — DarkModeOption — — — — —
+    /// — — — — — — — — — — — auto — — — on — — — — off  — —
+    /// — — — — — — — — — — — — — — — — — — — — — — — —
+    /// System style  .unspecified       default            dark              light
+    /// System style  .light                    light               dark              light
+    /// System style  .dark                    dark              dark              light
+    /// — — — — — — — — — — — — — — — — — — — — — — — —
     ///
     func test_calculateActualStyle_with_auto_and_unspecified_should_return_default() {
         // arrange

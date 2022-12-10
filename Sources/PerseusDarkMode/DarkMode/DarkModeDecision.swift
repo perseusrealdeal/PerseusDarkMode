@@ -2,16 +2,13 @@
 //  DarkModeDecision.swift
 //  PerseusDarkMode
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
-
-#if !os(macOS)
-import UIKit
-#endif
 
 /// Makes a calculation of the app's appearance style.
 public class DarkModeDecision {

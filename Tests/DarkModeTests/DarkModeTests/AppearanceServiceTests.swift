@@ -2,15 +2,26 @@
 //  AppearanceServiceTests.swift
 //  DarkModeTests
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
+#if os(iOS)
+public typealias View = UIView
+public typealias ViewController = UIViewController
+#elseif os(macOS)
+public typealias View = NSView
+public typealias ViewController = NSViewController
 #endif
 
 import XCTest
@@ -20,13 +31,13 @@ final class AppearanceServiceTests: XCTestCase {
 
     func test_init() {
         XCTAssertFalse(AppearanceService.isEnabled)
-        XCTAssertFalse(AppearanceService._isEnabled)
+        XCTAssertFalse(AppearanceService.hidden_isEnabled)
 
         XCTAssertNotNil(AppearanceService.ud)
         XCTAssertNotNil(AppearanceService.nCenter)
 
-        XCTAssertIdentical(UIView().DarkMode as AnyObject, AppearanceService.shared)
-        XCTAssertIdentical(UIViewController().DarkMode as AnyObject, AppearanceService.shared)
+        XCTAssertIdentical(View().DarkMode as AnyObject, AppearanceService.shared)
+        XCTAssertIdentical(ViewController().DarkMode as AnyObject, AppearanceService.shared)
     }
 
     func test_method_register_called_addObserver() {
@@ -35,7 +46,8 @@ final class AppearanceServiceTests: XCTestCase {
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
 
-        class MyView: UIView { @objc func makeUp() { } }
+        class MyView: View { @objc func makeUp() { } }
+
         let view = MyView()
 
         // act
@@ -59,7 +71,32 @@ final class AppearanceServiceTests: XCTestCase {
 
         // assert
 
-        mock.verifyPost(name: .makeAppearanceUpNotification)
+        mock.verifyPost(name: .MakeAppearanceUpNotification)
         XCTAssertTrue(AppearanceService.isEnabled)
     }
+
+#if os(macOS)
+    func test_Dark_Mode_called_addObserver_once() {
+        // arrange
+
+        let mock = MockNotificationCenter()
+        AppearanceService.distributedNCenter = mock
+
+        let view1 = View()
+        let view2 = View()
+
+        // act
+
+        // _ = AppearanceService.shared
+        // _ = AppearanceService.shared
+
+        _ = view1.DarkMode
+        _ = view2.DarkMode
+
+        // assert
+
+        mock.verifyRegisterObserver(observer: AppearanceService.it,
+                                    selector: #selector(AppearanceService.modeChanged))
+    }
+#endif
 }

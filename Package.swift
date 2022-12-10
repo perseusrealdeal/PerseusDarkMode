@@ -1,21 +1,22 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.1
 /* Package.swift
 
- Created by Mikhail Zhigulin in 2022.
+ Created by Mikhail Zhigulin in 7530.
 
- Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+ Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+
  Licensed under the MIT license. See LICENSE file.
  All rights reserved.
 
  Abstract:
- Package manifest for Dark Mode.
+ Package manifest for Perseus Dark Mode.
 */
 
 import PackageDescription
 
 let package = Package(
     name: "PerseusDarkMode",
-    platforms: [.iOS(.v9)],
+    platforms: [.macOS(.v10_10), .iOS(.v9)],
     products: [
             .library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"])
         ],

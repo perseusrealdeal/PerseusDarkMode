@@ -2,9 +2,10 @@
 //  MockUserDefaults.swift
 //  DarkModeTests
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
@@ -45,7 +46,8 @@ class MockUserDefaults: UserDefaultsProtocol {
         XCTAssertTrue(intergerArgs_names.isEmpty, "interger", file: file, line: line)
     }
 
-    private func intergerWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func intergerWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "interger",
             callCount: intergerCallCount,
@@ -92,7 +94,8 @@ class MockUserDefaults: UserDefaultsProtocol {
                        "key", file: file, line: line)
     }
 
-    private func setValueWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func setValueWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName: "setValue",
             callCount: setValueCallCount,
