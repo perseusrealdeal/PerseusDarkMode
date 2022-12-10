@@ -1,8 +1,8 @@
 # Perseus Dark Mode
 
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.1.0-informational.svg)
-![Pod](https://img.shields.io/badge/Pod-1.1.0-informational.svg)
+![Version](https://img.shields.io/badge/Version-1.1.1-informational.svg)
+![Pod](https://img.shields.io/badge/Pod-1.1.1-informational.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7c2955094f4fd24d2b9d4c4d87780616e5361be7/LICENSE)
@@ -51,7 +51,7 @@ Podfile should contain:
 ```ruby
 target "ProjectTarget" do
   use_frameworks!
-  pod 'PerseusDarkMode', '1.1.0'
+  pod 'PerseusDarkMode', '1.1.1'
 end
 ```
 #### Carthage
@@ -59,7 +59,7 @@ end
 Carfile should contain:
 
 ```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.0
+github "perseusrealdeal/PerseusDarkMode" == 1.1.1
 ```
 
 [HowTo](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2) add swift package to a host project with Carthage.
