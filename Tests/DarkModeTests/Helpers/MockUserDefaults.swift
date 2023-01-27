@@ -17,7 +17,7 @@ class MockUserDefaults: UserDefaultsProtocol {
 
     var isValueExists = false
 
-    func valueExists(forKey key: String) -> Bool { isValueExists }
+    func valueExists(forKey key: String) -> Bool { return isValueExists }
 
     // MARK: - getValue
 
@@ -48,21 +48,23 @@ class MockUserDefaults: UserDefaultsProtocol {
 
     private func intergerWasCalledOnce(file: StaticString = #file,
                                        line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
-            methodName: "interger",
-            callCount: intergerCallCount,
-            describeArguments: "name: \(intergerArgs_names)",
-            file: file,
-            line: line)
+        return
+            verifyMethodCalledOnce(
+                methodName: "interger",
+                callCount: intergerCallCount,
+                describeArguments: "name: \(intergerArgs_names)",
+                file: file,
+                line: line)
     }
 
     private func intergerWasNotCalled(file: StaticString = #file, line: UInt = #line) -> Bool {
-        verifyMethodNotCalled(
-            methodName: "interger",
-            callCount: intergerCallCount,
-            describeArguments: "name: \(intergerArgs_names)",
-            file: file,
-            line: line)
+        return
+            verifyMethodNotCalled(
+                methodName: "interger",
+                callCount: intergerCallCount,
+                describeArguments: "name: \(intergerArgs_names)",
+                file: file,
+                line: line)
     }
 
     // MARK: - setValue
@@ -96,12 +98,13 @@ class MockUserDefaults: UserDefaultsProtocol {
 
     private func setValueWasCalledOnce(file: StaticString = #file,
                                        line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
-            methodName: "setValue",
-            callCount: setValueCallCount,
-            describeArguments: "keys: \(setValueArgs_keys)",
-            file: file,
-            line: line)
+        return
+            verifyMethodCalledOnce(
+                methodName: "setValue",
+                callCount: setValueCallCount,
+                describeArguments: "keys: \(setValueArgs_keys)",
+                file: file,
+                line: line)
     }
 }
 

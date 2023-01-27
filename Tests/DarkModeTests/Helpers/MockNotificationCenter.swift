@@ -61,12 +61,13 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     private func registerWasCalledOnce(file: StaticString = #file,
                                        line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
-            methodName: "register",
-            callCount: registerCallCount,
-            describeArguments: "name: \(registerArgs_selectors)",
-            file: file,
-            line: line)
+        return
+            verifyMethodCalledOnce(
+                methodName: "register",
+                callCount: registerCallCount,
+                describeArguments: "name: \(registerArgs_selectors)",
+                file: file,
+                line: line)
     }
 
     // MARK: - post
@@ -88,12 +89,13 @@ class MockNotificationCenter: NotificationCenterProtocol {
     }
 
     private func postWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
-            methodName: "post",
-            callCount: postCallCount,
-            describeArguments: "name: \(postrgs_names)",
-            file: file,
-            line: line)
+        return
+            verifyMethodCalledOnce(
+                methodName: "post",
+                callCount: postCallCount,
+                describeArguments: "name: \(postrgs_names)",
+                file: file,
+                line: line)
     }
 }
 

@@ -1,4 +1,5 @@
-// swift-tools-version:5.1
+// swift-tools-version:4.2
+
 /* Package.swift
 
  Created by Mikhail Zhigulin in 7530.
@@ -10,19 +11,26 @@
 
  Abstract:
  Package manifest for Perseus Dark Mode.
-*/
+ */
 
 import PackageDescription
 
 let package = Package(
     name: "PerseusDarkMode",
-    platforms: [.macOS(.v10_10), .iOS(.v9)],
     products: [
-            .library(name: "PerseusDarkMode", targets: ["PerseusDarkMode"])
+        .library(
+            name: "PerseusDarkMode",
+            targets: ["PerseusDarkMode"]),
         ],
+    dependencies: [
+        // .package(url: /* package url */, from: "1.0.0"),
+    ],
     targets: [
-            .target(name: "PerseusDarkMode"),
-            .testTarget(name: "DarkModeTests",
-                        dependencies: ["PerseusDarkMode"])
+        .target(
+            name: "PerseusDarkMode",
+            dependencies: []),
+        .testTarget(
+            name: "DarkModeTests",
+            dependencies: ["PerseusDarkMode"]),
         ]
 )
