@@ -61,6 +61,7 @@
 		4BA2092A29864DD900EF16BC /* SucceedsPostAction.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SucceedsPostAction.sh; sourceTree = "<group>"; };
 		4BA2092B29864DE200EF16BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4BA2092C29864DF700EF16BC /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = "<group>"; };
+		4BF2FC20298690560047ABC2 /* PerseusDarkMode.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PerseusDarkMode.podspec; sourceTree = "<group>"; };
 		OBJ_10 /* AppearanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
 		OBJ_11 /* AppearanceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceStyle.swift; sourceTree = "<group>"; };
 		OBJ_13 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 				4BA2092729864DC700EF16BC /* .swiftlint.yml */,
 				OBJ_6 /* Package.swift */,
 				4BA2092A29864DD900EF16BC /* SucceedsPostAction.sh */,
+				4BF2FC20298690560047ABC2 /* PerseusDarkMode.podspec */,
 				OBJ_7 /* Sources */,
 				OBJ_18 /* Tests */,
 				OBJ_27 /* Products */,
