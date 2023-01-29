@@ -20,7 +20,7 @@ let package = Package(
     products: [
         .library(
             name: "PerseusDarkMode",
-            targets: ["PerseusDarkMode"]),
+            targets: ["PerseusDarkMode"])
         ],
     dependencies: [
         // .package(url: /* package url */, from: "1.0.0"),
@@ -31,6 +31,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "DarkModeTests",
-            dependencies: ["PerseusDarkMode"]),
+            dependencies: ["PerseusDarkMode"])
         ]
 )

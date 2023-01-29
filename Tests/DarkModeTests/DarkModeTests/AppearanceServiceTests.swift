@@ -40,7 +40,6 @@ final class AppearanceServiceTests: XCTestCase {
         let videwControllerDarkMode = ViewController().DarkMode as AnyObject
         let sharedDarkMode = AppearanceService.shared as AnyObject
 
-
 #if os(iOS)
         XCTAssertEqual(ObjectIdentifier(viewDarkMode), ObjectIdentifier(sharedDarkMode))
         XCTAssertEqual(ObjectIdentifier(videwControllerDarkMode),
@@ -57,7 +56,11 @@ final class AppearanceServiceTests: XCTestCase {
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
 
+        // swiftlint:disable nesting
+
         class MyView: View { @objc func makeUp() { } }
+
+        // swiftlint:enable nesting
 
         let view = MyView()
 
