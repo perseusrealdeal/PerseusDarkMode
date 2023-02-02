@@ -5,13 +5,13 @@
 ![Pod](https://img.shields.io/badge/Pod-1.1.3-informational.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
-[![License](http://img.shields.io/:License-MIT-blue.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7c2955094f4fd24d2b9d4c4d87780616e5361be7/LICENSE)
+[![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)
 
 ## Integration Capabilities
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/blob/cd9d5689378ffc016aeb0158a3f183aad32f9680/PerseusDarkModeSingle.swift)
-[![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
+[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](/PerseusDarkModeSingle.swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](https://github.com/apple/swift-package-manager)
 
 ## Demo Apps and Others
@@ -21,9 +21,9 @@
 [![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
 [![XcodeTemplateProject](http://img.shields.io/:Template-XcodeTemplateProject-blue.svg)](https://github.com/perseusrealdeal/XcodeTemplateProject.git)
 
-## In Brief
+# In Brief
 
-This library lets a developer being awared of Dark Mode via a variable. Also, the library gives opportunity to change the value of Dark Mode in runtime. In more detail have a look at wiki.
+> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, the library gives opportunity to change the value of Dark Mode in runtime.
 
 ## Reqirements
 
@@ -34,7 +34,7 @@ This library lets a developer being awared of Dark Mode via a variable. Also, th
 
 ## Third-party software
 
-- [SwiftLint Shell Script Runner](https://github.com/perseusrealdeal/PerseusDarkMode/blob/f55af0020b4548e83ec1caf62a4960db72b72571/SucceedsPostAction.sh)
+- [SwiftLint Shell Script Runner](/SucceedsPostAction.sh)
 
 ## Installation
 
@@ -42,7 +42,7 @@ This library lets a developer being awared of Dark Mode via a variable. Also, th
 
 #### Standalone 
 
-Make a copy of the file [`PerseusDarkModeSingle.swift`](https://github.com/perseusrealdeal/PerseusDarkMode/blob/cd9d5689378ffc016aeb0158a3f183aad32f9680/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
+Make a copy of the file [`PerseusDarkModeSingle.swift`](/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
 
 #### CocoaPods
 
@@ -130,9 +130,13 @@ extension AppDelegate: UIApplicationDelegate {
         
         // ... code
         
+        // Call AppearanceService.makeUp() method if AppearanceService.register(:, :)
+        // is taken into account
         AppearanceService.makeUp()
 
-        return true
+        // ... otherwise call AppearanceService.recalculateStyleIfNeeded()
+        // to load DarkMode.style from user defaults
+        // AppearanceService.recalculateStyleIfNeeded()
     }
 }
 ```
@@ -167,7 +171,7 @@ class MainViewController: UIViewController {
 }
 ```
 
-There is another way to be notified of Dark Mode changed, KVO. To learn have a look at wiki or [sample](https://github.com/perseusrealdeal/macos.darkmode.discovery) directly.
+There is another way to be notified of Dark Mode changed—KVO. To learn have a look at wiki or [sample](https://github.com/perseusrealdeal/macos.darkmode.discovery) directly.
 
 ## License MIT
 
@@ -176,10 +180,10 @@ Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
 - The year starts from the creation of the world according to a Slavic calendar.
 - September, the 1st of Slavic year.
 
-Have a look at [LICENSE](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7c2955094f4fd24d2b9d4c4d87780616e5361be7/LICENSE) for details.
+Have a look at [LICENSE](/LICENSE) for details.
 
 ## Author and Acknowledgments
 
 `PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
 
-Mostly I'd like thank my lovely parents for supporting me in all my ways.
+> Mostly I'd like thank my lovely parents for supporting me in all my ways.
