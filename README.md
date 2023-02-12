@@ -23,7 +23,7 @@
 
 # In Brief
 
-> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, the library gives opportunity to change the value of Dark Mode in runtime.
+> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, with this library it is possible to change the value of Dark Mode in runtime easily.
 
 ## Reqirements
 
