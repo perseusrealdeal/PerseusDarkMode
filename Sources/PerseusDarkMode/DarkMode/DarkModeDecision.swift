@@ -21,7 +21,8 @@ public class DarkModeDecision {
     ///
     /// Dark Mode decision-making:
     ///
-    ///                    DarkModeOption
+    ///                  | DarkModeOption
+    ///     -------------+-----------------------
     ///     SystemStyle  | auto    | on   | off
     ///     -------------+---------+------+------
     ///     .unspecified | default | dark | light

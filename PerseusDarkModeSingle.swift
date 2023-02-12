@@ -1,6 +1,6 @@
 //
 //  PerseusDarkModeSingle.swift
-//  Version: 1.1.2
+//  Version: 1.1.3
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
@@ -319,7 +319,8 @@ public class DarkModeDecision {
     ///
     /// Dark Mode decision-making:
     ///
-    ///                    DarkModeOption
+    ///                  | DarkModeOption
+    ///     -------------+-----------------------
     ///     SystemStyle  | auto    | on   | off
     ///     -------------+---------+------+------
     ///     .unspecified | default | dark | light

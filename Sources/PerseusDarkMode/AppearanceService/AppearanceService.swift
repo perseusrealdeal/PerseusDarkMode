@@ -168,8 +168,8 @@ public class AppearanceService {
     ///
     /// - Parameter previousTraitCollection: Used to extract userInterfaceStyle value.
     @available(iOS 13.0, *)
-    public static func processTraitCollectionDidChange(_ previousTraitCollection:
-                                                       UITraitCollection?) {
+    public static func processTraitCollectionDidChange(
+        _ previousTraitCollection: UITraitCollection?) {
         if hidden_changeManually { return }
 
         guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
