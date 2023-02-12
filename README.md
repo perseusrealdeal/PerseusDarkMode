@@ -79,7 +79,7 @@ dependencies: [
 
 `Project in the Navigator > Package Dependencies > Add Package Dependency`
 
-It is strongly recommended using "Exact" with the Version field.
+Using "Exact" with the Version field is strongly recommended.
 
 ### Step 2: Make DarkMode ready for using
 
