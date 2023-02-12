@@ -171,7 +171,7 @@ class MainViewController: UIViewController {
 }
 ```
 
-There is another way to be notified of Dark Mode changed—KVO. To learn have a look at wiki or [sample](https://github.com/perseusrealdeal/macos.darkmode.discovery) directly.
+There is another way to be notified of Dark Mode changed—KVO. To learn have a look at [sample](https://github.com/perseusrealdeal/macos.darkmode.discovery) directly.
 
 ## License MIT
 
