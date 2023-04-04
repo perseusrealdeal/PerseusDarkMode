@@ -1,7 +1,7 @@
 # Perseus Dark Mode
 
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.1.3-informational.svg)
+![Version](https://img.shields.io/badge/Version-1.1.4-informational.svg)
 [![Pod](https://img.shields.io/badge/Pod-1.1.3-informational.svg)](/PerseusDarkMode.podspec)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
@@ -59,7 +59,7 @@ end
 Cartfile should contain:
 
 ```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.3
+github "perseusrealdeal/PerseusDarkMode" == 1.1.4
 ```
 
 Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
@@ -71,7 +71,7 @@ Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8
 ```swift
 dependencies: [
         .package(url: "https://github.com/perseusrealdeal/PerseusDarkMode.git",
-            .exact("1.1.3"))
+            .exact("1.1.4"))
     ],
 ```
 
