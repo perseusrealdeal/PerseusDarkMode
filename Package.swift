@@ -1,7 +1,7 @@
 // swift-tools-version:4.2
 
 /* Package.swift
- Version: 1.1.3
+ Version: 1.1.4
 
  Created by Mikhail Zhigulin in 7530.
 
