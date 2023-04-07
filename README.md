@@ -9,7 +9,7 @@
 
 ## Integration Capabilities
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](/PerseusDarkModeSingle.swift)
+[![Standalone](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](/PerseusDarkModeSingle.swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](https://github.com/apple/swift-package-manager)
@@ -35,6 +35,7 @@
 ## Third-party software
 
 - [SwiftLint Shell Script Runner](/SucceedsPostAction.sh)
+- [SwiftLint](https://github.com/realm/SwiftLint) / [0.31.0: Busy Laundromat](https://github.com/realm/SwiftLint/releases/tag/0.31.0) for macOS High Sierra
 
 ## Installation
 
@@ -43,6 +44,16 @@
 #### Standalone 
 
 Make a copy of the file [`PerseusDarkModeSingle.swift`](/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
+
+#### Carthage
+
+Cartfile should contain:
+
+```carthage
+github "perseusrealdeal/PerseusDarkMode" == 1.1.4
+```
+
+Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
 
 #### CocoaPods
 
@@ -54,15 +65,6 @@ target "ProjectTarget" do
   pod 'PerseusDarkMode', '1.1.3'
 end
 ```
-#### Carthage
-
-Cartfile should contain:
-
-```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.4
-```
-
-Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
 
 #### Swift Package Manager
 
