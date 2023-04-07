@@ -9,7 +9,7 @@
 
 ## Integration Capabilities
 
-[![Standalone](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](/PerseusDarkModeSingle.swift)
+[![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PerseusDarkModeSingle.swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](https://github.com/apple/swift-package-manager)
@@ -186,6 +186,6 @@ Have a look at [LICENSE](/LICENSE) for details.
 
 ## Author and Acknowledgments
 
-`PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
+> `PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
 
 > Mostly I'd like thank my lovely parents for supporting me in all my ways.
