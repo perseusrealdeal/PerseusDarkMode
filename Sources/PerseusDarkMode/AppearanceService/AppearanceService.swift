@@ -206,7 +206,7 @@ public class AppearanceService {
     }
 
     /// Updates the app's appearance style value.
-    internal static func recalculateStyleIfNeeded() {
+    public static func recalculateStyleIfNeeded() {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.systemStyle)
 
         if shared.hidden_style != actualStyle { shared.hidden_style = actualStyle }
