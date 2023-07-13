@@ -184,7 +184,9 @@ class MainViewController: UIViewController {
 }
 ```
 
-There is another way to be notified of Dark Mode—KVO. Sample [here](https://github.com/perseusrealdeal/macos.darkmode.discovery).
+There is another way to be notified of Dark Mode—KVO. 
+
+> [`DarkModeImageView`](https://github.com/perseusrealdeal/PerseusUISystemKit/blob/master/Sources/PerseusUISystemKit/Classes/DarkModeImageView.swift) class is an expressive sample of Dark Mode KVO usage for both macOS and iOS as well.
 
 # License MIT
 
