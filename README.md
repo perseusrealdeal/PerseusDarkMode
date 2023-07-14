@@ -1,18 +1,18 @@
 # Perseus Dark Mode
 
 [![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.1.4-informational.svg)
-[![Pod](https://img.shields.io/badge/Pod-1.1.3-informational.svg)](/PerseusDarkMode.podspec)
+![Version](https://img.shields.io/badge/Version-1.1.5-informational.svg)
+[![Pod](https://img.shields.io/badge/Pod-1.1.4-informational.svg)](/PerseusDarkMode.podspec)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)
 
 ## Integration Capabilities
 
-[![Standalone File](https://img.shields.io/badge/Standalone%20File-available-informational.svg)](/PerseusDarkModeSingle.swift)
+[![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PerseusDarkModeSingle.swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
-[![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://cocoapods.org)
-[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](https://github.com/apple/swift-package-manager)
+[![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](/PerseusDarkMode.podspec)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](/Package.swift)
 
 ## Demo Apps and Others
 
@@ -23,55 +23,68 @@
 
 # In Brief
 
-> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, with this library it is possible to change the value of Dark Mode in runtime easily.
+> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, with this library it is possible to change the value of Dark Mode in runtime easily with standalone lib [DarkModeSwitching](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706).
 
-## Reqirements
+```swift
+changeDarkModeManually(.off) // .on or .auto
+```
+Sample screen for changing Dark Mode option [here for macOS](https://github.com/perseusrealdeal/macos.darkmode.discovery) and [here for iOS](https://github.com/perseusrealdeal/ios.darkmode.discovery).
+
+# Reqirements
 
 - Xcode 10.1+
 - Swift 4.2+
 - iOS: 9.3+, UIKit SDK
 - macOS: 10.9+, AppKit SDK
 
-## Third-party software
+# First-party software
+
+- [PerseusLogger](https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5)
+
+# Third-party software
 
 - [SwiftLint Shell Script Runner](/SucceedsPostAction.sh)
+- [SwiftLint](https://github.com/realm/SwiftLint) / [0.31.0: Busy Laundromat](https://github.com/realm/SwiftLint/releases/tag/0.31.0) for macOS High Sierra
 
-## Installation
+# Installation
 
-### Step 1: Add PerseusDarkMode to a host project tree
+> ***Using "Exact" with the Version field is strongly recommended.***
 
-#### Standalone 
+## Step 1: Add PerseusDarkMode to a host project tree
+
+### Standalone 
 
 Make a copy of the file [`PerseusDarkModeSingle.swift`](/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
 
-#### CocoaPods
+### Carthage
+
+Cartfile should contain:
+
+```carthage
+github "perseusrealdeal/PerseusDarkMode" == 1.1.5
+```
+
+Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
+
+### CocoaPods
 
 Podfile should contain:
 
 ```ruby
 target "ProjectTarget" do
   use_frameworks!
-  pod 'PerseusDarkMode', '1.1.3'
+  pod 'PerseusDarkMode', '1.1.4'
 end
 ```
-#### Carthage
 
-Cartfile should contain:
-
-```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.4
-```
-
-Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
-
-#### Swift Package Manager
+### Swift Package Manager
 
 - As a package dependency so Package.swift should contain the following statements:
 
 ```swift
 dependencies: [
         .package(url: "https://github.com/perseusrealdeal/PerseusDarkMode.git",
-            .exact("1.1.4"))
+            .exact("1.1.5"))
     ],
 ```
 
@@ -79,11 +92,11 @@ dependencies: [
 
 `Project in the Navigator > Package Dependencies > Add Package Dependency`
 
-Using "Exact" with the Version field is strongly recommended.
+> ***Using "Exact" with the Version field is strongly recommended.***
 
-### Step 2: Make DarkMode ready for using
+## Step 2: Make DarkMode ready for using
 
-#### iOS
+### iOS
 
 Override the following method of the first screen to let Perseus know that system's appearance changed:
 
@@ -118,7 +131,7 @@ extension AppDelegate: UIApplicationDelegate {
 ```
 Used functions are distributed via standalone file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706).
 
-#### iOS and macOS
+### iOS and macOS
 
 Call the method `AppearanceService.makeUp()` with the app's delegate if appearance changing is going to take place:
 
@@ -142,7 +155,7 @@ extension AppDelegate: UIApplicationDelegate {
 ```
 Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706) into a host project for having fun with manual changing Dark Mode value.
 
-## Usage
+# Usage
 
 Each time if Dark Mode changed the mentioned method `#selector(makeUp)` called, but registering is required:
 ```swift
@@ -171,19 +184,21 @@ class MainViewController: UIViewController {
 }
 ```
 
-There is another way to be notified of Dark Mode—KVO. To learn have a look at [sample](https://github.com/perseusrealdeal/macos.darkmode.discovery) directly.
+There is another way to be notified of Dark Mode—KVO. 
 
-## License MIT
+> [`DarkModeImageView`](https://github.com/perseusrealdeal/PerseusUISystemKit/blob/master/Sources/PerseusUISystemKit/Classes/DarkModeImageView.swift) class is an expressive sample of Dark Mode KVO usage for both macOS and iOS as well.
+
+# License MIT
 
 Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
 
 - The year starts from the creation of the world according to a Slavic calendar.
 - September, the 1st of Slavic year.
 
-Have a look at [LICENSE](/LICENSE) for details.
+[LICENSE](/LICENSE) for details.
 
-## Author and Acknowledgments
+# Author
 
-`PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
+> `PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
 
 > Mostly I'd like thank my lovely parents for supporting me in all my ways.

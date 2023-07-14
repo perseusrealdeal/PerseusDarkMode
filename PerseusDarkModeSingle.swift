@@ -1,6 +1,6 @@
 //
 //  PerseusDarkModeSingle.swift
-//  Version: 1.1.4
+//  Version: 1.1.5
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
@@ -196,7 +196,7 @@ public class AppearanceService {
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
     }
 
-    internal static func recalculateStyleIfNeeded() {
+    public static func recalculateStyleIfNeeded() {
         let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.systemStyle)
 
         if shared.hidden_style != actualStyle { shared.hidden_style = actualStyle }
