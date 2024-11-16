@@ -10,8 +10,6 @@
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
-// swiftlint:disable block_based_kvo
-//
 
 #if canImport(UIKit)
 import UIKit
@@ -60,6 +58,7 @@ public class DarkModeObserver: NSObject {
                                     context: nil)
     }
 
+    // swiftlint:disable:this block_based_kvo
     /// Takes action every time when Style changes happens.
     public override func observeValue(forKeyPath keyPath: String?,
                                       of object: Any?,

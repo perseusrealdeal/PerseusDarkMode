@@ -52,16 +52,13 @@ final class AppearanceServiceTests: XCTestCase {
     }
 
     func test_method_register_called_addObserver() {
+
         // arrange
 
         let mock = MockNotificationCenter()
         AppearanceService.nCenter = mock
 
-        // swiftlint:disable nesting
-
         class MyView: View { @objc func makeUp() { } }
-
-        // swiftlint:enable nesting
 
         let view = MyView()
 
@@ -75,6 +72,7 @@ final class AppearanceServiceTests: XCTestCase {
     }
 
     func test_method_makeAppearanceUp_called_post_and_isEnabled_true() {
+
         // arrange
 
         let mock = MockNotificationCenter()
@@ -92,6 +90,7 @@ final class AppearanceServiceTests: XCTestCase {
 
 #if os(macOS)
     func test_Dark_Mode_called_addObserver_once() {
+
         // arrange
 
         let mock = MockNotificationCenter()
