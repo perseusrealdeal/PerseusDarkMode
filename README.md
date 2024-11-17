@@ -1,11 +1,11 @@
 # PerseusDarkMode — Xcode 14.2+
 
-> Dark Mode supporting functionality.
+> Dark Mode.
 
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
 [![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](/CHANGELOG.md)
-[![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
+[![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+_|_iOS%2011.0+-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
 [![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)

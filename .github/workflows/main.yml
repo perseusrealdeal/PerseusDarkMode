@@ -8,9 +8,9 @@ on:
     branches: [ main ]
 #  schedule:
 #    - cron: '5 5 * * 5'
-   
+
 jobs:
-  
+
   macOS-build:
     runs-on: macos-14
     steps:
@@ -26,7 +26,7 @@ jobs:
         code-coverage: true
         verbosity: xcpretty
         upload-logs: always
-        
+
   macOS-test:
     runs-on: macos-14
     steps:
@@ -37,6 +37,38 @@ jobs:
     - uses: mxcl/xcodebuild@v3.3
       with:
         platform: macOS
+        scheme: 'PerseusDarkMode'
+        action: test
+        code-coverage: true
+        verbosity: xcpretty
+        upload-logs: always
+
+  iOS-build:
+    runs-on: macos-14
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3.3
+      with:
+        platform: iOS
+        scheme: 'PerseusDarkMode'
+        action: build
+        code-coverage: true
+        verbosity: xcpretty
+        upload-logs: always
+
+  iOS-test:
+    runs-on: macos-14
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3.3
+      with:
+        platform: iOS
         scheme: 'PerseusDarkMode'
         action: test
         code-coverage: true
