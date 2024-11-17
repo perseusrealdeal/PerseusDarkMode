@@ -2,6 +2,10 @@
 //  PerseusDarkModeStar.swift
 //  Version: 2.0.0
 //
+//  PLATFORMS: macOS 10.13+ | iOS 11.0+
+//
+//  SWIFT: 5.7+ / Xcode 14.2+
+//
 //  Created by Mikhail Zhigulin in 7530.
 //
 //  Copyright © 7530 - 7533 Mikhail Zhigulin of Novosibirsk.

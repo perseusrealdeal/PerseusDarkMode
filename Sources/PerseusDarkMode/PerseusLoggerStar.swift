@@ -49,7 +49,7 @@ import Foundation
 import os
 
 // swiftlint:disable type_name
-public typealias log = PerseusLogger
+typealias log = PerseusLogger
 // swiftlint:enable type_name
 
 public typealias ConsoleObject = (subsystem: String, category: String)
