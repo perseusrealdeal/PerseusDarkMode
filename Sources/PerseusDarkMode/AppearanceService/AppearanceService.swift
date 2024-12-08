@@ -55,7 +55,7 @@ public class AppearanceService {
 
     private(set) static var it = { AppearanceService() }()
     private init() {
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)", .info)
 #if os(macOS)
         AppearanceService.distributedNCenter.addObserver(
             self,
