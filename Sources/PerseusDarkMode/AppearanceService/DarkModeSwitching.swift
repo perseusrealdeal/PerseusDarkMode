@@ -1,5 +1,5 @@
 //
-//  AppearanceSwitching.swift
+//  DarkModeSwitching.swift
 //  PerseusDarkMode
 //
 //  Created by Mikhail Zhigulin in 7530.
@@ -25,10 +25,10 @@ public func changeDarkModeManually(_ userChoice: DarkModeOption) {
     UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
 
     // Change Dark Mode value in Perseus Dark Mode library
-    AppearanceService.DarkModeUserChoice = userChoice
+    DarkModeAgent.DarkModeUserChoice = userChoice
 
     // Update appearance in accoring with changed Dark Mode Style
-    AppearanceService.makeUp()
+    DarkModeAgent.makeUp()
 }
 
 public func isDarkModeSettingsChanged() -> DarkModeOption? {
@@ -41,5 +41,5 @@ public func isDarkModeSettingsChanged() -> DarkModeOption? {
         else { return nil } // Should throw exception if init gives nil
 
     // Report change
-    return settingsDarkMode != AppearanceService.DarkModeUserChoice ? settingsDarkMode : nil
+    return settingsDarkMode != DarkModeAgent.DarkModeUserChoice ? settingsDarkMode : nil
 }

@@ -115,7 +115,7 @@ public class AppearanceService {
     private(set) static var it = { AppearanceService() }()
     private init() {
 #if os(macOS)
-        AppearanceService.distributedNCenter.addObserver(
+        DarkModeAgent.distributedNCenter.addObserver(
             self,
             selector: #selector(interfaceModeChanged),
             name: .AppleInterfaceThemeChangedNotification,
@@ -127,7 +127,7 @@ public class AppearanceService {
 #if os(macOS)
     @objc internal func interfaceModeChanged() {
         if #available(macOS 10.14, *) {
-            AppearanceService.processAppearanceOSDidChange()
+            DarkModeAgent.processAppearanceOSDidChange()
         }
     }
 
@@ -262,10 +262,10 @@ public class AppearanceService {
             NSApplication.shared.appearance = nil
         case .on:
             NSApplication.shared.appearance =
-                NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+                NSAppearance(named: DarkModeAgent.defaultDarkAppearanceOS)
         case .off:
             NSApplication.shared.appearance =
-                NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+                NSAppearance(named: DarkModeAgent.defaultLightAppearanceOS)
         }
 #endif
     }

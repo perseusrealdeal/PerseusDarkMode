@@ -31,15 +31,15 @@ import XCTest
 final class AppearanceServiceTests: XCTestCase {
 
     func test_init() {
-        XCTAssertFalse(AppearanceService.isEnabled)
-        XCTAssertFalse(AppearanceService.hidden_isEnabled)
+        XCTAssertFalse(DarkModeAgent.isEnabled)
+        XCTAssertFalse(DarkModeAgent.hidden_isEnabled)
 
-        XCTAssertNotNil(AppearanceService.ud)
-        XCTAssertNotNil(AppearanceService.nCenter)
+        XCTAssertNotNil(DarkModeAgent.ud)
+        XCTAssertNotNil(DarkModeAgent.nCenter)
 
         let viewDarkMode = View().DarkMode as AnyObject
         let videwControllerDarkMode = ViewController().DarkMode as AnyObject
-        let sharedDarkMode = AppearanceService.shared as AnyObject
+        let sharedDarkMode = DarkModeAgent.shared as AnyObject
 
 #if os(iOS)
         XCTAssertEqual(ObjectIdentifier(viewDarkMode), ObjectIdentifier(sharedDarkMode))
@@ -56,7 +56,7 @@ final class AppearanceServiceTests: XCTestCase {
         // arrange
 
         let mock = MockNotificationCenter()
-        AppearanceService.nCenter = mock
+        DarkModeAgent.nCenter = mock
 
         class MyView: View { @objc func makeUp() { } }
 
@@ -64,7 +64,7 @@ final class AppearanceServiceTests: XCTestCase {
 
         // act
 
-        AppearanceService.register(stakeholder: view, selector: #selector(view.makeUp))
+        DarkModeAgent.register(stakeholder: view, selector: #selector(view.makeUp))
 
         // assert
 
@@ -76,16 +76,16 @@ final class AppearanceServiceTests: XCTestCase {
         // arrange
 
         let mock = MockNotificationCenter()
-        AppearanceService.nCenter = mock
+        DarkModeAgent.nCenter = mock
 
         // act
 
-        AppearanceService.makeUp()
+        DarkModeAgent.makeUp()
 
         // assert
 
         mock.verifyPost(name: .MakeAppearanceUpNotification)
-        XCTAssertTrue(AppearanceService.isEnabled)
+        XCTAssertTrue(DarkModeAgent.isEnabled)
     }
 
 #if os(macOS)
@@ -94,7 +94,7 @@ final class AppearanceServiceTests: XCTestCase {
         // arrange
 
         let mock = MockNotificationCenter()
-        AppearanceService.distributedNCenter = mock
+        DarkModeAgent.distributedNCenter = mock
 
         let view1 = View()
         let view2 = View()
@@ -109,8 +109,8 @@ final class AppearanceServiceTests: XCTestCase {
 
         // assert
 
-        mock.verifyRegisterObserver(observer: AppearanceService.it,
-                                    selector: #selector(AppearanceService.modeChanged))
+        mock.verifyRegisterObserver(observer: DarkModeAgent.it,
+                                    selector: #selector(DarkModeAgent.modeChanged))
     }
 #endif
 }
