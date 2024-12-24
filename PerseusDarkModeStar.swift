@@ -72,47 +72,50 @@ public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
 public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
 public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
 public let OBSERVERED_VARIABLE_NAME = "styleObservable"
+
+// Dark Mode option key used in Settings bundle.
 public let DARK_MODE_SETTINGS_KEY = "dark_mode_preference"
 
-// MARK: - DARK MODE Appearance changing functions
+extension DarkModeAgent {
 
-public func changeDarkModeManually(_ userChoice: DarkModeOption) {
-    // Change Dark Mode value in settings bundle
-    UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
+    public static func forceDarkMode(_ userChoice: DarkModeOption) {
+        // Change Dark Mode value in settings bundle
+        UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
 
-    // Change Dark Mode value in Perseus Dark Mode library
-    AppearanceService.DarkModeUserChoice = userChoice
+        // Change Dark Mode value in Perseus Dark Mode library
+        DarkModeAgent.DarkModeUserChoice = userChoice
 
-    // Update appearance in accoring with changed Dark Mode Style
-    AppearanceService.makeUp()
-}
+        // Update appearance in accoring with changed Dark Mode Style
+        DarkModeAgent.makeUp()
+    }
 
-public func isDarkModeSettingsChanged() -> DarkModeOption? {
-    // Load enum int value from settings
-    let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
+    public static func isDarkModeChanged() -> DarkModeOption? {
+        // Load enum int value from settings
+        let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
         UserDefaults.standard.integer(forKey: DARK_MODE_SETTINGS_KEY) : -1
 
-    // Try to cast int value to enum
-    guard option != -1, let settingsDarkMode = DarkModeOption.init(rawValue: option)
+        // Try to cast int value to enum
+        guard option != -1, let settingsDarkMode = DarkModeOption.init(rawValue: option)
         else { return nil } // Should throw exception if init gives nil
 
-    // Report change
-    return settingsDarkMode != AppearanceService.DarkModeUserChoice ? settingsDarkMode : nil
+        // Report change
+        return settingsDarkMode != DarkModeAgent.DarkModeUserChoice ? settingsDarkMode : nil
+    }
 }
 
 // MARK: - Appearance service
 
 // swiftlint:disable identifier_name
 public extension Responder {
-    var DarkMode: DarkMode { return AppearanceService.shared }
+    var DarkMode: DarkMode { return DarkModeAgent.shared }
 }
 // swiftlint:enable identifier_name
 
-public class AppearanceService {
+public class DarkModeAgent {
 
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
-    private(set) static var it = { AppearanceService() }()
+    private(set) static var it = { DarkModeAgent() }()
     private init() {
 #if os(macOS)
         DarkModeAgent.distributedNCenter.addObserver(
@@ -367,7 +370,7 @@ public class DarkModeDecision {
 public class DarkModeObserver: NSObject {
 
     public var action: ((_ newStyle: AppearanceStyle) -> Void)?
-    private(set) var objectToObserve = AppearanceService.shared
+    private(set) var objectToObserve = DarkModeAgent.shared
 
     public override init() {
         super.init()
@@ -994,109 +997,109 @@ extension Color: SemanticColorProtocol {
 
     /// .label
     public static var labelPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(0, 0, 0) : rgba255(255, 255, 255)
     }
 
     /// .secondaryLabel
     public static var secondaryLabelPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(60, 60, 67, 0.6) : rgba255(235, 235, 245, 0.6)
     }
 
     /// .tertiaryLabel
     public static var tertiaryLabelPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
     }
 
     /// .quaternaryLabel
     public static var quaternaryLabelPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(60, 60, 67, 0.18) : rgba255(235, 235, 245, 0.16)
     }
 
     /// .placeholderText
     public static var placeholderTextPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(60, 60, 67, 0.3) : rgba255(235, 235, 245, 0.3)
     }
 
     /// .separator
     public static var separatorPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(60, 60, 67, 0.29) : rgba255(84, 84, 88, 0.6)
     }
 
     /// .opaqueSeparator
     public static var opaqueSeparatorPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(198, 198, 200) : rgba255(56, 56, 58)
     }
 
     /// .link
     public static var linkPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(0, 122, 255) : rgba255(9, 132, 255)
     }
 
     /// .systemFill
     public static var systemFillPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(120, 120, 128, 0.2) : rgba255(120, 120, 128, 0.36)
     }
 
     /// .secondarySystemFill
     public static var secondarySystemFillPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(120, 120, 128, 0.16) : rgba255(120, 120, 128, 0.32)
     }
 
     /// .tertiarySystemFill
     public static var tertiarySystemFillPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(118, 118, 128, 0.12) : rgba255(118, 118, 128, 0.24)
     }
 
     /// .quaternarySystemFill
     public static var quaternarySystemFillPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(116, 116, 128, 0.08) : rgba255(118, 118, 128, 0.18)
     }
 
     /// .systemBackground
     public static var systemBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 255, 255) : rgba255(28, 28, 30)
     }
 
     /// .secondarySystemBackground
     public static var secondarySystemBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(242, 242, 247) : rgba255(44, 44, 46)
     }
 
     /// .tertiarySystemBackground
     public static var tertiarySystemBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 255, 255) : rgba255(58, 58, 60)
     }
 
     /// .systemGroupedBackground
     public static var systemGroupedBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(242, 242, 247) : rgba255(28, 28, 30)
     }
 
     /// .secondarySystemGroupedBackground
     public static var secondarySystemGroupedBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 255, 255) : rgba255(44, 44, 46)
     }
 
     /// .tertiarySystemGroupedBackground
     public static var tertiarySystemGroupedBackgroundPerseus: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(242, 242, 247) : rgba255(58, 58, 60)
     }
 }
@@ -1105,109 +1108,109 @@ extension Color: SystemColorProtocol {
 
     /// .systemRed
     public static var perseusRed: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 59, 48) : rgba255(255, 69, 58)
     }
 
     /// .systemOrange
     public static var perseusOrange: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 149, 0) : rgba255(255, 159, 10)
     }
 
     /// .systemYellow
     public static var perseusYellow: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 204, 0) : rgba255(255, 214, 10)
     }
 
     /// .systemGreen
     public static var perseusGreen: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(52, 199, 89) : rgba255(48, 209, 88)
     }
 
     /// .systemMint
     public static var perseusMint: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(0, 199, 190) : rgba255(102, 212, 207)
     }
 
     /// .systemTeal
     public static var perseusTeal: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(48, 176, 199) : rgba255(64, 200, 224)
     }
 
     /// .systemCyan
     public static var perseusCyan: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(50, 173, 230) : rgba255(100, 210, 255)
     }
 
     /// .systemBlue
     public static var perseusBlue: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(0, 122, 255) : rgba255(10, 132, 255)
     }
 
     /// .systemIndigo
     public static var perseusIndigo: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(88, 86, 214) : rgba255(94, 92, 230)
     }
 
     /// .systemPurple
     public static var perseusPurple: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(175, 82, 222) : rgba255(191, 90, 242)
     }
 
     /// .systemPink
     public static var perseusPink: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(255, 45, 85) : rgba255(255, 55, 95)
     }
 
     /// .systemBrown
     public static var perseusBrown: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(162, 132, 94) : rgba255(172, 142, 104)
     }
 
     /// .systemGray
     public static var perseusGray: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(142, 142, 147) : rgba255(142, 142, 147)
     }
 
     /// .systemGray2
     public static var perseusGray2: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(174, 174, 178) : rgba255(99, 99, 102)
     }
 
     /// .systemGray3
     public static var perseusGray3: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(199, 199, 204) : rgba255(72, 72, 74)
     }
 
     /// .systemGray4
     public static var perseusGray4: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(209, 209, 214) : rgba255(58, 58, 60)
     }
 
     /// .systemGray5
     public static var perseusGray5: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(229, 229, 234) : rgba255(44, 44, 46)
     }
 
     /// .systemGray6
     public static var perseusGray6: Color {
-        return AppearanceService.shared.style == .light ?
+        return DarkModeAgent.shared.style == .light ?
             rgba255(242, 242, 247) : rgba255(28, 28, 30)
     }
 }

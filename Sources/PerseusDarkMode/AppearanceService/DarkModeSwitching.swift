@@ -20,26 +20,29 @@ import Cocoa
 // Dark Mode option key used in Settings bundle.
 public let DARK_MODE_SETTINGS_KEY = "dark_mode_preference"
 
-public func changeDarkModeManually(_ userChoice: DarkModeOption) {
-    // Change Dark Mode value in settings bundle
-    UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
+extension DarkModeAgent {
 
-    // Change Dark Mode value in Perseus Dark Mode library
-    DarkModeAgent.DarkModeUserChoice = userChoice
+    public static func forceDarkMode(_ userChoice: DarkModeOption) {
+        // Change Dark Mode value in settings bundle
+        UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
 
-    // Update appearance in accoring with changed Dark Mode Style
-    DarkModeAgent.makeUp()
-}
+        // Change Dark Mode value in Perseus Dark Mode library
+        DarkModeAgent.DarkModeUserChoice = userChoice
 
-public func isDarkModeSettingsChanged() -> DarkModeOption? {
-    // Load enum int value from settings
-    let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
+        // Update appearance in accoring with changed Dark Mode Style
+        DarkModeAgent.makeUp()
+    }
+
+    public static func isDarkModeChanged() -> DarkModeOption? {
+        // Load enum int value from settings
+        let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
         UserDefaults.standard.integer(forKey: DARK_MODE_SETTINGS_KEY) : -1
 
-    // Try to cast int value to enum
-    guard option != -1, let settingsDarkMode = DarkModeOption.init(rawValue: option)
+        // Try to cast int value to enum
+        guard option != -1, let settingsDarkMode = DarkModeOption.init(rawValue: option)
         else { return nil } // Should throw exception if init gives nil
 
-    // Report change
-    return settingsDarkMode != DarkModeAgent.DarkModeUserChoice ? settingsDarkMode : nil
+        // Report change
+        return settingsDarkMode != DarkModeAgent.DarkModeUserChoice ? settingsDarkMode : nil
+    }
 }
