@@ -1,6 +1,8 @@
 # PerseusDarkMode — Xcode 14.2+
 
-> Dark Mode.
+[`iOS approbation app`](https://github.com/perseusrealdeal/iOS.DarkMode.Discovery) [`macOS approbation app`](https://github.com/perseusrealdeal/macOS.DarkMode.Discovery)
+
+`PerseusDarkMode` is a single author and personale solution developed in `person-to-person` relationship paradigm.
 
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
@@ -21,19 +23,37 @@
 
 ## In brief > Idea to use, the Why
 
-> TODO: Short description.
+Package in Swift unified for both iOS and macOS to support Dark Mode capabilities of getting elder devices.
 
 ## Build system requirements
 
 - [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
 
-# Manual
-
-> TODO: Lib usage description.
-
 # First-party software
 
 - [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.0.3](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.0.3)
+
+# Installation
+
+## Standalone
+
+Use the single source code file [PerseusDarkModeStar.swift](https://github.com/perseusrealdeal/PerseusDarkMode/blob/b772b406c744be641fee55c7033b42e7991123f3/PerseusDarkModeStar.swift) directly in your project.
+
+## Swift Package Manager
+
+`Project in the Navigator > Package Dependencies > Add Package Dependency`
+
+> Put the following line in the package search field:
+
+`https://github.com/perseusrealdeal/PerseusDarkMode`
+
+> Dependency rule: 
+
+`Up to Next Major Version`
+
+# Usage
+
+> TODO: usage description.
 
 # Third-party software
 
