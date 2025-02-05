@@ -29,7 +29,7 @@ public class DarkModeObserver: NSObject {
     public var action: ((_ newStyle: AppearanceStyle) -> Void)?
 
     /// The reference of the object to be obsevered.
-    private(set) var objectToObserve = AppearanceService.shared
+    private(set) var objectToObserve = DarkModeAgent.shared
 
     /// Initializer by default.
     ///

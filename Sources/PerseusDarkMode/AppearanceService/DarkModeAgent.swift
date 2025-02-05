@@ -1,5 +1,5 @@
 //
-//  AppearanceService.swift
+//  DarkModeAgent.swift
 //  PerseusDarkMode
 //
 //  Created by Mikhail Zhigulin in 7530.
@@ -39,25 +39,25 @@ public extension Notification.Name {
 /// Dark Mode placed to to be accessed from any screen object
 /// of iOS (Mac Catalyst) or macOS (Cocoa).
 public extension Responder {
-    var DarkMode: DarkModeProtocol { return AppearanceService.shared }
+    var DarkMode: DarkModeProtocol { return DarkModeAgent.shared }
 }
 // swiftlint:enable identifier_name
 
 /// Represents service giving a control of the app's appearance.
 ///
 /// - This service is dedicated to handle Dark Mode changing.
-public class AppearanceService {
+public class DarkModeAgent {
 
     // MARK: - Singleton
 
     /// Shared Dark Mode.
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
-    private(set) static var it = { AppearanceService() }()
+    private(set) static var it = { DarkModeAgent() }()
     private init() {
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)", .info)
 #if os(macOS)
-        AppearanceService.distributedNCenter.addObserver(
+        DarkModeAgent.distributedNCenter.addObserver(
             self,
             selector: #selector(modeChanged),
             name: .AppleInterfaceThemeChangedNotification,
@@ -69,7 +69,7 @@ public class AppearanceService {
 #if os(macOS)
     @objc internal func modeChanged() {
         if #available(macOS 10.14, *) {
-            AppearanceService.processAppearanceOSDidChange()
+            DarkModeAgent.processAppearanceOSDidChange()
         }
     }
 
@@ -243,10 +243,10 @@ public class AppearanceService {
             NSApplication.shared.appearance = nil
         case .on:
             NSApplication.shared.appearance =
-            NSAppearance(named: AppearanceService.defaultDarkAppearanceOS)
+            NSAppearance(named: DarkModeAgent.defaultDarkAppearanceOS)
         case .off:
             NSApplication.shared.appearance =
-            NSAppearance(named: AppearanceService.defaultLightAppearanceOS)
+            NSAppearance(named: DarkModeAgent.defaultLightAppearanceOS)
         }
 #endif
     }

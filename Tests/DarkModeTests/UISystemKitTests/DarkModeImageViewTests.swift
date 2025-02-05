@@ -27,7 +27,7 @@ final class DarkModeImageViewTests: XCTestCase {
         let sut = DarkModeImageView(frame: frame)
 
         let objectToObserve = sut.darkModeObserver?.objectToObserve as AnyObject
-        let observeredObject = AppearanceService.shared as AnyObject
+        let observeredObject = DarkModeAgent.shared as AnyObject
 
         XCTAssertNil(sut.imageLight)
         XCTAssertNil(sut.imageDark)
@@ -81,7 +81,7 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         sut.configure(light, dark)
 
@@ -101,7 +101,7 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         sut.configure(light, dark)
 
@@ -121,11 +121,11 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         sut.configure(light, dark)
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -143,11 +143,11 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         sut.configure(light, dark)
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         // assert
 
@@ -167,7 +167,7 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         sut.imageLight = light
         sut.imageDark = dark
@@ -196,7 +196,7 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         sut.imageLight = light
         sut.imageDark = dark
@@ -225,12 +225,12 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         sut.imageLight = light
         sut.imageDark = dark
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -248,12 +248,12 @@ final class DarkModeImageViewTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         sut.imageLight = light
         sut.imageDark = dark
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
 
         // assert
 

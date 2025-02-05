@@ -37,8 +37,8 @@ final class DarkModeTests: XCTestCase {
 
         // act
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -67,8 +67,8 @@ final class DarkModeTests: XCTestCase {
 
         observer = nil
 
-        AppearanceService.shared.hidden_style = AppearanceStyle.dark
-        AppearanceService.shared.hidden_style = AppearanceStyle.light
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.dark
+        DarkModeAgent.shared.hidden_style = AppearanceStyle.light
 
         // assert
 
@@ -80,13 +80,13 @@ final class DarkModeTests: XCTestCase {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()
-        AppearanceService.ud = mockUserDefaults
+        DarkModeAgent.ud = mockUserDefaults
 
         mockUserDefaults.isValueExists = true
 
         // act
 
-        _ = AppearanceService.DarkModeUserChoice
+        _ = DarkModeAgent.DarkModeUserChoice
 
         // assert
 
@@ -94,20 +94,20 @@ final class DarkModeTests: XCTestCase {
 
         // keep it clean for the others
 
-        AppearanceService.ud = UserDefaults.standard
+        DarkModeAgent.ud = UserDefaults.standard
     }
 
     func test_get_DarkModeUserChoice_when_valueExists_false() {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()
-        AppearanceService.ud = mockUserDefaults
+        DarkModeAgent.ud = mockUserDefaults
 
         mockUserDefaults.isValueExists = false
 
         // act
 
-        let result = AppearanceService.DarkModeUserChoice
+        let result = DarkModeAgent.DarkModeUserChoice
 
         // assert
 
@@ -117,20 +117,20 @@ final class DarkModeTests: XCTestCase {
 
         // keep it clean for the others
 
-        AppearanceService.ud = UserDefaults.standard
+        DarkModeAgent.ud = UserDefaults.standard
     }
 
     func test_set_DarkModeUserChoice() {
         // arrange
 
         let mockUserDefaults = MockUserDefaults()
-        AppearanceService.ud = mockUserDefaults
+        DarkModeAgent.ud = mockUserDefaults
 
         let sut = DarkModeOption.off
 
         // act
 
-        AppearanceService.DarkModeUserChoice = sut
+        DarkModeAgent.DarkModeUserChoice = sut
 
         // assert
 
@@ -139,6 +139,6 @@ final class DarkModeTests: XCTestCase {
 
         // keep it clean for the others
 
-        AppearanceService.ud = UserDefaults.standard
+        DarkModeAgent.ud = UserDefaults.standard
     }
 }

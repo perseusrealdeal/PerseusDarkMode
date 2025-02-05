@@ -32,10 +32,10 @@ final class ColorVerifier {
                        file: StaticString = #file,
                        line: UInt = #line) {
 
-        AppearanceService.DarkModeUserChoice = .off
+        DarkModeAgent.DarkModeUserChoice = .off
         XCTAssertEqual(required.color, light)
 
-        AppearanceService.DarkModeUserChoice = .on
+        DarkModeAgent.DarkModeUserChoice = .on
         XCTAssertEqual(required.color, dark)
     }
 }

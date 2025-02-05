@@ -1,6 +1,8 @@
 # PerseusDarkMode — Xcode 14.2+
 
-> Dark Mode.
+[`iOS approbation app`](https://github.com/perseusrealdeal/iOS.DarkMode.Discovery) [`macOS approbation app`](https://github.com/perseusrealdeal/macOS.DarkMode.Discovery)
+
+`PerseusDarkMode` is a single author and personale solution developed in `person-to-person` relationship paradigm.
 
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
@@ -21,19 +23,157 @@
 
 ## In brief > Idea to use, the Why
 
-> TODO: Short description.
+Package in Swift unified for both iOS and macOS to support Dark Mode capabilities of getting elder devices.
 
 ## Build system requirements
 
 - [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
 
-# Manual
-
-> TODO: Lib usage description.
-
 # First-party software
 
 - [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.0.3](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.0.3)
+
+# Installation
+
+## Standalone
+
+Use the single source code file [PerseusDarkModeStar.swift](https://github.com/perseusrealdeal/PerseusDarkMode/blob/b772b406c744be641fee55c7033b42e7991123f3/PerseusDarkModeStar.swift) directly in your project.
+
+## Swift Package Manager
+
+`Project in the Navigator > Package Dependencies > Add Package Dependency`
+
+> Put the following line in the package search field:
+
+`https://github.com/perseusrealdeal/PerseusDarkMode`
+
+> Dependency rule: 
+
+`Up to Next Major Version`
+
+# Usage
+
+`Step 1:` **Install the package dependency in the prefered way either Standalone or SPM**
+
+`Step 2 A:` **Setup dependency for iOS**
+
+`Override traitCollectionDidChange` of the main screen (the first one, top screen)
+
+```swift
+
+class MainViewController: UIViewController {
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            DarkModeAgent.processTraitCollectionDidChange(previousTraitCollection)
+        }
+    }
+}
+```
+
+`Settings bundle` used for switching DarkMode, so put the statements into the app's delegate
+
+```swift
+
+extension AppDelegate: UIApplicationDelegate {
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        log.message("[\(type(of: self))].\(#function)")
+
+        // Update Dark Mode from Settings
+        if let choice = DarkModeAgent.isDarkModeChanged() {
+            // Change Dark Mode value in Perseus Dark Mode library
+            DarkModeAgent.DarkModeUserChoice = choice
+            // Update appearance in accoring with changed Dark Mode Style
+            DarkModeAgent.makeUp()
+        }
+    }
+}
+
+```
+
+`Step 2 B:` **Setup dependency for macOS**
+
+`Make a call in applicationDidFinishLaunching` DarkModeAgent.makeUp()
+
+```swift
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+
+        log.message("Launching with business matter purpose...", .info)
+        log.message("[\(type(of: self))].\(#function)")
+
+        DarkModeAgent.makeUp()
+    }
+}
+
+```
+
+`Step 3:` **Apply DarkMode for UI element**
+
+Put `DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))` in UI element's config method, so each time when DarkModeAgent.makeUp() called all registered makeUp methods will be called.
+
+`UIViewController` : #selector(makeUp) to switch DarkMode
+
+```swift
+class MainViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
+    }
+    
+    @objc private func makeUp() {
+        view.backgroundColor = .customPrimaryBackground
+
+        let choice = DarkModeAgent.DarkModeUserChoice
+        log.message("\(choice)") // .auto or .on or .off
+        
+        // Update all depended elements.
+    }
+}
+```
+
+`UIView` : #selector(makeUp) to switch DarkMode
+
+```swift
+class Panel: UIView {
+
+    // Initiating
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        commonInit()
+    }
+    
+    private func commonInit() {
+
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
+    }
+    
+    @objc private func makeUp() {
+        // Update all depended elements.
+    }
+}
+```
+
+There is another way to be notified of Dark Mode—KVO.
+
+> [DarkModeImageView](https://github.com/perseusrealdeal/PerseusDarkMode/blob/7266d21cf687b9d5edd6ef6e6de6d65a6463142a/Sources/PerseusDarkMode/UISystemKit/DarkModeImageView.swift) class is an expressive sample of Dark Mode KVO usage for both macOS and iOS as well.
+
+All usage tips in detail can be found in [`iOS approbation app`](https://github.com/perseusrealdeal/iOS.DarkMode.Discovery) & [`macOS approbation app`](https://github.com/perseusrealdeal/macOS.DarkMode.Discovery)
 
 # Third-party software
 
