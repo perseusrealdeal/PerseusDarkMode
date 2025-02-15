@@ -35,10 +35,12 @@ extension DarkModeAgent {
         DarkModeAgent.makeUp()
     }
 
-    /// Current Dark Mode Settings Key in UserDefaults if differs from current DarkMode user choice
+    /// Check current Dark Mode settings key
     ///
-    /// But returns nil if DM Settings Key = DarkModeAgent.DarkModeUserChoice or doesn't exists.
-    public static func isDarkModeChanged() -> DarkModeOption? {
+    /// Returns current Dark Mode Settings Key in UserDefaults
+    /// if differs from current DarkMode user choice, but returns nil
+    /// if DM Settings Key = DarkModeAgent.DarkModeUserChoice or doesn't exists.
+    public static func isDarkModeSettingsKeyChanged() -> DarkModeOption? {
         log.message("[\(type(of: self))].\(#function)", .info)
 
         // Load enum int value from settings
