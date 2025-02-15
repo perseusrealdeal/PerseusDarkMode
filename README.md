@@ -134,7 +134,7 @@ class MainViewController: UIViewController {
         let choice = DarkModeAgent.DarkModeUserChoice
         log.message("\(choice)") // .auto or .on or .off
         
-        // Update all depended elements.
+        // Update all depended elements...
     }
 }
 ```
@@ -159,12 +159,11 @@ class Panel: UIView {
     }
     
     private func commonInit() {
-
         DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
     }
     
     @objc private func makeUp() {
-        // Update all depended elements.
+        // Update all depended elements...
     }
 }
 ```

@@ -23,17 +23,24 @@ public let DARK_MODE_SETTINGS_KEY = "dark_mode_preference"
 extension DarkModeAgent {
 
     public static func forceDarkMode(_ userChoice: DarkModeOption) {
+        log.message("[\(type(of: self))].\(#function)", .info)
+
         // Change Dark Mode value in settings bundle
         UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
 
         // Change Dark Mode value in Perseus Dark Mode library
         DarkModeAgent.DarkModeUserChoice = userChoice
 
-        // Update appearance in accoring with changed Dark Mode Style
+        // Update appearance to be in accord with actual Dark Mode Style
         DarkModeAgent.makeUp()
     }
 
+    /// Current Dark Mode Settings Key in UserDefaults if differs from current DarkMode user choice
+    ///
+    /// But returns nil if DM Settings Key = DarkModeAgent.DarkModeUserChoice or doesn't exists.
     public static func isDarkModeChanged() -> DarkModeOption? {
+        log.message("[\(type(of: self))].\(#function)", .info)
+
         // Load enum int value from settings
         let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
         UserDefaults.standard.integer(forKey: DARK_MODE_SETTINGS_KEY) : -1
