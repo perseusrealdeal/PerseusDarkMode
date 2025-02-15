@@ -27,7 +27,8 @@ public typealias Responder = NSResponder
 
 /// Name of make up notification.
 public extension Notification.Name {
-    static let MakeAppearanceUpNotification = Notification.Name("MakeAppearanceUpNotification")
+    static let MakeAppearanceUpNotification =
+    Notification.Name("MakeAppearanceUpNotification")
 #if os(macOS)
     static let AppleInterfaceThemeChangedNotification =
     Notification.Name("AppleInterfaceThemeChangedNotification")
