@@ -19,7 +19,7 @@
 
 ## Approbation Matrix
 
-> [A3 Environment](https://docs.google.com/document/d/1K2jOeIknKRRpTEEIPKhxO2H_1eBTof5uTXxyOm5g6nQ/edit?usp=sharing) / [Approbation Results](/APPROBATION.md) / [CHANGELOG](/CHANGELOG.md) for details.
+> [A3 Environment and Approbation Results](/APPROBATION.md) / [CHANGELOG](/CHANGELOG.md) for details.
 
 ## In brief > Idea to use, the Why
 
