@@ -8,6 +8,8 @@
 
 ## macOS approbation result
 
+> The macOS app used to approbate the PerseusDarkMode 2.0.0 is [macos.darkmode.discovery](https://github.com/perseusrealdeal/macOS.DarkMode.Discovery).
+
 | macOS       | Version | Result  | Details |
 | ----------- | ------- | :-----: | ------- |
 | High Sierra | 10.13   | ??      | - |
@@ -20,6 +22,8 @@
 | Sequoia     | 15.1    | ??      | - |
 
 ## iOS approbation result
+
+> The iOS app used to approbate the PerseusDarkMode 2.0.0 is [ios.darkmode.discovery](https://github.com/perseusrealdeal/iOS.DarkMode.Discovery).
 
 | Device          | Simulator | OS Version | Result  | Details |
 | --------------- | :-------: | ---------- | :-----: | ------- |
