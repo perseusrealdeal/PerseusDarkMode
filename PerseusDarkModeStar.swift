@@ -338,12 +338,19 @@ public class DarkMode: NSObject {
                 return .unspecified
             }
 #elseif os(macOS)
+            /*
             if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
                isDark == "Dark" {
                 return .dark
             } else {
                 return .light
             }
+            */
+
+            let effectiveDark = NSApp.windows.first?.effectiveAppearance.bestMatch(
+                from: [.darkAqua, .vibrantDark])
+
+            return [.darkAqua, .vibrantDark].contains(effectiveDark) ? .dark : .light
 #endif
         } else {
             return .unspecified
