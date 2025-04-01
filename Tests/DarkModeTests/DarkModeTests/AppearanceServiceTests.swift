@@ -109,8 +109,9 @@ final class AppearanceServiceTests: XCTestCase {
 
         // assert
 
-        mock.verifyRegisterObserver(observer: DarkModeAgent.it,
-                                    selector: #selector(DarkModeAgent.modeChanged))
+        mock.verifyRegisterObserver(
+            observer: DarkModeAgent.it,
+            selector: #selector(DarkModeAgent.processAppleInterfaceThemeChanged))
     }
 #endif
 }

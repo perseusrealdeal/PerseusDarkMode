@@ -40,11 +40,11 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
-        XCTAssertEqual(result, DARK_MODE_STYLE_DEFAULT)
+        XCTAssertEqual(result, DARK_MODE_DEFAULT)
     }
 
     func test_calculateActualStyle_with_on_and_unspecified_should_return_dark() {
@@ -55,7 +55,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -70,7 +70,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -85,7 +85,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -100,7 +100,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -115,7 +115,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -130,7 +130,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -145,7 +145,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 
@@ -160,7 +160,7 @@ final class DarkModeDecisionTests: XCTestCase {
 
         // act
 
-        let result = DarkModeDecision.calculate(userChoice, systemStyle)
+        let result = DarkModeAgent.calcRequired(userChoice, systemStyle)
 
         // assert
 

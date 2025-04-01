@@ -55,35 +55,36 @@ public class DarkModeAgent {
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
     private(set) static var it = { DarkModeAgent() }()
+
     private init() {
         log.message("[\(type(of: self))].\(#function)", .info)
 #if os(macOS)
-        DarkModeAgent.distributedNCenter.addObserver(
-            self,
-            selector: #selector(modeChanged),
-            name: .AppleInterfaceThemeChangedNotification,
-            object: nil
-        )
-#endif
-    }
-
-#if os(macOS)
-    @objc internal func modeChanged() {
         if #available(macOS 10.14, *) {
-            DarkModeAgent.processAppearanceOSDidChange()
+            DarkModeAgent.distributedNCenter.addObserver(
+                self,
+                selector: #selector(processAppleInterfaceThemeChanged),
+                name: .AppleInterfaceThemeChangedNotification,
+                object: nil
+            )
         }
-    }
-
-    @available(macOS 10.14, *)
-    public static var defaultDarkAppearanceOS: NSAppearance.Name = .darkAqua
-    public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
 #endif
+    }
 
     /// TRUE if Appearance.makeUp once called otherwise FALSE.
     ///
     /// Value is false by default and changed only once
     /// when Appearance.makeUp called for the first time, then always true in run time.
     public static var isEnabled: Bool { return hidden_isEnabled }
+
+    /// Used to make possible applying Black White approach in Screen design.
+    private(set) static var hidden_isEnabled: Bool = false {
+        willSet {
+            if newValue == false { return }
+        }
+    }
+
+    /// Used to reduce double calling of traitCollectionDidChange.
+    internal static var hidden_changeManually: Bool = false
 
 #if DEBUG && os(macOS)
     /// Used for mocking DistributedNotificationCenter in unit testing.
@@ -128,7 +129,7 @@ public class DarkModeAgent {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
 
             // Used for KVO to immediately notify a change has happened
-            recalculateStyleIfNeeded()
+            recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
         }
     }
 
@@ -157,7 +158,7 @@ public class DarkModeAgent {
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
-        recalculateStyleIfNeeded()
+        recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
         hidden_changeManually = false
@@ -173,47 +174,37 @@ public class DarkModeAgent {
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(
         _ previousTraitCollection: UITraitCollection?) {
-        if hidden_changeManually { return }
+            if hidden_changeManually { return }
 
-        guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-              previousSystemStyle.rawValue != shared.systemStyle.rawValue
-        else { return }
+            let current = DarkModeAgent.currentSystemStyle()
 
-        hidden_systemCalledMakeUp()
-    }
-#elseif os(macOS)
-    @available(macOS 10.14, *)
-    internal static func processAppearanceOSDidChange() {
-        if hidden_changeManually { return }
-        hidden_systemCalledMakeUp()
-    }
+            guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+                  previousSystemStyle.rawValue != current.rawValue
+            else { return }
+
+            DarkModeAgent.it.processAppleInterfaceThemeChanged()
+        }
 #endif
 
-    // MARK: - Implementation helpers, privates and internals
-
-    /// Used to make possible applying Black White approach in Screen design.
-    private(set) static var hidden_isEnabled: Bool =
-    false { willSet { if newValue == false { return }}}
-
-    /// Used to reduce double calling of traitCollectionDidChange.
-    internal static var hidden_changeManually: Bool = false
-
     /// Make up if TraitCollectionDidChange.
-    internal static func hidden_systemCalledMakeUp() {
-        if hidden_changeManually { return }
+    @objc public func processAppleInterfaceThemeChanged() {
+        if DarkModeAgent.hidden_changeManually { return }
 
-        hidden_isEnabled = true
+        DarkModeAgent.hidden_isEnabled = true
+#if os(iOS)
+        DarkModeAgent.recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+#elseif os(macOS)
+        let current = DarkModeAgent.currentSystemStyle()
 
-        recalculateStyleIfNeeded()
-        nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
+        let userChoice = DarkModeAgent.DarkModeUserChoice
+        let requiredStyle = DarkModeAgent.calcRequired(userChoice, current)
+
+        DarkModeAgent.shared.hidden_style = requiredStyle
+#endif
+        DarkModeAgent.nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
     }
 
-    /// Updates the app's appearance style value.
-    public static func recalculateStyleIfNeeded() {
-        let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.systemStyle)
-
-        if shared.hidden_style != actualStyle { shared.hidden_style = actualStyle }
-    }
+    // MARK: - Implementation helpers, privates and internals
 
     /// Changes the app's UserInterfaceStyle.
     ///
@@ -243,11 +234,9 @@ public class DarkModeAgent {
         case .auto:
             NSApplication.shared.appearance = nil
         case .on:
-            NSApplication.shared.appearance =
-            NSAppearance(named: DarkModeAgent.defaultDarkAppearanceOS)
+            NSApplication.shared.appearance = NSAppearance(named: DARK_OS_DEFAULT)
         case .off:
-            NSApplication.shared.appearance =
-            NSAppearance(named: DarkModeAgent.defaultLightAppearanceOS)
+            NSApplication.shared.appearance = NSAppearance(named: LIGHT_OS_DEFAULT)
         }
 #endif
     }

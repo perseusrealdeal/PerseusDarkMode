@@ -60,6 +60,16 @@ public extension Notification.Name {
 #endif
 }
 
+#if os(macOS)
+public var DARK_OS_DEFAULT: NSAppearance.Name {
+    if #available(macOS 10.14, *) {
+        return .darkAqua
+    }
+    return .vibrantDark
+}
+public let LIGHT_OS_DEFAULT: NSAppearance.Name = .aqua
+#endif
+
 // swiftlint:disable identifier_name
 public extension Responder {
     var DarkMode: DarkModeProtocol { return DarkModeAgent.shared }
@@ -71,34 +81,33 @@ public class DarkModeAgent {
     public static var shared: DarkMode = { _ = it; return DarkMode() }()
 
     private(set) static var it = { DarkModeAgent() }()
+
     private init() {
 #if os(macOS)
-        DarkModeAgent.distributedNCenter.addObserver(
-            self,
-            selector: #selector(modeChanged),
-            name: .AppleInterfaceThemeChangedNotification,
-            object: nil
-        )
-#endif
-    }
-
-#if os(macOS)
-    @objc internal func modeChanged() {
         if #available(macOS 10.14, *) {
-            DarkModeAgent.processAppearanceOSDidChange()
+            DarkModeAgent.distributedNCenter.addObserver(
+                self,
+                selector: #selector(processAppleInterfaceThemeChanged),
+                name: .AppleInterfaceThemeChangedNotification,
+                object: nil
+            )
         }
-    }
-
-    @available(macOS 10.14, *)
-    public static var defaultDarkAppearanceOS: NSAppearance.Name = .darkAqua
-    public static var defaultLightAppearanceOS: NSAppearance.Name = .aqua
 #endif
+    }
 
     /// TRUE if Appearance.makeUp once called otherwise FALSE.
     ///
     /// Value is false by default and changed only once
     /// when Appearance.makeUp called for the first time, then always true in run time.
     public static var isEnabled: Bool { return hidden_isEnabled }
+
+    private(set) static var hidden_isEnabled: Bool = false {
+        willSet {
+            if newValue == false { return }
+        }
+    }
+
+    internal static var hidden_changeManually: Bool = false
 
 #if DEBUG && os(macOS)
     public static var distributedNCenter: NotificationCenterProtocol =
@@ -126,7 +135,7 @@ public class DarkModeAgent {
         }
         set {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
-            recalculateStyleIfNeeded()
+            recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
         }
     }
 
@@ -143,7 +152,7 @@ public class DarkModeAgent {
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
-        recalculateStyleIfNeeded()
+        recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
         hidden_changeManually = false
@@ -153,38 +162,38 @@ public class DarkModeAgent {
     @available(iOS 13.0, *)
     public static func processTraitCollectionDidChange(
         _ previousTraitCollection: UITraitCollection?) {
-        if hidden_changeManually { return }
+            if hidden_changeManually { return }
 
-        guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
-              previousSystemStyle.rawValue != shared.systemStyle.rawValue
-        else { return }
+            let current = DarkModeAgent.currentSystemStyle()
 
-        hidden_systemCalledMakeUp()
-    }
-#elseif os(macOS)
-    @available(macOS 10.14, *)
-    internal static func processAppearanceOSDidChange() {
-        if hidden_changeManually { return }
-        hidden_systemCalledMakeUp()
-    }
+            guard let previousSystemStyle = previousTraitCollection?.userInterfaceStyle,
+                  previousSystemStyle.rawValue != current.rawValue
+            else { return }
+
+            DarkModeAgent.it.processAppleInterfaceThemeChanged()
+        }
 #endif
 
-    private(set) static var hidden_isEnabled: Bool =
-    false { willSet { if newValue == false { return }}}
+    @objc public func processAppleInterfaceThemeChanged() {
+        if DarkModeAgent.hidden_changeManually { return }
 
-    internal static var hidden_changeManually: Bool = false
-    internal static func hidden_systemCalledMakeUp() {
-        if hidden_changeManually { return }
+        DarkModeAgent.hidden_isEnabled = true
+#if os(iOS)
+        DarkModeAgent.recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+#elseif os(macOS)
+        let current = DarkModeAgent.currentSystemStyle()
 
-        hidden_isEnabled = true
+        let userChoice = DarkModeAgent.DarkModeUserChoice
+        let requiredStyle = DarkModeAgent.calcRequired(userChoice, current)
 
-        recalculateStyleIfNeeded()
-        nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
+        DarkModeAgent.shared.hidden_style = requiredStyle
+#endif
+        DarkModeAgent.nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
     }
 
-    public static func recalculateStyleIfNeeded() {
-        let actualStyle = DarkModeDecision.calculate(DarkModeUserChoice, shared.systemStyle)
-        if shared.hidden_style != actualStyle { shared.hidden_style = actualStyle }
+    public static func recalculateStyleIfNeeded(_ current: SystemStyle) {
+        let requiredStyle = calcRequired(DarkModeUserChoice, current)
+        if shared.hidden_style != requiredStyle { shared.hidden_style = requiredStyle }
     }
 
     @available(iOS 13.0, macOS 10.14, *)
@@ -212,11 +221,9 @@ public class DarkModeAgent {
         case .auto:
             NSApplication.shared.appearance = nil
         case .on:
-            NSApplication.shared.appearance =
-            NSAppearance(named: DarkModeAgent.defaultDarkAppearanceOS)
+            NSApplication.shared.appearance = NSAppearance(named: DARK_OS_DEFAULT)
         case .off:
-            NSApplication.shared.appearance =
-            NSAppearance(named: DarkModeAgent.defaultLightAppearanceOS)
+            NSApplication.shared.appearance = NSAppearance(named: LIGHT_OS_DEFAULT)
         }
 #endif
     }
@@ -293,7 +300,7 @@ public enum SystemStyle: Int, CustomStringConvertible {
 public let DARK_MODE_SETTINGS_KEY = "dark_mode_preference"
 public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
 public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
-public let DARK_MODE_STYLE_DEFAULT = AppearanceStyle.light
+public let DARK_MODE_DEFAULT = AppearanceStyle.light
 public let OBSERVERED_VARIABLE_NAME = "styleObservable"
 
 extension DarkModeAgent {
@@ -319,9 +326,23 @@ public class DarkMode: NSObject {
 
     public var style: AppearanceStyle { return hidden_style }
 
-    @objc public dynamic var styleObservable: Int = DARK_MODE_STYLE_DEFAULT.rawValue
+    @objc public dynamic var styleObservable: Int = DARK_MODE_DEFAULT.rawValue
 
-    public var systemStyle: SystemStyle {
+    internal var hidden_style: AppearanceStyle = DARK_MODE_DEFAULT {
+        didSet { styleObservable = style.rawValue }
+    }
+}
+
+public protocol DarkModeProtocol {
+    var style: AppearanceStyle { get }
+    var styleObservable: Int { get }
+}
+
+extension DarkMode: DarkModeProtocol { }
+
+extension DarkModeAgent {
+
+    public static func currentSystemStyle() -> SystemStyle {
         if #available(iOS 13.0, macOS 10.14, *) {
 #if os(iOS)
             guard let keyWindow = UIWindow.key else { return .unspecified }
@@ -339,69 +360,70 @@ public class DarkMode: NSObject {
             }
 #elseif os(macOS)
             /*
-            if let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle"),
-               isDark == "Dark" {
-                return .dark
-            } else {
-                return .light
+            if force == .os {
+
+                let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
+                let current: SystemStyle = isDark == "Dark" ? .dark : .light
+
+                return current
             }
-            */
+
+            if #available(macOS 11.0, *) {
+
+                let current = NSAppearance.currentDrawing()
+                let effectiveDark = current.bestMatch(from: [.darkAqua, .vibrantDark])
+
+                return [.darkAqua, .vibrantDark].contains(effectiveDark) ? .dark : .light
+            }
 
             let effectiveDark = NSApp.windows.first?.effectiveAppearance.bestMatch(
                 from: [.darkAqua, .vibrantDark])
 
             return [.darkAqua, .vibrantDark].contains(effectiveDark) ? .dark : .light
+            */
+
+            let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
+            let current: SystemStyle = isDark == "Dark" ? .dark : .light
+
+            return current
 #endif
         } else {
-            return .unspecified
+            return .unspecified // HighSierra 10.13, earlier iOS 12.0 and so on.
         }
     }
 
-    internal var hidden_style: AppearanceStyle = DARK_MODE_STYLE_DEFAULT {
-        didSet { styleObservable = style.rawValue }
-    }
-}
+    // MARK: - Calculating Dark Mode Required
 
-public protocol DarkModeProtocol {
-    var style: AppearanceStyle { get }
-    var systemStyle: SystemStyle { get }
-    var styleObservable: Int { get }
-}
-
-extension DarkMode: DarkModeProtocol { }
-
-public class DarkModeDecision {
-
-    private init() { }
-
+    /// Calculates the current required appearance style of the app.
+    ///
     /// Dark Mode decision-making:
     ///
-    ///                  | DarkModeOption
+    ///                  | User
     ///     -------------+-----------------------
-    ///     SystemStyle  | auto    | on   | off
+    ///     System       | auto    | on   | off
     ///     -------------+---------+------+------
     ///     .unspecified | default | dark | light
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public class func calculate(_ userChoice: DarkModeOption,
-                                _ systemStyle: SystemStyle) -> AppearanceStyle {
+    public static func calcRequired(_ user: DarkModeOption,
+                                    _ system: SystemStyle) -> AppearanceStyle {
 
-        if (systemStyle == .unspecified) && (userChoice == .auto) {
-            return DARK_MODE_STYLE_DEFAULT
-        }
-        if (systemStyle == .unspecified) && (userChoice == .on) { return .dark }
-        if (systemStyle == .unspecified) && (userChoice == .off) { return .light }
+        if (system == .unspecified) && (user == .auto) { return DARK_MODE_DEFAULT }
+        if (system == .unspecified) && (user == .on) { return .dark }
+        if (system == .unspecified) && (user == .off) { return .light }
 
-        if (systemStyle == .light) && (userChoice == .auto) { return .light }
-        if (systemStyle == .light) && (userChoice == .on) { return .dark }
-        if (systemStyle == .light) && (userChoice == .off) { return .light }
+        if (system == .light) && (user == .auto) { return .light }
+        if (system == .light) && (user == .on) { return .dark }
+        if (system == .light) && (user == .off) { return .light }
 
-        if (systemStyle == .dark) && (userChoice == .auto) { return .dark }
-        if (systemStyle == .dark) && (userChoice == .on) { return .dark }
-        if (systemStyle == .dark) && (userChoice == .off) { return .light }
+        if (system == .dark) && (user == .auto) { return .dark }
+        if (system == .dark) && (user == .on) { return .dark }
+        if (system == .dark) && (user == .off) { return .light }
 
-        return DARK_MODE_STYLE_DEFAULT
+        // Output default value if somethings goes out of the decision table
+
+        return DARK_MODE_DEFAULT
     }
 }
 
