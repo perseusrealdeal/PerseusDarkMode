@@ -129,7 +129,7 @@ public class DarkModeAgent {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
 
             // Used for KVO to immediately notify a change has happened
-            recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+            recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
         }
     }
 
@@ -158,7 +158,7 @@ public class DarkModeAgent {
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
-        recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+        recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
         hidden_changeManually = false
@@ -192,12 +192,12 @@ public class DarkModeAgent {
 
         DarkModeAgent.hidden_isEnabled = true
 #if os(iOS)
-        DarkModeAgent.recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+        DarkModeAgent.recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
 #elseif os(macOS)
         let current = DarkModeAgent.currentSystemStyle()
 
         let userChoice = DarkModeAgent.DarkModeUserChoice
-        let requiredStyle = DarkModeAgent.calcRequired(userChoice, current)
+        let requiredStyle = DarkModeAgent.makeDecision(userChoice, current)
 
         DarkModeAgent.shared.hidden_style = requiredStyle
 #endif

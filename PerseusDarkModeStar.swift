@@ -4,7 +4,7 @@
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright © 7530 - 7533 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7533 Mikhail Zhigulin of Novosibirsk
 //  Copyright © 7533 PerseusRealDeal
 //
 //  All rights reserved.
@@ -135,7 +135,7 @@ public class DarkModeAgent {
         }
         set {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
-            recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+            recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
         }
     }
 
@@ -152,7 +152,7 @@ public class DarkModeAgent {
 
         if #available(iOS 13.0, macOS 10.14, *) { overrideUserInterfaceStyleIfNeeded() }
 
-        recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+        recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
 
         nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
         hidden_changeManually = false
@@ -179,20 +179,20 @@ public class DarkModeAgent {
 
         DarkModeAgent.hidden_isEnabled = true
 #if os(iOS)
-        DarkModeAgent.recalculateStyleIfNeeded(DarkModeAgent.currentSystemStyle())
+        DarkModeAgent.recalculatePerseusDarkModeIfNeeded(DarkModeAgent.currentSystemStyle())
 #elseif os(macOS)
         let current = DarkModeAgent.currentSystemStyle()
 
         let userChoice = DarkModeAgent.DarkModeUserChoice
-        let requiredStyle = DarkModeAgent.calcRequired(userChoice, current)
+        let requiredStyle = DarkModeAgent.makeDecision(userChoice, current)
 
         DarkModeAgent.shared.hidden_style = requiredStyle
 #endif
         DarkModeAgent.nCenter.post(name: .MakeAppearanceUpNotification, object: nil)
     }
 
-    public static func recalculateStyleIfNeeded(_ current: SystemStyle) {
-        let requiredStyle = calcRequired(DarkModeUserChoice, current)
+    public static func recalculatePerseusDarkModeIfNeeded(_ current: SystemStyle) {
+        let requiredStyle = makeDecision(DarkModeUserChoice, current)
         if shared.hidden_style != requiredStyle { shared.hidden_style = requiredStyle }
     }
 
@@ -206,10 +206,8 @@ public class DarkModeAgent {
         switch DarkModeUserChoice {
         case .auto:
             overrideStyle = .unspecified
-
         case .on:
             overrideStyle = .dark
-
         case .off:
             overrideStyle = .light
         }
@@ -383,9 +381,7 @@ extension DarkModeAgent {
             */
 
             let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
-            let current: SystemStyle = isDark == "Dark" ? .dark : .light
-
-            return current
+            return isDark == "Dark" ? .dark : .light
 #endif
         } else {
             return .unspecified // HighSierra 10.13, earlier iOS 12.0 and so on.
@@ -406,7 +402,7 @@ extension DarkModeAgent {
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public static func calcRequired(_ user: DarkModeOption,
+    public static func makeDecision(_ user: DarkModeOption,
                                     _ system: SystemStyle) -> AppearanceStyle {
 
         if (system == .unspecified) && (user == .auto) { return DARK_MODE_DEFAULT }

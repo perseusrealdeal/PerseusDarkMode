@@ -62,17 +62,15 @@ extension DarkModeAgent {
             */
 
             let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
-            let current: SystemStyle = isDark == "Dark" ? .dark : .light
-
-            return current
+            return isDark == "Dark" ? .dark : .light
 #endif
         } else {
             return .unspecified // HighSierra 10.13, earlier iOS 12.0 and so on.
         }
     }
 
-    public static func recalculateStyleIfNeeded(_ current: SystemStyle) {
-        let requiredStyle = calcRequired(DarkModeUserChoice, current)
+    public static func recalculatePerseusDarkModeIfNeeded(_ current: SystemStyle) {
+        let requiredStyle = makeDecision(DarkModeUserChoice, current)
         if shared.hidden_style != requiredStyle { shared.hidden_style = requiredStyle }
     }
 
@@ -90,7 +88,7 @@ extension DarkModeAgent {
     ///     .light       | light   | dark | light
     ///     .dark        | dark    | dark | light
     ///
-    public static func calcRequired(_ user: DarkModeOption,
+    public static func makeDecision(_ user: DarkModeOption,
                                     _ system: SystemStyle) -> AppearanceStyle {
 
         if (system == .unspecified) && (user == .auto) { return DARK_MODE_DEFAULT }
