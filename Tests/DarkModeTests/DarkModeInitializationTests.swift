@@ -30,5 +30,7 @@ import XCTest
 
 final class DarkModeInitializationTests: XCTestCase {
 
-    func test_the_first_success() { XCTAssertTrue(true, "It's done!") }
+    func test_the_first_success() {
+        log.message("It's done!")
+    }
 }
