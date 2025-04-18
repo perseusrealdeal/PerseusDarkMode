@@ -47,8 +47,6 @@ import UIKit
 import Cocoa
 #endif
 
-// import ConsolePerseusLogger
-
 public let APPEARANCE_DEFAULT = AppearanceStyle.light
 
 public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
@@ -169,7 +167,7 @@ public class DarkModeAgent {
 
     private static var instance = { DarkModeAgent() }()
     private init() {
-        // log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)")
 #if os(macOS)
         if #available(macOS 10.14, *) {
             DarkModeAgent.distributedNCenter.addObserver(
