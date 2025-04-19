@@ -4,11 +4,6 @@
 //
 //  For iOS and macOS only. Use Stars to adopt for the platform specifics you need.
 //
-//  RECOMMENED PLATFORMS: macOS 10.13+ | iOS 11.0+
-//  MINOR PLATFORMS FOR STANDALONE USAGE: macOS 10.12+ | iOS 10.0+
-//
-//  SWIFT: 5.7 / Xcode 14.2+
-//
 //  DESC: USE LOGGER LIKE A VARIABLE ANYWHERE YOU WANT.
 //
 //  Created by Mikhail Zhigulin in 7531.

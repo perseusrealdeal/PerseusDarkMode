@@ -19,6 +19,10 @@ import PackageDescription
 
 let package = Package(
     name: "PerseusDarkMode",
+    platforms: [
+        .macOS(.v10_13),
+        .iOS(.v11)
+    ],
     products: [
         .library(
             name: "PerseusDarkMode",
@@ -32,7 +36,7 @@ let package = Package(
             name: "PerseusDarkMode",
             dependencies: []),
         .testTarget(
-            name: "DarkModeTests",
+            name: "UnitTests",
             dependencies: ["PerseusDarkMode"])
         ]
 )
