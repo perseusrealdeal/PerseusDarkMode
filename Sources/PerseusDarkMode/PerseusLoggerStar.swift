@@ -57,7 +57,7 @@ public let CONSOLE_APP_CATEGORY_DEFAULT = "Logger"
 
 public class PerseusLogger {
 
-    // MARKS: - Specific types
+    // MARK: - Specifics
 
     public enum Status {
         case on
