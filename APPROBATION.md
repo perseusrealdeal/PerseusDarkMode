@@ -1,14 +1,12 @@
 # Approbation Matrix / PerseusDarkMode 2.0.0
 
-> Approbated features: PerseusDarkMode, PerseusUISystemKit <br/>
-
 > NOTE: To catch all log messages Mac Console should be started first then after a little while the logged app.
 
 > Compilation: macOS Monterey 12.7.6 / Xcode 14.2
 
 ## macOS approbation result
 
-> The macOS app used to approbate the PerseusDarkMode 2.0.0 is [macos.darkmode.discovery](https://github.com/perseusrealdeal/macOS.DarkMode.Discovery).
+> The approbation macOS app for PerseusDarkMode 2.0.0 is [Arkenstone](https://github.com/perseusrealdeal/Arkenstone).
 
 | macOS       | Version | Result  | Details |
 | ----------- | ------- | :-----: | ------- |
@@ -19,11 +17,11 @@
 | Monterey    | 12.7    | ??      | - |
 | Ventura     | 13.7    | ??      | - |
 | Sonoma      | 14.7    | ??      | - |
-| Sequoia     | 15.1    | ??      | - |
+| Sequoia     | 15.3    | ??      | - |
 
 ## iOS approbation result
 
-> The iOS app used to approbate the PerseusDarkMode 2.0.0 is [ios.darkmode.discovery](https://github.com/perseusrealdeal/iOS.DarkMode.Discovery).
+> The approbation iOS app for PerseusDarkMode 2.0.0 is [The One Ring](https://github.com/perseusrealdeal/TheOneRing).
 
 | Device          | Simulator | OS Version | Result  | Details |
 | --------------- | :-------: | ---------- | :-----: | ------- |
