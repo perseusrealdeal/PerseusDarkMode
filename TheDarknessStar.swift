@@ -1,5 +1,5 @@
 //
-//  PerseusDarkModeStar.swift
+//  TheDarknessStar.swift
 //  Version: 2.0.0
 //
 //  For iOS and macOS only. Use Stars to adopt for the platform specifics you need.
@@ -46,6 +46,8 @@ import UIKit
 #elseif canImport(Cocoa)
 import Cocoa
 #endif
+
+// import ConsolePerseusLogger
 
 public let APPEARANCE_DEFAULT = AppearanceStyle.light
 
@@ -167,7 +169,7 @@ public class DarkModeAgent {
 
     private static var instance = { DarkModeAgent() }()
     private init() {
-        log.message("[\(type(of: self))].\(#function)")
+        // log.message("[\(type(of: self))].\(#function)")
 #if os(macOS)
         if #available(macOS 10.14, *) {
             DarkModeAgent.distributedNCenter.addObserver(
