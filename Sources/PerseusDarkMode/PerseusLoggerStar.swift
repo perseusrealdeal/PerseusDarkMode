@@ -122,13 +122,13 @@ public class PerseusLogger {
         // [DEBUG] message
 
         // marks true, time true, directives false
-        // [2025:04:17] [20:31:53:630594968] [DEBUG] message
+        // [DEBUG] [2025:04:17] [20:31:53:630594968] message
 
         // marks true, time false, directives true
         // [DEBUG] message, file: File.swift, line: 29
 
         // marks true, time true, directives true
-        // [2025:04:17] [20:31:53:630918979] [DEBUG] message, file: File.swift, line: 29
+        // [DEBUG] [2025:04:17] [20:31:53:630918979] message, file: File.swift, line: 29
 
         // marks false, directives true
         // message, file: File.swift, line: 29
@@ -137,7 +137,7 @@ public class PerseusLogger {
         // message
 
         case full
-        // [2025:04:17] [20:31:53:630918979] [DEBUG] message, file: File.swift, line: 29
+        // [DEBUG] [2025:04:17] [20:31:53:630918979] message, file: File.swift, line: 29
 
         case textonly
         // message
@@ -201,7 +201,6 @@ public class PerseusLogger {
 
     // MARK: - Contract
 
-    // swiftlint:disable:next cyclomatic_complexity
     public static func message(_ text: @autoclosure () -> String,
                                _ type: Level = .debug,
                                _ file: StaticString = #file,
@@ -222,15 +221,15 @@ public class PerseusLogger {
             message = "\(text())"
         }
 
-        // Level.
-
-        let isTyped = (format == .full) ? true : marks && (format != .textonly)
-        message = isTyped ? "\(type.tag) \(message)" : message
-
         // Time.
 
         let isTimed = (format == .full) ? true : marks && time && (format != .textonly)
         message = isTimed ? "\(getLocalTime()) \(message)" : message
+
+        // Type.
+
+        let isTyped = (format == .full) ? true : marks && (format != .textonly)
+        message = isTyped ? "\(type.tag) \(message)" : message
 
         // Print.
 
@@ -239,6 +238,7 @@ public class PerseusLogger {
 
     // MARK: - Implementation
 
+    // swiftlint:disable:next cyclomatic_complexity
     private static func print(_ text: String, _ type: Level) {
 
         let message = text
@@ -313,8 +313,8 @@ public class PerseusLogger {
         calendar.timeZone = timezone
         calendar.locale = Locale(identifier: "en_US_POSIX") // Supports nanoseconds. For sure.
 
-        let current = Date(timeIntervalSince1970:(Date().timeIntervalSince1970 +
-                                                  Double(TimeZone.current.secondsFromGMT())))
+        let current = Date(timeIntervalSince1970: (Date().timeIntervalSince1970 +
+                                                   Double(TimeZone.current.secondsFromGMT())))
 
         // Parse date.
 
