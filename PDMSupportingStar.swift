@@ -1,13 +1,17 @@
 //
 //  PDMSupportingStar.swift
-//  Version: 2.0.0 (PerseusUISystemKit previously)
+//  Version: 2.0.0
 //
-//  For iOS and macOS only. Use Stars to adopt for the platform specifics you need.
+//  The Darkness Support Classes (PerseusUISystemKit previously)
+//
+//
+//  For iOS and macOS only. Use Stars to adopt for the specifics you need.
 //
 //  Created by Mikhail Zhigulin of Novosibirsk in 7530.
 //
 //  The year starts from the creation of the world according to a Slavic calendar.
 //  September, the 1st of Slavic year.
+//
 //
 //  Unlicensed Free Software
 //
@@ -53,8 +57,12 @@ public typealias Color = UIColor
 public typealias Color = NSColor
 #endif
 
-public func rgba255(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat = 1.0)
-    -> Color { return Color(red: red/255, green: green/255, blue: blue/255, alpha: alpha) }
+public func rgba255(_ red: CGFloat,
+                    _ green: CGFloat,
+                    _ blue: CGFloat,
+                    _ alpha: CGFloat = 1.0) -> Color {
+    return Color(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+}
 
 public extension Color {
 
@@ -555,7 +563,7 @@ public class DarkModeImageView: UIImageView {
         }
     }
 
-    private(set) var darkModeObserver: DarkModeObserver?
+    private(set) var theDarknessTrigger: DarkModeObserver?
 
     private(set) var light: UIImage?
     private(set) var dark: UIImage?
@@ -571,7 +579,7 @@ public class DarkModeImageView: UIImageView {
     }
 
     private func configure() {
-        darkModeObserver = DarkModeObserver { style in
+        theDarknessTrigger = DarkModeObserver { style in
             self.image = style == .light ? self.light : self.dark
         }
 
@@ -582,7 +590,7 @@ public class DarkModeImageView: UIImageView {
         self.light = light
         self.dark = dark
 
-        darkModeObserver?.action = { style in
+        theDarknessTrigger?.action = { style in
             self.image = style == .light ? self.light : self.dark
         }
 
@@ -672,7 +680,7 @@ public class DarkModeImageView: NSImageView {
         }
     }
 
-    private(set) var darkModeObserver: DarkModeObserver?
+    private(set) var theDarknessTrigger: DarkModeObserver?
 
     override public func awakeFromNib() {
         guard aspectFillClipToBounds else { return }
@@ -701,7 +709,7 @@ public class DarkModeImageView: NSImageView {
     }
 
     private func configure() {
-        darkModeObserver = DarkModeObserver { style in
+        theDarknessTrigger = DarkModeObserver { style in
             self.image = style == .light ? self.imageLight : self.imageDark
         }
     }

@@ -5,9 +5,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
-## [2.0.0] - [2025-NN-NN], PerseusDarkMode
+## [2.0.0] - [2025-04-NN], PerseusDarkMode
 
-- Minimum build requirements: macOS 10.13+, iOS 11.0+, and Xcode 14.2+.
+- Minimum build requirements: macOS 10.13+, iOS 11.0+, Xcode 14.2+. If standalone Xcode 10.1+.
 
 ### Changed
 
@@ -28,6 +28,10 @@ Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 - PerseusDarkMode API.
 - Source Code.
 - Documentation.
+
+### Fixed
+
+- PerseusDarkMode auto detect DarkMode changes.
 
 ### Updated
 

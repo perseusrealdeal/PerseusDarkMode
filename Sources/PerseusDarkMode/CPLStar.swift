@@ -1,8 +1,11 @@
 //
-//  PerseusLoggerStar.swift
+//  CPLStar.swift
 //  Version: 1.1.0
 //
-//  For iOS and macOS only. Use Stars to adopt for the platform specifics you need.
+//  Standalone ConsolePerseusLogger.
+//
+//
+//  For iOS and macOS only. Use Stars to adopt for the specifics you need.
 //
 //  DESC: USE LOGGER LIKE A VARIABLE ANYWHERE YOU WANT.
 //
@@ -47,7 +50,7 @@ import Foundation
 import os
 
 // swiftlint:disable type_name
-typealias log = PerseusLogger
+typealias log = PerseusLogger // In SPM package should be not public except TheOne.
 // swiftlint:enable type_name
 
 public typealias ConsoleObject = (subsystem: String, category: String)
@@ -115,7 +118,7 @@ public class PerseusLogger {
         case nanosecond  // -9.
     }
 
-    public enum MessageFormat {
+    public enum MessageFormat { // [TYPE] [DATE] [TIME] message, file: #, line: #
 
         case short
         // marks true, time false, directives false
@@ -158,8 +161,8 @@ public class PerseusLogger {
     public static var subsecond = TimeMultiply.nanosecond
     public static var format = MessageFormat.short
 
-    public static var marks = true // [DEBUG] tag in message.
-    public static var time = false // If also and marks true adds time tags to message.
+    public static var marks = true // Controls tags [TYPE] [DATE] [TIME].
+    public static var time = false // If also and marks true adds [DATE] [TIME] to message.
 
     public static var directives = false // File# and Line# in message.
 
@@ -316,22 +319,23 @@ public class PerseusLogger {
         let current = Date(timeIntervalSince1970: (Date().timeIntervalSince1970 +
                                                    Double(TimeZone.current.secondsFromGMT())))
 
-        // Parse date.
+        let details: Set<Calendar.Component> =
+        [
+            .year, .month, .day, .hour, .minute, .second, .nanosecond
+        ]
 
-        var details: Set<Calendar.Component> = [.year, .month, .day]
-        var components = calendar.dateComponents(details, from: current)
+        let components = calendar.dateComponents(details, from: current)
+
+        // Parse date.
 
         guard
             let year = components.year,
             let month = components.month?.inTime,
             let day = components.day?.inTime else { return "TIME" }
 
-        let date = "[\(year):\(month):\(day)]"
+        let date = "[\(year)-\(month)-\(day)]"
 
         // Parse time.
-
-        details = [.hour, .minute, .second, .nanosecond]
-        components = calendar.dateComponents(details, from: current)
 
         guard
             let hour = components.hour?.inTime, // Always in 24-hour.

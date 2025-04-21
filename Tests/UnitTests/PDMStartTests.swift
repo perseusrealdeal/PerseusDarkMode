@@ -19,6 +19,7 @@ final class FunctionalTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
     func test_the_first_success() {
-        log.message("It's done!")
+        log.time = true
+        log.message(#function)
     }
 }

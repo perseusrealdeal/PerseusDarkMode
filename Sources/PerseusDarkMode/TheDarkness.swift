@@ -1,8 +1,11 @@
 //
 //  TheDarkness.swift
-//  Version: 2.0.0
+//  PerseusDarkMode
 //
-//  For iOS and macOS only. Use Stars to adopt for the platform specifics you need.
+//
+//  For iOS and macOS only. Use Stars to adopt for the specifics you need.
+//
+//  DESC: THE DARKNESS YOU CAN FORCE.
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
@@ -167,7 +170,7 @@ public class DarkModeAgent {
 
     private static var instance = { DarkModeAgent() }()
     private init() {
-        log.message("[\(type(of: self))].\(#function)")
+        log.message("[\(type(of: self))].\(#function)", .info)
 #if os(macOS)
         if #available(macOS 10.14, *) {
             DarkModeAgent.distributedNCenter.addObserver(
@@ -200,6 +203,7 @@ public class DarkModeAgent {
     }
 
     public static func force(_ userChoice: DarkModeOption) {
+        log.message("[\(type(of: self))].\(#function) \(userChoice)", .info)
 
         DarkModeAgent.userChoice = userChoice
         DarkModeAgent.instance.refresh()
