@@ -24,12 +24,14 @@
 
 > Use Stars to adopt [`PDM`](/PDMStar.swift) for the specifics you need.
 
-# Support Code (external part of PDM)
+# Support Code
 
 [![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMSupportingStar.swift)
 [![License](http://img.shields.io/:License-Unlicense-green.svg)](http://unlicense.org/)
 
-> [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a collection of classes a widly helpful in accord with PDM.
+> [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a peace of code a widly helpful in accord with PDM.
+
+> `PDMSupportingStar.swift` goes as an external part of `PDM`.
 
 ## Approbation Matrix
 
@@ -42,6 +44,8 @@ The Darkness. To take control of the Dark in the app.
 ## Build requirements
 
 - [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
+
+> But as the single source code file [PDMStar.swift](/PDMStar.swift) PDM can be used even in Xcode 10.1.
 
 ## First-party software
 
@@ -63,7 +67,7 @@ The Darkness. To take control of the Dark in the app.
 
 ## Steps for Cocoa macOS project
 
-`Step 2:` Call to `force` if `applicationDidFinishLaunching` in the AppDelegate
+`Step 2:` In the AppDelegate when `applicationDidFinishLaunching` call `force`
 
 ```swift
 
@@ -79,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 ```
 
-`Step 3:` Register the MainWindowController
+`Step 3:` Register the MainWindowController for Dark Mode changes
 
 ```swift
 
@@ -96,7 +100,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
     @objc private func makeUp() {
     
-    // Called every time if the DarkMode changes.
+    // Runs every time if Dark Mode changes.
     // The current DarkMode value is reliable here.
     
     let isDark = DarkMode.style == .dark
@@ -109,7 +113,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
 ## Steps for UIKit iOS project
 
-`Step 2:` Call to `force` if `didFinishLaunchingWithOptions` in the AppDelegate
+`Step 2:` In the AppDelegate when `didFinishLaunchingWithOptions` call `force`
 
 ```swift
 
@@ -149,7 +153,7 @@ extension AppDelegate: UIApplicationDelegate {
 
 ```
 
-`Step 3:` Register the MainViewController and process traitCollectionDidChange event
+`Step 3:` Register the MainViewController and process traitCollectionDidChange for DarkMode changes
 
 ```swift
 
@@ -174,7 +178,7 @@ class MainViewController: UIViewController {
     
     @objc private func makeUp() {
     
-    // Called every time if the DarkMode changes.
+    // Runs every time if Dark Mode changes.
     // The current DarkMode value is reliable here.
     
     let isDark = DarkMode.style == .dark
@@ -189,19 +193,61 @@ class MainViewController: UIViewController {
 
 ## Force Dark Mode
 
-> TODO How to force DarkMode?
+> The Dark Mode of your app can be easely forced in `.on`, `.off` or `.auto` just call method `force` of DarkModeAgent like this. 
 
-## Get awared of DarkMode Changes
+```swift
 
-> Perseus Dark Mode sensitive code should be placed within block that is called every time if DarkMode changes.
+DarkModeAgent.force(.auto) // That's all.
 
-> TODO: Registering and makeUp()
+```
 
-> TODO: KVO and makeUp()
+The `force` will change the appearance of your app immediately including system components and will make run all custom DarkMode sensitive block of code required every time if DarkMode Changes.
+
+## Get awared of DarkMode Changes ()
+
+> To declare custom DarkMode sensitive code that runs every time if DarkMode Changes register the object or creat a DarkMode trigger:
+
+`Use Case -` Register an object to be notified on changes
+
+```swift
+
+class DarkModeSensitiveObject {
+
+    init() {
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    @objc private func makeUp() {
+        // Runs evary time if Dark Mode changes.
+    }
+}
+
+```
+
+`Use Case -` Creat a DarkMode trigger and give it an action
+
+```swift
+
+class DarkModeSensitiveObject {
+
+    private var theDarknessTrigger = DarkModeObserver()
+
+    init() {
+        theDarnessTrigger.action = { _ in
+            self.makeUp()
+        }
+    }
+
+    private func makeUp() {
+        // Runs evary time if Dark Mode changes.
+    }
+}
+
+```
 
 ## React to DarkMode Changes
 
-> `Use Case -` Custom Color sensitive to DarkMode.
+`Use Case -` Custom DarkMode Sensitive Color
 
 ```swift
 
@@ -239,10 +285,10 @@ extension Color {
 
 ```swift
 
-    // Called every time if the DarkMode changes. KVO Method or registered. 
-    @objc private func makeUp() {
-        self.backgroundColor = .customRed
-    }
+// Runs every time if the DarkMode changes. Use KVO (DarkModeObserver) or be registered by DarkModeAgent. 
+@objc private func makeUp() {
+    self.backgroundColor = .customRed
+}
 
 ```
 
