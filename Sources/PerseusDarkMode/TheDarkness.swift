@@ -212,12 +212,14 @@ public class DarkModeAgent {
         DarkModeAgent.userChoice = userChoice
         DarkModeAgent.instance.refresh()
 
-#if os(macOS)
-        if DarkModeAgent.userChoice != .auto { // In auto mode observation notifies change.
+#if os(iOS)
+        DarkModeAgent.instance.notifyAllRegistered()
+#elseif os(macOS)
+        if #unavailable(macOS 10.14) { // For HighSierra.
+            DarkModeAgent.instance.notifyAllRegistered()
+        } else if DarkModeAgent.userChoice != .auto { // If .auto observation notifies change.
             DarkModeAgent.instance.notifyAllRegistered()
         }
-#elseif os(iOS)
-        DarkModeAgent.instance.notifyAllRegistered()
 #endif
     }
 
