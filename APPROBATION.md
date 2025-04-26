@@ -14,7 +14,7 @@
 | Mojave      | 10.14   | ??      | - |
 | Catalina    | 10.15   | ??      | - |
 | Big Sur     | 11.7    | ??      | - |
-| Monterey    | 12.7    | ??      | - |
+| Monterey    | 12.7    | ok      | - |
 | Ventura     | 13.7    | ??      | - |
 | Sonoma      | 14.7    | ??      | - |
 | Sequoia     | 15.3    | ??      | - |
@@ -25,8 +25,8 @@
 
 | Device          | Simulator | OS Version | Result  | Details |
 | --------------- | :-------: | ---------- | :-----: | ------- |
-| iPad Air        | no        | 12.5.7     | ??      | - |
-| iPhone SE (3rd) | yes       | 16.2       | ??      | - |
+| iPad Air        | no        | 12.5.7     | ok      | - |
+| iPhone SE (3rd) | yes       | 16.2       | ok      | - |
 
 ## A3 environment
 
