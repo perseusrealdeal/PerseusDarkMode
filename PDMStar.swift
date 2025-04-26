@@ -159,6 +159,10 @@ public class DarkModeAgent {
         }
         set {
             ud.setValue(newValue.rawValue, forKey: DARK_MODE_USER_CHOICE_KEY)
+#if os(iOS)
+            // Set DarkMode option for Settings bundle
+            ud.setValue(newValue.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
+#endif
         }
     }
 
