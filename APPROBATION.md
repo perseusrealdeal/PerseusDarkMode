@@ -10,14 +10,14 @@
 
 | macOS       | Version | Result  | Details |
 | ----------- | ------- | :-----: | ------- |
-| High Sierra | 10.13   | ??      | - |
-| Mojave      | 10.14   | ??      | - |
-| Catalina    | 10.15   | ??      | - |
-| Big Sur     | 11.7    | ??      | - |
+| High Sierra | 10.13   | ok      | - |
+| Mojave      | 10.14   | ok      | - |
+| Catalina    | 10.15   | ok      | - |
+| Big Sur     | 11.7    | ok      | - |
 | Monterey    | 12.7    | ok      | - |
-| Ventura     | 13.7    | ??      | - |
-| Sonoma      | 14.7    | ??      | - |
-| Sequoia     | 15.3    | ??      | - |
+| Ventura     | 13.7    | ok      | - |
+| Sonoma      | 14.7    | ok      | - |
+| Sequoia     | 15.3    | ok      | - |
 
 ## iOS approbation result
 
