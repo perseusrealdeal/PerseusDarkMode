@@ -1,46 +1,40 @@
-name: 'Tests'
+# .github/workflows/main.yml
+name: 'Build & Tests'
 
-on: 
+on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 #  schedule:
 #    - cron: '5 5 * * 5'
-    
+
 jobs:
-  unit-testing-iOS: 
-    runs-on: macos-latest
+
+  macOS-build:
+    runs-on: macos-14
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
-    - name: Show xcodebuild version
-      run: xcodebuild -version
-    - name: Show xcode embedded SDKs
-      run: xcodebuild -showsdks
-    - name: Show buildable schemes
-      run: xcodebuild -list
-    - uses: mxcl/xcodebuild@v1.9.2
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3
       with:
-        platform: iOS
+        platform: macOS
         scheme: 'PerseusDarkMode'
-        action: test
+        action: build
         code-coverage: true
         verbosity: xcpretty
         upload-logs: always
-  
-  unit-testing-macOS: 
-    runs-on: macos-latest
+
+  macOS-test:
+    runs-on: macos-14
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
-    - name: Show xcodebuild version
-      run: xcodebuild -version
-    - name: Show xcode embedded SDKs
-      run: xcodebuild -showsdks
-    - name: Show buildable schemes
-      run: xcodebuild -list
-    - uses: mxcl/xcodebuild@v1.9.2
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3
       with:
         platform: macOS
         scheme: 'PerseusDarkMode'
@@ -48,4 +42,35 @@ jobs:
         code-coverage: true
         verbosity: xcpretty
         upload-logs: always
-        
+
+  iOS-build:
+    runs-on: macos-14
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3
+      with:
+        platform: iOS
+        scheme: 'PerseusDarkMode'
+        action: build
+        code-coverage: true
+        verbosity: xcpretty
+        upload-logs: always
+
+  iOS-test:
+    runs-on: macos-14
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Select Xcode 15.4
+      run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
+    - uses: mxcl/xcodebuild@v3
+      with:
+        platform: iOS
+        scheme: 'PerseusDarkMode'
+        action: test
+        code-coverage: true
+        verbosity: xcpretty
+        upload-logs: always

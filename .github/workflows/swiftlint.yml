@@ -1,0 +1,17 @@
+# .github/workflows/swiftlint.yml
+name: Style
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  SwiftLint:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cirruslabs/swiftlint-action@v1
+        with:
+          version: latest
