@@ -1,46 +1,53 @@
-# Approbation Matrix / <Component's Name>
-
-> Approbated features: ...<br/>
+# Approbation Matrix / PerseusDarkMode 2.0.0
 
 > NOTE: To catch all log messages Mac Console should be started first then after a little while the logged app.
 
-## macOS
+> Compilation: macOS Monterey 12.7.6 / Xcode 14.2
 
-| macOS       | Version  | Result  | Details |
-| ----------- | -------- | :-----: | ------- |
-| High Sierra | 10.13.6  | ??      | - |
-| Mojave      | 10.14.6  | ??      | - |
-| Catalina    | 10.15.7  | ??      | - |
-| Big Sur     | 11.7.10  | ??      | - |
-| Monterey    | 12.7.6   | ??      | - |
-| Ventura     | 13.7     | ??      | - |
-| Sonoma      | 14.6.1   | ??      | - |
-| Sequoia     | 15.0     | ??      | - |
+## macOS approbation result
 
-## iOS
+> The approbation macOS app for PerseusDarkMode 2.0.0 is [Arkenstone](https://github.com/perseusrealdeal/Arkenstone).
 
-> macOS Monterey 12.7.6 / Xcode 14.2
+| macOS       | Version | Result  | Details |
+| ----------- | ------- | :-----: | ------- |
+| High Sierra | 10.13   | ok      | - |
+| Mojave      | 10.14   | ok      | - |
+| Catalina    | 10.15   | ok      | - |
+| Big Sur     | 11.7    | ok      | - |
+| Monterey    | 12.7    | ok      | - |
+| Ventura     | 13.7    | ok      | - |
+| Sonoma      | 14.7    | ok      | - |
+| Sequoia     | 15.3    | ok      | - |
 
-<table>
-    <tr>
-      <th>iOS</th>
-      <th>Simulator</th>
-      <th>Device</th>
-      <th>Result</th>
-      <th>Details</th>
-    </tr>
-    <tr>
-      <td nowrap>iOS 12.5.7</td>
-      <td>-</td>
-      <td nowrap>iPad Air / iOS 12.5.7</td>
-      <td>??</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td nowrap>iOS 16.2</td>
-      <td nowrap>iPhone SE (3rd gen)</td>
-      <td>-</td>
-      <td>??</td>
-      <td>-</td>
-    </tr>
-</table>
+## iOS approbation result
+
+> The approbation iOS app for PerseusDarkMode 2.0.0 is [The One Ring](https://github.com/perseusrealdeal/TheOneRing).
+
+| Device          | Simulator | OS Version | Result  | Details |
+| --------------- | :-------: | ---------- | :-----: | ------- |
+| iPad Air        | no        | 12.5.7     | ok      | - |
+| iPhone SE (3rd) | yes       | 16.2       | ok      | - |
+
+## A3 environment
+
+### List of available Apple machines
+
+> Excluded: virtualization (e.g. VirtualBox) and hackintosh
+
+| Machine     | Memory | Storage                |
+| ----------- | ------ | ---------------------- |
+| Mac mini    | 16GB   | SATA 480GB, NVMe 256GB |
+| MacBook Pro | 8GB    | 256GB                  |
+
+### System configuration for A3 environment
+
+| macOS       | Version | Machine     | Xcode  | OpenCore | Git Client     |
+| ----------- | ------- | ----------- | ------ | -------- | -------------- |
+| High Sierra | 10.13.6 | Mac mini    | 10.1   | -        | GitHub Desktop |
+| Mojave      | 10.14.6 | Mac mini    | 11.3.1 | -        | GitHub Desktop |
+| Catalina    | 10.15.7 | Mac mini    | 11.7   | -        | GitHub Desktop |
+| Big Sur     | 11.7.10 | Mac mini    | 13.2.1 | -        | GitHub Desktop |
+| Monterey    | 12.7.6  | Mac mini    | 14.2   | -        | SmartGit       |
+| Ventura     | 13.7.4  | MacBook Pro | 15.2   | -        | GitHub Desktop |
+| Sonoma      | 14.7.4  | MacBook Pro | 16.2   | yes      | GitHub Desktop |
+| Sequoia     | 15.3.1  | MacBook Pro | 16.2   | yes      | GitHub Desktop |

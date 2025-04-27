@@ -5,32 +5,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
-## [2.0.0] - [2025-NN-NN], PerseusDarkMode 2.0.0
+## [2.0.0] - [2025-04-NN], PerseusDarkMode
 
-- Minimum build requirements: macOS 10.13+, iOS 11.0+, and Xcode 14.2+.
+- Minimum build requirements: macOS 10.13+, iOS 11.0+, Xcode 14.2+. If standalone Xcode 10.1+.
 
 ### Changed
 
-- Classes and catologs names.
+- Package structure.
+- Calculation macOS Dark Mode.
 
 ### Added
 
-- Approbation and Changelog.
+- Approbation and Changelog docs.
 
 ### Included
 
 - Functions to switch Dark Mode.
-- PerseusUISystemKit classes.
+- PerseusUISystemKit classes, goes as PDMSupportingStar.swift only, out of import.
+
+### Improved
+
+- PerseusDarkMode API.
+- Source Code.
+- Documentation.
+
+### Fixed
+
+- PerseusDarkMode auto detect macOS DarkMode changes.
 
 ### Updated
 
-- License notices.
-- Logging messages.
-- README.
+- PerseusLogger to [CPL v1.1.0](https://github.com/perseusrealdeal/ConsolePerseusLogger).
 
-### Upgraded
+### Removed
 
-- PerseusLogger to [CPL v1.0.3](https://github.com/perseusrealdeal/ConsolePerseusLogger).
+- Unit tests, import test only.
 
 ## [1.1.5] - [2023-01-14], PerseusDarkMode
 
