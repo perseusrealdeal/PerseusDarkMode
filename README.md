@@ -17,6 +17,22 @@
 [![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)
 
+<table>
+  <tr>
+    <th>iOS window</th>
+    <th>iOS Settings bundle</th>
+    <th>macOS window</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b05daa43-aa73-44ac-8479-735d0dcf7d33" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+    <td>
+        <img src="https://github.com/user-attachments/assets/f72bf8e5-e663-49ba-847d-06858b12eb43" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></br>
+        <img src="https://github.com/user-attachments/assets/2b2f15ef-a1e9-433e-b568-bbdb47dcb9a6" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+    </td>
+    <td><img src="https://github.com/user-attachments/assets/50806453-a091-47df-8a9a-f7f7b9eef838" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+  </tr>
+</table>
+
 ## Integration Capabilities
 
 [![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMStar.swift)
@@ -203,7 +219,7 @@ DarkModeAgent.force(.auto) // That's all.
 
 The `force` will change the appearance of your app immediately including system components and will make run all custom DarkMode sensitive block of code required every time if DarkMode Changes.
 
-## Get awared of DarkMode Changes ()
+## Get awared of DarkMode Changes
 
 > To declare custom DarkMode sensitive code that runs every time if DarkMode Changes register the object or creat a DarkMode trigger:
 
