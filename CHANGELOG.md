@@ -21,7 +21,7 @@ Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 ### Included
 
 - Functions to switch Dark Mode.
-- PerseusUISystemKit classes and goes as PDMSupportingStar.swift only, out of import.
+- PerseusUISystemKit classes, goes as PDMSupportingStar.swift only, out of import.
 
 ### Improved
 
@@ -31,7 +31,7 @@ Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
 ### Fixed
 
-- PerseusDarkMode auto detect DarkMode changes.
+- PerseusDarkMode auto detect macOS DarkMode changes.
 
 ### Updated
 
