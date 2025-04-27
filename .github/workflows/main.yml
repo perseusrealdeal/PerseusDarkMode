@@ -3,9 +3,9 @@ name: 'Build & Tests'
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 #  schedule:
 #    - cron: '5 5 * * 5'
 
@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Select Xcode 15.4
       run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
-    - uses: mxcl/xcodebuild@v3.3
+    - uses: mxcl/xcodebuild@v3
       with:
         platform: macOS
         scheme: 'PerseusDarkMode'
@@ -34,7 +34,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Select Xcode 15.4
       run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
-    - uses: mxcl/xcodebuild@v3.3
+    - uses: mxcl/xcodebuild@v3
       with:
         platform: macOS
         scheme: 'PerseusDarkMode'
@@ -50,7 +50,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Select Xcode 15.4
       run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
-    - uses: mxcl/xcodebuild@v3.3
+    - uses: mxcl/xcodebuild@v3
       with:
         platform: iOS
         scheme: 'PerseusDarkMode'
@@ -66,7 +66,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Select Xcode 15.4
       run: sudo xcode-select -s "/Applications/Xcode_15.4.app"
-    - uses: mxcl/xcodebuild@v3.3
+    - uses: mxcl/xcodebuild@v3
       with:
         platform: iOS
         scheme: 'PerseusDarkMode'
