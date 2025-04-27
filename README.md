@@ -1,204 +1,359 @@
-# Perseus Dark Mode
+# PerseusDarkMode — Xcode 14.2+
 
-[![Actions Status](https://github.com/perseusrealdeal/DarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions)
-![Version](https://img.shields.io/badge/Version-1.1.5-informational.svg)
-[![Pod](https://img.shields.io/badge/Pod-1.1.4-informational.svg)](/PerseusDarkMode.podspec)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%209.3+,%20macOS%2010.9+-orange.svg)
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-red.svg)](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html)
+[`iOS approbation app`](https://github.com/perseusrealdeal/TheOneRing) [`macOS approbation app`](https://github.com/perseusrealdeal/Arkenstone)
+
+> The light-weight darkness in Swift you can force. Hereinafter PDM stands for Perseus Dark Mode.<br/>
+
+> - To build option kinda `Night/Day/System Mode` or `On/Off/System Dark Mode`.<br/>
+> - To be awared of Dark Mode changes if you need.<br/>
+
+> `PDM` is a single author and personale solution developed in `person-to-person` relationship paradigm.
+
+[![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
+[![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
+[![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](/CHANGELOG.md)
+[![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+Cocoa_|_iOS%2011.0+UIKit-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
+[![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
+[![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
 [![License](http://img.shields.io/:License-MIT-blue.svg)](/LICENSE)
+
+<table>
+  <tr>
+    <th>iOS window</th>
+    <th>iOS Settings bundle</th>
+    <th>macOS window</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b05daa43-aa73-44ac-8479-735d0dcf7d33" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+    <td>
+        <img src="https://github.com/user-attachments/assets/f72bf8e5-e663-49ba-847d-06858b12eb43" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></br>
+        <img src="https://github.com/user-attachments/assets/2b2f15ef-a1e9-433e-b568-bbdb47dcb9a6" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+    </td>
+    <td><img src="https://github.com/user-attachments/assets/50806453-a091-47df-8a9a-f7f7b9eef838" width="200" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"/></td>
+  </tr>
+</table>
 
 ## Integration Capabilities
 
-[![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PerseusDarkModeSingle.swift)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
-[![CocoaPods manager](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](/PerseusDarkMode.podspec)
+[![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMStar.swift)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](/Package.swift)
 
-## Demo Apps and Others
+> Use Stars to adopt [`PDM`](/PDMStar.swift) for the specifics you need.
 
-[![Demo App](https://img.shields.io/badge/iOS%20Demo%20App-available-yellow.svg)](https://github.com/perseusrealdeal/ios.darkmode.discovery.git)
-[![Demo App](https://img.shields.io/badge/macOS%20Demo%20App-available-yellow.svg)](https://github.com/perseusrealdeal/macos.darkmode.discovery.git)
-[![PerseusUISystemKit](http://img.shields.io/:Satellite-PerseusUISystemKit-blue.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit.git)
-[![XcodeTemplateProject](http://img.shields.io/:Template-XcodeTemplateProject-blue.svg)](https://github.com/perseusrealdeal/XcodeTemplateProject.git)
+# Support Code
 
-# In Brief
+[![Standalone](https://img.shields.io/badge/Standalone-available-informational.svg)](/PDMSupportingStar.swift)
+[![License](http://img.shields.io/:License-Unlicense-green.svg)](http://unlicense.org/)
 
-> This library lets a developer being awared of Dark Mode via a variable `DarkMode.style`. Also, with this library it is possible to change the value of Dark Mode in runtime easily with standalone lib [DarkModeSwitching](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706).
+> [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a peace of code a widly helpful in accord with PDM.
 
-```swift
-changeDarkModeManually(.off) // .on or .auto
-```
-Sample screen for changing Dark Mode option [here for macOS](https://github.com/perseusrealdeal/macos.darkmode.discovery) and [here for iOS](https://github.com/perseusrealdeal/ios.darkmode.discovery).
+> `PDMSupportingStar.swift` goes as an external part of `PDM`.
 
-# Reqirements
+## Approbation Matrix
 
-- Xcode 10.1+
-- Swift 4.2+
-- iOS: 9.3+, UIKit SDK
-- macOS: 10.9+, AppKit SDK
+> [`A3 Environment and Approbation`](/APPROBATION.md) / [`CHANGELOG`](/CHANGELOG.md) for details.
 
-# First-party software
+## In brief > Idea to use, the Why
 
-- [PerseusLogger](https://gist.github.com/perseusrealdeal/df456a9825fcface44eca738056eb6d5)
+The Darkness. To take control of the Dark in the app.
 
-# Third-party software
+## Build requirements
 
-- [SwiftLint Shell Script Runner](/SucceedsPostAction.sh)
-- [SwiftLint](https://github.com/realm/SwiftLint) / [0.31.0: Busy Laundromat](https://github.com/realm/SwiftLint/releases/tag/0.31.0) for macOS High Sierra
+- [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
+
+> But as the single source code file [PDMStar.swift](/PDMStar.swift) PDM can be used even in Xcode 10.1.
+
+## First-party software
+
+- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.1.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.1.0)
+
+## Third-party software
+
+- Style [SwiftLint](https://github.com/realm/SwiftLint) / [Shell Script](/SucceedsPostAction.sh)
+- Action [mxcl/xcodebuild@v3.3](https://github.com/mxcl/xcodebuild/releases/tag/v3.3.0)
+- Action [cirruslabs/swiftlint-action@v1](https://github.com/cirruslabs/swiftlint-action/releases/tag/v1.0.0)
 
 # Installation
 
-> ***Using "Exact" with the Version field is strongly recommended.***
+`Step 1:` Import the Darkness either with SPM or standalone
 
-## Step 1: Add PerseusDarkMode to a host project tree
+> Standalone: the single source code file [PDMStar.swift](/PDMStar.swift)
 
-### Standalone 
+> Swift Package Manager: `https://github.com/perseusrealdeal/PerseusDarkMode`
 
-Make a copy of the file [`PerseusDarkModeSingle.swift`](/PerseusDarkModeSingle.swift) then put it into a place required of a host project.
+## Steps for Cocoa macOS project
 
-### Carthage
-
-Cartfile should contain:
-
-```carthage
-github "perseusrealdeal/PerseusDarkMode" == 1.1.5
-```
-
-Some Carthage usage tips placed [here](https://gist.github.com/perseusrealdeal/8951b10f4330325df6347aaaa79d3cf2).
-
-### CocoaPods
-
-Podfile should contain:
-
-```ruby
-target "ProjectTarget" do
-  use_frameworks!
-  pod 'PerseusDarkMode', '1.1.4'
-end
-```
-
-### Swift Package Manager
-
-- As a package dependency so Package.swift should contain the following statements:
+`Step 2:` In the AppDelegate when `applicationDidFinishLaunching` call `force`
 
 ```swift
-dependencies: [
-        .package(url: "https://github.com/perseusrealdeal/PerseusDarkMode.git",
-            .exact("1.1.5"))
-    ],
-```
 
-- As an Xcode project dependency: 
+import Cocoa
+import PerseusDarkMode
 
-`Project in the Navigator > Package Dependencies > Add Package Dependency`
+class AppDelegate: NSObject, NSApplicationDelegate {
 
-> ***Using "Exact" with the Version field is strongly recommended.***
-
-## Step 2: Make DarkMode ready for using
-
-### iOS
-
-Override the following method of the first screen to let Perseus know that system's appearance changed:
-
-```swift
-class MainViewController: UIViewController {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if #available(iOS 13.0, *) {
-            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
-        }
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        DarkModeAgent.force(DarkModeUserChoice)
     }
 }
+
 ```
 
-Also, if Dark Mode is released with Settings bundle put the statements into the app's delegate:
+`Step 3:` Register the MainWindowController for Dark Mode changes
 
 ```swift
-extension AppDelegate: UIApplicationDelegate {
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
+import Cocoa
+import PerseusDarkMode
 
-        // Update Dark Mode from Settings
-        if let choice = isDarkModeSettingsChanged() {
-            // Change Dark Mode value in Perseus Dark Mode library
-            AppearanceService.DarkModeUserChoice = choice
-            // Update appearance in accoring with changed Dark Mode Style
-            AppearanceService.makeUp()
-        }
+class MainWindowController: NSWindowController, NSWindowDelegate {
+
+    override func windowDidLoad() {
+        super.windowDidLoad()
+
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    @objc private func makeUp() {
+    
+    // Runs every time if Dark Mode changes.
+    // The current DarkMode value is reliable here.
+    
+    let isDark = DarkMode.style == .dark
+    let _ = isDark ? "It's dark" : "No dark"
+    
     }
 }
+
 ```
-Used functions are distributed via standalone file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706).
 
-### iOS and macOS
+## Steps for UIKit iOS project
 
-Call the method `AppearanceService.makeUp()` with the app's delegate if appearance changing is going to take place:
+`Step 2:` In the AppDelegate when `didFinishLaunchingWithOptions` call `force`
 
 ```swift
+
+import UIKit
+import PerseusDarkMode
+
+class AppDelegate: UIResponder { var window: UIWindow? }
+
 extension AppDelegate: UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        // ... code
-        
-        // Call AppearanceService.makeUp() method if AppearanceService.register(:, :)
-        // is taken into account
-        AppearanceService.makeUp()
 
-        // ... otherwise call AppearanceService.recalculateStyleIfNeeded()
-        // to load DarkMode.style from user defaults
-        // AppearanceService.recalculateStyleIfNeeded()
+        // Register Settings Bundle
+        registerSettingsBundle()
+
+        // Init the app's window
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        // Give it a root view for the first screen
+        window!.rootViewController = MainViewController.storyboardInstance()
+        window!.makeKeyAndVisible()
+        
+        DarkModeAgent.force(DarkModeUserChoice)
+        
+        return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+
+        // Actualize Dark Mode style to Settings Bundle
+        if let choice = DarkModeAgent.isDarkModeSettingsKeyChanged() {
+            DarkModeAgent.force(choice)
+        }
     }
 }
+
 ```
-Copy the file [`DarkModeSwitching.swift`](https://gist.github.com/perseusrealdeal/11b1bab47f13134832b859f49d9af706) into a host project for having fun with manual changing Dark Mode value.
 
-# Usage
+`Step 3:` Register the MainViewController and process traitCollectionDidChange for DarkMode changes
 
-Each time if Dark Mode changed the mentioned method `#selector(makeUp)` called, but registering is required:
 ```swift
-class MainViewController: UIViewController {
 
-    // At any view controller where changing is required
+import UIKit
+import PerseusDarkMode
+
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            DarkModeAgent.processTraitCollectionDidChange(previousTraitCollection)
+        }
+    }
+    
+    @objc private func makeUp() {
+    
+    // Runs every time if Dark Mode changes.
+    // The current DarkMode value is reliable here.
+    
+    let isDark = DarkMode.style == .dark
+    let _ = isDark ? "It's dark" : "No dark"
+    
+    }
+}
+
+```
+
+# Usage
+
+## Force Dark Mode
+
+> The Dark Mode of your app can be easely forced in `.on`, `.off` or `.auto` just call method `force` of DarkModeAgent like this. 
+
+```swift
+
+DarkModeAgent.force(.auto) // That's all.
+
+```
+
+The `force` will change the appearance of your app immediately including system components and will make run all custom DarkMode sensitive block of code required every time if DarkMode Changes.
+
+## Get awared of DarkMode Changes
+
+> To declare custom DarkMode sensitive code that runs every time if DarkMode Changes register the object or creat a DarkMode trigger:
+
+`Use Case -` Register an object to be notified on changes
+
+```swift
+
+class DarkModeSensitiveObject {
+
+    init() {
+        DarkModeAgent.register(stakeholder: self, selector: #selector(makeUp))
     }
 
     @objc private func makeUp() {
-        print("^_^ \(AppearanceService.DarkModeUserChoice)"
-
-        switch DarkMode.style {
-        case .light:
-            // make drawings for light mode
-            break
-        case .dark:
-            // make drawings for dark mode
-            break
-        }
+        // Runs evary time if Dark Mode changes.
     }
 }
+
 ```
 
-There is another way to be notified of Dark Mode—KVO. 
+`Use Case -` Creat a DarkMode trigger and give it an action
 
-> [`DarkModeImageView`](https://github.com/perseusrealdeal/PerseusUISystemKit/blob/master/Sources/PerseusUISystemKit/Classes/DarkModeImageView.swift) class is an expressive sample of Dark Mode KVO usage for both macOS and iOS as well.
+```swift
+
+class DarkModeSensitiveObject {
+
+    private var theDarknessTrigger = DarkModeObserver()
+
+    init() {
+        theDarnessTrigger.action = { _ in
+            self.makeUp()
+        }
+    }
+
+    private func makeUp() {
+        // Runs evary time if Dark Mode changes.
+    }
+}
+
+```
+
+## React to DarkMode Changes
+
+`Use Case -` Custom DarkMode Sensitive Color
+
+```swift
+
+import PerseusDarkMode
+
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
+#if os(iOS)
+public typealias Color = UIColor
+#elseif os(macOS)
+public typealias Color = NSColor
+#endif
+
+public func rgba255(_ red: CGFloat,
+                    _ green: CGFloat,
+                    _ blue: CGFloat,
+                    _ alpha: CGFloat = 1.0) -> Color {
+    return Color(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+}
+
+extension Color {
+    public static var customRed: Color {
+        return DarkModeAgent.shared.style == .light ?
+            rgba255(255, 59, 48) : rgba255(255, 69, 58)
+    }
+}
+
+```
+
+> Use Custom DarkMode sensitive color.
+
+```swift
+
+// Runs every time if the DarkMode changes. Use KVO (DarkModeObserver) or be registered by DarkModeAgent. 
+@objc private func makeUp() {
+    self.backgroundColor = .customRed
+}
+
+```
+
+# Points taken into account
+
+- Preconfigured Swift Package manifest [Package.swift](/Package.swift)
+- Preconfigured SwiftLint config [.swiftlint.yml](/.swiftlint.yml)
+- Preconfigured SwiftLint CI [swiftlint.yml](/.github/workflows/swiftlint.yml)
+- Preconfigured GitHub config [.gitignore](/.gitignore)
+- Preconfigured GitHub CI [main.yml](/.github/workflows/main.yml)
 
 # License MIT
 
-Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+Copyright © 7530 - 7533 Mikhail A. Zhigulin of Novosibirsk<br/>
+Copyright © 7533 PerseusRealDeal
 
 - The year starts from the creation of the world according to a Slavic calendar.
-- September, the 1st of Slavic year.
+- September, the 1st of Slavic year. It means that "Sep 01, 2024" is the beginning of 7533.
 
 [LICENSE](/LICENSE) for details.
 
+## Credits
+
+<table>
+<tr>
+    <td>Balance and Control</td>
+    <td>kept by</td>
+    <td>Mikhail A. Zhigulin</td>
+</tr>
+<tr>
+    <td>Source Code</td>
+    <td>written by</td>
+    <td>Mikhail A. Zhigulin</td>
+</tr>
+<tr>
+    <td>Documentation</td>
+    <td>prepared by</td>
+    <td>Mikhail A. Zhigulin</td>
+</tr>
+<tr>
+    <td>Product Approbation</td>
+    <td>tested by</td>
+    <td>Mikhail A. Zhigulin</td>
+</tr>
+</table>
+
+- Language support: [Reverso](https://www.reverso.net/)
+- Git clients: [SmartGit](https://syntevo.com/) and [GitHub Desktop](https://github.com/apps/desktop)
+
 # Author
 
-> `PerseusDarkMode` was written at Novosibirsk by Mikhail Zhigulin i.e. me, mzhigulin@gmail.com.
-
-> Mostly I'd like thank my lovely parents for supporting me in all my ways.
+> Mikhail A. Zhigulin of Novosibirsk.

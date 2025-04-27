@@ -1,23 +1,30 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.7
 
 /* Package.swift
- Version: 1.1.5
+ Version: 2.0.0
+
+ For iOS and macOS only. Use Stars to adopt for the specifics you need.
 
  Created by Mikhail Zhigulin in 7530.
 
- Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+ Copyright © 7530 - 7533 Mikhail A. Zhigulin of Novosibirsk
+ Copyright © 7533 PerseusRealDeal
 
  Licensed under the MIT license. See LICENSE file.
  All rights reserved.
 
  Abstract:
- Package manifest for Perseus Dark Mode.
+ Package manifest for the Darkness.
 */
 
 import PackageDescription
 
 let package = Package(
     name: "PerseusDarkMode",
+    platforms: [
+        .macOS(.v10_13),
+        .iOS(.v11)
+    ],
     products: [
         .library(
             name: "PerseusDarkMode",
@@ -31,7 +38,7 @@ let package = Package(
             name: "PerseusDarkMode",
             dependencies: []),
         .testTarget(
-            name: "DarkModeTests",
+            name: "UnitTests",
             dependencies: ["PerseusDarkMode"])
         ]
 )

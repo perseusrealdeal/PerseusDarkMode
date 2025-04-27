@@ -3,13 +3,13 @@
 #  SucceedsPostAction.sh
 #  PerseusDarkMode
 #
-#  Copied and edited by Mikhail Zhigulin in 2022.
-#
+#  Copied and edited by Mikhail A. Zhigulin in 2022.
+#  CHANGED: Post action output file name.
 
 #  The MIT License (MIT)
 
 #  Copyright (c) 2021 Alexandre Colucci, geteimy.com
-#  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
+#  Copyright (c) 2022 Mikhail A. Zhigulin of Novosibirsk
 
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #    of this software and associated documentation files (the "Software"), to
@@ -43,7 +43,7 @@
 #
 # Usage
 #
-# 1. Ensure that the script has the proper permissions, i.e. 
+# 1. Ensure that the script has the proper permissions, i.e.
 #    run chmod 755 SucceedsPostAction.sh
 # 2. Launch Xcode 13.0 or later
 # 3. Open Preferences > Locations and ensure that Command Line Tools
@@ -99,7 +99,7 @@ fi
 # Run swiftlint
 #-------------------------------------------------------------------------------
 OUTPUT="${SWIFTLINT_PATH} ${PACKAGE_ROOT_FOLDER}"
-OUTPUT_FILE_PATH="${PACKAGE_ROOT_FOLDER}/swiftlint.txt"
+OUTPUT_FILE_PATH="${PACKAGE_ROOT_FOLDER}/SwiftLintOutput"
 ${OUTPUT} > ${OUTPUT_FILE_PATH}
 
 #-------------------------------------------------------------------------------
