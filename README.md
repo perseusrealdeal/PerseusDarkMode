@@ -2,7 +2,7 @@
 
 [`iOS approbation app`](https://github.com/perseusrealdeal/TheOneRing) [`macOS approbation app`](https://github.com/perseusrealdeal/Arkenstone)
 
-> The light-weight darkness in Swift you can force. Hereinafter PDM stands for Perseus Dark Mode.<br/>
+> The light-weight darkness in Swift you can force. Hereinafter PDM stands for `P`erseus `D`ark `M`ode.<br/>
 
 > - To build option kinda `Night/Day/System Mode` or `On/Off/System Dark Mode`.<br/>
 > - To be awared of Dark Mode changes if you need.<br/>
@@ -11,7 +11,7 @@
 
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
-[![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.0.1-green.svg)](/CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+Cocoa_|_iOS%2011.0+UIKit-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
 [![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
@@ -31,7 +31,7 @@
 
 > [`PDMSupportingStar.swift`](/PDMSupportingStar.swift) is a peace of code a widly helpful in accord with PDM.
 
-> `PDMSupportingStar.swift` goes as an external part of `PDM`.
+> PDMSupportingStar.swift goes as an external part of PDM.
 
 ## Approbation Matrix
 
@@ -57,6 +57,9 @@
   </tr>
 </table>
 
+> [!IMPORTANT]
+> Screenshots above had been taken from Approbation Apps [`iOS`](https://github.com/perseusrealdeal/TheOneRing) and [`macOS`](https://github.com/perseusrealdeal/Arkenstone).
+
 ## Build requirements
 
 - [macOS Monterey 12.7.6+](https://apps.apple.com/by/app/macos-monterey/id1576738294) / [Xcode 14.2+](https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_14.2/Xcode_14.2.xip)
@@ -65,7 +68,7 @@
 
 ## First-party software
 
-- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.1.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.1.0)
+- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.2.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.2.0)
 
 ## Third-party software
 
@@ -195,7 +198,7 @@ class MainViewController: UIViewController {
     @objc private func makeUp() {
     
     // Runs every time if Dark Mode changes.
-    // The current DarkMode value is reliable here.
+    // The current DarkMode value is reliable here, DarkModeAgent selector registered.
     
     let isDark = DarkMode.style == .dark
     let _ = isDark ? "It's dark" : "No dark"
@@ -213,7 +216,7 @@ class MainViewController: UIViewController {
 
 ```swift
 
-DarkModeAgent.force(.auto) // That's all.
+DarkModeAgent.force(.off) // It's a sunny day.
 
 ```
 

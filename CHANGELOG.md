@@ -5,6 +5,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
+## [2.0.1] - [2025-05-NN], PerseusDarkMode
+
+### Upgraded
+
+- PerseusLogger to [CPL v1.2.0](https://github.com/perseusrealdeal/ConsolePerseusLogger).
+
 ## [2.0.0] - [2025-04-27], PerseusDarkMode
 
 - Minimum build requirements: macOS 10.13+, iOS 11.0+, Xcode 14.2+. If standalone Xcode 10.1+.
@@ -33,7 +39,7 @@ Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
 - PerseusDarkMode auto detect macOS DarkMode changes.
 
-### Updated
+### Upgraded
 
 - PerseusLogger to [CPL v1.1.0](https://github.com/perseusrealdeal/ConsolePerseusLogger).
 
