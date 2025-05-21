@@ -68,7 +68,7 @@
 
 ## First-party software
 
-- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.2.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.2.0)
+- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.3.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.3.0)
 
 ## Third-party software
 
@@ -216,7 +216,7 @@ class MainViewController: UIViewController {
 
 ```swift
 
-DarkModeAgent.force(.off) // It's a sunny day.
+DarkModeAgent.force(.off) // It's a sunny day for the app.
 
 ```
 

@@ -1,6 +1,6 @@
 //
 //  CPLStar.swift
-//  Version: 1.2.0
+//  Version: 1.3.0
 //
 //  Standalone ConsolePerseusLogger.
 //
@@ -211,6 +211,7 @@ public class PerseusLogger {
 
     public static func message(_ text: @autoclosure () -> String,
                                _ type: Level = .debug,
+                               _ oput: Output = PerseusLogger.output,
                                _ file: StaticString = #file,
                                _ line: UInt = #line) {
 
@@ -245,17 +246,17 @@ public class PerseusLogger {
 
         // Print.
 
-        if output == .custom {
+        if oput == .custom {
             customActionOnMessage?(message, type, localTime)
         } else {
-            print(message, type)
+            print(message, type, oput)
         }
     }
 
     // MARK: - Implementation
 
     // swiftlint:disable:next cyclomatic_complexity
-    private static func print(_ text: String, _ type: Level) {
+    private static func print(_ text: String, _ type: Level, _ output: Output) {
 
         let message = (text: text, type: type)
 
