@@ -5,6 +5,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Dates in this file meets Gregorian calendar. Date in format YYYY-MM-DD.
 
+## [2.0.2] - [2025-06-17], PerseusDarkMode
+
+### Upgraded
+
+- PerseusLogger to [CPL v1.5.0](https://github.com/perseusrealdeal/ConsolePerseusLogger).
+
 ## [2.0.1] - [2025-05-23], PerseusDarkMode
 
 ### Upgraded
