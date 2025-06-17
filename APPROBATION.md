@@ -1,4 +1,4 @@
-# Approbation Matrix / PerseusDarkMode 2.0.0 && 2.0.1
+# Approbation Matrix / PerseusDarkMode 2.0.0 && 2.0.1 && 2.0.2
 
 > NOTE: To catch all log messages Mac Console should be started first then after a little while the logged app.
 
@@ -6,7 +6,7 @@
 
 ## macOS approbation result
 
-> The approbation macOS app for PerseusDarkMode 2.0.0 is [Arkenstone](https://github.com/perseusrealdeal/Arkenstone).
+> The approbation macOS app for PerseusDarkMode is [Arkenstone](https://github.com/perseusrealdeal/Arkenstone).
 
 | macOS       | Version | Result  | Details |
 | ----------- | ------- | :-----: | ------- |
@@ -21,7 +21,7 @@
 
 ## iOS approbation result
 
-> The approbation iOS app for PerseusDarkMode 2.0.0 is [The One Ring](https://github.com/perseusrealdeal/TheOneRing).
+> The approbation iOS app for PerseusDarkMode is [The One Ring](https://github.com/perseusrealdeal/TheOneRing).
 
 | Device          | Simulator | OS Version | Result  | Details |
 | --------------- | :-------: | ---------- | :-----: | ------- |

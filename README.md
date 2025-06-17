@@ -11,7 +11,7 @@
 
 [![Actions Status](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/main.yml)
 [![Style](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/actions/workflows/swiftlint.yml)
-[![Version](https://img.shields.io/badge/Version-2.0.1-green.svg)](/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.0.2-green.svg)](/CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/Platforms-macOS%2010.13+Cocoa_|_iOS%2011.0+UIKit-orange.svg)](https://en.wikipedia.org/wiki/List_of_Apple_products)
 [![Xcode 14.2](https://img.shields.io/badge/Xcode-14.2+-red.svg)](https://en.wikipedia.org/wiki/Xcode)
 [![Swift 5.7](https://img.shields.io/badge/Swift-5.7-red.svg)](https://www.swift.org)
@@ -23,6 +23,10 @@
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg)](/Package.swift)
 
 > Use Stars to adopt [`PDM`](/PDMStar.swift) for the specifics you need.
+
+## Dependencies
+
+[![ConsolePerseusLogger](http://img.shields.io/:ConsolePerseusLogger-1.5.0-green.svg)](https://github.com/perseusrealdeal/ConsolePerseusLogger.git)
 
 # Support Code
 
@@ -66,15 +70,20 @@
 
 > But as the single source code file [PDMStar.swift](/PDMStar.swift) PDM can be used even in Xcode 10.1.
 
-## First-party software
+# First-party software
 
-- [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.3.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.3.0)
+| Type | Name                                                                                                                                                                  | License |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| Star | [ConsolePerseusLogger](https://github.com/perseusrealdeal/ConsolePerseusLogger) / [1.5.0](https://github.com/perseusrealdeal/ConsolePerseusLogger/releases/tag/1.5.0) | MIT     |
 
-## Third-party software
+# Third-party software
 
-- Style [SwiftLint](https://github.com/realm/SwiftLint) / [Shell Script](/SucceedsPostAction.sh)
-- Action [mxcl/xcodebuild@v3](https://github.com/mxcl/xcodebuild/releases/tag/v3.5.1)
-- Action [cirruslabs/swiftlint-action@v1](https://github.com/cirruslabs/swiftlint-action/releases/tag/v1.0.0)
+| Type   | Name                                                                                                                              | License                            |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Style  | [SwiftLint](https://github.com/realm/SwiftLint) / [v0.57.0 for Monterey+](https://github.com/realm/SwiftLint/releases/tag/0.57.0) | MIT                                |
+| Script | [SwiftLint Shell Script](/SucceedsPostAction.sh) to run SwiftLint                                                                 | MIT                                |
+| Action | [mxcl/xcodebuild@v3](https://github.com/mxcl/xcodebuild)                                                                          | [Unlicense](https://unlicense.org) |
+| Action | [cirruslabs/swiftlint-action@v1](https://github.com/cirruslabs/swiftlint-action/)                                                 | MIT                                |
 
 # Installation
 
@@ -327,6 +336,12 @@ Copyright © 7533 PerseusRealDeal
 - The year starts from the creation of the world according to a Slavic calendar.
 - September, the 1st of Slavic year. It means that "Sep 01, 2024" is the beginning of 7533.
 
+## Other Required License Notices
+
+© 2025 The SwiftLint Contributors **for** SwiftLint</br>
+© GitHub **for** GitHub Action cirruslabs/swiftlint-action@v1</br>
+© 2021 Alexandre Colucci, geteimy.com **for** Shell Script SucceedsPostAction.sh</br>
+
 [LICENSE](/LICENSE) for details.
 
 ## Credits
@@ -359,4 +374,4 @@ Copyright © 7533 PerseusRealDeal
 
 # Author
 
-> Mikhail A. Zhigulin of Novosibirsk.
+> © Mikhail A. Zhigulin of Novosibirsk.
