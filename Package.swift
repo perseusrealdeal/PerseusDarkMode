@@ -1,7 +1,7 @@
 // swift-tools-version:5.7
 
 /* Package.swift
- Version: 2.0.2
+ Version: 2.0.3
 
  For iOS and macOS only. Use Stars to adopt for the specifics you need.
 

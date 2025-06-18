@@ -1,4 +1,4 @@
-# Approbation Matrix / PerseusDarkMode 2.0.0 && 2.0.1 && 2.0.2
+# Approbation Matrix / PerseusDarkMode 2.0.0 && 2.0.1 && 2.0.2 && 2.0.3
 
 > NOTE: To catch all log messages Mac Console should be started first then after a little while the logged app.
 

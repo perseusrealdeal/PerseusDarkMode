@@ -52,7 +52,7 @@ import Foundation
 import os
 
 // swiftlint:disable type_name
-public typealias log = PerseusLogger // In SPM package should be not public except TheOne.
+typealias log = PerseusLogger // In SPM package should be not public except TheOne.
 // swiftlint:enable type_name
 
 public typealias ConsoleObject = (subsystem: String, category: String)
