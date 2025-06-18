@@ -55,9 +55,7 @@ public let APPEARANCE_DEFAULT = AppearanceStyle.light
 public let DARK_MODE_USER_CHOICE_KEY = "DarkModeUserChoiceOptionKey"
 public let DARK_MODE_USER_CHOICE_DEFAULT = DarkModeOption.auto
 
-#if os(iOS)
 public let DARK_MODE_SETTINGS_KEY = "DarkModeSettingsKey"
-#endif
 
 #if os(macOS)
 public var DARK_APPEARANCE_DEFAULT_IN_USE: NSAppearance {
